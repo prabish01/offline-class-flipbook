@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grammar Learning Platform</title>
+    <script>
+      // Redirect to class selection
+      window.location.href = "./src/class-selection/index.html";
+    </script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .container {
+        background: white;
+        border-radius: 20px;
+        padding: 50px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        max-width: 600px;
+        animation: slideUp 0.6s ease-out;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1 {
+        color: #667eea;
+        font-size: 2.5em;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        color: #666;
+        font-size: 1.2em;
+        margin-bottom: 30px;
+      }
+
+      .btn {
+        display: inline-block;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-decoration: none;
+        padding: 18px 50px;
+        border-radius: 50px;
+        font-size: 1.2em;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        margin-top: 20px;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+      }
+
+      .features {
+        margin-top: 40px;
+        text-align: left;
+        color: #555;
+      }
+
+      .features h3 {
+        color: #667eea;
+        margin-bottom: 15px;
+      }
+
+      .features ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .features li {
+        padding: 8px 0;
+        padding-left: 30px;
+        position: relative;
+      }
+
+      .features li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #667eea;
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+
+      .version {
+        margin-top: 30px;
+        color: #999;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎓 Good with Grammar</h1>
+      <p class="subtitle">Interactive Learning for Class 1</p>
+
+      <a href="src/main-menu/index .html" class="btn">Start Learning →</a>
+
+      <div class="features">
+        <h3>📚 What's Included:</h3>
+        <ul>
+          <li>Interactive Digital Flipbook</li>
+          <li>Animated Video Lessons</li>
+          <li>Automated Test Generator</li>
+          <li>Downloadable Worksheets</li>
+          <li>16 Grammar Chapters + Recaps</li>
+        </ul>
+      </div>
+
+      <p class="version">Version 1.0 | Class 1 English Grammar</p>
+    </div>
+
+    <script>
+      // Redirect after 3 seconds if no interaction
+      let redirectTimer = setTimeout(() => {
+        window.location.href = "src/main-menu/index .html";
+      }, 10000);
+
+      // Clear timer if user interacts
+      document.querySelector(".btn").addEventListener("click", () => {
+        clearTimeout(redirectTimer);
+      });
+    </script>
+  </body>
+</html>

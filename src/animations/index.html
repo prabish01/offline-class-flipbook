@@ -1,0 +1,206 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animations</title>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background:white;
+        background-size: cover;
+        flex-direction: column;
+    }
+    div{
+        width: 0%;
+    height: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    }
+ #a1{
+    position: fixed;
+    top: 17.4vw;
+    left: 37.5vw;
+    width: 21vw;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    filter: drop-shadow(2px 4px 6px black);
+ }
+ #a2{
+    position: fixed;
+    top: 23.4vw;
+    left: 60.5vw;
+    width: 22vw;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    filter: drop-shadow(2px 4px 6px black);
+ }
+ #a3{
+    position: fixed;
+    top: 29.4vw;
+    left: 58vw;
+    width: 18vw;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    filter: drop-shadow(2px 4px 6px black);
+ }
+ #a4{
+    position: fixed;
+    top: 11vw;
+    left: 54.6vw;
+    width: 24vw;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    filter: drop-shadow(2px 4px 6px black);
+    z-index: 1;}
+#a5{
+    position: fixed;
+    top: 15vw;
+    left: 11.8vw;
+    width: 17vw;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+#a6{
+    position: fixed;
+    top: 8vw;
+    left: 23.6vw;
+    width: 20vw;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+#a7{
+    position: fixed;
+    top: 34vw;
+    left: 30.6vw;
+    width: 24vw;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+#a8{
+    position: fixed;
+    top: 28vw;
+    left: 24.6vw;
+    width: 24vw;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    filter: drop-shadow(2px 4px 6px black);
+}
+#a9{
+    position: fixed;
+    top: 20.4vw;
+    left: 18.5vw;
+    width: 18vw;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    filter: drop-shadow(2px 4px 6px black);
+}
+#a10{
+    position: fixed;
+    top: 15vw;
+    left: 68.8vw;
+    width: 25vw;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    filter: drop-shadow(2px 4px 6px black);
+}
+    h1{
+        color: aliceblue;
+    font-size: 4vw;
+    padding-bottom: 2vw;
+    border-bottom: 1px solid;
+    }
+    #back{
+        width:4vw;
+        position: fixed;
+        left: 0;
+        top:0;
+    }
+    #logo{
+        position: fixed;
+    right: 0;
+    top: 0;
+    margin: 2vw;
+    width: 12vw;
+    }
+</style>
+</head>
+
+<body>
+    <img src="./b_1.png" alt="back" id="back">
+    <img src="./FLIPBOOK PAGE_1.png" alt="logo" id="logo">
+   <img src="./Golden leave tree.png" style="     width: 52vw;
+   position: fixed;
+   top: 3vw;
+   left: 30vw;" draggable="false">
+    <div id="container">
+        <img src="./a1.png" id="a1">
+        <img src="./a2.png" id="a2">
+        <img src="./a3.png" id="a3">
+        <img src="./a4.png" id="a4">
+        <img src="./a5.png" id="a5">
+        <img src="./a6.png" id="a6">
+        <img src="./a7.png" id="a7">
+        <img src="./a8.png" id="a8">
+        <img src="./a9.png" id="a9">
+        <img src="./a10.png" id="a10">
+    </div>
+   <img src="./What Is Happening Now.mp4" alt="" srcset="">
+    <script>
+        document.getElementById('back').onclick=()=>{
+            location.replace('../main-menu/index .html')
+        }
+     document.getElementById('a1').onclick=()=>{
+        window.open('../../assets/videos/Naming Words.mp4');
+     }
+     document.getElementById('a2').onclick=()=>{
+        window.open('../../assets/videos/A and An.mp4');
+     }
+     document.getElementById('a3').onclick=()=>{
+        window.open('../../assets/videos/What Happened Earlier.mp4');
+     }
+     document.getElementById('a4').onclick=()=>{
+        window.open('../../assets/videos/You, She.mp4');
+     }
+     document.getElementById('a5').onclick=()=>{
+        window.open('../../assets/videos/Am, Is and Are.mp4');
+     }
+     document.getElementById('a6').onclick=()=>{
+        window.open('../../assets/videos/Describing Words.mp4');
+     }
+     document.getElementById('a7').onclick=()=>{
+        window.open('../../assets/videos/Doing Words.mp4');
+     }
+     document.getElementById('a8').onclick=()=>{
+        window.open('../../assets/videos/Has and Have.mp4');
+     }
+     document.getElementById('a9').onclick=()=>{
+        window.open('../../assets/videos/One and Many.mp4');
+     }
+     document.getElementById('a10').onclick=()=>{
+        window.open('../../assets/videos/What Is Happening Now.mp4');
+     }
+    </script>
+</body>
+</html>

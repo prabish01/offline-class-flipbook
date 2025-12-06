@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select a Book - Class 2</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <button class="back-btn" onclick="window.history.back()">← Back</button>
+
+      <h1 class="page-title">📚 Class 2 - Select a Book</h1>
+
+      <div class="books-grid">
+        <!-- Grammar Frolics Book -->
+        <div class="book-card" onclick="openBook('../class-2-flipbook/index.html')">
+          <div class="book-cover">
+            <img src="../../assets/pages/class-2/page-1.jpg" alt="Grammar Frolics Class 2" />
+          </div>
+          <h3 class="book-title">Grammar Frolics</h3>
+          <p class="book-subtitle">Class 2</p>
+        </div>
+
+        <!-- Placeholder for future books -->
+        <div class="book-card placeholder">
+          <div class="book-cover">
+            <div class="coming-soon">Coming Soon</div>
+          </div>
+          <h3 class="book-title">More Books</h3>
+          <p class="book-subtitle">Coming Soon</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function openBook(url) {
+        window.location.href = url;
+      }
+    </script>
+  </body>
+</html>

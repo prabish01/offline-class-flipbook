@@ -1,0 +1,366 @@
+
+#leath{    width: 80.5vw;
+    padding-bottom: 0vh;
+    height: 93vh;
+    top: 1.6vh;
+    position: absolute;
+    margin-top:-1vw;
+}
+#home{
+position: absolute;
+width: 4vw;
+top: 0;
+left: 0;
+box-shadow: 0px 0px 3px #0000006e;
+border-top-right-radius: 1vw;
+border-bottom-right-radius: 1vw;
+cursor: pointer;
+}
+#selText{
+    display:none;
+}
+#mbbtn{
+    display: none;
+}
+#music1btn{
+    position: relative;
+    left: 17vw;
+    top: 8.3vh;
+}
+
+#zoom1,#zoom2,#selmb,#copymb{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    height: 24px;
+    width: 35px;
+    color: #9aedca;
+    border-radius: 1vw;
+    background-color: #52727275;
+    box-shadow: 2px 4px 5px #649d83;
+    padding: 4px;
+    align-items: center;
+    margin-left: 10px;
+font-size: 18px;
+display: flex;
+justify-content: center;
+align-items: center;
+cursor: pointer;
+}
+.blog{
+    background-color: #ebebeb;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#Logo{
+    position: fixed;
+    width: 9vw;
+    right: 1vw;
+    top: 1vw;
+    display: block;
+}
+.album .shadow{ 
+box-shadow: 0 4px 10px #666;
+}
+        body{
+            overflow: hidden;
+            background-size: 100vw 100vh;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: 100vh;
+            align-items: center;
+            background-image: url(../../assets/images/flipbook-ui/flipBg.jpg);
+            position: absolute;
+            margin: 0;
+            
+        }
+        .album{		
+            margin:1% auto; 
+            position: relative;
+            width: 95%;
+            height: 100%;
+            transform: translate3d(0px, 0px, 0px);
+        }
+        #controls{
+            font-size: 1.2vw;
+            width: 20vw;
+            display: flex;
+            font-family: sans-serif;
+            justify-content: space-evenly;
+            align-items: center;
+            color: #686363;
+            border-radius: 1vw;
+            background-color: #ededed;
+            box-shadow: 0px 2px 5px #d4d4d4;
+            margin: 0 0.5vw;
+}
+
+#btn{
+    position: absolute;
+    bottom: 0vw;
+    left: 26vw;
+    display: flex;
+    background-color: #4399e1;
+    box-shadow: 6px 8px 20px #e1e1e1;
+    padding: 0.8vw;
+    border-radius: 2vw;
+    border-top: 1px solid white;
+    align-items: center;
+    height: 1vw;
+}
+#controls label{ font-size:15px}
+#controls input {
+    height: 1.8vw;
+    width: 2.2vw;
+    background-color: #c6d1db;
+    border: 0;
+    padding-left: 0.5vw;
+    font-size: 1.1vw;
+    color: #021a2f;
+    margin-right:0.5vw;
+}
+#number-pages{
+    font-size: 1.15vw;
+}
+#bck,#nxt,#bck1,#nxt1{
+    position: relative;
+    background-color: #ededed;
+    color: #5c5353;
+    font-family: system-ui;
+    padding: 0.15vw 1vw;
+    margin: 5px;
+    text-align: center;
+    border-radius: 0.8vw;
+    box-shadow: 3px 4px 6px #0000002b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+    #controls {
+        font-size: 1.2vw;
+        width: 20vw;
+        display: flex;
+        font-family: sans-serif;
+        justify-content: space-evenly;
+        align-items: center;
+        color: #686363;
+        border-radius: 0.7vw;
+        background-color: #ededed;
+        box-shadow: 0px 2px 5px #625f5f;
+        margin: 0 0.5vw;
+        padding: 0.0515vw 0;
+    }
+  
+.zoom-in{
+    transform: scale(2);
+margin-left: 83vw;
+margin-bottom: 5vw;
+}
+
+#zoom,#zoom1,#zoom2,#selmb,#copymb{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    height: 1.25vw;
+    width: 3vw;
+    color: #13aaef;
+    border-radius: 0.8vw;
+    background-color: #ededed;
+    box-shadow: 2px 4px 5px #666666;
+    padding: 4px;
+    align-items: center;
+}
+#vde1{
+    position: relative;
+    top: 5.5vh;
+    left: 17vw;
+  }
+  #vde1 video{
+    width: 297px;
+    position: absolute;
+    top: 10vh;
+    left: -31vh;
+  }
+  #vde1 .cls{
+    top: 7vh;
+left: 5vw;
+  }
+  #vd2{
+    width: 15px;
+    position: relative;
+    top: 2.8vh;
+    left: -4vw;
+  }
+  .cls{
+    top: 5.9vh;
+left: 4.5vw;
+  }
+#bck:hover,#bck1:hover,#nxt:hover,#nxt1:hover,#controls:hover,#zoom:hover,#zoom1:hover,#selmb:hover,#zoom2:hover,#copymb:hover{
+    box-shadow: 2px 4px 5px #b0b0b0;
+    transform: scale(1.04);
+}#btn:hover{box-shadow: 1px 1px 20px #ebebeb;}
+@media only screen and (max-width: 450px) {
+    #leath{    margin-left: 0%;
+        margin-top: 27vh;
+        background-image: url(../../assets/images/flipbook-ui/book.png);
+        background-size: 210vw 100vh;}
+    #controls{font-size: 1.2vw;
+        width: 15vw;
+        display: flex;
+        font-family: sans-serif;
+        justify-content: space-evenly;
+        align-items: center;
+        color: #686363;
+        border-radius: 1vw;
+        background-color: #ededed;
+        box-shadow: 0px 2px 5px #d4d4d4;
+        margin: 0 0.5vw;}
+    #controls label{font-size:16px;}
+    #leath{background-image: url();width: 100%;}
+    #selText{
+        display:none;
+    }
+    #vd1{
+      width: 42px;
+      position: relative;
+      top: 5.5vh;
+      left: 17vw;
+    }
+
+      #zoom{display:none}
+      
+      #album{		
+              width:100%;
+              height: 525px; 
+              margin:0;
+              position:absolute;
+
+          }
+      body{
+        padding: 0;
+        margin: 0;
+        background-size: auto 100vh;
+        max-height: 150vh;
+        background-image: url(../../assets/images/flipbook-ui/flipBg.png)
+      }   
+      #home{
+        width: 15vw;
+    }
+      .turn-page-wrapper{
+          width:100%;
+      } 
+      #btn{
+          display: none;
+      }
+      #mbbtn{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: fixed;
+          bottom: 0;
+      }
+      #zoom{ background-color: #5a6666;}
+      #zoom1,#zoom2,#selmb,#copymb{    margin-left: 10px;
+          height: 40px;
+          border-radius: 15px;
+          width: 54px;
+          background-color: #e4ffff;
+          font-size: 30px;
+          color: #234b55;}
+      #nxt1,#bck1{    height: 40px;
+          border-radius: 15px;
+          background-color: #e4ffff;}
+          #controls{
+            position: fixed;
+            width: 50%;
+            background-color: #113a5e;
+            color: #e5e5e5;
+            height: 46px;
+            align-content: center;
+              }  
+          #leath{
+            margin-left: 0%;
+            margin-top: 27vh;
+            background-image: url(../../assets/images/flipbook-ui/book.png);
+            background-size: 210vw 100vh;
+          }      
+      }
+
+@media only screen and (max-width: 860px) {
+    body{
+        overflow: scroll;
+    }
+    #btn{
+        position: absolute;
+        z-index: 1000;
+        transform: scale(0.8);
+}
+    #zoom{display:none}
+}
+
+    .cls,.cls1{
+        background-color: black;
+        font-size: 17px;
+position: absolute;
+padding: 8px;
+top: 37%;
+left: 88%;
+width: 17px;
+height: 18px;
+font-family: monospace;
+display: flex;
+margin: 0;
+border-radius: 37%;
+color: azure;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+z-index: 5000;
+    }
+.cls1{
+top: 52%;
+width: 22px;
+left: 59%;
+color: #838383;
+background-color: #f1f3f4;
+}  
+#vda{
+position: absolute;
+left: 5%;
+top: 55%;
+}    
+.turn-page-wrapper{
+position: relative;
+overflow: hidden;
+width: 50%;
+height: 96%;
+inset: 0px auto auto 0px;
+
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 25px;
+    background: transparent;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f100;
+
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(11, 81, 210);
+    border-radius: 25px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }   

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select Your Class</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="page-title">🎓 Select Your Class</h1>
+      <p class="subtitle">Choose your grade to start learning</p>
+
+      <div class="classes-grid">
+        <!-- Class 1 -->
+        <div class="class-card active" onclick="selectClass(1)">
+          <div class="class-number">1</div>
+          <h3 class="class-title">Class 1</h3>
+          <p class="class-info">1 Book Available</p>
+        </div>
+
+        <!-- Class 2 -->
+        <div class="class-card active" onclick="selectClass(2)">
+          <div class="class-number">2</div>
+          <h3 class="class-title">Class 2</h3>
+          <p class="class-info">1 Book Available</p>
+        </div>
+
+        <!-- Class 3 -->
+        <div class="class-card active" onclick="selectClass(3)">
+          <div class="class-number">3</div>
+          <h3 class="class-title">Class 3</h3>
+          <p class="class-info">1 Book Available</p>
+        </div>
+
+        <!-- Class 4 -->
+        <div class="class-card active" onclick="selectClass(4)">
+          <div class="class-number">4</div>
+          <h3 class="class-title">Class 4</h3>
+          <p class="class-info">1 Book Available</p>
+        </div>
+
+        <!-- Class 5 -->
+        <div class="class-card coming-soon">
+          <div class="class-number">5</div>
+          <h3 class="class-title">Class 5</h3>
+          <p class="class-info">Coming Soon</p>
+        </div>
+
+        <!-- Class 6 -->
+        <div class="class-card coming-soon">
+          <div class="class-number">6</div>
+          <h3 class="class-title">Class 6</h3>
+          <p class="class-info">Coming Soon</p>
+        </div>
+
+        <!-- Class 7 -->
+        <div class="class-card coming-soon">
+          <div class="class-number">7</div>
+          <h3 class="class-title">Class 7</h3>
+          <p class="class-info">Coming Soon</p>
+        </div>
+
+        <!-- Class 8 -->
+        <div class="class-card coming-soon">
+          <div class="class-number">8</div>
+          <h3 class="class-title">Class 8</h3>
+          <p class="class-info">Coming Soon</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function selectClass(classNum) {
+        if (classNum === 1) {
+          window.location.href = "../class-1-book-selection/index.html";
+        } else if (classNum >= 2 && classNum <= 4) {
+          window.location.href = "../class-" + classNum + "-book-selection/index.html";
+        } else {
+          alert("Content for Class " + classNum + " coming soon!");
+        }
+      }
+    </script>
+  </body>
+</html>
