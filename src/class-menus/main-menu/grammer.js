@@ -1,27 +1,27 @@
 document.getElementById("test").addEventListener("click", () => {
-  window.open("../test-selection/index.html", "_self");
+  window.open("../../class-tests/test-selection/index.html", "_self");
 });
 document.getElementById("test").addEventListener("touch", () => {
-  window.open("../test-selection/index.html", "_self");
+  window.open("../../class-tests/test-selection/index.html", "_self");
 });
 document.getElementById("flip").addEventListener("click", () => {
-  window.open("../book-selection/index.html", "_self");
+  window.open("../class-selection/index.html", "_self");
 });
 document.getElementById("flip").addEventListener("touch", () => {
-  window.open("../book-selection/index.html", "_self");
+  window.open("../class-selection/index.html", "_self");
 });
 
 document.getElementById("anima").addEventListener("click", () => {
-  window.open("../animation-selection/index.html", "_self");
+  window.open("../../class-animations/animation-selection/index.html", "_self");
 });
 document.getElementById("anima").addEventListener("touch", () => {
-  window.open("../animation-selection/index.html", "_self");
+  window.open("../../class-animations/animation-selection/index.html", "_self");
 });
 document.getElementById("worksheet").addEventListener("click", () => {
-  window.open("../worksheet-selection/index.html", "_self");
+  window.open("../../class-worksheets/worksheet-selection/index.html", "_self");
 });
 document.getElementById("worksheet").addEventListener("touch", () => {
-  window.open("../worksheet-selection/index.html", "_self");
+  window.open("../../class-worksheets/worksheet-selection/index.html", "_self");
 });
 document.getElementById("ans").addEventListener("click", () => {
   window.open("../Answer Key/Answer key Bk_1.pdf");
