@@ -72,7 +72,7 @@ box-shadow: 0 4px 10px #666;
             width: 100%;
             height: 100vh;
             align-items: center;
-            background-image: url(../../assets/images/flipbook-ui/flipBg.jpg);
+            background-image: url(../../../assets/images/flipbook-ui/flipBg.jpg);
             position: absolute;
             margin: 0;
             
@@ -206,7 +206,7 @@ left: 4.5vw;
 @media only screen and (max-width: 450px) {
     #leath{    margin-left: 0%;
         margin-top: 27vh;
-        background-image: url(../../assets/images/flipbook-ui/book.png);
+        background-image: url(../../../assets/images/flipbook-ui/book.png);
         background-size: 210vw 100vh;}
     #controls{font-size: 1.2vw;
         width: 15vw;
@@ -245,7 +245,7 @@ left: 4.5vw;
         margin: 0;
         background-size: auto 100vh;
         max-height: 150vh;
-        background-image: url(../../assets/images/flipbook-ui/flipBg.png)
+        background-image: url(../../../assets/images/flipbook-ui/flipBg.png)
       }   
       #home{
         width: 15vw;
@@ -285,7 +285,7 @@ left: 4.5vw;
           #leath{
             margin-left: 0%;
             margin-top: 27vh;
-            background-image: url(../../assets/images/flipbook-ui/book.png);
+            background-image: url(../../../assets/images/flipbook-ui/book.png);
             background-size: 210vw 100vh;
           }      
       }

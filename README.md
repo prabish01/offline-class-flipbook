@@ -35,7 +35,7 @@ offline-flipbook/
 │   │   └── worksheet-selection/  # Worksheet chooser
 │   │
 │   └── shared-resources/          # ♻️ Reusable components (DRY principle)
-│       └── common-components/    
+│       └── common-components/
 │           ├── annotation-toolbar.css   # Toolbar styling
 │           ├── annotation-toolbar.js    # Drawing functionality
 │           ├── annotation-toolbar.html  # Toolbar HTML template
@@ -83,6 +83,7 @@ offline-flipbook/
 The annotation toolbar is designed specifically for children with large, colorful buttons and intuitive icons:
 
 - **Drawing Tools**:
+
   - ✏️ Marker tool for freehand drawing
   - 📝 Text tool with draggable/resizable text boxes
   - 🟢 Shape tool (circles) with drag/resize
@@ -90,11 +91,13 @@ The annotation toolbar is designed specifically for children with large, colorfu
   - ➡️ Arrow tool for pointing and annotations
 
 - **Customization**:
+
   - 🎨 8 vibrant colors (red, orange, yellow, green, blue, purple, pink, brown)
   - 📏 Adjustable brush size (1-20 pixels)
   - 👆 Drag and resize text and shapes after placing them
 
 - **Organization**:
+
   - 💾 Saves annotations per page automatically
   - 🧹 Eraser for removing drawings
   - 🗑️ Clear button to remove all annotations at once
@@ -119,12 +122,14 @@ The annotation toolbar is designed specifically for children with large, colorfu
 
 Adding Class 5 is simple:
 
-1. **Copy Flipbook**: 
+1. **Copy Flipbook**:
+
    ```bash
    cp -r src/class-flipbooks/class-1/ src/class-flipbooks/class-5/
    ```
 
-2. **Copy Book Selection**: 
+2. **Copy Book Selection**:
+
    ```bash
    cp -r src/class-book-selections/class-1/ src/class-book-selections/class-5/
    ```
@@ -154,11 +159,13 @@ fetch('../../shared-resources/common-components/annotation-toolbar.html')
 ### Why This Structure?
 
 **Before**: Each class had its own copy of the toolbar code (700+ lines duplicated 4 times)
+
 - ❌ Hard to maintain (update 4 files for one change)
 - ❌ Inconsistent features across classes
 - ❌ Confusing folder names
 
 **After**: One toolbar serves all classes from shared-resources
+
 - ✅ Update once, all classes benefit
 - ✅ Consistent experience across all classes
 - ✅ Clear, organized folder structure
@@ -189,6 +196,7 @@ Therefore, paths use: `../../shared-resources/common-components/`
 ## 🤝 Contributing
 
 When making changes to the annotation toolbar, remember:
+
 1. Edit files in `src/shared-resources/common-components/` only
 2. Test changes across all 4 classes to ensure consistency
 3. Keep the design kid-friendly (large buttons, bright colors)
