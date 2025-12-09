@@ -1,0 +1,89 @@
+<!-- Annotation Toolbar HTML Template -->
+<!-- Include this in all flipbook pages -->
+
+<!-- Annotation Toolbar -->
+<div id="annotationToolbar" class="annotation-toolbar">
+	<div class="toolbar-header">Drawing Tools</div>
+	
+	<!-- Tool Selection -->
+	<button class="tool-btn active" id="markerBtn" data-tool="marker" title="Marker">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20">
+			<path fill="currentColor" d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"/>
+		</svg>
+	</button>
+	
+	<button class="tool-btn" id="textBtn" data-tool="text" title="Text Box">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20">
+			<path fill="currentColor" d="M254 52.8C249.3 40.3 237.3 32 224 32s-25.3 8.3-30 20.8L57.8 416H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32h-1.8l18-48H303.8l18 48H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32h-25.8L254 52.8zM224 128l48.9 128H175.1L224 128z"/>
+		</svg>
+	</button>
+	
+	<button class="tool-btn" id="shapeBtn" data-tool="shape" title="Shapes">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20">
+			<path fill="currentColor" d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"/>
+		</svg>
+	</button>
+	
+	<button class="tool-btn" id="rectangleBtn" data-tool="rectangle" title="Rectangle">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20">
+			<path fill="currentColor" d="M384 80c8.8 0 16 7.2 16 16V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16H384zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"/>
+		</svg>
+	</button>
+	
+	<button class="tool-btn" id="arrowBtn" data-tool="arrow" title="Arrow">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20">
+			<path fill="currentColor" d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
+		</svg>
+	</button>
+	
+	<div class="toolbar-divider"></div>
+	
+	<!-- Color Picker -->
+	<div class="toolbar-section">
+		<label class="toolbar-label">Color</label>
+		<div class="color-palette">
+			<button class="color-btn active" data-color="#FF0000" style="background: #FF0000;"></button>
+			<button class="color-btn" data-color="#00FF00" style="background: #00FF00;"></button>
+			<button class="color-btn" data-color="#0000FF" style="background: #0000FF;"></button>
+			<button class="color-btn" data-color="#FFFF00" style="background: #FFFF00;"></button>
+			<button class="color-btn" data-color="#FF00FF" style="background: #FF00FF;"></button>
+			<button class="color-btn" data-color="#00FFFF" style="background: #00FFFF;"></button>
+			<button class="color-btn" data-color="#000000" style="background: #000000;"></button>
+			<button class="color-btn" data-color="#FFFFFF" style="background: #FFFFFF; border: 1px solid #ccc;"></button>
+		</div>
+	</div>
+	
+	<div class="toolbar-divider"></div>
+	
+	<!-- Brush Size -->
+	<div class="toolbar-section">
+		<label class="toolbar-label">Size</label>
+		<input type="range" id="brushSize" min="1" max="20" value="3" class="size-slider">
+		<span id="sizeDisplay" class="size-display">3</span>
+	</div>
+	
+	<div class="toolbar-divider"></div>
+	
+	<!-- Clear/Eraser Tools -->
+	<button class="tool-btn" id="eraserBtn" data-tool="eraser" title="Eraser">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="20" height="20">
+			<path fill="currentColor" d="M290.7 57.4L57.4 290.7c-25 25-25 65.5 0 90.5l80 80c12 12 28.3 18.7 45.3 18.7H288h9.4H512c17.7 0 32-14.3 32-32s-14.3-32-32-32H387.9L518.6 285.3c25-25 25-65.5 0-90.5L381.3 57.4c-25-25-65.5-25-90.5 0zM297.4 416H288l-105.4 0-80-80L227.3 211.3 364.7 348.7 297.4 416z"/>
+		</svg>
+	</button>
+	
+	<button class="tool-btn danger" id="clearBtn" title="Clear All Annotations">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20">
+			<path fill="currentColor" d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z"/>
+		</svg>
+	</button>
+	
+	<!-- Toggle Toolbar -->
+	<button class="tool-btn toggle-btn" id="toggleToolbar" title="Hide Toolbar">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="20" height="20">
+			<path fill="currentColor" d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/>
+		</svg>
+	</button>
+</div>
+
+<!-- Canvas for drawing -->
+<canvas id="drawingCanvas"></canvas>

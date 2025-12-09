@@ -1,215 +1,202 @@
-# Good with Grammar - Class 1
+# 📚 Offline Flipbook - Interactive Learning Platform
 
-An interactive educational platform for teaching English grammar to Class 1 students (ages 6-7).
+This project contains interactive flipbooks for Grammar Frolics classes (Class 1-5) with a kid-friendly annotation toolbar for drawing, writing, and learning.
 
 ## 📁 Project Structure
 
 ```
-Good-with-Grammar-Class-1/
-├── src/                          # Source code
-│   ├── main-menu/               # Main navigation hub
-│   │   ├── index.html           # Entry point
-│   │   ├── grammer.js           # Main menu logic
-│   │   └── style.css            # Main menu styles
+offline-flipbook/
+├── src/
+│   ├── class-flipbooks/           # 📖 Reading interface for all classes
+│   │   ├── class-1/              # Class 1 flipbook with annotation toolbar
+│   │   ├── class-2/              # Class 2 flipbook with annotation toolbar
+│   │   ├── class-3/              # Class 3 flipbook with annotation toolbar
+│   │   └── class-4/              # Class 4 flipbook with annotation toolbar
 │   │
-│   ├── flipbook/                # Digital textbook
-│   │   ├── index.html           # Flipbook viewer
-│   │   ├── book.css             # Flipbook styles
-│   │   ├── pc.js                # Desktop flipbook logic
-│   │   ├── jquery-3.5.1.min.js  # jQuery library
-│   │   └── jquery-ui.js         # jQuery UI for interactions
+│   ├── class-book-selections/     # 📚 Book chooser screens
+│   │   ├── class-1/              # Class 1 book selection
+│   │   ├── class-2/              # Class 2 book selection
+│   │   ├── class-3/              # Class 3 book selection
+│   │   └── class-4/              # Class 4 book selection
 │   │
-│   ├── animations/              # Video lessons
-│   │   └── index.html           # Animation menu
+│   ├── class-menus/               # 🏠 Navigation menus
+│   │   ├── main-menu/            # Main landing page
+│   │   └── class-selection/      # Class chooser page
 │   │
-│   ├── test-generator/          # Assessment creation tool
-│   │   ├── index.html           # Test generator interface
-│   │   ├── content.js           # Question bank (auto mode)
-│   │   ├── customcontent.js     # Question bank (custom mode)
-│   │   ├── script.js            # Test generation logic
-│   │   ├── label.js             # Labels and text
-│   │   └── style.css            # Test generator styles
+│   ├── class-animations/          # 🎬 Animation content
+│   │   └── animation-selection/  # Animation chooser
 │   │
-│   └── worksheets/              # Downloadable worksheets
-│       └── worksheet.html       # Worksheet menu
+│   ├── class-tests/               # 📝 Testing tools
+│   │   ├── test-generator/       # Create custom tests
+│   │   └── test-selection/       # Select existing tests
+│   │
+│   ├── class-worksheets/          # ✍️ Worksheet tools
+│   │   ├── worksheets/           # Worksheet PDFs
+│   │   └── worksheet-selection/  # Worksheet chooser
+│   │
+│   └── shared-resources/          # ♻️ Reusable components (DRY principle)
+│       └── common-components/    
+│           ├── annotation-toolbar.css   # Toolbar styling
+│           ├── annotation-toolbar.js    # Drawing functionality
+│           ├── annotation-toolbar.html  # Toolbar HTML template
+│           └── README.md                # Component documentation
 │
-├── assets/                       # Static resources
-│   ├── images/                  # All images
-│   │   ├── main-menu/          # Main menu icons
-│   │   ├── flipbook-ui/        # Flipbook controls
-│   │   ├── test-generator/     # Test UI images
-│   │   ├── worksheets/         # Worksheet menu images
-│   │   └── questions/          # Question images (QUS2)
-│   │
-│   ├── videos/                  # Educational videos (.mp4)
-│   ├── pages/                   # Flipbook page images
-│   └── pdfs/                    # Worksheet PDFs
+├── assets/                        # 🗂️ Media files
+│   ├── images/                   # UI images and page scans
+│   ├── audio/                    # Audio files
+│   ├── videos/                   # Video content
+│   └── pdfs/                     # PDF resources
 │
-├── docs/                         # Documentation
-│   └── (this README and additional docs)
-│
-└── dist/                         # Production builds (optional)
+└── docs/                          # 📄 Documentation
+    ├── QUICK-REFERENCE.md        # Quick start guide
+    ├── STRUCTURE.md              # Detailed structure docs
+    └── TTS-FEATURE.md            # Text-to-speech feature docs
 ```
 
-## 📚 Curriculum Coverage
+## 🎯 Quick Start Guide
 
-### Grammar Topics (16 Chapters + 2 Recaps)
+### For Students & Teachers:
 
-1. **Chapter 1** - Naming Words (Nouns)
-2. **Chapter 2** - Special Names (Proper Nouns)
-3. **Chapter 3** - A or An (Articles)
-4. **Chapter 4** - One or Many (Singular/Plural)
-5. **Chapter 5** - Describing Words (Adjectives)
-6. **Chapter 6** - I, She, He (Pronouns)
-7. **Chapter 7** - Am, Is, Are (Present tense 'to be')
-8. **Chapter 8** - Doing Words (Verbs)
-9. **Chapter 9** - Has/Have
-10. **Chapter 10** - What Is Happening Now (Present Continuous)
-11. **Chapter 11** - What Happened Earlier (Past Tense)
-12. **Chapter 12** - The Sentence
-13. **Chapter 13** - Position Words (Prepositions)
-14. **Chapter 14** - Joining Words (Conjunctions: and, but)
-15. **Chapter 15** - This, That, These, Those
-16. **Chapter 16** - Who Does It Belong To (Possessive Pronouns)
+1. **Open the App**: Double-click `index.html` in the root folder
+2. **Select Class**: Choose Class 1, 2, 3, or 4
+3. **Choose Book**: Pick the book you want to read
+4. **Read & Annotate**: Use the colorful toolbar on the right to:
+   - ✏️ Draw with markers
+   - 📝 Add text notes
+   - 🟢 Draw shapes (circles, rectangles, arrows)
+   - 🎨 Pick from 8 bright colors
+   - 🗑️ Erase or clear all drawings
+   - 💾 Your notes save automatically for each page!
 
-## 🚀 Features
+### For Developers:
 
-### 1. Main Menu
+- **Flipbooks**: `src/class-flipbooks/class-{1,2,3,4}/index.html`
+- **Shared Toolbar**: `src/shared-resources/common-components/` (DRY - Don't Repeat Yourself!)
+- **Navigation**: `src/class-menus/` (main menu and class selection)
+- **Book Selection**: `src/class-book-selections/` (book choosers)
+- **Tests & Worksheets**: `src/class-tests/` and `src/class-worksheets/`
 
-- Central navigation hub with visual buttons
-- Links to all learning modules
-- Attractive, child-friendly interface
+## ✨ Features
 
-### 2. Digital Flipbook
+### 🎨 Kid-Friendly Annotation Toolbar
 
-- 88+ pages of interactive textbook
-- Smooth page-turning animation
-- Zoom functionality
-- Desktop and mobile responsive
-- Navigation controls (previous/next, goto page)
+The annotation toolbar is designed specifically for children with large, colorful buttons and intuitive icons:
 
-### 3. Animated Lessons
+- **Drawing Tools**:
+  - ✏️ Marker tool for freehand drawing
+  - 📝 Text tool with draggable/resizable text boxes
+  - 🟢 Shape tool (circles) with drag/resize
+  - ⬛ Rectangle tool with drag/resize
+  - ➡️ Arrow tool for pointing and annotations
 
-- 10 video lessons covering key grammar concepts
-- Interactive clickable tree interface
-- Topics: Nouns, Articles, Verbs, Pronouns, Tenses, etc.
+- **Customization**:
+  - 🎨 8 vibrant colors (red, orange, yellow, green, blue, purple, pink, brown)
+  - 📏 Adjustable brush size (1-20 pixels)
+  - 👆 Drag and resize text and shapes after placing them
 
-### 4. Test Generator
+- **Organization**:
+  - 💾 Saves annotations per page automatically
+  - 🧹 Eraser for removing drawings
+  - 🗑️ Clear button to remove all annotations at once
+  - 📄 Annotations persist across sessions (localStorage)
 
-- **Auto Mode**: Automatically generates tests from question bank
-- **Custom Mode**: Select specific questions manually
-- Features:
-  - Chapter selection (1-16)
-  - Question types: Picture-based, Objective-type
-  - Set test name, duration, and total marks
-  - Upload custom logo
-  - Export formats: .doc and .pdf (Teacher & Student versions)
-- Extensive question bank with images and answers
+- **Design**:
+  - 🎪 Bright gradient colors (pink, orange, yellow)
+  - 🔤 Comic Sans MS font for kid-friendly feel
+  - 📏 Large 65x65px buttons for easy clicking
+  - 🖱️ Hover effects for visual feedback
 
-### 5. Worksheets
+### 🏗️ Architecture Benefits
 
-- 16 downloadable PDF worksheets (one per chapter)
-- Practice exercises for each grammar topic
-- Printable format for offline learning
+- **Organized by Purpose**: Each folder has a clear, self-explanatory name
+- **Easy to Navigate**: Both developers and non-technical users can understand the structure
+- **Reusable Components**: One toolbar codebase serves all 4 classes (no duplication!)
+- **Scalable**: Easy to add Class 5, 6, etc.
+- **Maintainable**: Update the toolbar once, all classes benefit
+- **No Build Tools**: Pure HTML/CSS/JS - works offline instantly
 
-## 🛠️ Technology Stack
+## 🚀 Adding a New Class
 
-- **Frontend**: HTML5, CSS3, JavaScript
-- **Libraries**: jQuery 3.5.1, jQuery UI
-- **Features**:
-  - Client-side document generation
-  - Responsive design
-  - Image-based interactive content
+Adding Class 5 is simple:
 
-## 📖 Usage
+1. **Copy Flipbook**: 
+   ```bash
+   cp -r src/class-flipbooks/class-1/ src/class-flipbooks/class-5/
+   ```
 
-### Getting Started
+2. **Copy Book Selection**: 
+   ```bash
+   cp -r src/class-book-selections/class-1/ src/class-book-selections/class-5/
+   ```
 
-1. Open `src/main-menu/index.html` in a web browser
-2. Navigate to desired learning module
-3. Interact with content
+3. **Update Content**: Replace page images in the new folders
 
-### Test Generator
+4. **That's It!**: The annotation toolbar automatically works - no code changes needed!
 
-1. Enter test details (name, duration, marks)
-2. Select question type (Teachers/Students)
-3. Choose mode (Auto/Custom)
-4. Select chapters
-5. For custom mode: manually select questions
-6. Download test in desired format
+## 🔧 Technical Details
 
-### Flipbook
+### Shared Components System
 
-- Click "Next"/"Previous" or use page number input
-- Use zoom for better readability
-- Works on desktop and mobile devices
+All flipbooks use the same annotation toolbar from `shared-resources/common-components/`:
 
-## 🎯 Target Audience
+```javascript
+// Each flipbook loads the shared components like this:
+// 1. CSS is linked in the <head>
+<link rel="stylesheet" href="../../shared-resources/common-components/annotation-toolbar.css">
 
-- **Students**: Class 1 / Grade 1 (ages 6-7)
-- **Teachers**: Primary school English teachers
-- **Parents**: Home learning support
+// 2. Toolbar HTML is loaded dynamically via fetch()
+fetch('../../shared-resources/common-components/annotation-toolbar.html')
 
-## 📝 File Naming Conventions
+// 3. JavaScript functionality is loaded at the end
+<script src="../../shared-resources/common-components/annotation-toolbar.js"></script>
+```
 
-- **HTML files**: lowercase with hyphens (e.g., `main-menu.html`)
-- **CSS files**: descriptive names (e.g., `book.css`, `style.css`)
-- **JavaScript**: camelCase (e.g., `grammer.js`, `customcontent.js`)
-- **Images**: descriptive with underscores (e.g., `b_1.png`)
-- **Videos**: descriptive with spaces (e.g., `Naming Words.mp4`)
+### Why This Structure?
 
-## 🔧 Path Updates Required
+**Before**: Each class had its own copy of the toolbar code (700+ lines duplicated 4 times)
+- ❌ Hard to maintain (update 4 files for one change)
+- ❌ Inconsistent features across classes
+- ❌ Confusing folder names
 
-After restructuring, update these paths in source files:
+**After**: One toolbar serves all classes from shared-resources
+- ✅ Update once, all classes benefit
+- ✅ Consistent experience across all classes
+- ✅ Clear, organized folder structure
+- ✅ Easy for anyone to understand
 
-1. **Main Menu** (`src/main-menu/index.html`):
+### Key Technologies
 
-   - Image paths: `./img/` → `../../assets/images/main-menu/`
-   - Links to modules: Update relative paths
+- **HTML5 Canvas API**: For drawing and marker strokes
+- **SVG**: For scalable shapes (circles, rectangles, arrows)
+- **Vanilla JavaScript**: No framework dependencies
+- **jQuery 3.5.1 + jQuery UI**: For flipbook page turning
+- **localStorage**: For saving annotations per page
+- **Fetch API**: For loading shared components dynamically
 
-2. **Flipbook** (`src/flipbook/index.html`):
+### Path Structure
 
-   - Page images: `./page/` → `../../assets/pages/`
-   - UI images: `./img/` → `../../assets/images/flipbook-ui/`
+Flipbooks are 2 levels deep: `src/class-flipbooks/class-1/`
+Shared resources are at: `src/shared-resources/common-components/`
 
-3. **Test Generator** (`src/test-generator/index.html`):
+Therefore, paths use: `../../shared-resources/common-components/`
 
-   - Question images: `./QUS2/` → `../../assets/images/questions/`
-   - UI images: `./img/` → `../../assets/images/test-generator/`
+## 📖 Additional Documentation
 
-4. **Animations** (`src/animations/index.html`):
-
-   - Videos: `./*.mp4` → `../../assets/videos/*.mp4`
-   - Images: Update to `../../assets/images/`
-
-5. **Worksheets** (`src/worksheets/worksheet.html`):
-   - Background: `./img/` → `../../assets/images/worksheets/`
-   - PDFs: `./*.pdf` → `../../assets/pdfs/*.pdf`
-
-## 📊 Future Enhancements
-
-- [ ] Add more question types (fill-in-blanks, matching)
-- [ ] Implement progress tracking
-- [ ] Add audio pronunciations
-- [ ] Create more animated lessons
-- [ ] Add gamification elements
-- [ ] Multi-language support
-- [ ] Parent/Teacher dashboard
-
-## 📄 License
-
-Educational content - Copyright © SilverStone Capital
+- **Quick Reference**: See `docs/QUICK-REFERENCE.md`
+- **Detailed Structure**: See `docs/STRUCTURE.md`
+- **TTS Feature**: See `docs/TTS-FEATURE.md`
 
 ## 🤝 Contributing
 
-This is an educational project. For improvements or bug fixes, please maintain the child-friendly interface and pedagogical approach.
+When making changes to the annotation toolbar, remember:
+1. Edit files in `src/shared-resources/common-components/` only
+2. Test changes across all 4 classes to ensure consistency
+3. Keep the design kid-friendly (large buttons, bright colors)
+4. Document any new features in the component README
 
-## 📞 Support
+## 📝 Notes
 
-For technical support or content queries, contact the development team.
-
----
-
-**Version**: 1.0  
-**Last Updated**: December 2025  
-**Developed for**: Class 1 English Grammar Education
+- Large PDF files are in `.gitignore` to avoid GitHub size limits
+- The app runs completely offline - no server required
+- All annotations are stored locally in the browser
+- Works on desktop browsers (Chrome, Firefox, Safari, Edge)
