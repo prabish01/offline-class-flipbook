@@ -41,10 +41,10 @@
         </div>
 
         <!-- Class 5 -->
-        <div class="class-card coming-soon">
+        <div class="class-card active" onclick="selectClass(5)">
           <div class="class-number">5</div>
           <h3 class="class-title">Class 5</h3>
-          <p class="class-info">Coming Soon</p>
+          <p class="class-info">1 Book Available</p>
         </div>
 
         <!-- Class 6 -->
@@ -72,7 +72,7 @@
 
     <script>
       function selectClass(classNum) {
-        if (classNum >= 1 && classNum <= 4) {
+        if (classNum >= 1 && classNum <= 5) {
           window.location.href = "../../class-book-selections/class-" + classNum + "/index.html";
         } else {
           alert("Content for Class " + classNum + " coming soon!");
