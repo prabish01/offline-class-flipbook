@@ -3,32 +3,86 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Select Videos - Animations</title>
+    <title>Animation Videos - Grammar Fun</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
       <button class="back-btn" onclick="window.history.back()">← Back</button>
 
-      <h1 class="page-title">🎬 Select Animation Videos</h1>
+      <h1 class="page-title">🎬 Animation Videos</h1>
+      <p class="page-subtitle">Watch and Learn with Fun Videos!</p>
 
-      <div class="books-grid">
+      <div class="videos-grid">
         <!-- Good with Grammar Videos -->
-        <div class="book-card" onclick="openContent('../animations/index.html')">
-          <div class="book-cover">
-            <img src="../../../assets/pages/Good with Grammar Cover_1_front.jpg" alt="Good with Grammar 1" />
+        <div class="video-card" onclick="openContent('../animations/index.html')">
+          <div class="video-thumbnail">
+            <img src="../../../assets/pages/class-1/file-page 1.jpg" alt="Good with Grammar 1" />
+            <div class="play-overlay">
+              <div class="play-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+            <div class="video-duration">Multiple Videos</div>
           </div>
-          <h3 class="book-title">Good with Grammar</h3>
-          <p class="book-subtitle">Class 1 Videos</p>
+          <div class="video-info">
+            <div class="video-avatar">
+              <span class="avatar-emoji">📚</span>
+            </div>
+            <div class="video-details">
+              <h3 class="video-title">Good with Grammar - Class 1</h3>
+              <p class="video-channel">Grammar Learning Channel</p>
+              <p class="video-stats">Educational • Fun Learning</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Class 3 Grammar Videos -->
+        <div class="video-card" onclick="openContent('../class-3-animations/index.html')">
+          <div class="video-thumbnail">
+            <img src="../../../assets/pages/class-3/page-1.jpg" alt="Good with Grammar 3" />
+            <div class="play-overlay">
+              <div class="play-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+            <div class="video-duration">Multiple Videos</div>
+          </div>
+          <div class="video-info">
+            <div class="video-avatar">
+              <span class="avatar-emoji">📖</span>
+            </div>
+            <div class="video-details">
+              <h3 class="video-title">Good with Grammar - Class 3</h3>
+              <p class="video-channel">Grammar Learning Channel</p>
+              <p class="video-stats">Educational • Fun Learning</p>
+            </div>
+          </div>
         </div>
 
         <!-- Placeholder for future content -->
-        <div class="book-card placeholder">
-          <div class="book-cover">
-            <div class="coming-soon">Coming Soon</div>
+        <div class="video-card placeholder">
+          <div class="video-thumbnail">
+            <div class="coming-soon-thumbnail">
+              <span class="coming-icon">🎥</span>
+              <p>More Videos</p>
+              <p>Coming Soon</p>
+            </div>
           </div>
-          <h3 class="book-title">More Videos</h3>
-          <p class="book-subtitle">Coming Soon</p>
+          <div class="video-info">
+            <div class="video-avatar">
+              <span class="avatar-emoji">⭐</span>
+            </div>
+            <div class="video-details">
+              <h3 class="video-title">More Fun Videos</h3>
+              <p class="video-channel">Coming Soon</p>
+              <p class="video-stats">Stay Tuned!</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

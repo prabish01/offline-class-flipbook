@@ -723,39 +723,100 @@
 
       // Question database
       const questions = {
-        g1: [{ text: "Naming Words – People", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 1: Naming Words – People.png"], answer: "Various people nouns" }],
-        g2: [{ text: "Naming Words – Places", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 2: Naming Words – Places.png"], answer: "Various place nouns" }],
-        g3: [{ text: "Naming Words – Animals", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 3: Naming Words – Animals.png"], answer: "Various animal nouns" }],
-        g4: [{ text: "Naming Words – Things", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 4: Naming Words – Things.png"], answer: "Various thing nouns" }],
-        g5: [{ text: "Naming Words – Revision", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 5: Naming Words – Revision.png"], answer: "Review of all nouns" }],
-        g6: [{ text: "One and Many", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 6: One and Many.png"], answer: "Singular and plural forms" }],
-        g7: [{ text: "A or An", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 7: A or An.png"], answer: "Article usage rules" }],
-        g8: [{ text: "This is or That is", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 8: This is or That is.png"], answer: "Demonstratives for singular" }],
-        g9: [{ text: "These are or Those are", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 9: These are or Those are.png"], answer: "Demonstratives for plural" }],
-        g10: [{ text: "Male or Female – People", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 10: Male or Female – People.png"], answer: "Gender for people" }],
-        g11: [{ text: "Male or Female – Animals", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 11: Male or Female – Animals.png"], answer: "Gender for animals" }],
-        g12: [{ text: "Pronouns", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 12: Pronouns.png"], answer: "I, you, he, she, it, we, they" }],
-        g13: [{ text: "Describing Words", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 13: Describing Words.png"], answer: "Adjectives" }],
-        g14: [{ text: "Action Words", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 14: Action Words.png"], answer: "Verbs" }],
-        g15: [{ text: "Being Verbs", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 15: Being Verbs.png"], answer: "Is, am, are" }],
-        g16: [{ text: "Having Verbs", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 16: Having Verbs.png"], answer: "Has, have" }],
-        g17: [{ text: "Actions that Happen Every Day", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 17: Actions that Happen Every Day.png"], answer: "Present tense" }],
-        g19: [{ text: "The Sentence", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 19: The Sentence.png"], answer: "Sentence structure" }],
-        g20: [{ text: "Statements and Questions", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 20: Statements and Questions.png"], answer: "Types of sentences" }],
-        g21: [{ text: "Joining Words", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 21: Joining Words.png"], answer: "Conjunctions" }],
-        g22: [{ text: "Position Words", images: ["../../../assets/images/test-generator/class-1/Grammar-Chapter 22: Position Words.png"], answer: "Prepositions" }],
-        c1: [{ text: "Diwali", images: ["../../../assets/images/test-generator/class-1/Comprehension – Chapter 1: Diwali.png"], answer: "Read and answer questions" }],
-        c2: [{ text: "The Ant and the Grasshopper", images: ["../../../assets/images/test-generator/class-1/Comprehension – Chapter 2: The Ant and the Grasshopper.png"], answer: "Read and answer questions" }],
-        c3: [{ text: "The Lion", images: ["../../../assets/images/test-generator/class-1/Comprehension – Chapter 3: The Lion.png"], answer: "Read and answer questions" }],
-        c4: [{ text: "The Monsoon Season", images: ["../../../assets/images/test-generator/class-1/Comprehension – Chapter 4: The Monsoon Season.png"], answer: "Read and answer questions" }],
-        c5: [{ text: "Picture Comprehension", images: ["../../../assets/images/test-generator/class-1/Comprehension – Chapter 5: Picture Comprehension.png"], answer: "Observe and answer questions" }],
-        v1: [{ text: "Alphabetical Order", images: ["../../../assets/images/test-generator/class-1/Vocabulary – Chapter 1: Alphabetical Order.png"], answer: "Arrange words alphabetically" }],
-        v2: [{ text: "Opposites", images: ["../../../assets/images/test-generator/class-1/Vocabulary – Chapter 2: Opposites.png"], answer: "Antonyms" }],
-        v3: [{ text: "Similar Words", images: ["../../../assets/images/test-generator/class-1/Vocabulary – Chapter 3: Similar Words.png"], answer: "Synonyms" }],
-        v4: [{ text: "Compound Words", images: ["../../../assets/images/test-generator/class-1/Vocabulary – Chapter 4: Compound Words.png"], answer: "Combined words" }],
-        v5: [{ text: "One-word Substitution", images: ["../../../assets/images/test-generator/class-1/Vocabulary – Chapter 5: One-word Substitution.png"], answer: "Single words for phrases" }],
-        v6: [{ text: "Homes of Animals", images: ["../../../assets/images/test-generator/class-1/Vocabulary – Chapter 6: Homes of Animals.png"], answer: "Animal habitats" }],
-        v7: [{ text: "Sounds of Animals", images: ["../../../assets/images/test-generator/class-1/Vocabulary – Chapter 7: Sounds of Animals.png"], answer: "Animal sounds" }],
+        g1: [
+          { text: "Grammar - Chapter 1", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 1 A.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 1", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 1 B.png"], answer: "Complete the exercises" },
+        ],
+        g2: [
+          { text: "Grammar - Chapter 2", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 2 A.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 2", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 2 B.png"], answer: "Complete the exercises" },
+        ],
+        g3: [
+          { text: "Grammar - Chapter 3", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 3 A.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 3", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 3 B.png"], answer: "Complete the exercises" },
+        ],
+        g4: [{ text: "Grammar - Chapter 4", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 4 A.png"], answer: "Complete the exercises" }],
+        g5: [
+          { text: "Grammar - Chapter 5", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 5 A.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 5", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 5 B.png"], answer: "Complete the exercises" },
+        ],
+        g6: [
+          { text: "Grammar - Chapter 6", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 6 A.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 6", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 6 B.png"], answer: "Complete the exercises" },
+        ],
+        g7: [
+          { text: "Grammar - Chapter 7", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 7 A.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 7", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 7 B.png"], answer: "Complete the exercises" },
+        ],
+        g8: [{ text: "Grammar - Chapter 8", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 8 A.png"], answer: "Complete the exercises" }],
+        g9: [{ text: "Grammar - Chapter 9", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 9 A.png"], answer: "Complete the exercises" }],
+        g10: [
+          { text: "Grammar - Chapter 10", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 10 A.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 10", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 10 B.png"], answer: "Complete the exercises" },
+        ],
+        g11: [{ text: "Grammar - Chapter 11", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 11 A.png"], answer: "Complete the exercises" }],
+        g12: [
+          { text: "Grammar - Chapter 12", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 12 A.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 12", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 12 B.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 12", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 12 C.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 12", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 12 D.png"], answer: "Complete the exercises" },
+        ],
+        g13: [
+          { text: "Grammar - Chapter 13", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 13 A.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 13", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 13 B.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 13", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 13 C.png"], answer: "Complete the exercises" },
+        ],
+        g14: [
+          { text: "Grammar - Chapter 14", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 14 A.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 14", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 14 B.png"], answer: "Complete the exercises" },
+        ],
+        g15: [
+          { text: "Grammar - Chapter 15", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 15 A.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 15", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 15 B.png"], answer: "Complete the exercises" },
+        ],
+        g16: [
+          { text: "Grammar - Chapter 16", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 16 A.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 16", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 16 B.png"], answer: "Complete the exercises" },
+        ],
+        g17: [
+          { text: "Grammar - Chapter 17", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 17 A.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 17", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 17 B.png"], answer: "Complete the exercises" },
+        ],
+        g19: [
+          { text: "Grammar - Chapter 19", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 19 A.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 19", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 19 B.png"], answer: "Complete the exercises" },
+        ],
+        g20: [
+          { text: "Grammar - Chapter 20", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 20 A.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 20", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 20 B.png"], answer: "Complete the exercises" },
+        ],
+        g21: [
+          { text: "Grammar - Chapter 21", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 21 A.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 21", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 21 B.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 21", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 21 C.png"], answer: "Complete the exercises" },
+        ],
+        g22: [
+          { text: "Grammar - Chapter 22", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 22 A.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 22", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 22 B.png"], answer: "Complete the exercises" },
+        ],
+        c1: [{ text: "Comprehension - Chapter 1", images: ["../../../assets/images/test-generator/class-1/Comprehension - Chapter 1 A.png"], answer: "Read and answer questions" }],
+        c2: [{ text: "Comprehension - Chapter 2", images: ["../../../assets/images/test-generator/class-1/Comprehension - Chapter 2 A.png"], answer: "Read and answer questions" }],
+        c3: [{ text: "Comprehension - Chapter 3", images: ["../../../assets/images/test-generator/class-1/Comprehension - Chapter 3 A.png"], answer: "Read and answer questions" }],
+        c4: [{ text: "Comprehension - Chapter 4", images: ["../../../assets/images/test-generator/class-1/Comprehension - Chapter 4 A.png"], answer: "Read and answer questions" }],
+        c5: [{ text: "Comprehension - Chapter 5", images: ["../../../assets/images/test-generator/class-1/Comprehension - Chapter 5 A.png"], answer: "Read and answer questions" }],
+        v1: [{ text: "Vocabulary - Chapter 1", images: ["../../../assets/images/test-generator/class-1/Vocabulary - Chapter 1 A.png"], answer: "Complete the exercises" }],
+        v2: [
+          { text: "Vocabulary - Chapter 2", images: ["../../../assets/images/test-generator/class-1/Vocabulary - Chapter 2 A.png"], answer: "Complete the exercises" },
+          { text: "Vocabulary - Chapter 2", images: ["../../../assets/images/test-generator/class-1/Vocabulary - Chapter 2 B.png"], answer: "Complete the exercises" },
+        ],
+        v3: [{ text: "Vocabulary - Chapter 3", images: ["../../../assets/images/test-generator/class-1/Vocabulary - Chapter 3 A.png"], answer: "Complete the exercises" }],
+        v4: [
+          { text: "Vocabulary - Chapter 4", images: ["../../../assets/images/test-generator/class-1/Vocabulary - Chapter 4 A.png"], answer: "Complete the exercises" },
+          { text: "Vocabulary - Chapter 4", images: ["../../../assets/images/test-generator/class-1/Vocabulary - Chapter 4 B.png"], answer: "Complete the exercises" },
+        ],
+        v5: [{ text: "Vocabulary - Chapter 5", images: ["../../../assets/images/test-generator/class-1/Vocabulary - Chapter 5 A.png"], answer: "Complete the exercises" }],
+        v6: [{ text: "Vocabulary - Chapter 6", images: ["../../../assets/images/test-generator/class-1/Vocabulary - Chapter 6 A.png"], answer: "Complete the exercises" }],
+        v7: [{ text: "Vocabulary - Chapter 7", images: ["../../../assets/images/test-generator/class-1/Vocabulary - Chapter 7 A.png"], answer: "Complete the exercises" }],
       };
 
       function previewTest() {

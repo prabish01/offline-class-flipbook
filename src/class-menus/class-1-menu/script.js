@@ -4,11 +4,11 @@ document.getElementById("flip").addEventListener("click", () => {
 });
 
 document.getElementById("anima").addEventListener("click", () => {
-  window.location.href = "../../class-animations/animation-selection/index.html";
+  window.location.href = "../../class-animations/animations/index.html";
 });
 
 document.getElementById("test").addEventListener("click", () => {
-  window.location.href = "../../class-tests/test-selection/index.html";
+  window.location.href = "../../class-tests/test-generator/index.html";
 });
 
 document.getElementById("worksheet").addEventListener("click", () => {
