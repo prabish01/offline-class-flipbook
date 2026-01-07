@@ -1,206 +1,315 @@
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animations</title>
-<style>
-    body{
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grammar Fun Videos - Class 1</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Comic Sans MS", "Chalkboard SE", "Comic Neue", cursive, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        min-height: 100vh;
+        padding: 20px;
+        overflow-x: hidden;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+        position: relative;
+      }
+
+      .back-btn {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border: none;
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+      }
+
+      .back-btn:hover {
+        background: white;
+        transform: translateX(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      h1 {
+        color: white;
+        font-size: 3rem;
+        margin: 40px 0 10px;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      .subtitle {
+        color: white;
+        font-size: 1.3rem;
+        margin-bottom: 40px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .videos-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        padding: 20px;
+      }
+
+      .video-card {
+        background: white;
+        border-radius: 20px;
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .video-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .video-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      }
+
+      .video-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .video-card:active {
+        transform: translateY(-4px);
+      }
+
+      .video-icon {
+        font-size: 5rem;
+        margin-bottom: 15px;
         display: flex;
         justify-content: center;
         align-items: center;
-        background:white;
-        background-size: cover;
-        flex-direction: column;
-    }
-    div{
-        width: 0%;
-    height: 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    position: absolute;
-    }
- #a1{
-    position: fixed;
-    top: 17.4vw;
-    left: 37.5vw;
-    width: 21vw;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    filter: drop-shadow(2px 4px 6px black);
- }
- #a2{
-    position: fixed;
-    top: 23.4vw;
-    left: 60.5vw;
-    width: 22vw;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    filter: drop-shadow(2px 4px 6px black);
- }
- #a3{
-    position: fixed;
-    top: 29.4vw;
-    left: 58vw;
-    width: 18vw;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    filter: drop-shadow(2px 4px 6px black);
- }
- #a4{
-    position: fixed;
-    top: 11vw;
-    left: 54.6vw;
-    width: 24vw;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    filter: drop-shadow(2px 4px 6px black);
-    z-index: 1;}
-#a5{
-    position: fixed;
-    top: 15vw;
-    left: 11.8vw;
-    width: 17vw;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    filter: drop-shadow(2px 4px 6px black);
-}
+        height: 140px;
+        border-radius: 15px;
+        position: relative;
+        transition: transform 0.3s ease;
+      }
 
-#a6{
-    position: fixed;
-    top: 8vw;
-    left: 23.6vw;
-    width: 20vw;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    filter: drop-shadow(2px 4px 6px black);
-}
+      .video-card:hover .video-icon {
+        transform: scale(1.1);
+      }
 
-#a7{
-    position: fixed;
-    top: 34vw;
-    left: 30.6vw;
-    width: 24vw;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    filter: drop-shadow(2px 4px 6px black);
-}
+      .video-title {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1.3;
+        color: #333;
+      }
 
-#a8{
-    position: fixed;
-    top: 28vw;
-    left: 24.6vw;
-    width: 24vw;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    filter: drop-shadow(2px 4px 6px black);
-}
-#a9{
-    position: fixed;
-    top: 20.4vw;
-    left: 18.5vw;
-    width: 18vw;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    filter: drop-shadow(2px 4px 6px black);
-}
-#a10{
-    position: fixed;
-    top: 15vw;
-    left: 68.8vw;
-    width: 25vw;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    filter: drop-shadow(2px 4px 6px black);
-}
-    h1{
-        color: aliceblue;
-    font-size: 4vw;
-    padding-bottom: 2vw;
-    border-bottom: 1px solid;
-    }
-    #back{
-        width:4vw;
-        position: fixed;
-        left: 0;
-        top:0;
-    }
-    #logo{
-        position: fixed;
-    right: 0;
-    top: 0;
-    margin: 2vw;
-    width: 12vw;
-    }
-</style>
-</head>
+      .video-description {
+        font-size: 0.95rem;
+        text-align: center;
+        margin-top: 8px;
+        color: #666;
+      }
 
-<body>
-    <img src="./b_1.png" alt="back" id="back">
-    <img src="./FLIPBOOK PAGE_1.png" alt="logo" id="logo">
-   <img src="./Golden leave tree.png" style="     width: 52vw;
-   position: fixed;
-   top: 3vw;
-   left: 30vw;" draggable="false">
-    <div id="container">
-        <img src="./a1.png" id="a1">
-        <img src="./a2.png" id="a2">
-        <img src="./a3.png" id="a3">
-        <img src="./a4.png" id="a4">
-        <img src="./a5.png" id="a5">
-        <img src="./a6.png" id="a6">
-        <img src="./a7.png" id="a7">
-        <img src="./a8.png" id="a8">
-        <img src="./a9.png" id="a9">
-        <img src="./a10.png" id="a10">
-    </div>
-   <img src="./What Is Happening Now.mp4" alt="" srcset="">
-    <script>
-        document.getElementById('back').onclick=()=>{
-            location.replace('../main-menu/index .html')
+      /* Unique colors for each card */
+      .video-card:nth-child(1) .video-icon {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+      }
+      .video-card:nth-child(1)::before {
+        background: linear-gradient(90deg, #ff6b6b 0%, #ff8e53 100%);
+      }
+
+      .video-card:nth-child(2) .video-icon {
+        background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+      }
+      .video-card:nth-child(2)::before {
+        background: linear-gradient(90deg, #4ecdc4 0%, #44a08d 100%);
+      }
+
+      .video-card:nth-child(3) .video-icon {
+        background: linear-gradient(135deg, #f9ca24 0%, #f0932b 100%);
+      }
+      .video-card:nth-child(3)::before {
+        background: linear-gradient(90deg, #f9ca24 0%, #f0932b 100%);
+      }
+
+      .video-card:nth-child(4) .video-icon {
+        background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+      }
+      .video-card:nth-child(4)::before {
+        background: linear-gradient(90deg, #a29bfe 0%, #6c5ce7 100%);
+      }
+
+      .video-card:nth-child(5) .video-icon {
+        background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+      }
+      .video-card:nth-child(5)::before {
+        background: linear-gradient(90deg, #fd79a8 0%, #e84393 100%);
+      }
+
+      .video-card:nth-child(6) .video-icon {
+        background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+      }
+      .video-card:nth-child(6)::before {
+        background: linear-gradient(90deg, #00b894 0%, #00cec9 100%);
+      }
+
+      .video-card:nth-child(7) .video-icon {
+        background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+      }
+      .video-card:nth-child(7)::before {
+        background: linear-gradient(90deg, #fdcb6e 0%, #e17055 100%);
+      }
+
+      .video-card:nth-child(8) .video-icon {
+        background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+      }
+      .video-card:nth-child(8)::before {
+        background: linear-gradient(90deg, #74b9ff 0%, #0984e3 100%);
+      }
+
+      .video-card:nth-child(9) .video-icon {
+        background: linear-gradient(135deg, #a29bfe 0%, #74b9ff 100%);
+      }
+      .video-card:nth-child(9)::before {
+        background: linear-gradient(90deg, #a29bfe 0%, #74b9ff 100%);
+      }
+
+      .video-card:nth-child(10) .video-icon {
+        background: linear-gradient(135deg, #ff7675 0%, #d63031 100%);
+      }
+      .video-card:nth-child(10)::before {
+        background: linear-gradient(90deg, #ff7675 0%, #d63031 100%);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
         }
-     document.getElementById('a1').onclick=()=>{
-        window.open('../../../assets/videos/Naming Words.mp4');
-     }
-     document.getElementById('a2').onclick=()=>{
-        window.open('../../../assets/videos/A and An.mp4');
-     }
-     document.getElementById('a3').onclick=()=>{
-        window.open('../../../assets/videos/What Happened Earlier.mp4');
-     }
-     document.getElementById('a4').onclick=()=>{
-        window.open('../../../assets/videos/You, She.mp4');
-     }
-     document.getElementById('a5').onclick=()=>{
-        window.open('../../../assets/videos/Am, Is and Are.mp4');
-     }
-     document.getElementById('a6').onclick=()=>{
-        window.open('../../../assets/videos/Describing Words.mp4');
-     }
-     document.getElementById('a7').onclick=()=>{
-        window.open('../../../assets/videos/Doing Words.mp4');
-     }
-     document.getElementById('a8').onclick=()=>{
-        window.open('../../../assets/videos/Has and Have.mp4');
-     }
-     document.getElementById('a9').onclick=()=>{
-        window.open('../../../assets/videos/One and Many.mp4');
-     }
-     document.getElementById('a10').onclick=()=>{
-        window.open('../../../assets/videos/What Is Happening Now.mp4');
-     }
+
+        .subtitle {
+          font-size: 1rem;
+        }
+
+        .videos-container {
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 15px;
+        }
+
+        .video-icon {
+          height: 100px;
+          font-size: 3rem;
+        }
+
+        .video-title {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <button class="back-btn" onclick="window.history.back()">← Back</button>
+
+    <div class="header">
+      <h1>🎬 Grammar Fun Videos 📚</h1>
+      <p class="subtitle">Click on any topic to watch and learn!</p>
+    </div>
+
+    <div class="videos-container">
+      <div class="video-card" onclick="playVideo('../../../assets/videos/Naming Words.mp4')">
+        <div class="video-icon">🏷️</div>
+        <h3 class="video-title">Naming Words</h3>
+        <p class="video-description">Learn about nouns and names!</p>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/Describing Words.mp4')">
+        <div class="video-icon">🎨</div>
+        <h3 class="video-title">Describing Words</h3>
+        <p class="video-description">Discover adjectives and descriptions!</p>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/Am, Is and Are.mp4')">
+        <div class="video-icon">✨</div>
+        <h3 class="video-title">Am, Is and Are</h3>
+        <p class="video-description">Master these important verbs!</p>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/One and Many.mp4')">
+        <div class="video-icon">🔢</div>
+        <h3 class="video-title">One and Many</h3>
+        <p class="video-description">Learn singular and plural!</p>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/Has and Have.mp4')">
+        <div class="video-icon">🎁</div>
+        <h3 class="video-title">Has and Have</h3>
+        <p class="video-description">When to use has or have!</p>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/Doing Words.mp4')">
+        <div class="video-icon">🏃</div>
+        <h3 class="video-title">Doing Words</h3>
+        <p class="video-description">Action verbs and activities!</p>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/You, She.mp4')">
+        <div class="video-icon">👥</div>
+        <h3 class="video-title">I, You, She, He, It, We, They</h3>
+        <p class="video-description">Learn about pronouns!</p>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/What Is Happening Now.mp4')">
+        <div class="video-icon">⏰</div>
+        <h3 class="video-title">What Is Happening Now</h3>
+        <p class="video-description">Present continuous tense!</p>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/A and An.mp4')">
+        <div class="video-icon">🅰️</div>
+        <h3 class="video-title">A and An</h3>
+        <p class="video-description">Articles made easy!</p>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/What Happened Earlier.mp4')">
+        <div class="video-icon">⏮️</div>
+        <h3 class="video-title">What Happened Earlier</h3>
+        <p class="video-description">Learn about the past tense!</p>
+      </div>
+    </div>
+
+    <script>
+      function playVideo(videoPath) {
+        window.open(videoPath);
+      }
     </script>
-</body>
+  </body>
 </html>
