@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grammar Fun Videos - Class 7</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Comic Sans MS", "Chalkboard SE", "Comic Neue", cursive, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        min-height: 100vh;
+        padding: 20px;
+        overflow-x: hidden;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+        position: relative;
+      }
+
+      .back-btn {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border: none;
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+      }
+
+      .back-btn:hover {
+        background: white;
+        transform: translateX(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      h1 {
+        color: white;
+        font-size: 3rem;
+        margin: 40px 0 10px;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      .subtitle {
+        color: white;
+        font-size: 1.3rem;
+        margin-bottom: 40px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .videos-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        padding: 20px;
+      }
+
+      .video-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .video-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .video-thumbnail {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 aspect ratio */
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        overflow: hidden;
+      }
+
+      .video-thumbnail video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .play-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .video-card:hover .play-overlay {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      .play-button {
+        width: 70px;
+        height: 70px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .video-card:hover .play-button {
+        transform: scale(1.1);
+        background: white;
+      }
+
+      .play-button svg {
+        width: 30px;
+        height: 30px;
+        margin-left: 4px;
+      }
+
+      .video-info {
+        padding: 15px;
+      }
+
+      .video-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+        line-height: 1.3;
+      }
+
+      .video-description {
+        font-size: 0.9rem;
+        color: #666;
+        line-height: 1.4;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
+        }
+
+        .subtitle {
+          font-size: 1rem;
+        }
+
+        .videos-container {
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 15px;
+        }
+
+        .play-button {
+          width: 50px;
+          height: 50px;
+        }
+
+        .play-button svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        .video-title {
+          font-size: 1rem;
+        }
+
+        .video-description {
+          font-size: 0.85rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <button class="back-btn" onclick="window.history.back()">← Back</button>
+
+    <div class="header">
+      <h1>🎬 Grammar Fun Videos - Class 7 📚</h1>
+      <p class="subtitle">Click on any topic to watch and learn!</p>
+    </div>
+
+    <div class="videos-container">
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Active and Passive Voice.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Active and Passive Voice.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Active and Passive Voice</h3>
+          <p class="video-description">Learn active and passive sentence structures!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Adjectives.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Adjectives.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Adjectives</h3>
+          <p class="video-description">Describing words and their types!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Adverbs.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Adverbs.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Adverbs</h3>
+          <p class="video-description">Modify verbs, adjectives, and more!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Articles.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Articles.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Articles</h3>
+          <p class="video-description">A, an, and the explained!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Axuiliary Verbs.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Axuiliary Verbs.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Auxiliary Verbs</h3>
+          <p class="video-description">Helping verbs and their uses!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Conditional Sentences.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Conditional Sentences.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Conditional Sentences</h3>
+          <p class="video-description">If-then sentence structures!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Conjunctions.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Conjunctions.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Conjunctions</h3>
+          <p class="video-description">Connect words and clauses!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Direct and Indirect Speech.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Direct and Indirect Speech.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Direct and Indirect Speech</h3>
+          <p class="video-description">Reported speech explained!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Don_t Quit.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Don_t Quit.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Don't Quit</h3>
+          <p class="video-description">Inspirational poem!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Idioms.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Idioms.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Idioms</h3>
+          <p class="video-description">Common expressions and their meanings!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Kinds of Sentences.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Kinds of Sentences.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Kinds of Sentences</h3>
+          <p class="video-description">Types of sentences explained!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Metaphors.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Metaphors.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Metaphors</h3>
+          <p class="video-description">Comparing without using like or as!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/New Year Celebrations.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/New Year Celebrations.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">New Year Celebrations</h3>
+          <p class="video-description">Festive poem and story!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Non-Finite Verbs.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Non-Finite Verbs.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Non-Finite Verbs</h3>
+          <p class="video-description">Infinitives, gerunds, and participles!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Nouns.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Nouns.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Nouns</h3>
+          <p class="video-description">Names of people, places, and things!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Phrasal Verbs.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Phrasal Verbs.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Phrasal Verbs</h3>
+          <p class="video-description">Verb and preposition combinations!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Phrases and Clauses.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Phrases and Clauses.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Phrases and Clauses</h3>
+          <p class="video-description">Building blocks of sentences!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Prefixes and Suffiexes.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Prefixes and Suffiexes.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Prefixes and Suffixes</h3>
+          <p class="video-description">Word formation explained!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Prepositions.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Prepositions.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Prepositions</h3>
+          <p class="video-description">Words showing relationships!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Pronouns.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Pronouns.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Pronouns</h3>
+          <p class="video-description">Words that replace nouns!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Proverbs.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Proverbs.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Proverbs</h3>
+          <p class="video-description">Wise sayings and their meanings!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Similes.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Similes.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Similes</h3>
+          <p class="video-description">Comparing using like or as!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Subject and Predicate.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Subject and Predicate.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Subject and Predicate</h3>
+          <p class="video-description">Parts of a sentence!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Subject-Verb Agreement.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Subject-Verb Agreement.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Subject-Verb Agreement</h3>
+          <p class="video-description">Subjects and verbs must agree!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Synonyms and Antonyms.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Synonyms and Antonyms.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Synonyms and Antonyms</h3>
+          <p class="video-description">Similar and opposite words!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Synthesis of Sentences.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Synthesis of Sentences.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Synthesis of Sentences</h3>
+          <p class="video-description">Combining sentences together!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/The Future Tense.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/The Future Tense.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">The Future Tense</h3>
+          <p class="video-description">Actions that will happen!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/The Past Tense.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/The Past Tense.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">The Past Tense</h3>
+          <p class="video-description">Actions that happened before!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/The Present Tense.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/The Present Tense.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">The Present Tense</h3>
+          <p class="video-description">Actions happening now!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Transformation of Sentences.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Transformation of Sentences.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Transformation of Sentences</h3>
+          <p class="video-description">Changing sentence forms!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Twinkle Twinkle Little Star.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Twinkle Twinkle Little Star.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Twinkle Twinkle Little Star</h3>
+          <p class="video-description">Classic nursery rhyme!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Two Travellers and A Purse.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Two Travellers and A Purse.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Two Travellers and A Purse</h3>
+          <p class="video-description">Story and moral!</p>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="playVideo('../../../assets/videos/class-7/Words Often Confused.mp4')">
+        <div class="video-thumbnail">
+          <video preload="metadata" muted>
+            <source src="../../../assets/videos/class-7/Words Often Confused.mp4" type="video/mp4" />
+          </video>
+          <div class="play-overlay">
+            <div class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Words Often Confused</h3>
+          <p class="video-description">Commonly mixed-up words!</p>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+      function playVideo(videoPath) {
+        // Encode the URI to handle spaces and special characters
+        const encodedPath = encodeURI(videoPath);
+        window.open(encodedPath);
+      }
+
+      // Ensure video thumbnails load properly
+      document.addEventListener('DOMContentLoaded', function() {
+        const videos = document.querySelectorAll('.video-thumbnail video');
+        videos.forEach(video => {
+          video.load(); // Force load
+          video.addEventListener('loadedmetadata', function() {
+            this.currentTime = 0.5;
+          });
+          // Fallback if metadata doesn't load
+          video.addEventListener('loadeddata', function() {
+            if (this.currentTime === 0) {
+              this.currentTime = 0.5;
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
