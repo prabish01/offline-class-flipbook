@@ -10,3 +10,7 @@ document.getElementById("anima").addEventListener("click", () => {
 document.getElementById("test").addEventListener("click", () => {
   window.location.href = "../../class-tests/test-generator/class-6.html";
 });
+
+document.getElementById("worksheet").addEventListener("click", () => {
+  window.location.href = "../../class-workbooks/wb-class-6/index.html";
+});

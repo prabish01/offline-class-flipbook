@@ -12,5 +12,5 @@ document.getElementById("test").addEventListener("click", () => {
 });
 
 document.getElementById("worksheet").addEventListener("click", () => {
-  window.location.href = "../../class-worksheets/worksheet-selection/index.html";
+  window.location.href = "../../class-workbooks/wb-class-5/index.html";
 });
