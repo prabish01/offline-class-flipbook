@@ -4,7 +4,7 @@ document.getElementById("flip").addEventListener("click", () => {
 });
 
 document.getElementById("anima").addEventListener("click", () => {
-  alert("Class 2 animations coming soon!");
+  window.location.href = "../../class-animations/class-2-animations/index.html";
 });
 
 document.getElementById("test").addEventListener("click", () => {

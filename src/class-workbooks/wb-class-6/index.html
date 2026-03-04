@@ -6,77 +6,252 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Workbook - Class 6</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
 
       body {
-        font-family: "Comic Sans MS", "Chalkboard SE", "Comic Neue", cursive, sans-serif;
-        background: #1a1a2e;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
+        font-family: "Comic Sans MS", "Chalkboard SE", cursive, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        min-height: 100vh;
+        padding: 20px;
       }
 
-      .toolbar {
+      .back-btn {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border: none;
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        font-family: "Comic Sans MS", "Chalkboard SE", cursive, sans-serif;
+      }
+
+      .back-btn:hover {
+        background: white;
+        transform: translateX(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      #chapter-view { display: block; }
+
+      .header { text-align: center; margin-bottom: 30px; }
+
+      h1 {
+        color: white;
+        font-size: 2.5rem;
+        margin: 40px 0 10px;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      .subtitle {
+        color: white;
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .container { max-width: 1200px; margin: 0 auto; }
+
+      .chapters-section {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .chapters-section h2 {
+        color: #667eea;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+      }
+
+      .chapters-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+
+      .chapter-card {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        border-radius: 15px;
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .chapter-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .chapter-card:active { transform: translateY(-2px); }
+
+      .chapter-number {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.85rem;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .chapter-card h3 {
+        color: white;
+        font-size: 1.1rem;
+        line-height: 1.35;
+      }
+
+      #pdf-view {
+        display: none;
+        position: fixed;
+        inset: 0;
+        flex-direction: column;
+        background: #1a1a2e;
+        z-index: 500;
+      }
+
+      .pdf-toolbar {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        padding: 10px 20px;
+        padding: 12px 20px 12px 80px;
         display: flex;
         align-items: center;
-        gap: 15px;
         flex-shrink: 0;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
       }
 
-      .back-btn {
+      .pdf-title {
+        color: white;
+        font-size: 1.15rem;
+        font-weight: bold;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      }
+
+      .pdf-back-btn {
+        position: fixed;
+        top: 11px;
+        left: 20px;
         background: rgba(255, 255, 255, 0.95);
         border: none;
-        padding: 8px 20px;
+        padding: 10px 20px;
         border-radius: 50px;
         font-size: 1rem;
         font-weight: bold;
         cursor: pointer;
         transition: all 0.3s ease;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        z-index: 600;
+        font-family: "Comic Sans MS", "Chalkboard SE", cursive, sans-serif;
+        display: none;
       }
 
-      .back-btn:hover {
-        background: white;
-        transform: translateX(-3px);
-      }
+      .pdf-back-btn:hover { background: white; transform: translateX(-3px); }
 
-      .title {
-        color: white;
-        font-size: 1.3rem;
-        font-weight: bold;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-      }
+      .pdf-container { flex: 1; width: 100%; overflow: hidden; }
 
-      .pdf-container {
-        flex: 1;
-        width: 100%;
-        overflow: hidden;
-      }
+      embed { width: 100%; height: 100%; border: none; display: block; }
 
-      embed {
-        width: 100%;
-        height: 100%;
-        border: none;
-        display: block;
+      @media (max-width: 768px) {
+        h1 { font-size: 2rem; }
+        .chapters-grid { grid-template-columns: 1fr 1fr; }
       }
     </style>
   </head>
   <body>
-    <div class="toolbar">
-      <button class="back-btn" onclick="window.history.back()">← Back</button>
-      <span class="title">📖 Workbook - Class 6</span>
+
+    <button class="back-btn" id="main-back" onclick="window.history.back()">&#8592; Back</button>
+    <button class="pdf-back-btn" id="pdf-back" onclick="showChapters()">&#8592; Chapters</button>
+
+    <div id="chapter-view">
+      <div class="header">
+        <h1>&#128218; Workbook - Class 6</h1>
+        <p class="subtitle">Select a chapter to open the workbook</p>
+      </div>
+      <div class="container">
+        <div class="chapters-section">
+          <h2>&#128218; Select a Chapter</h2>
+          <div class="chapters-grid" id="chapters-grid"></div>
+        </div>
+      </div>
     </div>
 
-    <div class="pdf-container">
-      <embed src="../../../assets/pdfs/workbooks/class-6/Grammar Frolics-6.pdf" type="application/pdf" />
+    <div id="pdf-view">
+      <div class="pdf-toolbar">
+        <span class="pdf-title" id="pdf-title"></span>
+      </div>
+      <div class="pdf-container">
+        <embed id="pdf-embed" src="" type="application/pdf" />
+      </div>
     </div>
+
+    <script>
+      const BASE = '../../../assets/pdfs/workbooks/class-6/';
+
+      const CHAPTERS = [
+        { file: 'Ch01_The_Sentence.pdf',                        name: 'The Sentence' },
+        { file: 'Ch02_Subject_and_Predicate.pdf',               name: 'Subject and Predicate' },
+        { file: 'Ch03_Nouns.pdf',                               name: 'Nouns' },
+        { file: 'Ch04_Nouns_Number.pdf',                        name: 'Nouns \u2014 Number' },
+        { file: 'Ch05_Nouns_Gender.pdf',                        name: 'Nouns \u2014 Gender' },
+        { file: 'Ch06_Nouns_Case.pdf',                          name: 'Nouns \u2014 Case' },
+        { file: 'Ch07_Articles.pdf',                            name: 'Articles' },
+        { file: 'Ch08_Pronouns.pdf',                            name: 'Pronouns' },
+        { file: 'Ch09_Pronouns_Number,_Gender_and_Case.pdf',    name: 'Pronouns \u2014 Number, Gender and Case' },
+        { file: 'Ch10_Adjectives.pdf',                          name: 'Adjectives' },
+        { file: 'Ch11_Comparison_of_Adjectives.pdf',            name: 'Comparison of Adjectives' },
+        { file: 'Ch12_Kinds_of_Verbs.pdf',                      name: 'Kinds of Verbs' },
+        { file: 'Ch13_Simple_Tenses.pdf',                       name: 'Simple Tenses' },
+        { file: 'Ch14_Continuous_Tenses.pdf',                   name: 'Continuous Tenses' },
+        { file: 'Ch15_Perfect_Tenses.pdf',                      name: 'Perfect Tenses' },
+        { file: 'Ch16_Adverbs.pdf',                             name: 'Adverbs' },
+        { file: 'Ch17_Prepositions.pdf',                        name: 'Prepositions' },
+        { file: 'Ch18_Conjunctions.pdf',                        name: 'Conjunctions' },
+        { file: 'Ch19_Phrases_and_Clauses.pdf',                 name: 'Phrases and Clauses' },
+        { file: 'Ch20_Interjections.pdf',                       name: 'Interjections' },
+        { file: 'Ch21_Active_and_Passive_Voice.pdf',            name: 'Active and Passive Voice' },
+        { file: 'Ch22_Subject\u2013Verb_Agreement.pdf',         name: 'Subject\u2013Verb Agreement' },
+        { file: 'Ch23_Direct_and_Indirect_Speech.pdf',          name: 'Direct and Indirect Speech' },
+        { file: 'Ch24_Punctuation_and_Capital_Letters.pdf',     name: 'Punctuation and Capital Letters' },
+      ];
+
+      function buildGrid() {
+        const grid = document.getElementById('chapters-grid');
+        CHAPTERS.forEach(({ file, name }) => {
+          const num = parseInt(file.match(/^Ch(\d+)/)[1], 10);
+          const card = document.createElement('div');
+          card.className = 'chapter-card';
+          card.innerHTML =
+            '<span class="chapter-number">Chapter ' + num + '</span>' +
+            '<h3>' + name + '</h3>';
+          card.onclick = () => openChapter(BASE + file, 'Ch ' + num + ': ' + name);
+          grid.appendChild(card);
+        });
+      }
+
+      function openChapter(path, title) {
+        document.getElementById('pdf-embed').src = path;
+        document.getElementById('pdf-title').textContent = title;
+        document.getElementById('chapter-view').style.display = 'none';
+        document.getElementById('main-back').style.display = 'none';
+        document.getElementById('pdf-view').style.display = 'flex';
+        document.getElementById('pdf-back').style.display = 'block';
+      }
+
+      function showChapters() {
+        document.getElementById('pdf-embed').src = '';
+        document.getElementById('pdf-view').style.display = 'none';
+        document.getElementById('pdf-back').style.display = 'none';
+        document.getElementById('chapter-view').style.display = 'block';
+        document.getElementById('main-back').style.display = 'block';
+      }
+
+      buildGrid();
+    </script>
   </body>
 </html>
