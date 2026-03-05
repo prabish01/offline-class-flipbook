@@ -744,12 +744,9 @@
           { text: "Grammar - Chapter 6", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 6 A.png"], answer: "Complete the exercises" },
           { text: "Grammar - Chapter 6", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 6 B.png"], answer: "Complete the exercises" },
         ],
-        g7: [
-          { text: "Grammar - Chapter 7", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 7 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 7", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 7 B.png"], answer: "Complete the exercises" },
-        ],
-        g8: [{ text: "Grammar - Chapter 8", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 8 A.png"], answer: "Complete the exercises" }],
-        g9: [{ text: "Grammar - Chapter 9", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 9 A.png"], answer: "Complete the exercises" }],
+        g7: [{ text: "A or An", images: ["../../../assets/images/test-generator/class-1/Grammar07_A_or_An.pdf"], answer: "Complete the exercises" }],
+        g8: [{ text: "This is or That is", images: ["../../../assets/images/test-generator/class-1/Grammar08_This_is_or_That_is.pdf"], answer: "Complete the exercises" }],
+        g9: [{ text: "These are or Those are", images: ["../../../assets/images/test-generator/class-1/Grammar09_These_are_or_Those_are.pdf"], answer: "Complete the exercises" }],
         g10: [
           { text: "Grammar - Chapter 10", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 10 A.png"], answer: "Complete the exercises" },
           { text: "Grammar - Chapter 10", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 10 B.png"], answer: "Complete the exercises" },
@@ -771,12 +768,10 @@
           { text: "Grammar - Chapter 14", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 14 B.png"], answer: "Complete the exercises" },
         ],
         g15: [
-          { text: "Grammar - Chapter 15", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 15 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 15", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 15 B.png"], answer: "Complete the exercises" },
+          { text: "Being Verbs", images: ["../../../assets/images/test-generator/class-1/Grammar15_Being_Verbs.pdf"], answer: "Complete the exercises" },
         ],
         g16: [
-          { text: "Grammar - Chapter 16", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 16 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 16", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 16 B.png"], answer: "Complete the exercises" },
+          { text: "Having Verbs", images: ["../../../assets/images/test-generator/class-1/Grammar16_Having_Verbs.pdf"], answer: "Complete the exercises" },
         ],
         g17: [
           { text: "Grammar - Chapter 17", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 17 A.png"], answer: "Complete the exercises" },
@@ -867,7 +862,11 @@
               let questionHTML = `<p><strong>Q${questionNumber}.</strong> ${q.text}</p>`;
 
               q.images.forEach((img) => {
-                questionHTML += `<img src="${img}" alt="Question Image">`;
+                if (img.endsWith('.pdf')) {
+                  questionHTML += `<embed src="${img}" type="application/pdf" width="100%" height="600px" style="border:none; border-radius:10px; margin:15px 0;">`;
+                } else {
+                  questionHTML += `<img src="${img}" alt="Question Image">`;
+                }
               });
 
               // Show answer only for teacher version
