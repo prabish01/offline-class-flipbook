@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Generator - Class 7</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Comic Sans MS", "Chalkboard SE", cursive, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .back-btn {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border: none;
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+      }
+
+      .back-btn:hover {
+        background: white;
+        transform: translateX(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      h1 {
+        color: white;
+        font-size: 2.5rem;
+        margin: 40px 0 10px;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      .subtitle {
+        color: white;
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .test-info {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .test-info h2 {
+        color: #667eea;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .info-field {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .info-field label {
+        color: #333;
+        font-weight: bold;
+        margin-bottom: 8px;
+        font-size: 1.1rem;
+      }
+
+      .info-field input {
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-family: "Comic Sans MS", cursive;
+        transition: border-color 0.3s ease;
+      }
+
+      .info-field input:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      .chapters-section {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .chapters-section h2 {
+        color: #667eea;
+        margin-bottom: 10px;
+        font-size: 1.8rem;
+      }
+
+      .marks-info {
+        color: #764ba2;
+        font-size: 1rem;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+
+      .chapters-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+
+      .chapter-card {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        border-radius: 15px;
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .chapter-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .chapter-card input[type="checkbox"] {
+        display: none;
+      }
+
+      .chapter-card:has(input:checked) {
+        background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+        box-shadow: 0 8px 25px rgba(0, 184, 148, 0.4);
+      }
+
+      .chapter-card:has(input:checked)::after {
+        content: "\2713";
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 2rem;
+        color: white;
+        font-weight: bold;
+      }
+
+      .chapter-card h3 {
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+      }
+
+      .chapter-card p {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.8rem;
+      }
+
+      .chapter-number {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.8rem;
+        font-weight: bold;
+        margin-bottom: 4px;
+        display: block;
+      }
+
+      .action-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 15px 40px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        font-family: "Comic Sans MS", cursive;
+      }
+
+      .btn-preview {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+
+      .btn-preview:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+      }
+
+      .btn-print {
+        background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+        color: white;
+      }
+
+      .btn-print:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 184, 148, 0.4);
+      }
+
+      .available-count {
+        color: white;
+        font-size: 1rem;
+        font-weight: bold;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 10px 20px;
+        border-radius: 50px;
+        backdrop-filter: blur(5px);
+      }
+
+      /* Test Preview */
+      .test-preview {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        margin-top: 30px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        display: none;
+      }
+
+      .test-preview.show {
+        display: block;
+      }
+
+      .test-header {
+        text-align: center;
+        border-bottom: 2px solid #333;
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+      }
+
+      .test-header h2 {
+        color: #222;
+        font-size: 1.6rem;
+        margin-bottom: 5px;
+      }
+
+      .test-meta {
+        font-size: 0.95rem;
+        color: #444;
+        margin-top: 10px;
+      }
+
+      .test-student-line {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 12px;
+        font-size: 0.95rem;
+        border-top: 1px solid #ccc;
+        padding-top: 10px;
+      }
+
+      .test-divider {
+        border: none;
+        border-top: 2px solid #333;
+        margin: 10px 0;
+      }
+
+      .question-section {
+        margin-bottom: 30px;
+      }
+
+      .question-section h3 {
+        color: #333;
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+        padding: 8px 15px;
+        background: #f0f0f0;
+        border-radius: 8px;
+        border-left: 4px solid #667eea;
+      }
+
+      .worksheet-group {
+        margin-bottom: 22px;
+        padding-left: 5px;
+      }
+
+      .ws-instruction {
+        font-style: italic;
+        margin-bottom: 14px;
+        color: #333;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        font-family: Arial, sans-serif;
+      }
+
+      .question-item {
+        margin-bottom: 18px;
+        font-family: Arial, sans-serif;
+      }
+
+      .question-text {
+        line-height: 1.8;
+        color: #111;
+        font-size: 0.97rem;
+      }
+
+      .options-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px 20px;
+        margin: 6px 0 6px 25px;
+        font-size: 0.93rem;
+        font-family: Arial, sans-serif;
+      }
+
+      .options-list {
+        margin: 6px 0 6px 25px;
+        font-size: 0.93rem;
+        font-family: Arial, sans-serif;
+      }
+
+      .options-list .option-item {
+        display: block;
+        margin-bottom: 4px;
+        line-height: 1.5;
+      }
+
+      .option-item {
+        color: #222;
+      }
+
+      .answer-line {
+        border-bottom: 1px solid #666;
+        margin: 8px 0 4px 0;
+        height: 22px;
+        width: 100%;
+      }
+
+      /* Print Styles */
+      @media print {
+        body {
+          background: white;
+          padding: 0;
+          margin: 0;
+        }
+
+        .back-btn,
+        .test-info,
+        .chapters-section,
+        .action-buttons,
+        .subtitle,
+        .header {
+          display: none !important;
+        }
+
+        .container {
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+
+        .test-preview {
+          border-radius: 0 !important;
+          box-shadow: none !important;
+          padding: 15px 20px !important;
+          margin: 0 !important;
+          background: white !important;
+        }
+
+        .test-header {
+          border-bottom: 2px solid #000 !important;
+          padding-bottom: 10px !important;
+          margin-bottom: 15px !important;
+        }
+
+        .test-header h2 {
+          font-size: 1.3rem !important;
+          color: #000 !important;
+        }
+
+        .question-section {
+          page-break-inside: avoid;
+          margin-bottom: 18px !important;
+        }
+
+        .question-section h3 {
+          background: #eee !important;
+          font-size: 1rem !important;
+          padding: 5px 10px !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        .ws-instruction {
+          color: #000 !important;
+        }
+
+        .question-item {
+          page-break-inside: avoid;
+          margin-bottom: 14px !important;
+        }
+
+        .answer-line {
+          border-bottom: 1px solid #000 !important;
+        }
+      }
+
+      @media (max-width: 768px) {
+        h1 { font-size: 2rem; }
+        .info-grid, .chapters-grid { grid-template-columns: 1fr; }
+        .action-buttons { flex-direction: column; }
+        .btn { width: 100%; }
+      }
+    </style>
+  </head>
+  <body>
+    <button class="back-btn" onclick="window.history.back()">&#8592; Back</button>
+
+    <div class="header">
+      <h1>&#128221; Test Generator</h1>
+      <p class="subtitle">Grammar Frolics-7 &#8212; Create a custom test by selecting chapters</p>
+    </div>
+
+    <div class="container">
+      <!-- Test Information -->
+      <div class="test-info">
+        <h2>&#128203; Test Information</h2>
+        <div class="info-grid">
+          <div class="info-field">
+            <label for="testName">Test Name</label>
+            <input type="text" id="testName" placeholder="e.g., Grammar Test" value="Grammar Frolics-7 Test" />
+          </div>
+          <div class="info-field">
+            <label for="testDate">Date</label>
+            <input type="date" id="testDate" />
+          </div>
+          <div class="info-field">
+            <label for="testDuration">Duration (mins)</label>
+            <input type="number" id="testDuration" placeholder="e.g., 60" value="60" />
+          </div>
+          <div class="info-field">
+            <label for="totalMarks">Total Marks</label>
+            <input type="number" id="totalMarks" placeholder="e.g., 30" value="30" min="1" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter Selection -->
+      <div class="chapters-section">
+        <h2>&#128218; Select Chapters</h2>
+        <p class="marks-info">Available questions from selected chapters: <span id="availableCount">0</span></p>
+        <div class="chapters-grid">
+          <label class="chapter-card" data-chapter="ch1">
+            <input type="checkbox" id="ch1" />
+            <span class="chapter-number">Chapter 1</span>
+            <h3>Kinds of Sentences</h3>
+            <p>Yes/No Questions, Wh-Questions, sentence types</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch2">
+            <input type="checkbox" id="ch2" />
+            <span class="chapter-number">Chapter 2</span>
+            <h3>Subject and Predicate</h3>
+            <p>Compound subjects and predicates</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch3">
+            <input type="checkbox" id="ch3" />
+            <span class="chapter-number">Chapter 3</span>
+            <h3>Subject-Verb Agreement</h3>
+            <p>Correct verb forms</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch4">
+            <input type="checkbox" id="ch4" />
+            <span class="chapter-number">Chapter 4</span>
+            <h3>Nouns</h3>
+            <p>Identify, change forms, masculine/feminine</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch5">
+            <input type="checkbox" id="ch5" />
+            <span class="chapter-number">Chapter 5</span>
+            <h3>Pronouns</h3>
+            <p>Kinds and correct usage of pronouns</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch6">
+            <input type="checkbox" id="ch6" />
+            <span class="chapter-number">Chapter 6</span>
+            <h3>Articles</h3>
+            <p>a, an, the — when to use or omit</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch7">
+            <input type="checkbox" id="ch7" />
+            <span class="chapter-number">Chapter 7</span>
+            <h3>Adjectives</h3>
+            <p>Kinds and degrees of adjectives</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch8">
+            <input type="checkbox" id="ch8" />
+            <span class="chapter-number">Chapter 8</span>
+            <h3>Non-Finite Verbs</h3>
+            <p>Infinitives, Gerunds, Participles</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch9">
+            <input type="checkbox" id="ch9" />
+            <span class="chapter-number">Chapter 9</span>
+            <h3>Auxiliary Verbs</h3>
+            <p>Modal and primary auxiliaries</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch10">
+            <input type="checkbox" id="ch10" />
+            <span class="chapter-number">Chapter 10</span>
+            <h3>The Present Tense</h3>
+            <p>Simple, Continuous, Perfect present</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch11">
+            <input type="checkbox" id="ch11" />
+            <span class="chapter-number">Chapter 11</span>
+            <h3>The Past Tense</h3>
+            <p>Simple, Continuous, Perfect past</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch12">
+            <input type="checkbox" id="ch12" />
+            <span class="chapter-number">Chapter 12</span>
+            <h3>The Future Tense</h3>
+            <p>Simple, Continuous, Perfect future</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch13">
+            <input type="checkbox" id="ch13" />
+            <span class="chapter-number">Chapter 13</span>
+            <h3>Adverbs</h3>
+            <p>Kinds, degrees, and placement</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch14">
+            <input type="checkbox" id="ch14" />
+            <span class="chapter-number">Chapter 14</span>
+            <h3>Prepositions</h3>
+            <p>Fill in and identify types</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch15">
+            <input type="checkbox" id="ch15" />
+            <span class="chapter-number">Chapter 15</span>
+            <h3>Conjunctions</h3>
+            <p>Coordinating, Subordinating, Correlative</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch16">
+            <input type="checkbox" id="ch16" />
+            <span class="chapter-number">Chapter 16</span>
+            <h3>Phrases and Clauses</h3>
+            <p>Identify and use phrases and clauses</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch17">
+            <input type="checkbox" id="ch17" />
+            <span class="chapter-number">Chapter 17</span>
+            <h3>Synthesis of Sentences</h3>
+            <p>Combining sentences</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch18">
+            <input type="checkbox" id="ch18" />
+            <span class="chapter-number">Chapter 18</span>
+            <h3>Transformation of Sentences</h3>
+            <p>Converting between sentence types</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch19">
+            <input type="checkbox" id="ch19" />
+            <span class="chapter-number">Chapter 19</span>
+            <h3>Conditional Sentences</h3>
+            <p>Zero, First, Second, Third conditional</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch20">
+            <input type="checkbox" id="ch20" />
+            <span class="chapter-number">Chapter 20</span>
+            <h3>Active and Passive Voice</h3>
+            <p>Voice identification and conversion</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch21">
+            <input type="checkbox" id="ch21" />
+            <span class="chapter-number">Chapter 21</span>
+            <h3>Direct and Indirect Speech</h3>
+            <p>Reported speech conversion</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch22">
+            <input type="checkbox" id="ch22" />
+            <span class="chapter-number">Chapter 22</span>
+            <h3>Punctuation and Capital Letters</h3>
+            <p>Correct punctuation and capitals</p>
+          </label>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button class="btn btn-preview" onclick="previewTest()">&#128065;&#65039; Preview Test</button>
+        <span class="available-count" id="actionAvail">Select chapters to begin</span>
+        <button class="btn btn-print" onclick="printTest()">&#128424;&#65039; Print Test</button>
+      </div>
+
+      <!-- Test Preview -->
+      <div class="test-preview" id="testPreview">
+        <div class="test-header">
+          <h2>Grammar Frolics-7</h2>
+          <div class="test-meta" id="previewTestName">Grammar Test</div>
+          <div class="test-student-line">
+            <span>Name: ____________________________</span>
+            <span>Class: VII &nbsp;&nbsp; Sec: _____</span>
+            <span>Roll No: _____</span>
+            <span>Date: <span id="previewDate">_____________</span></span>
+          </div>
+          <div class="test-student-line">
+            <span>Total Marks: <span id="previewMarks">____</span></span>
+            <span>Time: <span id="previewDuration">____</span> mins</span>
+          </div>
+        </div>
+        <hr class="test-divider" />
+        <div id="questionsContainer"></div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("testDate").valueAsDate = new Date();
+
+      // ─── QUESTION BANK ─────────────────────────────────────────────────────
+      const questionBank = {
+
+        ch1: {
+          name: "Ch 1: Kinds of Sentences",
+          worksheets: [
+            {
+              instruction: "A. Write whether it is a Yes/No Question or a Wh-Question.",
+              questions: [
+                { text: "Did you complete the assignment on time? __________________" },
+                { text: "Why did the teacher cancel the class? __________________" },
+                { text: "Can you solve this equation? __________________" },
+                { text: "Where have you kept my notebook? __________________" },
+                { text: "Are they participating in the competition? __________________" },
+                { text: "How does this machine work? _____________________" }
+              ]
+            },
+            {
+              instruction: "B. Fill in the blanks to complete these interrogative sentences.",
+              questions: [
+                { text: "_________ is responsible for organizing the event?" },
+                { text: "__________ did you reach home yesterday?" },
+                { text: "__________ are they discussing in the meeting?" },
+                { text: "__________ will you travel to Jaipur?" },
+                { text: "__________ are you looking so worried?" },
+                { text: "__________ many chapters have you completed?" },
+                { text: "__________ will you do if it rains tomorrow?" }
+              ]
+            },
+            {
+              instruction: "Read the following sentences carefully and write the kind of each sentence in the blank.",
+              questions: [
+                { text: "Switch off the lights before you leave. __________________" },
+                { text: "What an incredible performance that was! __________________" },
+                { text: "The earth revolves around the sun. __________________" },
+                { text: "Have you completed your homework? __________________" },
+                { text: "Please lend me your pen. __________________" },
+                { text: "The children are playing in the garden. __________________" },
+                { text: "How beautifully she sings! __________________" },
+                { text: "Are they coming to the function tonight? __________________" },
+                { text: "Preeti will attend the meeting in the evening. _______________" },
+                { text: "Can you tell me the way to the museum? ________________" }
+              ]
+            }
+          ]
+        },
+
+        ch2: {
+          name: "Ch 2: Subject and Predicate",
+          worksheets: [
+            {
+              instruction: "Complete the sentences with compound subjects.",
+              questions: [
+                { text: "______________ are planning to participate in the debate competition." },
+                { text: "____________________ were absent from school yesterday." },
+                { text: "Either ____________________ will represent the class in the quiz." },
+                { text: "____________________ have completed the science project." },
+                { text: "Neither ____________________ was ready for the surprise test." },
+                { text: "____________________ is responsible for bringing the materials." },
+                { text: "____________________ were discussing the new rules." },
+                { text: "Either ____________________ has misplaced the keys." },
+                { text: "____________________ make a great team on the field." },
+                { text: "Neither ____________________ wants to admit the mistake." }
+              ]
+            },
+            {
+              instruction: "Complete the sentences with compound predicates.",
+              questions: [
+                { text: "The teacher ________________________________________________." },
+                { text: "The boys ___________________________________________________." },
+                { text: "Riya _______________________________________________________." },
+                { text: "The dog ____________________________________________________." },
+                { text: "My parents __________________________________________________." },
+                { text: "The students _________________________________________________." },
+                { text: "The baby ____________________________________________________." },
+                { text: "The train ____________________________________________________." },
+                { text: "The chef _____________________________________________________." },
+                { text: "The wind ___________________________________________________." }
+              ]
+            }
+          ]
+        },
+
+        ch3: {
+          name: "Ch 3: Subject-Verb Agreement",
+          worksheets: [
+            {
+              instruction: "Choose the correct verb form from the brackets.",
+              questions: [
+                { text: "Riya and her cousins __________ going to the fair. (is / are)" },
+                { text: "Bread and butter __________ my favourite breakfast. (is / are)" },
+                { text: "Either the principal or the teachers __________ attending the meeting. (is / are)" },
+                { text: "Neither the players nor the coach __________ ready. (is / are)" },
+                { text: "Everyone __________ excited about the trip. (is / are)" },
+                { text: "Some of the milk __________ spilled on the floor. (has / have)" },
+                { text: "Some of the students __________ absent today. (is / are)" },
+                { text: "The team __________ practising for the finals. (is / are)" },
+                { text: "The team __________ arguing among themselves. (is / are)" },
+                { text: "The captain, along with the players, __________ arriving soon. (is / are)" }
+              ]
+            },
+            {
+              instruction: "Each sentence has one error in the use of verbs. Rewrite the sentence correctly.",
+              questions: [
+                { text: "Each of the boys have completed the task.", lines: 2 },
+                { text: "The bouquet of roses smell lovely.", lines: 2 },
+                { text: "There is many books on the shelf.", lines: 2 },
+                { text: "The news are very shocking.", lines: 2 },
+                { text: "Five years are a long time to wait.", lines: 2 }
+              ]
+            }
+          ]
+        },
+
+        ch4: {
+          name: "Ch 4: Nouns",
+          worksheets: [
+            {
+              instruction: "Read each sentence carefully. Underline all the nouns in the sentences.",
+              questions: [
+                { text: "The scientist presented her research at the conference." },
+                { text: "Courage and determination lead to success." },
+                { text: "The committee announced the results after the meeting." },
+                { text: "The author signed copies of his latest novel." },
+                { text: "Mumbai is a bustling city in India." },
+                { text: "The manager praised the team for their performance." },
+                { text: "Knowledge and experience are valuable assets." },
+                { text: "The librarian arranged the books on the shelves." },
+                { text: "The captain led the players to victory." },
+                { text: "Childhood memories often bring happiness." }
+              ]
+            },
+            {
+              instruction: "A. Change the highlighted noun to the correct form, as directed.",
+              questions: [
+                { text: "The analysis was very detailed. (plural)", lines: 2 },
+                { text: "A thesis was submitted yesterday. (plural)", lines: 2 },
+                { text: "The vertebrae were carefully examined. (singular)", lines: 2 },
+                { text: "The appendices are included at the end of the book. (singular)", lines: 2 }
+              ]
+            },
+            {
+              instruction: "B. Fill in each blank with the correct masculine or feminine form of the noun given in brackets.",
+              questions: [
+                { text: "My __________ (niece) is very intelligent." },
+                { text: "The __________ (groom) welcomed the guests at the wedding." },
+                { text: "The __________ (stag) ran swiftly through the forest." },
+                { text: "The __________ (giant) lifted the heavy rock easily." },
+                { text: "The __________ (duck) swam gracefully in the pond." }
+              ]
+            }
+          ]
+        },
+
+        ch5: {
+          name: "Ch 5: Pronouns",
+          worksheets: [
+            {
+              instruction: "Underline each pronoun and identify its kind.",
+              questions: [
+                { text: "What are you looking for? __________________________" },
+                { text: "Someone left their umbrella in the classroom. _______________________" },
+                { text: "The boy who won the race is my cousin. __________________________" },
+                { text: "Rani prepared herself for the competition. __________________________" },
+                { text: "These are my books. __________________________" },
+                { text: "The woman whose purse was stolen reported to the police. ___________" },
+                { text: "They invited their friends to the party. __________________________" },
+                { text: "That house in the corner is ours. __________________________" },
+                { text: "The players themselves brought the equipment. _______________" },
+                { text: "Nobody believed his story. _______________________" }
+              ]
+            },
+            {
+              instruction: "Rewrite the sentences with correct pronouns.",
+              questions: [
+                { text: "Me and Riya went to the market.", lines: 2 },
+                { text: "The teacher which teaches us English is very kind.", lines: 2 },
+                { text: "Whose is knocking at the door?", lines: 2 },
+                { text: "That are the houses we visited yesterday.", lines: 2 },
+                { text: "The cat hurt hisself while jumping over the wall.", lines: 2 }
+              ]
+            }
+          ]
+        },
+
+        ch6: {
+          name: "Ch 6: Articles",
+          worksheets: [
+            {
+              instruction: "Fill in the blanks with a, an, or the.",
+              questions: [
+                { text: "_______ European country we visited last year was beautiful." },
+                { text: "She wants to become _______ IAS officer." },
+                { text: "He is _______ university student." },
+                { text: "_______ Himalayas are covered with snow." },
+                { text: "We had _______ one-hour discussion about the project." },
+                { text: "She plays _______ violin very well." },
+                { text: "I saw _______ MLA speaking to the crowd." },
+                { text: "He waited for _______ hour before the train arrived." },
+                { text: "My father reads _______ newspaper every morning." },
+                { text: "He is _______ heir to the throne." },
+                { text: "This is _______ unique opportunity." }
+              ]
+            },
+            {
+              instruction: "Rewrite the sentences after omitting the articles where they are not required.",
+              questions: [
+                { text: "The patience is a great virtue.", lines: 2 },
+                { text: "He plays the cricket every evening.", lines: 2 },
+                { text: "The gold is a precious metal.", lines: 2 },
+                { text: "The milk is good for health.", lines: 2 },
+                { text: "We have the lunch at one o'clock.", lines: 2 }
+              ]
+            }
+          ]
+        },
+
+        ch7: {
+          name: "Ch 7: Adjectives",
+          worksheets: [
+            {
+              instruction: "Underline the adjective in each sentence and write its kind.",
+              questions: [
+                { text: "She wore a beautiful saree to the function. ______________________" },
+                { text: "Those students won the inter-school competition. __________________" },
+                { text: "The crying baby would not stop. __________________________" },
+                { text: "I have enough money to buy the book. __________________________" },
+                { text: "Which answer is correct? __________________________" },
+                { text: "Several questions were left unanswered. __________________________" },
+                { text: "She completed the entire project in one day. _______________________" },
+                { text: "The fallen leaves covered the ground. __________________________" },
+                { text: "He told me the very truth. __________________________" },
+                { text: "Many students participated in the event. _________________________" }
+              ]
+            },
+            {
+              instruction: "Fill in the blanks with the correct degree of the adjective given in brackets.",
+              questions: [
+                { text: "Of the two solutions, this one is __________. (effective)" },
+                { text: "No other metal is as __________ as platinum. (precious)" },
+                { text: "She is __________ than any other student in the class. (talented)" },
+                { text: "This is the __________ explanation I have ever heard. (convincing)" },
+                { text: "The more you practise, the __________ you become. (confident)" },
+                { text: "Of all the five brothers, Arun is the __________. (wise)" },
+                { text: "This task is __________ than it appears. (simple)" },
+                { text: "Iron is not as __________ as gold. (valuable)" },
+                { text: "The later we leave, the __________ the traffic will be. (heavy)" },
+                { text: "That was one of the __________ performances of the evening. (remarkable)" }
+              ]
+            }
+          ]
+        },
+
+        ch8: {
+          name: "Ch 8: Non-Finite Verbs",
+          worksheets: [
+            {
+              instruction: "State whether the highlighted word is an infinitive, participle, or gerund.",
+              questions: [
+                { text: "Swimming is my favourite hobby. __________________" },
+                { text: "She went to the market to buy vegetables. __________________" },
+                { text: "The crying baby woke everyone up. __________________" },
+                { text: "He avoided answering the question. __________________" },
+                { text: "They are planning to visit Jaipur next month. __________________" },
+                { text: "The broken chair was repaired yesterday. __________________" },
+                { text: "She is fond of reading novels. __________________" },
+                { text: "We stopped to rest for a while. __________________" },
+                { text: "The shining stars looked beautiful in the night sky. _________________" },
+                { text: "He promised to help me with the project. __________________" }
+              ]
+            },
+            {
+              instruction: "Complete the passage with suitable non-finite verbs.",
+              questions: [
+                { text: "Last Sunday, Rohan decided __________ (visit) his grandmother. __________ (wake) up early, he packed his bag and left home. He enjoys __________ (travel) by train because he loves __________ (watch) the countryside pass by. __________ (reach) the station, he realised that he had forgotten __________ (bring) his ticket. __________ (feel) embarrassed, he called his father for help. His father advised him __________ (check) his bag carefully before __________ (panic). After __________ (search) for a few minutes, Rohan found the ticket hidden inside a book. __________ (relieve), he boarded the train and spent the journey __________ (read) a novel.", lines: 4 }
+              ]
+            }
+          ]
+        },
+
+        ch9: {
+          name: "Ch 9: Auxiliary Verbs",
+          worksheets: [
+            {
+              instruction: "Choose the correct auxiliary verb to complete each sentence.",
+              questions: [
+                { text: "She ____ playing in the garden when it started to rain.", options: ["a) is", "b) was", "c) has"] },
+                { text: "They ____ finished their homework already.", options: ["a) have", "b) had", "c) are"] },
+                { text: "You ____ respect your teachers.", options: ["a) must", "b) are", "c) have"] },
+                { text: "I ____ going to the market now.", options: ["a) am", "b) have", "c) did"] },
+                { text: "He ____ swim very fast when he was young.", options: ["a) can", "b) could", "c) may"] }
+              ]
+            }
+          ]
+        },
+
+        ch10: {
+          name: "Ch 10: The Present Tense",
+          worksheets: [
+            {
+              instruction: "Fill in the blanks using the correct tense of the verb given in brackets.",
+              questions: [
+                { text: "She usually _______________ (wake) up at 6 a.m." },
+                { text: "Look! The children ______________________ (play) in the park." },
+                { text: "My father _____________ (work) in a bank." },
+                { text: "We _____________________ (study) for our exams right now." },
+                { text: "The sun _________________ (rise) in the east." },
+                { text: "I ______________________ (not/watch) television at the moment." },
+                { text: "Riya often _________________ (help) her mother in the kitchen." },
+                { text: "Listen! Someone ___________________ (knock) at the door." },
+                { text: "They _____________ (go) to school by bus every day." },
+                { text: "She ________________ (read) a novel these days." }
+              ]
+            },
+            {
+              instruction: "Choose the correct option.",
+              questions: [
+                { text: "She _______________ her project already.", options: ["a. finishes", "b. is finishing", "c. has finished"] },
+                { text: "They usually ______________ breakfast at 8 a.m.", options: ["a. have", "b. are having", "c. have had"] },
+                { text: "Look! The boys _______________ in the mud.", options: ["a. play", "b. are playing", "c. have played"] },
+                { text: "I ________________ that movie twice.", options: ["a. see", "b. am seeing", "c. have seen"] },
+                { text: "My father _________________ in this company for ten years.", options: ["a. works", "b. is working", "c. has worked"] }
+              ]
+            }
+          ]
+        },
+
+        ch11: {
+          name: "Ch 11: The Past Tense",
+          worksheets: [
+            {
+              instruction: "Fill in the blanks with the correct form of the verb in the brackets.",
+              questions: [
+                { text: "When I __________ (reach) the station, the train __________ already __________ (leave)." },
+                { text: "She __________ (cook) dinner when the guests __________ (arrive)." },
+                { text: "They __________ (finish) their homework before they __________ (go) out to play." },
+                { text: "While we __________ (watch) television, the lights __________ (go) out." },
+                { text: "He __________ (not/complete) the task because he __________ (forget) about it." },
+                { text: "The children __________ (play) in the garden when it suddenly __________ (start) to rain." },
+                { text: "By the time the teacher __________ (enter) the class, the students __________ (become) quiet." },
+                { text: "I __________ (see) the movie after I __________ (read) the book." }
+              ]
+            },
+            {
+              instruction: "Choose the correct option.",
+              questions: [
+                { text: "When we reached the cinema, the movie __________________.", options: ["a. started", "b. was starting", "c. had started"] },
+                { text: "She ______________ her room before her mother came home.", options: ["a. cleaned", "b. was cleaning", "c. had cleaned"] },
+                { text: "While I _____________ to school, I met my old friend.", options: ["a. walked", "b. was walking", "c. had walked"] },
+                { text: "They _________________ dinner when the doorbell rang.", options: ["a. had", "b. were having", "c. had had"] },
+                { text: "He ___________ the letter after he ______________ it carefully.", options: ["a. sent / read", "b. was sending / read", "c. had sent / was reading"] }
+              ]
+            }
+          ]
+        },
+
+        ch12: {
+          name: "Ch 12: The Future Tense",
+          worksheets: [
+            {
+              instruction: "Fill in the blanks with the correct form of the verb in the future tense.",
+              questions: [
+                { text: "I ______________________ (finish) my homework before dinner." },
+                { text: "This time tomorrow, we ____________________ (travel) to Delhi." },
+                { text: "She ___________________ (call) you later in the evening." },
+                { text: "By next year, they ____________________ (complete) the new bridge." },
+                { text: "At 9 p.m. tonight, I ____________________ (watch) my favourite show." },
+                { text: "Don't worry, I ___________________ (help) you with the project." },
+                { text: "By the time you arrive, we ____________________ (start) the meeting." },
+                { text: "He ___________________ (practise) for the match at this time tomorrow." },
+                { text: "By 2028, scientists __________ (discover) new solutions to the problem." },
+                { text: "The train __________ (leave) at 6 a.m. tomorrow." }
+              ]
+            },
+            {
+              instruction: "Choose the correct option.",
+              questions: [
+                { text: "By next month, she ____ her driving lessons.", options: ["a. will finish", "b. will be finishing", "c. will have finished"] },
+                { text: "At this time tomorrow, we ____ for our exams.", options: ["a. will study", "b. will be studying", "c. will have studied"] },
+                { text: "I ____ you as soon as I reach home.", options: ["a. will call", "b. will be calling", "c. will have called"] },
+                { text: "By the end of this week, they ____ the project.", options: ["a. will complete", "b. will be completing", "c. will have completed"] },
+                { text: "At 8 p.m., he ____ dinner with his family.", options: ["a. will have", "b. will be having", "c. will have had"] }
+              ]
+            }
+          ]
+        },
+
+        ch13: {
+          name: "Ch 13: Adverbs",
+          worksheets: [
+            {
+              instruction: "Underline the adverb in each sentence and write its kind.",
+              questions: [
+                { text: "She sang beautifully at the concert. __________________________" },
+                { text: "The children are playing outside. __________________________" },
+                { text: "We will meet tomorrow. __________________________" },
+                { text: "He always arrives on time. __________________________" },
+                { text: "The movie was very interesting. __________________________" },
+                { text: "She stayed home because she was unwell. ________________________" },
+                { text: "Why are you late today? __________________________" },
+                { text: "The dog barked loudly at the stranger. __________________________" },
+                { text: "They searched for the keys everywhere. __________________________" },
+                { text: "I have never seen such a beautiful place. _________________________" }
+              ]
+            },
+            {
+              instruction: "A. Fill in the blanks with the correct degree of the adverb given in brackets.",
+              questions: [
+                { text: "She runs __________ than her sister. (fast)" },
+                { text: "Of all the students, Rahul answered the questions __________. (confidently)" },
+                { text: "The baby slept __________ last night than the night before. (peacefully)" },
+                { text: "Can you speak __________, please? I cannot hear you. (loudly)" },
+                { text: "He completed the task __________ than I expected. (quickly)" }
+              ]
+            },
+            {
+              instruction: "B. Rewrite the sentences by placing the adverb in the correct position.",
+              questions: [
+                { text: "She goes to the gym. (often)", lines: 2 },
+                { text: "He has finished his homework. (already)", lines: 2 },
+                { text: "They are watching a movie. (now)", lines: 2 },
+                { text: "I have seen such a beautiful sunset. (never)", lines: 2 }
+              ]
+            }
+          ]
+        },
+
+        ch14: {
+          name: "Ch 14: Prepositions",
+          worksheets: [
+            {
+              instruction: "Fill in the blanks with suitable prepositions.",
+              questions: [
+                { text: "___ the end of the day, everyone was tired." },
+                { text: "The dog ran ___ the road." },
+                { text: "He cut the paper ___ a pair of scissors." },
+                { text: "She sent the message ___ email." },
+                { text: "The novel was written ___ Ruskin Bond _____ 1990." },
+                { text: "The cake was baked ___ my mother." },
+                { text: "The cat jumped ___ the wall." },
+                { text: "She walked ___ the room quietly." },
+                { text: "The children are playing ___ the park." },
+                { text: "There is a painting ___ the wall." },
+                { text: "The meeting will start ___ 10 a.m." }
+              ]
+            },
+            {
+              instruction: "Underline the preposition and identify its kind.",
+              questions: [
+                { text: "She was born in 2012. __________________________" },
+                { text: "The cat is sleeping under the table. __________________________" },
+                { text: "He walked into the classroom quietly. __________________________" },
+                { text: "The poem was written by Rabindranath Tagore. __________________" },
+                { text: "She cut the vegetables with a knife. __________________________" },
+                { text: "We will meet at 5 p.m. __________________________" },
+                { text: "The children ran across the field. __________________________" },
+                { text: "There is a clock on the wall. __________________________" },
+                { text: "The letter was sent by post. __________________________" },
+                { text: "In spite of the rain, the match continued. _________________________" }
+              ]
+            }
+          ]
+        },
+
+        ch15: {
+          name: "Ch 15: Conjunctions",
+          worksheets: [
+            {
+              instruction: "Fill in the blanks with a suitable conjunction.",
+              questions: [
+                { text: "She was tired, ______ she continued working." },
+                { text: "I will call you ______ I reach home." },
+                { text: "He studied hard ______ he wanted to pass the exam." },
+                { text: "We can go to the park ______ stay at home." },
+                { text: "______ it was raining, they decided to play outside." },
+                { text: "Finish your homework ______ you watch television." },
+                { text: "She is kind ______ helpful." },
+                { text: "I will not go to the picnic ______ it stops raining." },
+                { text: "He ran fast, ______ he missed the bus." },
+                { text: "______ the teacher entered, the students became silent." }
+              ]
+            },
+            {
+              instruction: "Choose the correct pair of correlative conjunctions.",
+              questions: [
+                { text: "He is ___ intelligent ___ hardworking.", options: ["a) either....or", "b) both....and", "c) neither....nor"] },
+                { text: "___ you finish your homework ___ you will not be allowed to play.", options: ["a) Either....or", "b) Neither....nor", "c) Whether....or"] },
+                { text: "She is ___ tall ___ strong enough to lift the box.", options: ["a) so....that", "b) neither....nor", "c) either....or"] },
+                { text: "She is ___ responsible ___ honest.", options: ["a) not only....but also", "b) either....or", "c) neither....nor"] },
+                { text: "It was _______ cold ______ we stayed indoors.", options: ["a) both....and", "b) so....that", "c) either....or"] }
+              ]
+            }
+          ]
+        },
+
+        ch16: {
+          name: "Ch 16: Phrases and Clauses",
+          worksheets: [
+            {
+              instruction: "In the following sentences, write C if the underlined part is a clause or P if the underlined part is a phrase.",
+              questions: [
+                { text: "The dog barked loudly.   ______" },
+                { text: "Before the parents arrived, the boys ran away.   ______" },
+                { text: "Playing with her dolls, Sneha laughed joyfully.   ______" },
+                { text: "The sun rises in the east.   ______" },
+                { text: "Because he studied hard, John passed the exam.   ______" },
+                { text: "The children smiled widely at each other.   ______" },
+                { text: "Maria went to the market to buy vegetables.   ______" },
+                { text: "After the party ended, all the guests went home.   ______" },
+                { text: "Relaxing on the beach, Mayank watched the sunset.   ______" },
+                { text: "While completing her homework, Sara glanced at the magazine.   ______" }
+              ]
+            },
+            {
+              instruction: "Fill in the blanks with an appropriate phrase or clause.",
+              questions: [
+                { text: "___________________________, the students watched the football match." },
+                { text: "Reema, _______________________, performed at the concert." },
+                { text: "___________________________ is my favourite mythological character." },
+                { text: "___________________________________________, mother watched TV." },
+                { text: "We decided to go to the circus ____________________________________." },
+                { text: "_________________________________________, the baby started crying." },
+                { text: "I have to finish the report ________________________________________." },
+                { text: "The team won the match, ________________________________________." },
+                { text: "Nancy went to the mall __________________________________________." },
+                { text: "The dog, ______________________________, waited patiently for its owner." },
+                { text: "The babies played happily _________________________________________." }
+              ]
+            }
+          ]
+        },
+
+        ch17: {
+          name: "Ch 17: Synthesis of Sentences",
+          worksheets: [
+            {
+              instruction: "Join each pair of simple sentences to form a sentence as directed.",
+              questions: [
+                { text: "She was tired. She continued working. (complex sentence)", lines: 2 },
+                { text: "The sun was setting. The sky looked beautiful. (compound sentence)", lines: 2 },
+                { text: "The bell rang. The students rushed out of the classroom. (complex sentence)", lines: 2 },
+                { text: "The shop was closed. We returned home. (compound sentence)", lines: 2 },
+                { text: "He studied hard. He wanted to score good marks. (complex sentence)", lines: 2 }
+              ]
+            },
+            {
+              instruction: "Join each pair of sentences to form one simple sentence.",
+              questions: [
+                { text: "The boy was injured. He was taken to the hospital.", lines: 2 },
+                { text: "She opened the door. She saw a stranger.", lines: 2 },
+                { text: "He worked hard. He wanted to succeed.", lines: 2 },
+                { text: "The teacher entered the classroom. The students stood up.", lines: 2 },
+                { text: "She saved money. She wanted to buy a bicycle.", lines: 2 }
+              ]
+            }
+          ]
+        },
+
+        ch18: {
+          name: "Ch 18: Transformation of Sentences",
+          worksheets: [
+            {
+              instruction: "Transform these sentences by interchanging the degrees, as directed.",
+              questions: [
+                { text: "Mount Everest is the highest mountain in the world. (Comparative)", lines: 2 },
+                { text: "Very few cities in India are as crowded as Mumbai. (Superlative)", lines: 2 },
+                { text: "This is the most interesting book I have ever read. (Positive)", lines: 2 },
+                { text: "No other player in the team is as skilled as Arjun. (Comparative)", lines: 2 },
+                { text: "Gold is more valuable than silver. (Positive)", lines: 2 }
+              ]
+            },
+            {
+              instruction: "Transform these sentences, as directed.",
+              questions: [
+                { text: "Although he was late, he finished the test. (Simple)", lines: 2 },
+                { text: "If you work hard, you will succeed. (Compound)", lines: 2 },
+                { text: "He was ill, so he did not attend school. (Complex)", lines: 2 },
+                { text: "The box was so heavy that I could not lift it. (Simple)", lines: 2 },
+                { text: "She is too weak to lift the bag. (Complex)", lines: 2 }
+              ]
+            }
+          ]
+        },
+
+        ch19: {
+          name: "Ch 19: Conditional Sentences",
+          worksheets: [
+            {
+              instruction: "Identify the kinds of conditionals.",
+              questions: [
+                { text: "If you heat water to 100\u00b0C, it boils. __________________________" },
+                { text: "If it rains tomorrow, we will stay at home. __________________________" },
+                { text: "If I were you, I would apologise. __________________________" },
+                { text: "If they had left earlier, they would have caught the train. _____________" },
+                { text: "If you mix red and blue, you get purple. __________________________" },
+                { text: "If she studies hard, she will pass the exam. __________________________" },
+                { text: "If I won the lottery, I would travel around the world. ________________" },
+                { text: "If he had listened to me, he would not have made that mistake. ________" },
+                { text: "If you don't water the plants, they die. __________________________" },
+                { text: "If we hurry, we will arrive on time. ______________________________" }
+              ]
+            },
+            {
+              instruction: "Complete the conditional sentences. Use suitable verbs and correct tenses.",
+              questions: [
+                { text: "If you study regularly, ________________________________." },
+                { text: "If it rains tomorrow, ________________________________." },
+                { text: "If I were the class monitor, ________________________________." },
+                { text: "If she had left earlier, ________________________________." },
+                { text: "If you heat ice, ________________________________." },
+                { text: "If they work hard, ________________________________." },
+                { text: "If I had known about the meeting, ________________________________." },
+                { text: "If he practises daily, ________________________________." },
+                { text: "If we had reached on time, ________________________________." },
+                { text: "If you mix yellow and blue, ________________________________." }
+              ]
+            }
+          ]
+        },
+
+        ch20: {
+          name: "Ch 20: Active and Passive Voice",
+          worksheets: [
+            {
+              instruction: "Choose the correct option in passive voice of the given active voice sentences.",
+              questions: [
+                {
+                  text: "My father prepared porridge.",
+                  options: ["a. Porridge is prepared by my father.", "b. Porridge was being prepared by my father.", "c. Porridge was prepared by my father."],
+                  wideOptions: true
+                },
+                {
+                  text: "The workers are building a new office.",
+                  options: ["a. A new office was built by the workers.", "b. A new office was being built by the workers.", "c. A new office is being built by the workers."],
+                  wideOptions: true
+                },
+                {
+                  text: "The team has won many matches this season.",
+                  options: ["a. Many matches had been won by the team this season.", "b. Many matches have been won by the team this season.", "c. Many matches are being won by the team this season."],
+                  wideOptions: true
+                },
+                {
+                  text: "They will finish the project by next month.",
+                  options: ["a. The project will be finished by them by next month.", "b. The project will have been finished by them by next month.", "c. The project would be finished by them by next month."],
+                  wideOptions: true
+                }
+              ]
+            },
+            {
+              instruction: "Fill in the blanks with the correct passive voice form of the verb.",
+              questions: [
+                { text: "Active: They were discussing the project in the meeting yesterday.\nPassive: The project __________________ in the meeting yesterday." },
+                { text: "Active: The company is launching a new product next month.\nPassive: A new product _________________ by the company next month." },
+                { text: "Active: The police caught the thief after a long chase.\nPassive: The thief ________________ by the police after a long chase." },
+                { text: "Active: She sings beautifully in the choir every Sunday.\nPassive: Beautiful songs ________ by her in the choir every Sunday." },
+                { text: "Active: The artist painted a beautiful landscape.\nPassive: A beautiful landscape _________________ by the artist." }
+              ]
+            }
+          ]
+        },
+
+        ch21: {
+          name: "Ch 21: Direct and Indirect Speech",
+          worksheets: [
+            {
+              instruction: "Choose the correct indirect speech of the given direct speech.",
+              questions: [
+                {
+                  text: "Ankita said, 'I am going to the library.'",
+                  options: ["a. Ankita said that she is going to the library.", "b. Ankita said that she was going to the library."],
+                  wideOptions: true
+                },
+                {
+                  text: "Ayush said, 'I enjoy playing guitar.'",
+                  options: ["a. Ayush said that he enjoys playing guitar.", "b. Ayush said that he enjoyed playing guitar."],
+                  wideOptions: true
+                },
+                {
+                  text: "Vivek said, 'We will visit Paris soon!'",
+                  options: ["a. Vivek exclaimed that they will visit Paris soon.", "b. Vivek exclaimed that they would visit Paris soon."],
+                  wideOptions: true
+                },
+                {
+                  text: "Ira said, 'The play starts at 7 o'clock.'",
+                  options: ["a. Ira explained that the play starts at 8 o'clock.", "b. Ira explained that the play started at 8 o'clock."],
+                  wideOptions: true
+                },
+                {
+                  text: "Anya said, 'We are going to have pizza for dinner.'",
+                  options: ["a. Anya announced that they were going to have pizza for dinner.", "b. Anya announced that they are going to have pizza for dinner."],
+                  wideOptions: true
+                }
+              ]
+            },
+            {
+              instruction: "Change the following direct speech into indirect speech.",
+              questions: [
+                { text: "He said, 'My sister is a doctor.'", lines: 2 },
+                { text: "Mistha says, 'Time and tide wait for none.'", lines: 2 },
+                { text: "Tina said to me, 'I will not be going for my swimming class today.'", lines: 2 },
+                { text: "Abhilasha will say, 'They always cancel the trip at the last moment.'", lines: 2 },
+                { text: "Tom said, 'I love pizza.'", lines: 2 }
+              ]
+            }
+          ]
+        },
+
+        ch22: {
+          name: "Ch 22: Punctuation and Capital Letters",
+          worksheets: [
+            {
+              instruction: "Rewrite the following sentences using capital letters where necessary.",
+              questions: [
+                { text: "my sister and i visited the taj mahal in agra last summer.", lines: 2 },
+                { text: "on monday, we will celebrate diwali with our cousins.", lines: 2 },
+                { text: "dr. sharma teaches english at st. marys school.", lines: 2 },
+                { text: "the ganga river flows through varanasi.", lines: 2 },
+                { text: "have you read the story the thirsty crow?", lines: 2 }
+              ]
+            },
+            {
+              instruction: "Rewrite these sentences after inserting punctuation marks and capital letters where required.",
+              questions: [
+                { text: "what are you doing in the kitchen asked mother", lines: 2 },
+                { text: "rahul said i will complete my homework before dinner", lines: 2 },
+                { text: "did you finish the project on environmental pollution", lines: 2 },
+                { text: "we visited mumbai delhi and jaipur during our vacation", lines: 2 },
+                { text: "alas the little bird fell from the tree", lines: 2 }
+              ]
+            }
+          ]
+        }
+
+      };
+
+      // ─── HELPERS ───────────────────────────────────────────────────────────
+      function shuffleArray(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+
+      function getSelectedChapterKeys() {
+        return [...document.querySelectorAll(".chapter-card:has(input:checked)")].map(c => c.dataset.chapter);
+      }
+
+      function countAvailableQuestions(keys) {
+        let total = 0;
+        keys.forEach(k => {
+          if (questionBank[k]) {
+            questionBank[k].worksheets.forEach(ws => total += ws.questions.length);
+          }
+        });
+        return total;
+      }
+
+      function updateAvailableCount() {
+        const count = countAvailableQuestions(getSelectedChapterKeys());
+        document.getElementById("availableCount").textContent = count;
+        document.getElementById("actionAvail").textContent =
+          count > 0 ? count + " questions available" : "Select chapters to begin";
+      }
+
+      document.querySelectorAll(".chapter-card input").forEach(cb =>
+        cb.addEventListener("change", updateAvailableCount)
+      );
+
+      // ─── PREVIEW TEST ───────────────────────────────────────────────────────
+      function previewTest() {
+        const testName = document.getElementById("testName").value || "Grammar Frolics-7 Test";
+        const testDate = document.getElementById("testDate").value;
+        const testDuration = document.getElementById("testDuration").value;
+        const totalMarks = parseInt(document.getElementById("totalMarks").value) || 30;
+
+        document.getElementById("previewTestName").textContent = testName;
+        document.getElementById("previewDate").textContent = testDate || "_____________";
+        document.getElementById("previewMarks").textContent = totalMarks;
+        document.getElementById("previewDuration").textContent = testDuration || "____";
+
+        const selectedKeys = getSelectedChapterKeys();
+        if (selectedKeys.length === 0) {
+          alert("Please select at least one chapter!");
+          return;
+        }
+
+        // Flatten all questions from selected chapters into a pool
+        const pool = [];
+        selectedKeys.forEach(chKey => {
+          const ch = questionBank[chKey];
+          if (!ch) return;
+          ch.worksheets.forEach((ws, wsIdx) => {
+            ws.questions.forEach(q => {
+              pool.push({
+                chapterKey: chKey,
+                chapterName: ch.name,
+                worksheetIdx: wsIdx,
+                instruction: ws.instruction,
+                text: q.text,
+                options: q.options || null,
+                wideOptions: q.wideOptions || false,
+                lines: q.lines || 0
+              });
+            });
+          });
+        });
+
+        // Shuffle and select up to totalMarks questions
+        const shuffled = shuffleArray(pool);
+        const available = shuffled.length;
+        const selected = shuffled.slice(0, Math.min(totalMarks, available));
+
+        if (available < totalMarks) {
+          alert(
+            "Only " + available + " questions are available from selected chapters.\n" +
+            "Showing all " + available + " questions. Select more chapters or reduce total marks."
+          );
+        }
+
+        // Re-group by chapter (maintaining chapter order), then by worksheet
+        const grouped = new Map();
+        selectedKeys.forEach(k => {
+          grouped.set(k, { name: questionBank[k].name, worksheets: new Map() });
+        });
+
+        selected.forEach(q => {
+          const chGroup = grouped.get(q.chapterKey);
+          if (!chGroup) return;
+          if (!chGroup.worksheets.has(q.worksheetIdx)) {
+            chGroup.worksheets.set(q.worksheetIdx, { instruction: q.instruction, questions: [] });
+          }
+          chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
+        });
+
+        // Render
+        const container = document.getElementById("questionsContainer");
+        container.innerHTML = "";
+        let qNum = 1;
+
+        grouped.forEach((chData) => {
+          if (chData.worksheets.size === 0) return;
+
+          const chSection = document.createElement("div");
+          chSection.className = "question-section";
+          chSection.innerHTML = "<h3>" + chData.name + "</h3>";
+
+          const sortedWs = [...chData.worksheets.entries()].sort((a, b) => a[0] - b[0]);
+
+          sortedWs.forEach(([, wsData]) => {
+            const wsDiv = document.createElement("div");
+            wsDiv.className = "worksheet-group";
+            wsDiv.innerHTML = "<p class=\"ws-instruction\">" + wsData.instruction.replace(/\n/g, "<br>") + "</p>";
+
+            wsData.questions.forEach(q => {
+              const qDiv = document.createElement("div");
+              qDiv.className = "question-item";
+
+              let html = "<p class=\"question-text\"><strong>" + qNum + ".</strong> " +
+                q.text.replace(/\n/g, "<br>") + "</p>";
+
+              if (q.options && q.options.length > 0) {
+                if (q.wideOptions) {
+                  html += "<div class=\"options-list\">";
+                  q.options.forEach(opt => {
+                    html += "<span class=\"option-item\">" + opt + "</span>";
+                  });
+                  html += "</div>";
+                } else {
+                  html += "<div class=\"options-grid\">";
+                  q.options.forEach(opt => {
+                    html += "<span class=\"option-item\">" + opt + "</span>";
+                  });
+                  html += "</div>";
+                }
+              }
+
+              for (let i = 0; i < q.lines; i++) {
+                html += "<div class=\"answer-line\"></div>";
+              }
+
+              qDiv.innerHTML = html;
+              wsDiv.appendChild(qDiv);
+              qNum++;
+            });
+
+            chSection.appendChild(wsDiv);
+          });
+
+          container.appendChild(chSection);
+        });
+
+        document.getElementById("testPreview").classList.add("show");
+        document.getElementById("testPreview").scrollIntoView({ behavior: "smooth" });
+      }
+
+      function printTest() {
+        previewTest();
+        setTimeout(() => window.print(), 600);
+      }
+    </script>
+  </body>
+</html>
