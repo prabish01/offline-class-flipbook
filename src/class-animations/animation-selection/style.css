@@ -20,13 +20,13 @@ body {
 
 .back-btn {
   position: absolute;
-  top: -1rem;
+  top: clamp(0.75rem, 1rem, 1.25rem);
   left: 0;
   background: rgba(255, 255, 255, 0.9);
   border: none;
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  font-size: 1.2rem;
+  padding: clamp(0.8rem, 1rem, 1.2rem) clamp(1.5rem, 2rem, 2.5rem);
+  border-radius: clamp(40px, 50px, 60px);
+  font-size: clamp(1rem, 1.2rem, 1.4rem);
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -42,26 +42,26 @@ body {
 .page-title {
   text-align: center;
   color: white;
-  font-size: 3rem;
-  margin: 3rem 0 0.5rem;
+  font-size: clamp(2.5rem, 3rem, 3.5rem);
+  margin: clamp(2.5rem, 3rem, 3.5rem) 0 clamp(0.4rem, 0.5rem, 0.6rem);
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .page-subtitle {
   text-align: center;
   color: rgba(255, 255, 255, 0.95);
-  font-size: 1.3rem;
-  margin-bottom: 2rem;
+  font-size: clamp(1.1rem, 1.3rem, 1.5rem);
+  margin-bottom: clamp(1.5rem, 2rem, 2.5rem);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* YouTube-style Video Grid */
+/* YouTube-style Video Grid - Responsive */
 .videos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2.5rem;
-  padding: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(280px, 350px, 400px), 1fr));
+  gap: clamp(2rem, 2.5rem, 3rem);
+  padding: clamp(1.5rem, 2rem, 2.5rem);
+  margin-top: clamp(1.5rem, 2rem, 2.5rem);
 }
 
 /* Video Card */

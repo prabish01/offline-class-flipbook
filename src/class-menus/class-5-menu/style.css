@@ -24,12 +24,12 @@ body {
 /* Back Button */
 .back-btn {
   position: absolute;
-  top: 2vw;
-  left: 2vw;
-  padding: 0.8vw 1.5vw;
+  top: clamp(1rem, 2vw, 2rem);
+  left: clamp(1rem, 2vw, 2rem);
+  padding: clamp(0.6rem, 0.8vw, 1rem) clamp(1.2rem, 1.5vw, 1.8rem);
   background: rgba(255, 255, 255, 0.9);
   border: none;
-  border-radius: 10px;
+  border-radius: clamp(8px, 1vw, 12px);
   font-size: 1.2vw;
   font-family: "Comic Sans MS", cursive;
   font-weight: bold;
@@ -49,7 +49,7 @@ body {
 /* Class Heading */
 .class-heading {
   position: absolute;
-  top: 8vw;
+  top: clamp(4rem, 8vw, 8rem);
   left: 50%;
   transform: translateX(-50%);
   font-size: 4vw;
@@ -71,7 +71,7 @@ body {
   pointer-events: none;
 }
 
-/* Cards Container */
+/* Cards Container - Responsive */
 .cards-container {
   position: absolute;
   top: 55%;
@@ -79,17 +79,19 @@ body {
   transform: translate(-50%, -50%);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 3vw;
-  width: 60vw;
+  gap: clamp(1rem, 2vw, 2rem);
+  width: clamp(400px, 50vw, 700px);
+  max-width: 90vw;
   z-index: 10;
 }
 
-/* Card Styles */
+/* Card Styles - Responsive */
 .card {
   position: relative;
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 25px;
-  padding: 3vw 2vw;
+  border-radius: clamp(12px, 1.5vw, 20px);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  min-height: clamp(120px, 16vh, 180px);
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
@@ -97,6 +99,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   overflow: hidden;
 }
@@ -108,10 +111,12 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  border-radius: 25px;
+  border-radius: clamp(12px, 1.5vw, 20px);
   padding: 3px;
   background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
@@ -123,8 +128,8 @@ body {
 }
 
 .card-icon {
-  font-size: 5vw;
-  margin-bottom: 1.5vw;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  margin-bottom: clamp(0.5rem, 1vw, 1rem);
   animation: iconFloat 3s ease-in-out infinite;
 }
 
@@ -140,25 +145,27 @@ body {
 
 .card-title {
   position: relative;
-  font-size: 2vw;
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
   font-weight: bold;
   color: #333;
-  margin-bottom: 1vw;
+  margin-bottom: clamp(0.4rem, 0.8vw, 0.8rem);
   font-family: "Comic Sans MS", cursive;
 }
 
 .card-description {
   position: relative;
-  font-size: 1.2vw;
+  font-size: clamp(0.8rem, 1vw, 1rem);
   color: #666;
-  line-height: 1.6;
+  line-height: 1.5;
   font-family: "Comic Sans MS", cursive;
 }
 
 /* Individual Card Colors */
 #flip {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  box-shadow: 0px 8px 25px rgba(102, 126, 234, 0.6), 0px 0px 40px rgba(118, 75, 162, 0.5);
+  box-shadow:
+    0px 8px 25px rgba(102, 126, 234, 0.6),
+    0px 0px 40px rgba(118, 75, 162, 0.5);
 }
 
 #flip .card-title,
@@ -172,7 +179,9 @@ body {
 
 #anima {
   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  box-shadow: 0px 8px 25px rgba(240, 147, 251, 0.6), 0px 0px 40px rgba(245, 87, 108, 0.5);
+  box-shadow:
+    0px 8px 25px rgba(240, 147, 251, 0.6),
+    0px 0px 40px rgba(245, 87, 108, 0.5);
 }
 
 #anima .card-title,
@@ -186,7 +195,9 @@ body {
 
 #test {
   background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  box-shadow: 0px 8px 25px rgba(79, 172, 254, 0.6), 0px 0px 40px rgba(0, 242, 254, 0.5);
+  box-shadow:
+    0px 8px 25px rgba(79, 172, 254, 0.6),
+    0px 0px 40px rgba(0, 242, 254, 0.5);
 }
 
 #test .card-title,
@@ -200,7 +211,9 @@ body {
 
 #worksheet {
   background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-  box-shadow: 0px 8px 25px rgba(67, 233, 123, 0.6), 0px 0px 40px rgba(56, 249, 215, 0.5);
+  box-shadow:
+    0px 8px 25px rgba(67, 233, 123, 0.6),
+    0px 0px 40px rgba(56, 249, 215, 0.5);
 }
 
 #worksheet .card-title,
@@ -319,13 +332,17 @@ body {
   width: 3vw;
   left: 22vw;
   top: 1vw;
-  animation: blink 2000ms ease-in-out infinite, float 3s ease-in-out infinite;
+  animation:
+    blink 2000ms ease-in-out infinite,
+    float 3s ease-in-out infinite;
 }
 .star2 {
   width: 3vw;
   left: 65vw;
   top: 10vw;
-  animation: blink 2000ms ease-in-out infinite 1s, float 4s ease-in-out infinite;
+  animation:
+    blink 2000ms ease-in-out infinite 1s,
+    float 4s ease-in-out infinite;
 }
 
 @keyframes float {
@@ -358,13 +375,17 @@ body {
   width: 2.5vw;
   left: 85vw;
   top: 70vh;
-  animation: blink 2500ms ease-in-out infinite 0.5s, float 5s ease-in-out infinite;
+  animation:
+    blink 2500ms ease-in-out infinite 0.5s,
+    float 5s ease-in-out infinite;
 }
 .star4 {
   width: 2vw;
   left: 10vw;
   top: 60vh;
-  animation: blink 1800ms ease-in-out infinite 1.5s, float 3.5s ease-in-out infinite;
+  animation:
+    blink 1800ms ease-in-out infinite 1.5s,
+    float 3.5s ease-in-out infinite;
 }
 
 /* Floating clouds */

@@ -26,32 +26,35 @@ body {
 .page-title {
   text-align: center;
   color: rgb(23, 49, 92);
-  font-size: 3.5rem;
-  margin: 7rem 0rem -4rem 0rem;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin: clamp(4rem, 10vh, 10rem) 0rem clamp(-1.5rem, -3vh, -3rem) 0rem;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .subtitle {
   text-align: center;
   color: rgb(23, 49, 92);
-  font-size: 1.5rem;
-  margin-top: 4rem;
-  margin-bottom: 3rem;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  margin-top: clamp(2.5rem, 5vh, 5rem);
+  margin-bottom: clamp(2.5rem, 4vh, 4rem);
   opacity: 0.9;
 }
 
 .classes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
-  margin-top: -2rem;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(140px, 16vw, 180px), 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+  padding: clamp(1rem, 2vw, 2rem);
+  margin-top: 0rem;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .class-card {
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  padding: 3rem 2rem;
+  border-radius: clamp(12px, 1.5vw, 20px);
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 2vw, 1.5rem);
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
@@ -97,10 +100,10 @@ body {
 }
 
 .class-number {
-  font-size: 5rem;
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: bold;
   color: rgb(155, 206, 230);
-  margin-bottom: 1rem;
+  margin-bottom: clamp(0.5rem, 1vw, 1rem);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   animation: pulse 2s ease-in-out infinite;
 }
@@ -130,14 +133,14 @@ body {
 }
 
 .class-title {
-  font-size: 1.8rem;
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
   color: #333;
-  margin-bottom: 0.5rem;
+  margin-bottom: clamp(0.35rem, 0.75vw, 0.625rem);
   font-weight: bold;
 }
 
 .class-info {
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 1.5vw, 1.25rem);
   color: #666;
 }
 
@@ -145,41 +148,66 @@ body {
   font-weight: bold;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* ========================================
+   RESPONSIVE MEDIA QUERIES
+   ======================================== */
+
+/* Large Screens (1920px+) */
+@media (min-width: 1920px) {
   .page-title {
-    font-size: 2.5rem;
+    font-size: 4.5rem;
   }
 
   .subtitle {
-    font-size: 1.2rem;
+    font-size: 2rem;
   }
 
   .classes-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    padding: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 3rem;
   }
 
   .class-number {
-    font-size: 3.5rem;
+    font-size: 6rem;
   }
 
   .class-title {
-    font-size: 1.4rem;
+    font-size: 2.25rem;
   }
 
   .class-info {
-    font-size: 0.9rem;
+    font-size: 1.4rem;
   }
 }
 
-@media (max-width: 480px) {
+/* Desktop (1440px - 1919px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
   .classes-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+/* Laptop (1024px - 1439px) */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .classes-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+}
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .page-title {
+    margin: clamp(2.5rem, 5vh, 5rem) 0rem clamp(-1.5rem, -3vh, -3rem) 0rem;
+  }
+
+  .classes-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.75rem;
+    padding: 1.75rem;
   }
 
   .class-card {
-    padding: 2rem 1rem;
+    padding: clamp(1.75rem, 3.5vw, 2.75rem) clamp(1.25rem, 2.5vw, 2rem);
   }
 }
