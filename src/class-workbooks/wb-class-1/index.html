@@ -1,12 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Workbook - Class 1</title>
+    <title>Worksheets - Class 1</title>
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
       body {
         font-family: "Comic Sans MS", "Chalkboard SE", cursive, sans-serif;
@@ -40,7 +44,9 @@
       }
 
       /* ── Chapter Selection View ── */
-      #chapter-view { display: block; }
+      #chapter-view {
+        display: block;
+      }
 
       .header {
         text-align: center;
@@ -182,13 +188,16 @@
       }
 
       @media (max-width: 768px) {
-        h1 { font-size: 2rem; }
-        .chapters-grid { grid-template-columns: 1fr 1fr; }
+        h1 {
+          font-size: 2rem;
+        }
+        .chapters-grid {
+          grid-template-columns: 1fr 1fr;
+        }
       }
     </style>
   </head>
   <body>
-
     <!-- Floating back button (chapter view) -->
     <button class="back-btn" id="main-back" onclick="window.history.back()">&#8592; Back</button>
 
@@ -198,8 +207,8 @@
     <!-- Chapter Selection View -->
     <div id="chapter-view">
       <div class="header">
-        <h1>&#128218; Workbook - Class 1</h1>
-        <p class="subtitle">Select a chapter to open the workbook</p>
+        <h1>&#128218; Worksheets - Class 1</h1>
+        <p class="subtitle">Select a chapter to open the worksheets</p>
       </div>
 
       <div class="container">
@@ -221,62 +230,60 @@
     </div>
 
     <script>
-      const BASE = '../../../assets/pdfs/workbooks/class-1/';
+      const BASE = "../../../assets/pdfs/workbooks/class-1/";
 
       const CHAPTERS = [
-        { file: 'Ch01_Naming_Words_-_People.pdf',            name: 'Naming Words - People' },
-        { file: 'Ch02_Naming_Words_-_Places.pdf',            name: 'Naming Words - Places' },
-        { file: 'Ch03_Naming_Words_-_Animals.pdf',           name: 'Naming Words - Animals' },
-        { file: 'Ch04_Naming_Words_-_Things.pdf',            name: 'Naming Words - Things' },
-        { file: 'Ch05_Naming_Words_-_Revision.pdf',          name: 'Naming Words - Revision' },
-        { file: 'Ch06_One_and_Many.pdf',                     name: 'One and Many' },
-        { file: 'Ch07_A_or_An.pdf',                          name: 'A or An' },
-        { file: 'Ch08_This_is_That_is.pdf',                  name: 'This is / That is' },
-        { file: 'Ch09_These_are_Those_are.pdf',              name: 'These are / Those are' },
-        { file: 'Ch10_Male_or_Female\u2014People.pdf',       name: 'Male or Female \u2014 People' },
-        { file: 'Ch11_Male_or_Female_\u2014Animals.pdf',     name: 'Male or Female \u2014 Animals' },
-        { file: 'Ch12_Pronouns.pdf',                         name: 'Pronouns' },
-        { file: 'Ch13_Describing_Words.pdf',                 name: 'Describing Words' },
-        { file: 'Ch14_Action_Words.pdf',                     name: 'Action Words' },
-        { file: 'Ch15_Being_Verbs.pdf',                      name: 'Being Verbs' },
-        { file: 'Ch16_Having_Verbs.pdf',                     name: 'Having Verbs' },
-        { file: 'Ch17_Actions_that_Happen_Every_Day.pdf',    name: 'Actions that Happen Every Day' },
-        { file: 'Ch18_Actions_that_Happened_Before_Now.pdf', name: 'Actions that Happened Before Now' },
-        { file: 'Ch19_The_Sentence.pdf',                     name: 'The Sentence' },
-        { file: 'Ch20_Statements_and_Questions.pdf',         name: 'Statements and Questions' },
-        { file: 'Ch21_Joining_Words.pdf',                    name: 'Joining Words' },
-        { file: 'Ch22_Position_Words.pdf',                   name: 'Position Words' },
+        { file: "Ch01_Naming_Words_-_People.pdf", name: "Naming Words - People" },
+        { file: "Ch02_Naming_Words_-_Places.pdf", name: "Naming Words - Places" },
+        { file: "Ch03_Naming_Words_-_Animals.pdf", name: "Naming Words - Animals" },
+        { file: "Ch04_Naming_Words_-_Things.pdf", name: "Naming Words - Things" },
+        { file: "Ch05_Naming_Words_-_Revision.pdf", name: "Naming Words - Revision" },
+        { file: "Ch06_One_and_Many.pdf", name: "One and Many" },
+        { file: "Ch07_A_or_An.pdf", name: "A or An" },
+        { file: "Ch08_This_is_That_is.pdf", name: "This is / That is" },
+        { file: "Ch09_These_are_Those_are.pdf", name: "These are / Those are" },
+        { file: "Ch10_Male_or_Female\u2014People.pdf", name: "Male or Female \u2014 People" },
+        { file: "Ch11_Male_or_Female_\u2014Animals.pdf", name: "Male or Female \u2014 Animals" },
+        { file: "Ch12_Pronouns.pdf", name: "Pronouns" },
+        { file: "Ch13_Describing_Words.pdf", name: "Describing Words" },
+        { file: "Ch14_Action_Words.pdf", name: "Action Words" },
+        { file: "Ch15_Being_Verbs.pdf", name: "Being Verbs" },
+        { file: "Ch16_Having_Verbs.pdf", name: "Having Verbs" },
+        { file: "Ch17_Actions_that_Happen_Every_Day.pdf", name: "Actions that Happen Every Day" },
+        { file: "Ch18_Actions_that_Happened_Before_Now.pdf", name: "Actions that Happened Before Now" },
+        { file: "Ch19_The_Sentence.pdf", name: "The Sentence" },
+        { file: "Ch20_Statements_and_Questions.pdf", name: "Statements and Questions" },
+        { file: "Ch21_Joining_Words.pdf", name: "Joining Words" },
+        { file: "Ch22_Position_Words.pdf", name: "Position Words" },
       ];
 
       function buildGrid() {
-        const grid = document.getElementById('chapters-grid');
+        const grid = document.getElementById("chapters-grid");
         CHAPTERS.forEach(({ file, name }, i) => {
           const num = parseInt(file.match(/^Ch(\d+)/)[1], 10);
-          const card = document.createElement('div');
-          card.className = 'chapter-card';
-          card.innerHTML =
-            '<span class="chapter-number">Chapter ' + num + '</span>' +
-            '<h3>' + name + '</h3>';
-          card.onclick = () => openChapter(BASE + file, 'Ch ' + num + ': ' + name);
+          const card = document.createElement("div");
+          card.className = "chapter-card";
+          card.innerHTML = '<span class="chapter-number">Chapter ' + num + "</span>" + "<h3>" + name + "</h3>";
+          card.onclick = () => openChapter(BASE + file, "Ch " + num + ": " + name);
           grid.appendChild(card);
         });
       }
 
       function openChapter(path, title) {
-        document.getElementById('pdf-embed').src = path;
-        document.getElementById('pdf-title').textContent = title;
-        document.getElementById('chapter-view').style.display = 'none';
-        document.getElementById('main-back').style.display = 'none';
-        document.getElementById('pdf-view').style.display = 'flex';
-        document.getElementById('pdf-back').style.display = 'block';
+        document.getElementById("pdf-embed").src = path;
+        document.getElementById("pdf-title").textContent = title;
+        document.getElementById("chapter-view").style.display = "none";
+        document.getElementById("main-back").style.display = "none";
+        document.getElementById("pdf-view").style.display = "flex";
+        document.getElementById("pdf-back").style.display = "block";
       }
 
       function showChapters() {
-        document.getElementById('pdf-embed').src = '';
-        document.getElementById('pdf-view').style.display = 'none';
-        document.getElementById('pdf-back').style.display = 'none';
-        document.getElementById('chapter-view').style.display = 'block';
-        document.getElementById('main-back').style.display = 'block';
+        document.getElementById("pdf-embed").src = "";
+        document.getElementById("pdf-view").style.display = "none";
+        document.getElementById("pdf-back").style.display = "none";
+        document.getElementById("chapter-view").style.display = "block";
+        document.getElementById("main-back").style.display = "block";
       }
 
       buildGrid();

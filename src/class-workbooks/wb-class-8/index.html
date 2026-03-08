@@ -1,12 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Workbook - Class 8</title>
+    <title>Worksheets - Class 8</title>
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
       body {
         font-family: "Comic Sans MS", "Chalkboard SE", cursive, sans-serif;
@@ -38,9 +42,14 @@
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
       }
 
-      #chapter-view { display: block; }
+      #chapter-view {
+        display: block;
+      }
 
-      .header { text-align: center; margin-bottom: 30px; }
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
 
       h1 {
         color: white;
@@ -56,7 +65,10 @@
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       }
 
-      .container { max-width: 1200px; margin: 0 auto; }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
 
       .chapters-section {
         background: white;
@@ -92,7 +104,9 @@
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
       }
 
-      .chapter-card:active { transform: translateY(-2px); }
+      .chapter-card:active {
+        transform: translateY(-2px);
+      }
 
       .chapter-number {
         color: rgba(255, 255, 255, 0.6);
@@ -151,27 +165,42 @@
         display: none;
       }
 
-      .pdf-back-btn:hover { background: white; transform: translateX(-3px); }
+      .pdf-back-btn:hover {
+        background: white;
+        transform: translateX(-3px);
+      }
 
-      .pdf-container { flex: 1; width: 100%; overflow: hidden; }
+      .pdf-container {
+        flex: 1;
+        width: 100%;
+        overflow: hidden;
+      }
 
-      embed { width: 100%; height: 100%; border: none; display: block; }
+      embed {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+      }
 
       @media (max-width: 768px) {
-        h1 { font-size: 2rem; }
-        .chapters-grid { grid-template-columns: 1fr 1fr; }
+        h1 {
+          font-size: 2rem;
+        }
+        .chapters-grid {
+          grid-template-columns: 1fr 1fr;
+        }
       }
     </style>
   </head>
   <body>
-
     <button class="back-btn" id="main-back" onclick="window.history.back()">&#8592; Back</button>
     <button class="pdf-back-btn" id="pdf-back" onclick="showChapters()">&#8592; Chapters</button>
 
     <div id="chapter-view">
       <div class="header">
-        <h1>&#128218; Workbook - Class 8</h1>
-        <p class="subtitle">Select a chapter to open the workbook</p>
+        <h1>&#128218; Worksheets - Class 8</h1>
+        <p class="subtitle">Select a chapter to open the worksheets</p>
       </div>
       <div class="container">
         <div class="chapters-section">
@@ -191,63 +220,61 @@
     </div>
 
     <script>
-      const BASE = '../../../assets/pdfs/workbooks/class-8/';
+      const BASE = "../../../assets/pdfs/workbooks/class-8/";
 
       const CHAPTERS = [
-        { file: 'Ch01_Nouns.pdf',                               name: 'Nouns' },
-        { file: 'Ch02_Articles.pdf',                            name: 'Articles' },
-        { file: 'Ch03_Pronouns.pdf',                            name: 'Pronouns' },
-        { file: 'Ch04_Adjectives.pdf',                          name: 'Adjectives' },
-        { file: 'Ch05_Finite_and_Non_-Finite_Verbs.pdf',        name: 'Finite and Non-Finite Verbs' },
-        { file: 'Ch06_Modals.pdf',                              name: 'Modals' },
-        { file: 'Ch07_Simple_Tenses.pdf',                       name: 'Simple Tenses' },
-        { file: 'Ch08_Continuous_Tenses.pdf',                   name: 'Continuous Tenses' },
-        { file: 'Ch09_Perfect_Tenses.pdf',                      name: 'Perfect Tenses' },
-        { file: 'Ch10_Perfect_Continuous_Tenses.pdf',           name: 'Perfect Continuous Tenses' },
-        { file: 'Ch11_Adverbs.pdf',                             name: 'Adverbs' },
-        { file: 'Ch12_Prepositions.pdf',                        name: 'Prepositions' },
-        { file: 'Ch13_Conjunctions.pdf',                        name: 'Conjunctions' },
-        { file: 'Ch14_Direct_and_Indirect_Speech.pdf',          name: 'Direct and Indirect Speech' },
-        { file: 'Ch15_Active_and_Passive_Voice.pdf',            name: 'Active and Passive Voice' },
-        { file: 'Ch16_Subject\u2013Verb_Agreement.pdf',         name: 'Subject\u2013Verb Agreement' },
-        { file: 'Ch17_Phrases.pdf',                             name: 'Phrases' },
-        { file: 'Ch18_Clauses.pdf',                             name: 'Clauses' },
-        { file: 'Ch19_Conditional_Sentences.pdf',               name: 'Conditional Sentences' },
-        { file: 'Ch20_The_Sentence.pdf',                        name: 'The Sentence' },
-        { file: 'Ch21_Synthesis_of_Sentences.pdf',              name: 'Synthesis of Sentences' },
-        { file: 'Ch22_Transformation_of_Sentences.pdf',         name: 'Transformation of Sentences' },
-        { file: 'Ch23_Punctuation_and_Capital_Letters.pdf',     name: 'Punctuation and Capital Letters' },
+        { file: "Ch01_Nouns.pdf", name: "Nouns" },
+        { file: "Ch02_Articles.pdf", name: "Articles" },
+        { file: "Ch03_Pronouns.pdf", name: "Pronouns" },
+        { file: "Ch04_Adjectives.pdf", name: "Adjectives" },
+        { file: "Ch05_Finite_and_Non_-Finite_Verbs.pdf", name: "Finite and Non-Finite Verbs" },
+        { file: "Ch06_Modals.pdf", name: "Modals" },
+        { file: "Ch07_Simple_Tenses.pdf", name: "Simple Tenses" },
+        { file: "Ch08_Continuous_Tenses.pdf", name: "Continuous Tenses" },
+        { file: "Ch09_Perfect_Tenses.pdf", name: "Perfect Tenses" },
+        { file: "Ch10_Perfect_Continuous_Tenses.pdf", name: "Perfect Continuous Tenses" },
+        { file: "Ch11_Adverbs.pdf", name: "Adverbs" },
+        { file: "Ch12_Prepositions.pdf", name: "Prepositions" },
+        { file: "Ch13_Conjunctions.pdf", name: "Conjunctions" },
+        { file: "Ch14_Direct_and_Indirect_Speech.pdf", name: "Direct and Indirect Speech" },
+        { file: "Ch15_Active_and_Passive_Voice.pdf", name: "Active and Passive Voice" },
+        { file: "Ch16_Subject\u2013Verb_Agreement.pdf", name: "Subject\u2013Verb Agreement" },
+        { file: "Ch17_Phrases.pdf", name: "Phrases" },
+        { file: "Ch18_Clauses.pdf", name: "Clauses" },
+        { file: "Ch19_Conditional_Sentences.pdf", name: "Conditional Sentences" },
+        { file: "Ch20_The_Sentence.pdf", name: "The Sentence" },
+        { file: "Ch21_Synthesis_of_Sentences.pdf", name: "Synthesis of Sentences" },
+        { file: "Ch22_Transformation_of_Sentences.pdf", name: "Transformation of Sentences" },
+        { file: "Ch23_Punctuation_and_Capital_Letters.pdf", name: "Punctuation and Capital Letters" },
       ];
 
       function buildGrid() {
-        const grid = document.getElementById('chapters-grid');
+        const grid = document.getElementById("chapters-grid");
         CHAPTERS.forEach(({ file, name }) => {
           const num = parseInt(file.match(/^Ch(\d+)/)[1], 10);
-          const card = document.createElement('div');
-          card.className = 'chapter-card';
-          card.innerHTML =
-            '<span class="chapter-number">Chapter ' + num + '</span>' +
-            '<h3>' + name + '</h3>';
-          card.onclick = () => openChapter(BASE + file, 'Ch ' + num + ': ' + name);
+          const card = document.createElement("div");
+          card.className = "chapter-card";
+          card.innerHTML = '<span class="chapter-number">Chapter ' + num + "</span>" + "<h3>" + name + "</h3>";
+          card.onclick = () => openChapter(BASE + file, "Ch " + num + ": " + name);
           grid.appendChild(card);
         });
       }
 
       function openChapter(path, title) {
-        document.getElementById('pdf-embed').src = path;
-        document.getElementById('pdf-title').textContent = title;
-        document.getElementById('chapter-view').style.display = 'none';
-        document.getElementById('main-back').style.display = 'none';
-        document.getElementById('pdf-view').style.display = 'flex';
-        document.getElementById('pdf-back').style.display = 'block';
+        document.getElementById("pdf-embed").src = path;
+        document.getElementById("pdf-title").textContent = title;
+        document.getElementById("chapter-view").style.display = "none";
+        document.getElementById("main-back").style.display = "none";
+        document.getElementById("pdf-view").style.display = "flex";
+        document.getElementById("pdf-back").style.display = "block";
       }
 
       function showChapters() {
-        document.getElementById('pdf-embed').src = '';
-        document.getElementById('pdf-view').style.display = 'none';
-        document.getElementById('pdf-back').style.display = 'none';
-        document.getElementById('chapter-view').style.display = 'block';
-        document.getElementById('main-back').style.display = 'block';
+        document.getElementById("pdf-embed").src = "";
+        document.getElementById("pdf-view").style.display = "none";
+        document.getElementById("pdf-back").style.display = "none";
+        document.getElementById("chapter-view").style.display = "block";
+        document.getElementById("main-back").style.display = "block";
       }
 
       buildGrid();
