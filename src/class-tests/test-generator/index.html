@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -294,6 +294,15 @@
           border: none !important;
         }
 
+        .question ol {
+          margin-left: 25px !important;
+          font-size: 0.95rem !important;
+        }
+
+        .question ol li {
+          margin-bottom: 6px !important;
+        }
+
         .question img {
           max-width: 55% !important;
           max-height: 400px !important;
@@ -367,6 +376,16 @@
         border-left: 4px solid #667eea;
         background: #f9f9f9;
         border-radius: 10px;
+      }
+
+      .question ol {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: #333;
+      }
+
+      .question ol li {
+        margin-bottom: 10px;
       }
 
       .question img {
@@ -744,9 +763,28 @@
           { text: "Grammar - Chapter 6", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 6 A.png"], answer: "Complete the exercises" },
           { text: "Grammar - Chapter 6", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 6 B.png"], answer: "Complete the exercises" },
         ],
-        g7: [{ text: "A or An", images: ["../../../assets/images/test-generator/class-1/Grammar07_A_or_An.pdf"], answer: "Complete the exercises" }],
-        g8: [{ text: "This is or That is", images: ["../../../assets/images/test-generator/class-1/Grammar08_This_is_or_That_is.pdf"], answer: "Complete the exercises" }],
-        g9: [{ text: "These are or Those are", images: ["../../../assets/images/test-generator/class-1/Grammar09_These_are_or_Those_are.pdf"], answer: "Complete the exercises" }],
+        g7: [
+          { text: "Choose 'a' or 'an'", questions: ["__ octopus", "__ butterfly", "__ ice cream", "__ orange", "__ rose", "__ iguana", "__ apple", "__ puppy"], answer: "an, a, an, an, a, an, an, a" },
+          {
+            text: "Write a or an before each naming word",
+            questions: ["__ cookie", "__ alligator", "__ lemon", "__ ostrich", "__ aeroplane", "__ ace", "__ bun", "__ elephant", "__ zoo", "__ doughnut", "__ lion", "__ eagle", "__ urn", "__ avocado", "__ bicycle", "__ fish"],
+            answer: "a, an, a, an, an, an, a, an, a, a, a, an, an, an, a, a",
+          },
+        ],
+        g8: [
+          {
+            text: "Write This is or That is to complete the sentences",
+            questions: ["____ __ my dog.", "____ __ a snake", "____ __ a schoolbag", "____ __ an island", "____ __ an elephant", "____ __ a tiger", "____ __ a hot-air balloon"],
+            answer: "This is, That is, This is, That is, That is, That is, That is",
+          },
+        ],
+        g9: [
+          {
+            text: "Write These are or Those are to complete the sentences",
+            questions: ["____ __ my pets", "____ __ wolves", "____ __ fresh mangoes", "____ __ birds", "____ __ balloons", "____ __ pigeons", "____ __ stars", "____ __ my friends"],
+            answer: "These are, Those are, These are, Those are, Those are, Those are, Those are, These are",
+          },
+        ],
         g10: [
           { text: "Grammar - Chapter 10", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 10 A.png"], answer: "Complete the exercises" },
           { text: "Grammar - Chapter 10", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 10 B.png"], answer: "Complete the exercises" },
@@ -768,10 +806,93 @@
           { text: "Grammar - Chapter 14", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 14 B.png"], answer: "Complete the exercises" },
         ],
         g15: [
-          { text: "Being Verbs", images: ["../../../assets/images/test-generator/class-1/Grammar15_Being_Verbs.pdf"], answer: "Complete the exercises" },
+          {
+            text: "Choose the correct word to complete each sentence (is / are)",
+            questions: [
+              "The cat ___ in the basket",
+              "The phone ___ on the table.",
+              "The books ___ on the shelf.",
+              "Her dress ___ beautiful.",
+              "The windows ___ open.",
+              "This apple ___ very sweet.",
+              "These apples ___ fresh.",
+              "The chicks ___ in the nest.",
+              "The students ___ in the classroom",
+              "The cake ___ ready to eat.",
+              "The flowers ___ beautiful.",
+              "The movie ___ really good",
+              "The chairs ___ made of wood.",
+              "My friend ___ very kind",
+            ],
+            answer: "is, is, are, is, are, is, are, are, are, is, are, is, are, is",
+          },
+          {
+            text: "Fill in the blanks with am, is or are",
+            questions: [
+              "I ___ busy today.",
+              "She ___ a good singer.",
+              "They ___ my best friends.",
+              "He ___ from Canada.",
+              "We ___ excited for the trip.",
+              "It ___ very cold outside.",
+              "You ___ very kind.",
+              "I ___ not well.",
+              "He ___ not here right now.",
+              "We ___ in the same class.",
+              "You ___ my favourite teacher.",
+              "She ___ at the park right now.",
+              "We ___ ready to go.",
+              "He ___ always on time.",
+              "I ___ very hungry.",
+            ],
+            answer: "am, is, are, is, are, is, are, am, is, are, are, is, are, is, am",
+          },
         ],
         g16: [
-          { text: "Having Verbs", images: ["../../../assets/images/test-generator/class-1/Grammar16_Having_Verbs.pdf"], answer: "Complete the exercises" },
+          {
+            text: "Choose the correct word to complete each sentence",
+            questions: [
+              "The lion ____ a long tail.",
+              "My shirts ____ shiny buttons.",
+              "This room ____ a secret door.",
+              "Those butterflies ____ colorful wings.",
+              "A shark ____ sharp teeth.",
+              "Our houses ____ two windows.",
+              "The king ____ a golden crown.",
+              "These rabbits ____ soft fur.",
+              "The bottle ____ clean water.",
+              "A car ____ four wheels.",
+              "These students ____ new backpacks.",
+              "His watch ____ a leather strap.",
+              "Some dogs ____ curly tails.",
+              "That tree ____ green leaves.",
+            ],
+            answer: "has, have, has, have, has, have, has, have, has, has, have, has, have, has",
+          },
+          {
+            text: "Complete each sentence with has or have",
+            questions: [
+              "He ____ a red bicycle.",
+              "They ____ a big garden.",
+              "She ____ a pet cat.",
+              "It ____ a long trunk.",
+              "You ____ a great voice.",
+              "I ____ an idea.",
+              "He ____ two brothers.",
+              "We ____ extra pencils.",
+              "She ____ a beautiful smile.",
+              "I ____ a new backpack.",
+              "It ____ sharp claws.",
+              "They ____ a fun game to play.",
+              "You ____ a kind heart.",
+              "He ____ a fast car.",
+              "We ____ tickets to the show.",
+              "She ____ long hair.",
+              "I ____ some homework to do.",
+              "They ____ three dogs.",
+            ],
+            answer: "has, have, has, has, have, have, has, have, has, have, has, have, have, has, have, has, have, have",
+          },
         ],
         g17: [
           { text: "Grammar - Chapter 17", images: ["../../../assets/images/test-generator/class-1/Grammar - Chapter 17 A.png"], answer: "Complete the exercises" },
@@ -814,6 +935,16 @@
         v7: [{ text: "Vocabulary - Chapter 7", images: ["../../../assets/images/test-generator/class-1/Vocabulary - Chapter 7 A.png"], answer: "Complete the exercises" }],
       };
 
+      // Fisher-Yates shuffle algorithm
+      function shuffleArray(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+
       function previewTest() {
         const testName = document.getElementById("testName").value || "Grammar Test";
         const studentName = document.getElementById("studentName").value;
@@ -839,48 +970,70 @@
           return;
         }
 
+        // Collect all questions from selected chapters into a pool
+        const pool = [];
         selectedChapters.forEach((card) => {
           const chapterId = card.dataset.chapter;
+          const chapterType = card.dataset.type;
+          const chapterTitle = card.querySelector("h3").textContent;
+
           if (questions[chapterId]) {
-            const sectionDiv = document.createElement("div");
-            sectionDiv.className = "question-section";
-
-            const chapterType = card.dataset.type;
-            const chapterTitle = card.querySelector("h3").textContent;
-
-            let sectionLabel = "";
-            if (chapterType === "grammar") sectionLabel = "📝 Grammar";
-            else if (chapterType === "comprehension") sectionLabel = "📖 Comprehension";
-            else if (chapterType === "vocabulary") sectionLabel = "📚 Vocabulary";
-
-            sectionDiv.innerHTML = `<h3>${sectionLabel} - ${chapterTitle}</h3>`;
-
             questions[chapterId].forEach((q) => {
-              const questionDiv = document.createElement("div");
-              questionDiv.className = "question";
-
-              let questionHTML = `<p><strong>Q${questionNumber}.</strong> ${q.text}</p>`;
-
-              q.images.forEach((img) => {
-                if (img.endsWith('.pdf')) {
-                  questionHTML += `<embed src="${img}" type="application/pdf" width="100%" height="600px" style="border:none; border-radius:10px; margin:15px 0;">`;
-                } else {
-                  questionHTML += `<img src="${img}" alt="Question Image">`;
-                }
+              pool.push({
+                chapterId: chapterId,
+                chapterType: chapterType,
+                chapterTitle: chapterTitle,
+                questionData: q,
               });
-
-              // Show answer only for teacher version
-              if (questionType === "teacher") {
-                questionHTML += `<div class="answer">Answer: ${q.answer}</div>`;
-              }
-
-              questionDiv.innerHTML = questionHTML;
-              sectionDiv.appendChild(questionDiv);
-              questionNumber++;
             });
-
-            questionsContainer.appendChild(sectionDiv);
           }
+        });
+
+        // Shuffle the question pool
+        const shuffledPool = shuffleArray(pool);
+
+        // Render shuffled questions
+        shuffledPool.forEach((item) => {
+          const questionDiv = document.createElement("div");
+          questionDiv.className = "question";
+
+          const q = item.questionData;
+
+          let sectionLabel = "";
+          if (item.chapterType === "grammar") sectionLabel = "📝 Grammar";
+          else if (item.chapterType === "comprehension") sectionLabel = "📖 Comprehension";
+          else if (item.chapterType === "vocabulary") sectionLabel = "📚 Vocabulary";
+
+          let questionHTML = `<p><strong>Q${questionNumber}.</strong> ${q.text}</p>`;
+
+          // Handle text-based questions
+          if (q.questions && Array.isArray(q.questions)) {
+            questionHTML += '<ol style="margin-left: 20px; margin-top: 10px;">';
+            q.questions.forEach((qItem, index) => {
+              questionHTML += `<li style="margin-bottom: 8px;">${qItem}</li>`;
+            });
+            questionHTML += "</ol>";
+          }
+
+          // Handle image-based questions
+          if (q.images && Array.isArray(q.images)) {
+            q.images.forEach((img) => {
+              if (img.endsWith(".pdf")) {
+                questionHTML += `<embed src="${img}" type="application/pdf" width="100%" height="600px" style="border:none; border-radius:10px; margin:15px 0;">`;
+              } else {
+                questionHTML += `<img src="${img}" alt="Question Image">`;
+              }
+            });
+          }
+
+          // Show answer only for teacher version
+          if (questionType === "teacher") {
+            questionHTML += `<div class="answer">Answer: ${q.answer}</div>`;
+          }
+
+          questionDiv.innerHTML = questionHTML;
+          questionsContainer.appendChild(questionDiv);
+          questionNumber++;
         });
 
         document.getElementById("testPreview").classList.add("show");

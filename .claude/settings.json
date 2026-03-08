@@ -5,7 +5,9 @@
       "Bash(__NEW_LINE_417b6d6c853f3abc__ for f in \"animations/select.html\" \"class-2-animations/select.html\" \"class-3-animations/select.html\" \"class-4-animations/select.html\" \"class-5-animations/select.html\" \"class-6-animations/select.html\" \"class-7-animations/select.html\" \"class-8-animations/select.html\")",
       "Bash(do)",
       "Bash(sed -i '' 's/      flex-direction: column;/      flex-direction: column;\\\\n      align-items: flex-start;/' \"$BASE/$f\")",
-      "Bash(sed -i '' '/      flex-direction: column;/{n;/      align-items: flex-start;/{n;/      align-items: flex-start;/d;};};' \"$BASE/$f\")"
+      "Bash(sed -i '' '/      flex-direction: column;/{n;/      align-items: flex-start;/{n;/      align-items: flex-start;/d;};};' \"$BASE/$f\")",
+      "Bash(ls \"/Users/prabishdangi/Desktop/][pr5e4waqsDFGHJKL;''/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/\")",
+      "Bash(cat \"/Users/prabishdangi/Desktop/][pr5e4waqsDFGHJKL;''/SilverStone Captial/offline-flipbook/src/class-menus/class-1-menu/script.js\")"
     ]
   }
 }

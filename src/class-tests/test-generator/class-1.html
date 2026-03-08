@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Generator - Class 1</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Comic Sans MS", "Chalkboard SE", cursive, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .back-btn {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border: none;
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+      }
+
+      .back-btn:hover {
+        background: white;
+        transform: translateX(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      h1 {
+        color: white;
+        font-size: 2.5rem;
+        margin: 40px 0 10px;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      .subtitle {
+        color: white;
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .test-info {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .test-info h2 {
+        color: #667eea;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .info-field {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .info-field label {
+        color: #333;
+        font-weight: bold;
+        margin-bottom: 8px;
+        font-size: 1.1rem;
+      }
+
+      .info-field input {
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-family: "Comic Sans MS", cursive;
+        transition: border-color 0.3s ease;
+      }
+
+      .info-field input:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      .chapters-section {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .chapters-section h2 {
+        color: #667eea;
+        margin-bottom: 10px;
+        font-size: 1.8rem;
+      }
+
+      .marks-info {
+        color: #764ba2;
+        font-size: 1rem;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+
+      .chapters-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+
+      .chapter-card {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        border-radius: 15px;
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .chapter-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .chapter-card input[type="checkbox"] {
+        display: none;
+      }
+
+      .chapter-card:has(input:checked) {
+        background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+        box-shadow: 0 8px 25px rgba(0, 184, 148, 0.4);
+      }
+
+      .chapter-card:has(input:checked)::after {
+        content: "\2713";
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 2rem;
+        color: white;
+        font-weight: bold;
+      }
+
+      .chapter-card h3 {
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+      }
+
+      .chapter-card p {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.8rem;
+      }
+
+      .chapter-number {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.8rem;
+        font-weight: bold;
+        margin-bottom: 4px;
+        display: block;
+      }
+
+      .action-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 15px 40px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        font-family: "Comic Sans MS", cursive;
+      }
+
+      .btn-preview {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+
+      .btn-preview:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+      }
+
+      .btn-print {
+        background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+        color: white;
+      }
+
+      .btn-print:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 184, 148, 0.4);
+      }
+
+      .available-count {
+        color: white;
+        font-size: 1rem;
+        font-weight: bold;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 10px 20px;
+        border-radius: 50px;
+        backdrop-filter: blur(5px);
+      }
+
+      /* Test Preview */
+      .test-preview {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        margin-top: 30px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        display: none;
+      }
+
+      .test-preview.show {
+        display: block;
+      }
+
+      .test-header {
+        text-align: center;
+        border-bottom: 2px solid #333;
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+      }
+
+      .test-header h2 {
+        color: #222;
+        font-size: 1.6rem;
+        margin-bottom: 5px;
+      }
+
+      .test-meta {
+        font-size: 0.95rem;
+        color: #444;
+        margin-top: 10px;
+      }
+
+      .test-student-line {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 12px;
+        font-size: 0.95rem;
+        border-top: 1px solid #ccc;
+        padding-top: 10px;
+      }
+
+      .test-divider {
+        border: none;
+        border-top: 2px solid #333;
+        margin: 10px 0;
+      }
+
+      .question-section {
+        margin-bottom: 30px;
+      }
+
+      .question-section h3 {
+        color: #333;
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+        padding: 8px 15px;
+        background: #f0f0f0;
+        border-radius: 8px;
+        border-left: 4px solid #667eea;
+      }
+
+      .worksheet-group {
+        margin-bottom: 22px;
+        padding-left: 5px;
+      }
+
+      .ws-instruction {
+        font-style: italic;
+        margin-bottom: 14px;
+        color: #333;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        font-family: Arial, sans-serif;
+      }
+
+      .question-item {
+        margin-bottom: 18px;
+        font-family: Arial, sans-serif;
+      }
+
+      .question-text {
+        line-height: 1.8;
+        color: #111;
+        font-size: 0.97rem;
+      }
+
+      .options-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px 20px;
+        margin: 6px 0 6px 25px;
+        font-size: 0.93rem;
+        font-family: Arial, sans-serif;
+      }
+
+      .options-list {
+        margin: 6px 0 6px 25px;
+        font-size: 0.93rem;
+        font-family: Arial, sans-serif;
+      }
+
+      .options-list .option-item {
+        display: block;
+        margin-bottom: 4px;
+        line-height: 1.5;
+      }
+
+      .option-item {
+        color: #222;
+      }
+
+      .answer-line {
+        border-bottom: 1px solid #666;
+        margin: 8px 0 4px 0;
+        height: 22px;
+        width: 100%;
+      }
+
+      /* Print Styles */
+      @media print {
+        body {
+          background: white;
+          padding: 0;
+          margin: 0;
+        }
+
+        .back-btn,
+        .test-info,
+        .chapters-section,
+        .action-buttons,
+        .subtitle,
+        .header {
+          display: none !important;
+        }
+
+        .container {
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+
+        .test-preview {
+          border-radius: 0 !important;
+          box-shadow: none !important;
+          padding: 15px 20px !important;
+          margin: 0 !important;
+          background: white !important;
+        }
+
+        .test-header {
+          border-bottom: 2px solid #000 !important;
+          padding-bottom: 10px !important;
+          margin-bottom: 15px !important;
+        }
+
+        .test-header h2 {
+          font-size: 1.3rem !important;
+          color: #000 !important;
+        }
+
+        .question-section {
+          page-break-inside: avoid;
+          margin-bottom: 18px !important;
+        }
+
+        .question-section h3 {
+          background: #eee !important;
+          font-size: 1rem !important;
+          padding: 5px 10px !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        .ws-instruction {
+          color: #000 !important;
+        }
+
+        .question-item {
+          page-break-inside: avoid;
+          margin-bottom: 14px !important;
+        }
+
+        .answer-line {
+          border-bottom: 1px solid #000 !important;
+        }
+      }
+
+      @media (max-width: 768px) {
+        h1 { font-size: 2rem; }
+        .info-grid, .chapters-grid { grid-template-columns: 1fr; }
+        .action-buttons { flex-direction: column; }
+        .btn { width: 100%; }
+      }
+    </style>
+  </head>
+  <body>
+    <button class="back-btn" onclick="window.history.back()">&#8592; Back</button>
+
+    <div class="header">
+      <h1>&#128221; Test Generator</h1>
+      <p class="subtitle">Grammar Frolics-1 &#8212; Create a custom test by selecting chapters</p>
+    </div>
+
+    <div class="container">
+      <!-- Test Information -->
+      <div class="test-info">
+        <h2>&#128203; Test Information</h2>
+        <div class="info-grid">
+          <div class="info-field">
+            <label for="testName">Test Name</label>
+            <input type="text" id="testName" placeholder="e.g., Grammar Test" value="Grammar Frolics-1 Test" />
+          </div>
+          <div class="info-field">
+            <label for="studentName">Student Name</label>
+            <input type="text" id="studentName" placeholder="e.g., Riya Sharma" />
+          </div>
+          <div class="info-field">
+            <label for="testDate">Date</label>
+            <input type="date" id="testDate" />
+          </div>
+          <div class="info-field">
+            <label for="testDuration">Test Duration (mins)</label>
+            <input type="number" id="testDuration" placeholder="e.g., 30" value="30" />
+          </div>
+          <div class="info-field">
+            <label for="totalMarks">Total Marks</label>
+            <input type="number" id="totalMarks" placeholder="e.g., 20" value="20" min="1" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter Selection -->
+      <div class="chapters-section">
+        <h2>&#128218; Select Chapters</h2>
+        <p class="marks-info">Available questions from selected chapters: <span id="availableCount">0</span></p>
+        <div class="chapters-grid">
+          <label class="chapter-card" data-chapter="ch7">
+            <input type="checkbox" id="ch7" />
+            <span class="chapter-number">Chapter 7</span>
+            <h3>A or An</h3>
+            <p>Choosing the correct article before words</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch8">
+            <input type="checkbox" id="ch8" />
+            <span class="chapter-number">Chapter 8</span>
+            <h3>This is / That is</h3>
+            <p>Completing sentences with This is or That is</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch9">
+            <input type="checkbox" id="ch9" />
+            <span class="chapter-number">Chapter 9</span>
+            <h3>These are / Those are</h3>
+            <p>Completing sentences with These are or Those are</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch15">
+            <input type="checkbox" id="ch15" />
+            <span class="chapter-number">Chapter 15</span>
+            <h3>Being Verbs</h3>
+            <p>Using am, is and are correctly</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch16">
+            <input type="checkbox" id="ch16" />
+            <span class="chapter-number">Chapter 16</span>
+            <h3>Having Verbs</h3>
+            <p>Using has and have correctly</p>
+          </label>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button class="btn btn-preview" onclick="previewTest()">&#128065;&#65039; Preview Test</button>
+        <span class="available-count" id="actionAvail">Select chapters to begin</span>
+        <button class="btn btn-print" onclick="printTest()">&#128424;&#65039; Print Test</button>
+      </div>
+
+      <!-- Test Preview -->
+      <div class="test-preview" id="testPreview">
+        <div class="test-header">
+          <h2>Grammar Frolics-1</h2>
+          <div class="test-meta" id="previewTestName">Grammar Test</div>
+          <div class="test-student-line">
+            <span>Name: <span id="previewStudentName">____________________________</span></span>
+            <span>Class: I &nbsp;&nbsp; Sec: _____</span>
+            <span>Roll No: _____</span>
+            <span>Date: <span id="previewDate">_____________</span></span>
+          </div>
+          <div class="test-student-line">
+            <span>Total Marks: <span id="previewMarks">____</span></span>
+            <span>Time: <span id="previewDuration">____</span> mins</span>
+          </div>
+        </div>
+        <hr class="test-divider" />
+        <div id="questionsContainer"></div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("testDate").valueAsDate = new Date();
+
+      // ─── QUESTION BANK ─────────────────────────────────────────────────────
+      const questionBank = {
+
+        ch7: {
+          name: "Ch 7: A or An",
+          worksheets: [
+            {
+              instruction: "A. Choose 'a' or 'an'.",
+              questions: [
+                { text: "___ octopus" },
+                { text: "___ butterfly" },
+                { text: "___ ice cream" },
+                { text: "___ orange" },
+                { text: "___ rose" },
+                { text: "___ iguana" },
+                { text: "___ apple" },
+                { text: "___ puppy" }
+              ]
+            },
+            {
+              instruction: "B. Write a or an before each naming word.",
+              questions: [
+                { text: "___ cookie" },
+                { text: "___ alligator" },
+                { text: "___ lemon" },
+                { text: "___ ostrich" },
+                { text: "___ aeroplane" },
+                { text: "___ ace" },
+                { text: "___ bun" },
+                { text: "___ elephant" },
+                { text: "___ zoo" },
+                { text: "___ doughnut" },
+                { text: "___ lion" },
+                { text: "___ eagle" },
+                { text: "___ urn" },
+                { text: "___ avocado" },
+                { text: "___ bicycle" },
+                { text: "___ fish" }
+              ]
+            }
+          ]
+        },
+
+        ch8: {
+          name: "Ch 8: This is / That is",
+          worksheets: [
+            {
+              instruction: "A. Write 'This is' or 'That is' to complete the sentences.",
+              questions: [
+                { text: "__________ my dog." },
+                { text: "__________ a snake." },
+                { text: "__________ a schoolbag." },
+                { text: "__________ an island." },
+                { text: "__________ an elephant." },
+                { text: "__________ a tiger." },
+                { text: "__________ a hot-air balloon." }
+              ]
+            }
+          ]
+        },
+
+        ch9: {
+          name: "Ch 9: These are / Those are",
+          worksheets: [
+            {
+              instruction: "A. Write 'These are' or 'Those are' to complete the sentences.",
+              questions: [
+                { text: "__________ my pets." },
+                { text: "__________ wolves." },
+                { text: "__________ fresh mangoes." },
+                { text: "__________ birds." },
+                { text: "__________ balloons." },
+                { text: "__________ pigeons." },
+                { text: "__________ stars." },
+                { text: "__________ my friends." }
+              ]
+            }
+          ]
+        },
+
+        ch15: {
+          name: "Ch 15: Being Verbs",
+          worksheets: [
+            {
+              instruction: "A. Choose the correct word to complete each sentence (is / are).",
+              questions: [
+                { text: "The cat ___ in the basket." },
+                { text: "The phone ___ on the table." },
+                { text: "The books ___ on the shelf." },
+                { text: "Her dress ___ beautiful." },
+                { text: "The windows ___ open." },
+                { text: "This apple ___ very sweet." },
+                { text: "These apples ___ fresh." },
+                { text: "The chicks ___ in the nest." },
+                { text: "The students ___ in the classroom." },
+                { text: "The cake ___ ready to eat." },
+                { text: "The flowers ___ beautiful." },
+                { text: "The movie ___ really good." },
+                { text: "The chairs ___ made of wood." },
+                { text: "My friend ___ very kind." }
+              ]
+            },
+            {
+              instruction: "B. Fill in the blanks with am, is or are.",
+              questions: [
+                { text: "I ___ busy today." },
+                { text: "She ___ a good singer." },
+                { text: "They ___ my best friends." },
+                { text: "He ___ from Canada." },
+                { text: "We ___ excited for the trip." },
+                { text: "It ___ very cold outside." },
+                { text: "You ___ very kind." },
+                { text: "I ___ not well." },
+                { text: "He ___ not here right now." },
+                { text: "We ___ in the same class." },
+                { text: "You ___ my favourite teacher." },
+                { text: "She ___ at the park right now." },
+                { text: "We ___ ready to go." },
+                { text: "He ___ always on time." },
+                { text: "I ___ very hungry." }
+              ]
+            }
+          ]
+        },
+
+        ch16: {
+          name: "Ch 16: Having Verbs",
+          worksheets: [
+            {
+              instruction: "A. Choose the correct word to complete each sentence (has / have).",
+              questions: [
+                { text: "The lion ____ a long tail." },
+                { text: "My shirts ____ shiny buttons." },
+                { text: "This room ____ a secret door." },
+                { text: "Those butterflies ____ colourful wings." },
+                { text: "A shark ____ sharp teeth." },
+                { text: "Our houses ____ two windows." },
+                { text: "The king ____ a golden crown." },
+                { text: "These rabbits ____ soft fur." },
+                { text: "The bottle ____ clean water." },
+                { text: "A car ____ four wheels." },
+                { text: "These students ____ new backpacks." },
+                { text: "His watch ____ a leather strap." },
+                { text: "Some dogs ____ curly tails." },
+                { text: "That tree ____ green leaves." }
+              ]
+            },
+            {
+              instruction: "B. Complete each sentence with has or have.",
+              questions: [
+                { text: "He ____ a red bicycle." },
+                { text: "They ____ a big garden." },
+                { text: "She ____ a pet cat." },
+                { text: "It ____ a long trunk." },
+                { text: "You ____ a great voice." },
+                { text: "I ____ an idea." },
+                { text: "He ____ two brothers." },
+                { text: "We ____ extra pencils." },
+                { text: "She ____ a beautiful smile." },
+                { text: "I ____ a new backpack." },
+                { text: "It ____ sharp claws." },
+                { text: "They ____ a fun game to play." },
+                { text: "You ____ a kind heart." },
+                { text: "He ____ a fast car." },
+                { text: "We ____ tickets to the show." },
+                { text: "She ____ long hair." },
+                { text: "I ____ some homework to do." },
+                { text: "They ____ three dogs." }
+              ]
+            }
+          ]
+        }
+
+      };
+
+      // ─── HELPERS ────────────────────────────────────────────────────────────
+      function shuffleArray(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+
+      function getSelectedChapterKeys() {
+        return Object.keys(questionBank).filter(k => {
+          const el = document.getElementById(k);
+          return el && el.checked;
+        });
+      }
+
+      function countAvailableQuestions(keys) {
+        let total = 0;
+        keys.forEach(k => {
+          const ch = questionBank[k];
+          if (!ch) return;
+          ch.worksheets.forEach(ws => {
+            total += ws.questions.length;
+          });
+        });
+        return total;
+      }
+
+      function updateAvailableCount() {
+        const count = countAvailableQuestions(getSelectedChapterKeys());
+        document.getElementById("availableCount").textContent = count;
+        document.getElementById("actionAvail").textContent =
+          count > 0 ? count + " questions available" : "Select chapters to begin";
+      }
+
+      document.querySelectorAll(".chapter-card input").forEach(cb =>
+        cb.addEventListener("change", updateAvailableCount)
+      );
+
+      // ─── PREVIEW TEST ───────────────────────────────────────────────────────
+      function previewTest() {
+        const testName = document.getElementById("testName").value || "Grammar Frolics-1 Test";
+        const studentName = document.getElementById("studentName").value;
+        const testDate = document.getElementById("testDate").value;
+        const testDuration = document.getElementById("testDuration").value;
+        const totalMarks = parseInt(document.getElementById("totalMarks").value) || 20;
+
+        document.getElementById("previewTestName").textContent = testName;
+        document.getElementById("previewStudentName").textContent = studentName || "____________________________";
+        document.getElementById("previewDate").textContent = testDate || "_____________";
+        document.getElementById("previewMarks").textContent = totalMarks;
+        document.getElementById("previewDuration").textContent = testDuration || "____";
+
+        const selectedKeys = getSelectedChapterKeys();
+        if (selectedKeys.length === 0) {
+          alert("Please select at least one chapter!");
+          return;
+        }
+
+        // Flatten all questions from selected chapters into a pool
+        const pool = [];
+        selectedKeys.forEach(chKey => {
+          const ch = questionBank[chKey];
+          if (!ch) return;
+          ch.worksheets.forEach((ws, wsIdx) => {
+            ws.questions.forEach(q => {
+              pool.push({
+                chapterKey: chKey,
+                chapterName: ch.name,
+                worksheetIdx: wsIdx,
+                instruction: ws.instruction,
+                text: q.text,
+                options: q.options || null,
+                wideOptions: q.wideOptions || false,
+                lines: q.lines || 0
+              });
+            });
+          });
+        });
+
+        // Shuffle and select up to totalMarks questions
+        const shuffled = shuffleArray(pool);
+        const available = shuffled.length;
+        const selected = shuffled.slice(0, Math.min(totalMarks, available));
+
+        if (available < totalMarks) {
+          alert(
+            "Only " + available + " questions are available from selected chapters.\n" +
+            "Showing all " + available + " questions. Select more chapters or reduce total marks."
+          );
+        }
+
+        // Re-group by chapter (maintaining chapter order), then by worksheet
+        const grouped = new Map();
+        selectedKeys.forEach(k => {
+          grouped.set(k, { name: questionBank[k].name, worksheets: new Map() });
+        });
+
+        selected.forEach(q => {
+          const chGroup = grouped.get(q.chapterKey);
+          if (!chGroup) return;
+          if (!chGroup.worksheets.has(q.worksheetIdx)) {
+            chGroup.worksheets.set(q.worksheetIdx, { instruction: q.instruction, questions: [] });
+          }
+          chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
+        });
+
+        // Render
+        const container = document.getElementById("questionsContainer");
+        container.innerHTML = "";
+        let qNum = 1;
+
+        grouped.forEach((chData) => {
+          if (chData.worksheets.size === 0) return;
+
+          const chSection = document.createElement("div");
+          chSection.className = "question-section";
+          chSection.innerHTML = "<h3>" + chData.name + "</h3>";
+
+          const sortedWs = [...chData.worksheets.entries()].sort((a, b) => a[0] - b[0]);
+
+          sortedWs.forEach(([, wsData]) => {
+            const wsDiv = document.createElement("div");
+            wsDiv.className = "worksheet-group";
+            wsDiv.innerHTML = "<p class=\"ws-instruction\">" + wsData.instruction.replace(/\n/g, "<br>") + "</p>";
+
+            wsData.questions.forEach(q => {
+              const qDiv = document.createElement("div");
+              qDiv.className = "question-item";
+
+              let html = "<p class=\"question-text\"><strong>" + qNum + ".</strong> " +
+                q.text.replace(/\n/g, "<br>") + "</p>";
+
+              if (q.options && q.options.length > 0) {
+                if (q.wideOptions) {
+                  html += "<div class=\"options-list\">";
+                  q.options.forEach(opt => {
+                    html += "<span class=\"option-item\">" + opt + "</span>";
+                  });
+                  html += "</div>";
+                } else {
+                  html += "<div class=\"options-grid\">";
+                  q.options.forEach(opt => {
+                    html += "<span class=\"option-item\">" + opt + "</span>";
+                  });
+                  html += "</div>";
+                }
+              }
+
+              for (let i = 0; i < q.lines; i++) {
+                html += "<div class=\"answer-line\"></div>";
+              }
+
+              qDiv.innerHTML = html;
+              wsDiv.appendChild(qDiv);
+              qNum++;
+            });
+
+            chSection.appendChild(wsDiv);
+          });
+
+          container.appendChild(chSection);
+        });
+
+        document.getElementById("testPreview").classList.add("show");
+        document.getElementById("testPreview").scrollIntoView({ behavior: "smooth" });
+      }
+
+      function printTest() {
+        previewTest();
+        setTimeout(() => window.print(), 600);
+      }
+    </script>
+  </body>
+</html>
