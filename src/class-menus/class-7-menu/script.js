@@ -4,9 +4,13 @@ document.getElementById("flip").addEventListener("click", () => {
 });
 
 document.getElementById("anima").addEventListener("click", () => {
-  window.location.href = "../../class-animations/class-7-animations/index.html";
+  window.location.href = "../../class-animations/class-7-animations/select.html";
 });
 
 document.getElementById("test").addEventListener("click", () => {
   window.location.href = "../../class-tests/test-generator/class-7.html";
+});
+
+document.getElementById("worksheet").addEventListener("click", () => {
+  window.location.href = "../../class-workbooks/wb-class-7/index.html";
 });

@@ -4,7 +4,7 @@ document.getElementById("flip").addEventListener("click", () => {
 });
 
 document.getElementById("anima").addEventListener("click", () => {
-  window.location.href = "../../class-animations/class-5-animations/index.html";
+  window.location.href = "../../class-animations/class-5-animations/select.html";
 });
 
 document.getElementById("test").addEventListener("click", () => {
