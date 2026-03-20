@@ -18,11 +18,6 @@
         padding: 20px;
       }
 
-      .header {
-        text-align: center;
-        margin-bottom: 30px;
-      }
-
       .back-btn {
         position: fixed;
         top: 20px;
@@ -43,6 +38,11 @@
         background: white;
         transform: translateX(-5px);
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
       }
 
       h1 {
@@ -82,7 +82,6 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
-        margin-bottom: 20px;
       }
 
       .info-field {
@@ -97,8 +96,7 @@
         font-size: 1.1rem;
       }
 
-      .info-field input,
-      .info-field select {
+      .info-field input {
         padding: 12px;
         border: 2px solid #e0e0e0;
         border-radius: 10px;
@@ -107,8 +105,7 @@
         transition: border-color 0.3s ease;
       }
 
-      .info-field input:focus,
-      .info-field select:focus {
+      .info-field input:focus {
         outline: none;
         border-color: #667eea;
       }
@@ -123,8 +120,15 @@
 
       .chapters-section h2 {
         color: #667eea;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         font-size: 1.8rem;
+      }
+
+      .marks-info {
+        color: #764ba2;
+        font-size: 1rem;
+        margin-bottom: 20px;
+        font-weight: bold;
       }
 
       .chapters-grid {
@@ -159,7 +163,7 @@
       }
 
       .chapter-card:has(input:checked)::after {
-        content: "✓";
+        content: "\2713";
         position: absolute;
         top: 15px;
         right: 15px;
@@ -170,26 +174,30 @@
 
       .chapter-card h3 {
         color: white;
-        font-size: 1.3rem;
-        margin-bottom: 8px;
+        font-size: 1.1rem;
+        margin-bottom: 5px;
       }
 
       .chapter-card p {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.8rem;
       }
 
       .chapter-number {
-        color: rgba(255, 255, 255, 0.5);
-        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.8rem;
         font-weight: bold;
+        margin-bottom: 4px;
+        display: block;
       }
 
       .action-buttons {
         display: flex;
         justify-content: center;
+        align-items: center;
         gap: 20px;
         margin-top: 30px;
+        flex-wrap: wrap;
       }
 
       .btn {
@@ -224,94 +232,17 @@
         box-shadow: 0 6px 20px rgba(0, 184, 148, 0.4);
       }
 
-      /* Print Styles */
-      @media print {
-        body {
-          background: white;
-          padding: 0;
-          margin: 0;
-        }
-
-        .back-btn,
-        .test-info,
-        .chapters-section,
-        .action-buttons,
-        .subtitle,
-        .header h1,
-        .header {
-          display: none !important;
-        }
-
-        h1 {
-          color: #333;
-          text-shadow: none;
-        }
-
-        .container {
-          margin: 0 !important;
-          padding: 0 !important;
-        }
-
-        .test-preview {
-          border-radius: 0 !important;
-          box-shadow: none !important;
-          padding: 0 !important;
-          margin: 0 !important;
-          background: white !important;
-        }
-
-        .test-header {
-          border: none !important;
-          padding-bottom: 10px !important;
-          margin-bottom: 15px !important;
-          margin-top: 0 !important;
-        }
-
-        .test-header h2 {
-          font-size: 1.5rem !important;
-          margin-top: 0 !important;
-        }
-
-        .test-details {
-          font-size: 0.85rem !important;
-        }
-
-        .question-section {
-          page-break-inside: avoid;
-          margin-bottom: 20px !important;
-        }
-
-        .question-section h3 {
-          display: none !important;
-        }
-
-        .question {
-          border-radius: 0 !important;
-          padding: 10px 0 !important;
-          margin-bottom: 15px !important;
-          page-break-inside: avoid;
-          background: white !important;
-          border: none !important;
-        }
-
-        .question img {
-          max-width: 55% !important;
-          max-height: 400px !important;
-          border-radius: 0 !important;
-          box-shadow: none !important;
-          display: block;
-          margin: 10px auto !important;
-          page-break-inside: avoid;
-        }
-
-        .answer {
-          border-radius: 0 !important;
-          padding: 5px 0 !important;
-          font-size: 0.9rem !important;
-          background: white !important;
-        }
+      .available-count {
+        color: white;
+        font-size: 1rem;
+        font-weight: bold;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 10px 20px;
+        border-radius: 50px;
+        backdrop-filter: blur(5px);
       }
 
+      /* Test Preview */
       .test-preview {
         background: white;
         border-radius: 20px;
@@ -327,105 +258,207 @@
 
       .test-header {
         text-align: center;
-        border-bottom: 3px solid #667eea;
-        padding-bottom: 20px;
-        margin-bottom: 30px;
+        border-bottom: 2px solid #333;
+        padding-bottom: 15px;
+        margin-bottom: 25px;
       }
 
       .test-header h2 {
-        color: #667eea;
-        font-size: 2rem;
-        margin-bottom: 10px;
+        color: #222;
+        font-size: 1.6rem;
+        margin-bottom: 5px;
       }
 
-      .test-details {
+      .test-meta {
+        font-size: 0.95rem;
+        color: #444;
+        margin-top: 10px;
+      }
+
+      .test-student-line {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         flex-wrap: wrap;
-        gap: 15px;
-        margin-top: 15px;
-        font-size: 1rem;
-        color: #666;
+        gap: 10px;
+        margin-top: 12px;
+        font-size: 0.95rem;
+        border-top: 1px solid #ccc;
+        padding-top: 10px;
+      }
+
+      .test-divider {
+        border: none;
+        border-top: 2px solid #333;
+        margin: 10px 0;
       }
 
       .question-section {
-        margin-bottom: 40px;
+        margin-bottom: 30px;
       }
 
       .question-section h3 {
-        color: #667eea;
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-        padding: 10px;
+        color: #333;
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+        padding: 8px 15px;
         background: #f0f0f0;
-        border-radius: 10px;
-      }
-
-      .question {
-        margin-bottom: 30px;
-        padding: 20px;
+        border-radius: 8px;
         border-left: 4px solid #667eea;
-        background: #f9f9f9;
-        border-radius: 10px;
       }
 
-      .question img {
-        max-width: 100%;
-        height: auto;
-        margin: 15px 0;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      .worksheet-group {
+        margin-bottom: 22px;
+        padding-left: 5px;
       }
 
-      .answer {
-        color: #00b894;
-        font-weight: bold;
-        margin-top: 10px;
-        padding: 10px;
-        background: #e8f8f5;
-        border-radius: 5px;
+      .ws-instruction {
+        font-style: italic;
+        margin-bottom: 14px;
+        color: #333;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        font-family: Arial, sans-serif;
+      }
+
+      .question-item {
+        margin-bottom: 18px;
+        font-family: Arial, sans-serif;
+      }
+
+      .question-text {
+        line-height: 1.8;
+        color: #111;
+        font-size: 0.97rem;
+      }
+
+      .options-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px 20px;
+        margin: 6px 0 6px 25px;
+        font-size: 0.93rem;
+        font-family: Arial, sans-serif;
+      }
+
+      .options-list {
+        margin: 6px 0 6px 25px;
+        font-size: 0.93rem;
+        font-family: Arial, sans-serif;
+      }
+
+      .options-list .option-item {
+        display: block;
+        margin-bottom: 4px;
+        line-height: 1.5;
+      }
+
+      .option-item {
+        color: #222;
+      }
+
+      .answer-line {
+        border-bottom: 1px solid #666;
+        margin: 8px 0 4px 0;
+        height: 22px;
+        width: 100%;
+      }
+
+      /* Print Styles */
+      @media print {
+        body {
+          background: white;
+          padding: 0;
+          margin: 0;
+        }
+
+        .back-btn,
+        .test-info,
+        .chapters-section,
+        .action-buttons,
+        .subtitle,
+        .header {
+          display: none !important;
+        }
+
+        .container {
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+
+        .test-preview {
+          border-radius: 0 !important;
+          box-shadow: none !important;
+          padding: 15px 20px !important;
+          margin: 0 !important;
+          background: white !important;
+        }
+
+        .test-header {
+          border-bottom: 2px solid #000 !important;
+          padding-bottom: 10px !important;
+          margin-bottom: 15px !important;
+        }
+
+        .test-header h2 {
+          font-size: 1.3rem !important;
+          color: #000 !important;
+        }
+
+        .question-section {
+          page-break-inside: avoid;
+          margin-bottom: 18px !important;
+        }
+
+        .question-section h3 {
+          background: #eee !important;
+          font-size: 1rem !important;
+          padding: 5px 10px !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        .ws-instruction {
+          color: #000 !important;
+        }
+
+        .question-item {
+          page-break-inside: avoid;
+          margin-bottom: 14px !important;
+        }
+
+        .answer-line {
+          border-bottom: 1px solid #000 !important;
+        }
       }
 
       @media (max-width: 768px) {
-        h1 {
-          font-size: 2rem;
-        }
-
-        .info-grid,
-        .chapters-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .action-buttons {
-          flex-direction: column;
-        }
-
-        .btn {
-          width: 100%;
-        }
+        h1 { font-size: 2rem; }
+        .info-grid, .chapters-grid { grid-template-columns: 1fr; }
+        .action-buttons { flex-direction: column; }
+        .btn { width: 100%; }
       }
     </style>
   </head>
   <body>
-    <button class="back-btn" onclick="window.history.back()">← Back</button>
+    <button class="back-btn" onclick="window.history.back()">&#8592; Back</button>
 
     <div class="header">
-      <h1>📝 Test Generator</h1>
-      <p class="subtitle">Create a custom test by selecting chapters</p>
+      <h1>&#128221; Test Generator</h1>
+      <p class="subtitle">Grammar Frolics-2 &#8212; Create a custom test by selecting chapters</p>
     </div>
 
     <div class="container">
       <!-- Test Information -->
       <div class="test-info">
-        <h2>📋 Test Information</h2>
+        <h2>&#128203; Test Information</h2>
         <div class="info-grid">
           <div class="info-field">
             <label for="testName">Test Name</label>
-            <input type="text" id="testName" placeholder="e.g., Grammar Quiz 1" value="Grammar Test - Class 2" />
+            <input type="text" id="testName" placeholder="e.g., Grammar Test" value="Grammar Frolics-2 Test" />
           </div>
           <div class="info-field">
             <label for="studentName">Student Name</label>
-            <input type="text" id="studentName" placeholder="Student's Name" />
+            <input type="text" id="studentName" placeholder="e.g., Riya Sharma" />
           </div>
           <div class="info-field">
             <label for="testDate">Date</label>
@@ -433,317 +466,875 @@
           </div>
           <div class="info-field">
             <label for="testDuration">Test Duration (mins)</label>
-            <input type="number" id="testDuration" placeholder="e.g., 60" value="60" />
+            <input type="number" id="testDuration" placeholder="e.g., 30" value="30" />
           </div>
           <div class="info-field">
             <label for="totalMarks">Total Marks</label>
-            <input type="number" id="totalMarks" placeholder="e.g., 100" value="100" />
-          </div>
-          <div class="info-field">
-            <label for="questionType">Question Type</label>
-            <select id="questionType">
-              <option value="teacher">Teacher (with answers)</option>
-              <option value="student">Student (without answers)</option>
-            </select>
+            <input type="number" id="totalMarks" placeholder="e.g., 20" value="20" min="1" />
           </div>
         </div>
       </div>
 
-      <!-- Chapters Selection -->
+      <!-- Chapter Selection -->
       <div class="chapters-section">
-        <h2>📚 Select Topics</h2>
-
-        <!-- Grammar Section -->
-        <h3 style="color: #667eea; margin: 30px 0 15px 0; font-size: 1.5rem; font-weight: bold">📝 Grammar</h3>
+        <h2>&#128218; Select Chapters</h2>
+        <p class="marks-info">Available questions from selected chapters: <span id="availableCount">0</span></p>
         <div class="chapters-grid">
-          <label class="chapter-card" data-chapter="g1" data-type="grammar">
-            <input type="checkbox" id="g1" />
-            <span class="chapter-number">Grammar 1</span>
-            <h3>Nouns</h3>
-            <p>Naming words</p>
-          </label>
-
-          <label class="chapter-card" data-chapter="g2" data-type="grammar">
+          <label class="chapter-card" data-chapter="g2">
             <input type="checkbox" id="g2" />
-            <span class="chapter-number">Grammar 2</span>
+            <span class="chapter-number">Chapter 2</span>
             <h3>Proper and Common Nouns</h3>
-            <p>Types of nouns</p>
+            <p>Identifying types of nouns</p>
           </label>
-
-          <label class="chapter-card" data-chapter="g3" data-type="grammar">
+          <label class="chapter-card" data-chapter="g3">
             <input type="checkbox" id="g3" />
-            <span class="chapter-number">Grammar 3</span>
+            <span class="chapter-number">Chapter 3</span>
             <h3>One and Many</h3>
-            <p>Singular and plural</p>
+            <p>Singular and plural forms</p>
           </label>
-
-          <label class="chapter-card" data-chapter="g4" data-type="grammar">
+          <label class="chapter-card" data-chapter="g4">
             <input type="checkbox" id="g4" />
-            <span class="chapter-number">Grammar 4</span>
+            <span class="chapter-number">Chapter 4</span>
             <h3>A, An and The</h3>
-            <p>Articles</p>
+            <p>Using articles correctly</p>
           </label>
-
-          <label class="chapter-card" data-chapter="g5" data-type="grammar">
+          <label class="chapter-card" data-chapter="g5">
             <input type="checkbox" id="g5" />
-            <span class="chapter-number">Grammar 5</span>
+            <span class="chapter-number">Chapter 5</span>
             <h3>Male and Female</h3>
-            <p>Gender</p>
+            <p>Gender of nouns</p>
           </label>
-
-          <label class="chapter-card" data-chapter="g6" data-type="grammar">
+          <label class="chapter-card" data-chapter="g6">
             <input type="checkbox" id="g6" />
-            <span class="chapter-number">Grammar 6</span>
+            <span class="chapter-number">Chapter 6</span>
             <h3>Pronouns</h3>
-            <p>Replacing nouns</p>
+            <p>Choosing the correct pronoun</p>
           </label>
-
-          <label class="chapter-card" data-chapter="g7" data-type="grammar">
+          <label class="chapter-card" data-chapter="g7">
             <input type="checkbox" id="g7" />
-            <span class="chapter-number">Grammar 7</span>
+            <span class="chapter-number">Chapter 7</span>
             <h3>Adjectives</h3>
             <p>Describing words</p>
           </label>
-
-          <label class="chapter-card" data-chapter="g8" data-type="grammar">
+          <label class="chapter-card" data-chapter="g8">
             <input type="checkbox" id="g8" />
-            <span class="chapter-number">Grammar 8</span>
+            <span class="chapter-number">Chapter 8</span>
             <h3>Possessives</h3>
-            <p>Ownership</p>
+            <p>my, our, your, his, her, its, their</p>
           </label>
-
-          <label class="chapter-card" data-chapter="g9" data-type="grammar">
-            <input type="checkbox" id="g9" />
-            <span class="chapter-number">Grammar 9</span>
-            <h3>Action Words</h3>
-            <p>Verbs</p>
-          </label>
-
-          <label class="chapter-card" data-chapter="g10" data-type="grammar">
+          <label class="chapter-card" data-chapter="g10">
             <input type="checkbox" id="g10" />
-            <span class="chapter-number">Grammar 10</span>
+            <span class="chapter-number">Chapter 10</span>
             <h3>Being Words</h3>
-            <p>Is, am, are, was, were</p>
+            <p>Using am, is and are</p>
           </label>
-
-          <label class="chapter-card" data-chapter="g11" data-type="grammar">
+          <label class="chapter-card" data-chapter="g11">
             <input type="checkbox" id="g11" />
-            <span class="chapter-number">Grammar 11</span>
+            <span class="chapter-number">Chapter 11</span>
             <h3>Having Verbs</h3>
-            <p>Has, have, had</p>
+            <p>Using has and have</p>
           </label>
-
-          <label class="chapter-card" data-chapter="g12" data-type="grammar">
+          <label class="chapter-card" data-chapter="g12">
             <input type="checkbox" id="g12" />
-            <span class="chapter-number">Grammar 12</span>
+            <span class="chapter-number">Chapter 12</span>
             <h3>Simple Present Tense</h3>
-            <p>Present actions</p>
+            <p>Present tense verb forms</p>
           </label>
-
-          <label class="chapter-card" data-chapter="g13" data-type="grammar">
+          <label class="chapter-card" data-chapter="g13">
             <input type="checkbox" id="g13" />
-            <span class="chapter-number">Grammar 13</span>
+            <span class="chapter-number">Chapter 13</span>
             <h3>Simple Past Tense</h3>
-            <p>Past actions</p>
+            <p>Past tense verb forms</p>
           </label>
-
-          <label class="chapter-card" data-chapter="g14" data-type="grammar">
+          <label class="chapter-card" data-chapter="g14">
             <input type="checkbox" id="g14" />
-            <span class="chapter-number">Grammar 14</span>
+            <span class="chapter-number">Chapter 14</span>
             <h3>Present Continuous Tense</h3>
-            <p>Ongoing actions</p>
+            <p>am/is/are + -ing form</p>
           </label>
-
-          <label class="chapter-card" data-chapter="g15" data-type="grammar">
+          <label class="chapter-card" data-chapter="g15">
             <input type="checkbox" id="g15" />
-            <span class="chapter-number">Grammar 15</span>
+            <span class="chapter-number">Chapter 15</span>
             <h3>Adverbs</h3>
-            <p>Describing actions</p>
+            <p>Words that describe actions</p>
           </label>
-
-          <label class="chapter-card" data-chapter="g16" data-type="grammar">
-            <input type="checkbox" id="g16" />
-            <span class="chapter-number">Grammar 16</span>
-            <h3>Position Words</h3>
-            <p>Prepositions</p>
-          </label>
-
-          <label class="chapter-card" data-chapter="g17" data-type="grammar">
+          <label class="chapter-card" data-chapter="g17">
             <input type="checkbox" id="g17" />
-            <span class="chapter-number">Grammar 17</span>
+            <span class="chapter-number">Chapter 17</span>
             <h3>Joining Words</h3>
-            <p>Conjunctions</p>
+            <p>and, but, or</p>
           </label>
-
-          <label class="chapter-card" data-chapter="g18" data-type="grammar">
+          <label class="chapter-card" data-chapter="g18">
             <input type="checkbox" id="g18" />
-            <span class="chapter-number">Grammar 18</span>
+            <span class="chapter-number">Chapter 18</span>
             <h3>The Comma</h3>
-            <p>Punctuation</p>
+            <p>Inserting commas correctly</p>
           </label>
-
-          <label class="chapter-card" data-chapter="g19" data-type="grammar">
-            <input type="checkbox" id="g19" />
-            <span class="chapter-number">Grammar 19</span>
-            <h3>The Apostrophe</h3>
-            <p>Punctuation</p>
-          </label>
-
-          <label class="chapter-card" data-chapter="g20" data-type="grammar">
+          <label class="chapter-card" data-chapter="g20">
             <input type="checkbox" id="g20" />
-            <span class="chapter-number">Grammar 20</span>
+            <span class="chapter-number">Chapter 20</span>
             <h3>Capital Letters</h3>
-            <p>Capitalization rules</p>
+            <p>Rewriting with correct capitals</p>
           </label>
-
-          <label class="chapter-card" data-chapter="g21" data-type="grammar">
+          <label class="chapter-card" data-chapter="g21">
             <input type="checkbox" id="g21" />
-            <span class="chapter-number">Grammar 21</span>
+            <span class="chapter-number">Chapter 21</span>
             <h3>End Punctuation Marks</h3>
-            <p>Sentence endings</p>
-          </label>
-        </div>
-
-        <!-- Vocabulary Section -->
-        <h3 style="color: #667eea; margin: 30px 0 15px 0; font-size: 1.5rem; font-weight: bold">📚 Vocabulary</h3>
-        <div class="chapters-grid">
-          <label class="chapter-card" data-chapter="v1" data-type="vocabulary">
-            <input type="checkbox" id="v1" />
-            <span class="chapter-number">Vocabulary 1</span>
-            <h3>Opposites</h3>
-            <p>Antonyms</p>
-          </label>
-
-          <label class="chapter-card" data-chapter="v2" data-type="vocabulary">
-            <input type="checkbox" id="v2" />
-            <span class="chapter-number">Vocabulary 2</span>
-            <h3>Similar Words</h3>
-            <p>Synonyms</p>
-          </label>
-
-          <label class="chapter-card" data-chapter="v3" data-type="vocabulary">
-            <input type="checkbox" id="v3" />
-            <span class="chapter-number">Vocabulary 3</span>
-            <h3>Compound Words</h3>
-            <p>Combined words</p>
+            <p>Full stop, question mark, exclamation</p>
           </label>
         </div>
       </div>
 
       <!-- Action Buttons -->
       <div class="action-buttons">
-        <button class="btn btn-preview" onclick="previewTest()">👁️ Preview Test</button>
-        <button class="btn btn-print" onclick="printTest()">🖨️ Print Test</button>
+        <button class="btn btn-preview" onclick="previewTest()">&#128065;&#65039; Preview Test</button>
+        <span class="available-count" id="actionAvail">Select chapters to begin</span>
+        <button class="btn btn-print" onclick="printTest()">&#128424;&#65039; Print Test</button>
       </div>
 
       <!-- Test Preview -->
       <div class="test-preview" id="testPreview">
         <div class="test-header">
-          <h2 id="previewTestName">Grammar Test - Class 2</h2>
-          <div class="test-details">
-            <span><strong>Name:</strong> <span id="previewStudentName">_________________</span></span>
-            <span><strong>Date:</strong> <span id="previewDate">_________________</span></span>
-            <span><strong>Score:</strong> _____ / _____</span>
+          <h2>Grammar Frolics-2</h2>
+          <div class="test-meta" id="previewTestName">Grammar Test</div>
+          <div class="test-student-line">
+            <span>Name: <span id="previewStudentName">____________________________</span></span>
+            <span>Class: II &nbsp;&nbsp; Sec: _____</span>
+            <span>Roll No: _____</span>
+            <span>Date: <span id="previewDate">_____________</span></span>
+          </div>
+          <div class="test-student-line">
+            <span>Total Marks: <span id="previewMarks">____</span></span>
+            <span>Time: <span id="previewDuration">____</span> mins</span>
           </div>
         </div>
+        <hr class="test-divider" />
         <div id="questionsContainer"></div>
       </div>
     </div>
 
     <script>
-      // Set today's date
       document.getElementById("testDate").valueAsDate = new Date();
 
-      // Question database
-      const questions = {
-        g1: [{ text: "Nouns", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 1: Nouns.png"], answer: "Naming words" }],
-        g2: [{ text: "Proper and Common Nouns", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 2: Proper and Common Nouns.png"], answer: "Types of nouns" }],
-        g3: [{ text: "One and Many", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 3: One and Many.png"], answer: "Singular and plural forms" }],
-        g4: [{ text: "A, An and The", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 4: A, An and The.png"], answer: "Article usage" }],
-        g5: [{ text: "Male and Female", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 5: Male and Female.png"], answer: "Gender" }],
-        g6: [{ text: "Pronouns", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 6: Pronouns.png"], answer: "Replacing nouns" }],
-        g7: [{ text: "Adjectives", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 7: Adjectives.png"], answer: "Describing words" }],
-        g8: [{ text: "Possessives", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 8: Possessives.png"], answer: "Showing ownership" }],
-        g9: [{ text: "Action Words", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 9: Action Words.png"], answer: "Verbs" }],
-        g10: [{ text: "Being Words", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 10: Being Words.png"], answer: "Is, am, are, was, were" }],
-        g11: [{ text: "Having Verbs", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 11: Having Verbs.png"], answer: "Has, have, had" }],
-        g12: [{ text: "Simple Present Tense", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 12: Simple Present Tense.png"], answer: "Present actions" }],
-        g13: [{ text: "Simple Past Tense", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 13: Simple Past Tense.png"], answer: "Past actions" }],
-        g14: [{ text: "Present Continuous Tense", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 14: Present Continuous Tense.png"], answer: "Ongoing actions" }],
-        g15: [{ text: "Adverbs", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 15: Adverbs.png"], answer: "Describing actions" }],
-        g16: [{ text: "Position Words", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 16: Position Words.png"], answer: "Prepositions" }],
-        g17: [{ text: "Joining Words", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 17: Joining Words.png"], answer: "Conjunctions" }],
-        g18: [{ text: "The Comma", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 18: The Comma.png"], answer: "Punctuation mark" }],
-        g19: [{ text: "The Apostrophe", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 19: The Apostrophe.png"], answer: "Punctuation mark" }],
-        g20: [{ text: "Capital Letters", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 20: Capital Letters.png"], answer: "Capitalization rules" }],
-        g21: [{ text: "End Punctuation Marks", images: ["../../../assets/images/test-generator/class-2/Grammar – Chapter 21: End Punctuation Marks.png"], answer: "Period, question mark, exclamation" }],
-        v1: [{ text: "Opposites", images: ["../../../assets/images/test-generator/class-2/Vocabulary – Chapter 1: Opposites.png"], answer: "Antonyms" }],
-        v2: [{ text: "Similar Words", images: ["../../../assets/images/test-generator/class-2/Vocabulary – Chapter 2: Similar Words.png"], answer: "Synonyms" }],
-        v3: [{ text: "Compound Words", images: ["../../../assets/images/test-generator/class-2/Vocabulary – Chapter 3: Compound Words.png"], answer: "Combined words" }],
+      // ─── QUESTION BANK ─────────────────────────────────────────────────────
+      const questionBank = {
+
+        g2: {
+          name: "Ch 2: Proper and Common Nouns",
+          worksheets: [
+            {
+              instruction: "A – Underline the two common nouns in each sentence.",
+              questions: [
+                { text: "This lady is my teacher." },
+                { text: "A girl drew a picture." },
+                { text: "A boy found a wallet." },
+                { text: "The farmer fed the cows." },
+                { text: "The cat chased the mouse." },
+                { text: "She bought a book and a pen." },
+                { text: "The dog barked at the stranger." },
+                { text: "He cleaned the table and the chair." },
+                { text: "The doctor checked the patient." },
+                { text: "The teacher wrote on the whiteboard." }
+              ]
+            },
+            {
+              instruction: "B – Circle the proper nouns. Underline the common nouns.",
+              questions: [
+                { text: "We went to Delhi." },
+                { text: "Mia opened the box." },
+                { text: "Luna chased a mouse." },
+                { text: "Bella plays with a toy." },
+                { text: "I met Meena at the park." },
+                { text: "Disneyland has a castle." },
+                { text: "She lives in Mumbai." },
+                { text: "Deepa found a coin." },
+                { text: "Lily draws a picture." },
+                { text: "He ate lunch at Domino's." },
+                { text: "The boy played with Sheru." },
+                { text: "They visited Kolkata last week." },
+                { text: "She saw animals at Mysore Zoo." },
+                { text: "We had dinner at Haldiram's." },
+                { text: "He took a photo at India Gate." }
+              ]
+            }
+          ]
+        },
+
+        g3: {
+          name: "Ch 3: One and Many",
+          worksheets: [
+            {
+              instruction: "A – Add 's' or 'es' to make many.",
+              questions: [
+                { text: "tiger: ___________" },
+                { text: "snake: ___________" },
+                { text: "wish: ___________" },
+                { text: "cross: ___________" },
+                { text: "window: ___________" },
+                { text: "circus: ___________" },
+                { text: "loss: ___________" },
+                { text: "iris: ___________" },
+                { text: "eye: ___________" },
+                { text: "fax: ___________" },
+                { text: "boss: ___________" },
+                { text: "topaz: ___________" },
+                { text: "mix: ___________" },
+                { text: "brush: ___________" },
+                { text: "beach: ___________" },
+                { text: "tree: ___________" },
+                { text: "bottle: ___________" },
+                { text: "branch: ___________" },
+                { text: "leech: ___________" },
+                { text: "arch: ___________" },
+                { text: "grass: ___________" },
+                { text: "hospital: ___________" },
+                { text: "dish: ___________" },
+                { text: "batch: ___________" }
+              ]
+            }
+          ]
+        },
+
+        g4: {
+          name: "Ch 4: A, An and The",
+          worksheets: [
+            {
+              instruction: "A – Choose the correct option to complete each sentence (a / an / the).",
+              questions: [
+                { text: "I saw ___ cow in the field. (a / an / the)" },
+                { text: "She has ___ orange in her lunchbox. (a / an / the)" },
+                { text: "___ cottage in the corner belongs to my aunt. (A / An / The)" },
+                { text: "I saw ___ elephant at the zoo. (a / an / the)" },
+                { text: "I lost ___ umbrella you gave me. (a / an / the)" },
+                { text: "Carry ___ umbrella because it is raining. (a / an / the)" },
+                { text: "There is ___ mango on the tree. (a / an / the)" },
+                { text: "I saw ___ autorickshaw on the road. (a / an / the)" },
+                { text: "We visited ___ temple in Sector 12 last weekend. (a / an / the)" },
+                { text: "She bought ___ pencil from the shop. (a / an / the)" }
+              ]
+            }
+          ]
+        },
+
+        g5: {
+          name: "Ch 5: Male and Female",
+          worksheets: [
+            {
+              instruction: "A – Fill in each blank with the male or the female of the underlined noun.",
+              questions: [
+                { text: "My father and ___________ are both doctors." },
+                { text: "The lady and the ___________ were dressed well." },
+                { text: "My uncle and ___________ visited us yesterday." },
+                { text: "The king and the ___________ live in a big palace." },
+                { text: "The boy is playing with the ___________." },
+                { text: "The brother and the ___________ are doing homework." },
+                { text: "A man and a ___________ are waiting at the bus stop." },
+                { text: "A prince and a ___________ are in the story." },
+                { text: "My grandfather and ___________ are cooking dinner." },
+                { text: "The waiter gave food to the ___________." },
+                { text: "The lion and the ___________ live in the jungle." },
+                { text: "The nephew and the ___________ are playing carrom." }
+              ]
+            }
+          ]
+        },
+
+        g6: {
+          name: "Ch 6: Pronouns",
+          worksheets: [
+            {
+              instruction: "A – Choose the correct pronoun to complete each sentence.",
+              questions: [
+                { text: "Hello, children! ___________ am your class teacher. (He / I / They)" },
+                { text: "Riya is kind. ___________ helps her friends. (He / She / It)" },
+                { text: "John and I are friends. ___________ play together. (We / They / He)" },
+                { text: "This is my dog. ___________ is very cute. (She / It / They)" },
+                { text: "Tom and Jerry are funny. ___________ make me laugh. (We / He / They)" },
+                { text: "My name is Sara. ___________ am six years old. (I / You / We)" },
+                { text: "This is Ali. ___________ is my brother. (She / He / They)" },
+                { text: "Meena and I are dancing. ___________ are happy. (He / You / We)" },
+                { text: "Children, ___________ must sit down now. (You / They / We)" },
+                { text: "The birds are singing. ___________ are in the tree. (It / They / We)" }
+              ]
+            }
+          ]
+        },
+
+        g7: {
+          name: "Ch 7: Adjectives",
+          worksheets: [
+            {
+              instruction: "A – Circle the adjectives. Underline the nouns they describe.",
+              questions: [
+                { text: "She wore a pink dress." },
+                { text: "He opened the heavy door." },
+                { text: "We found a lost dog." },
+                { text: "I saw a bright light." },
+                { text: "They built a strong wall." },
+                { text: "He gave me a clean plate." },
+                { text: "She has a cute smile." },
+                { text: "The short man laughed." },
+                { text: "He rode a brown horse." },
+                { text: "I read a funny story." },
+                { text: "He drew a pretty picture." },
+                { text: "She carried a large bag." },
+                { text: "We saw a fast car." },
+                { text: "We heard a soft sound." },
+                { text: "He had a delicious meal." }
+              ]
+            }
+          ]
+        },
+
+        g8: {
+          name: "Ch 8: Possessives",
+          worksheets: [
+            {
+              instruction: "A – Complete the sentences with my, our, your, his, her, its or their. The highlighted words will help you.",
+              questions: [
+                { text: "She has a new car. It is ___________ car." },
+                { text: "They bought a new house. It is ___________ house." },
+                { text: "He found a lost wallet. It is ___________ wallet." },
+                { text: "You have a big bag. That is ___________ bag." },
+                { text: "I like this notebook. It is ___________ notebook." },
+                { text: "The boy has a new kite. It is ___________ kite." },
+                { text: "The teacher showed a map. It is ___________ map." },
+                { text: "The baby is crying. That is ___________ toy." },
+                { text: "I have a red pencil. That is ___________ pencil." },
+                { text: "We are visiting a park. It is ___________ park." },
+                { text: "The cat caught a mouse. It is ___________ mouse." },
+                { text: "She saw a new dress. It is ___________ dress." },
+                { text: "They are playing in the garden. It is ___________ garden." },
+                { text: "My friend got a puppy. It is ___________ puppy." },
+                { text: "We bought new shoes. They are ___________ shoes." },
+                { text: "The dog found a bone. It is ___________ bone." }
+              ]
+            }
+          ]
+        },
+
+        g10: {
+          name: "Ch 10: Being Words",
+          worksheets: [
+            {
+              instruction: "A – Circle the correct option to complete these sentences.",
+              questions: [
+                { text: "My father (am / is / are) a doctor." },
+                { text: "I (am / is / are) happy." },
+                { text: "They (am / is / are) my friends." },
+                { text: "She (am / is / are) in the kitchen." },
+                { text: "We (am / is / are) ready to go." },
+                { text: "The cat (am / is / are) on the roof." },
+                { text: "You (am / is / are) my best friend." },
+                { text: "My parents (am / is / are) at home." },
+                { text: "She (am / is / are) very smart." },
+                { text: "We (am / is / are) in the classroom." },
+                { text: "He (am / is / are) my uncle." },
+                { text: "They (am / is / are) good friends." },
+                { text: "It (am / is / are) a naughty dog." },
+                { text: "My brother and I (am / is / are) playing outside." },
+                { text: "The teacher (am / is / are) kind and helpful." },
+                { text: "These apples (am / is / are) fresh." }
+              ]
+            }
+          ]
+        },
+
+        g11: {
+          name: "Ch 11: Having Verbs",
+          worksheets: [
+            {
+              instruction: "A – Fill in the blanks with has or have.",
+              questions: [
+                { text: "She ___________ a red umbrella." },
+                { text: "They ___________ a new pair of shoes." },
+                { text: "He ___________ a cold today." },
+                { text: "We ___________ a test tomorrow." },
+                { text: "The dog ___________ a long tail." },
+                { text: "You ___________ a nice voice." },
+                { text: "My friends ___________ a big garden." },
+                { text: "The table ___________ four legs." },
+                { text: "The teacher ___________ many books." },
+                { text: "I ___________ a pencil and an eraser." },
+                { text: "She ___________ a new backpack." },
+                { text: "I ___________ two brothers." },
+                { text: "They ___________ a big house." },
+                { text: "He ___________ a pet dog." },
+                { text: "We ___________ lunch at 12 p.m." },
+                { text: "My mother ___________ a kind smile." },
+                { text: "You ___________ many friends." },
+                { text: "The cat ___________ green eyes." },
+                { text: "I ___________ a lot of homework." },
+                { text: "The boys ___________ a football." }
+              ]
+            }
+          ]
+        },
+
+        g12: {
+          name: "Ch 12: Simple Present Tense",
+          worksheets: [
+            {
+              instruction: "A – Choose the correct verb to complete each sentence.",
+              questions: [
+                { text: "The sun ___________ brightly. (shine / shines)" },
+                { text: "We ___________ lunch at noon. (eat / eats)" },
+                { text: "She ___________ a red scarf. (wear / wears)" },
+                { text: "I ___________ chocolate ice cream. (like / likes)" },
+                { text: "She ___________ to school. (walk / walks)" },
+                { text: "The cat ___________ on the couch. (sleep / sleeps)" },
+                { text: "I ___________ my parents. (help / helps)" },
+                { text: "My sister ___________ very well. (draw / draws)" },
+                { text: "We ___________ to music. (listen / listens)" },
+                { text: "The baby ___________ a lot. (smile / smiles)" },
+                { text: "It ___________ in July. (rain / rains)" },
+                { text: "My father ___________ a car. (drives / drive)" },
+                { text: "I ___________ my pet cat. (love / loves)" },
+                { text: "The dogs ___________ loudly. (bark / barks)" }
+              ]
+            },
+            {
+              instruction: "B – Complete the sentences with the simple present tense form of the verb in brackets.",
+              questions: [
+                { text: "I ___________ (drink) milk." },
+                { text: "They ___________ (play) football." },
+                { text: "She ___________ (cry) loudly." },
+                { text: "He ___________ (fix) the bike." },
+                { text: "He ___________ (carry) the bag." },
+                { text: "It ___________ (look) nice." },
+                { text: "They ___________ (read) books." },
+                { text: "We ___________ (watch) TV." },
+                { text: "It ___________ (pass) quickly." },
+                { text: "Mala ___________ (hurry) home." },
+                { text: "She and I ___________ (wash) the dishes." },
+                { text: "The boys ___________ (study) every day." },
+                { text: "You ___________ (go) to school." },
+                { text: "The baby ___________ (try) to walk." }
+              ]
+            }
+          ]
+        },
+
+        g13: {
+          name: "Ch 13: Simple Past Tense",
+          worksheets: [
+            {
+              instruction: "A – Complete the sentences after adding d or ed to the verbs in brackets.",
+              questions: [
+                { text: "I ___________ (play) outside yesterday." },
+                { text: "She ___________ (bake) a cake for her birthday." },
+                { text: "They ___________ (jump) over the puddles." },
+                { text: "He ___________ (live) in that house last year." },
+                { text: "We ___________ (help) our teacher after class." },
+                { text: "She ___________ (smile) at the baby." },
+                { text: "The boys ___________ (wash) their hands." },
+                { text: "I ___________ (love) the movie we watched." },
+                { text: "He ___________ (look) tired after work." },
+                { text: "The dog ___________ (bark) all night." },
+                { text: "She ___________ (dance) at the party." },
+                { text: "We ___________ (clean) our room yesterday." },
+                { text: "He ___________ (paint) the wall blue." },
+                { text: "They ___________ (start) the game early." },
+                { text: "She ___________ (arrive) on time." },
+                { text: "We ___________ (close) the door quietly." }
+              ]
+            },
+            {
+              instruction: "B – In each set, circle the verb that changes its form completely in the past tense.",
+              questions: [
+                { text: "hoped &mdash; celebrated &mdash; lost" },
+                { text: "stopped &mdash; stood &mdash; cleaned" },
+                { text: "went &mdash; called &mdash; watched" },
+                { text: "waited &mdash; brushed &mdash; began" },
+                { text: "pulled &mdash; bought &mdash; pushed" },
+                { text: "played &mdash; gave &mdash; enjoyed" },
+                { text: "ran &mdash; loved &mdash; lived" },
+                { text: "danced &mdash; baked &mdash; saw" },
+                { text: "washed &mdash; caught &mdash; jumped" },
+                { text: "drank &mdash; washed &mdash; laughed" }
+              ]
+            },
+            {
+              instruction: "C – Tick the sentences where the verbs have been used correctly.",
+              questions: [
+                { text: "I play cricket yesterday." },
+                { text: "I went to the park an hour ago." },
+                { text: "She eat a sandwich for lunch." },
+                { text: "I found a coin on the road." },
+                { text: "He see a bird's nest in the tree." },
+                { text: "They watched a movie last night." },
+                { text: "My mother cooked dinner for us." },
+                { text: "We opened the gift box." },
+                { text: "She wrote a letter to her friend." },
+                { text: "I had a great time at the party." },
+                { text: "The baby cried for milk." },
+                { text: "We walk to the market last evening." },
+                { text: "He took my pencil by mistake." },
+                { text: "She danced at the school event." },
+                { text: "They get new shoes last week." },
+                { text: "I slept early last night." }
+              ]
+            }
+          ]
+        },
+
+        g14: {
+          name: "Ch 14: Present Continuous Tense",
+          worksheets: [
+            {
+              instruction: "A – Use the 'ing' form of the verb in brackets to complete each sentence.",
+              questions: [
+                { text: "The teacher is ___________ (teach) the class." },
+                { text: "The baby is ___________ (cry) loudly." },
+                { text: "The children are ___________ (jump) on the bed." },
+                { text: "The monkey is ___________ (climb) the tree." },
+                { text: "The car is ___________ (move) slowly." },
+                { text: "The birds are ___________ (fly) in the sky." },
+                { text: "The elephant is ___________ (drink) water." },
+                { text: "The students are ___________ (read) their books." },
+                { text: "The bus is ___________ (stop) at the station." },
+                { text: "The flowers are ___________ (grow) in the garden." },
+                { text: "The birds are ___________ (sing) in the tree." },
+                { text: "Mom is ___________ (cook) dinner." },
+                { text: "The dog is ___________ (bark) loudly." },
+                { text: "The cat is ___________ (sleep) on the mat." },
+                { text: "Mallika is ___________ (read) a storybook." }
+              ]
+            },
+            {
+              instruction: "B – Fill in the blanks using the am / is / are + ing form of the verb in brackets.",
+              questions: [
+                { text: "I ___________ (draw) a cat." },
+                { text: "He ___________ (run) very fast." },
+                { text: "She ___________ (sing) a song." },
+                { text: "We ___________ (play) with blocks." },
+                { text: "They ___________ (dance) on the stage." },
+                { text: "It ___________ (rain) outside." },
+                { text: "You ___________ (eat) your lunch." },
+                { text: "He ___________ (write) a letter." },
+                { text: "I ___________ (read) a book." },
+                { text: "She ___________ (paint) a picture." }
+              ]
+            }
+          ]
+        },
+
+        g15: {
+          name: "Ch 15: Adverbs",
+          worksheets: [
+            {
+              instruction: "A – Circle the adverbs in the sentences.",
+              questions: [
+                { text: "The boy ran quickly to the bus." },
+                { text: "She smiled happily at her friend." },
+                { text: "The baby slept peacefully." },
+                { text: "He spoke softly to the puppy." },
+                { text: "They danced gracefully on the stage." },
+                { text: "She sang sweetly in the choir." },
+                { text: "The dog barked loudly." },
+                { text: "He wrote neatly in his notebook." },
+                { text: "She walked slowly because she was tired." },
+                { text: "The children laughed joyfully." },
+                { text: "He waited patiently in line." },
+                { text: "She answered politely." },
+                { text: "The cat moved silently." },
+                { text: "He finished his homework quickly." },
+                { text: "They played safely in the yard." }
+              ]
+            }
+          ]
+        },
+
+        g17: {
+          name: "Ch 17: Joining Words",
+          worksheets: [
+            {
+              instruction: "A – Choose the correct joining word (and / but) to complete each sentence.",
+              questions: [
+                { text: "Mom is cooking ___________ Dad is reading. (and / but)" },
+                { text: "Mohan is small, ___________ he is strong. (and / but)" },
+                { text: "She has a pencil ___________ a book. (and / but)" },
+                { text: "The dog barked, ___________ the cat slept. (and / but)" },
+                { text: "It is sunny, ___________ I feel cold. (and / but)" },
+                { text: "The sun is shining, ___________ the wind is cold. (and / but)" },
+                { text: "We can read books ___________ draw pictures. (and / but)" },
+                { text: "I have a dog ___________ a cat. (and / but)" },
+                { text: "They are laughing ___________ playing. (and / but)" }
+              ]
+            },
+            {
+              instruction: "B – Choose the correct joining word (but / and / or) to complete these sentences.",
+              questions: [
+                { text: "I have a ball ___________ a bat. (but / and / or)" },
+                { text: "She is happy, ___________ she is tired. (but / and / or)" },
+                { text: "Do you want cake ___________ ice cream? (but / and / or)" },
+                { text: "We can draw ___________ paint. (but / and / or)" },
+                { text: "I like apples ___________ bananas. (but / and / or)" },
+                { text: "He is small, ___________ he is strong. (but / and / or)" },
+                { text: "The dog barked ___________ the cat ran away. (but / and / or)" },
+                { text: "Would you like milk ___________ water? (but / and / or)" },
+                { text: "I want to go to the park, ___________ it is raining. (but / and / or)" },
+                { text: "She reads books ___________ writes stories. (but / and / or)" },
+                { text: "I want to play, ___________ I have homework. (but / and / or)" },
+                { text: "We baked cookies ___________ made lemonade. (but / and / or)" }
+              ]
+            }
+          ]
+        },
+
+        g18: {
+          name: "Ch 18: The Comma",
+          worksheets: [
+            {
+              instruction: "A – Insert commas at the right places.",
+              questions: [
+                { text: "She bought apples bananas oranges and grapes from the market." },
+                { text: "For the party we need balloons streamers music and snacks." },
+                { text: "The classroom has desks chairs a whiteboard and a projector." },
+                { text: "I enjoy reading books watching movies playing games and drawing." },
+                { text: "The zoo has lions tigers elephants and monkeys." },
+                { text: "We packed sunscreen hats towels and snacks for the beach trip." },
+                { text: "His favourite subjects are maths science history and geography." },
+                { text: "The bakery sells bread cakes pastries and cookies." },
+                { text: "She wore a red dress silver shoes and a matching necklace." },
+                { text: "The library offers novels books comics and magazines." }
+              ]
+            }
+          ]
+        },
+
+        g20: {
+          name: "Ch 20: Capital Letters",
+          worksheets: [
+            {
+              instruction: "A – Rewrite the sentences using capital letters, where required.",
+              questions: [
+                { text: "i live in a small village in rajasthan.", lines: 1 },
+                { text: "aarav is my cousin.", lines: 1 },
+                { text: "the cow is standing near the tree.", lines: 1 },
+                { text: "mount kanchenjunga is in the himalayas.", lines: 1 },
+                { text: "the ganga river is considered holy.", lines: 1 },
+                { text: "mount everest is the tallest mountain.", lines: 1 },
+                { text: "we celebrate diwali with lights and sweets.", lines: 1 },
+                { text: "i have a cricket match on sunday.", lines: 1 },
+                { text: "independence day is in august.", lines: 1 },
+                { text: "mumbai is the busiest city of maharashtra.", lines: 1 }
+              ]
+            }
+          ]
+        },
+
+        g21: {
+          name: "Ch 21: End Punctuation Marks",
+          worksheets: [
+            {
+              instruction: "A – Add the correct end punctuation mark for each sentence. (. ? !)",
+              questions: [
+                { text: "I enjoy reading books ___" },
+                { text: "Why is the sky blue ___" },
+                { text: "The bus is leaving ___" },
+                { text: "What a beautiful sunset ___" },
+                { text: "He plays the guitar well ___" },
+                { text: "How are you feeling today ___" },
+                { text: "The train arrives at 12 noon ___" },
+                { text: "Where is the nearest bus stop ___" },
+                { text: "Oh no, I forgot my homework ___" },
+                { text: "What time does the meeting start ___" },
+                { text: "Did you finish your assignment ___" },
+                { text: "Congratulations on your success ___" },
+                { text: "She visited the museum yesterday ___" },
+                { text: "That was an amazing performance ___" },
+                { text: "We went to the market this morning ___" }
+              ]
+            },
+            {
+              instruction: "B – Fill in the blanks with full stops, question marks or exclamation marks as required.",
+              questions: [
+                { text: "The sun is shining ___" },
+                { text: "What time is it ___" },
+                { text: "Wow, that was fun ___" },
+                { text: "Do you like ice cream ___" },
+                { text: "I can jump high ___" },
+                { text: "Look out ___" },
+                { text: "Where is my hat ___" },
+                { text: "I have a new toy ___" },
+                { text: "Hooray, we won the game ___" },
+                { text: "Can you help me ___" },
+                { text: "The flowers smell sweet ___" },
+                { text: "What a beautiful rainbow ___" },
+                { text: "I see a bird in the tree ___" },
+                { text: "Please pass the salt ___" },
+                { text: "Yay, it's my birthday ___" }
+              ]
+            }
+          ]
+        }
+
       };
 
+      // ─── HELPERS ────────────────────────────────────────────────────────────
+      function shuffleArray(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+
+      function getSelectedChapterKeys() {
+        return Object.keys(questionBank).filter(k => {
+          const el = document.getElementById(k);
+          return el && el.checked;
+        });
+      }
+
+      function countAvailableQuestions(keys) {
+        let total = 0;
+        keys.forEach(k => {
+          const ch = questionBank[k];
+          if (!ch) return;
+          ch.worksheets.forEach(ws => {
+            total += ws.questions.length;
+          });
+        });
+        return total;
+      }
+
+      function updateAvailableCount() {
+        const count = countAvailableQuestions(getSelectedChapterKeys());
+        document.getElementById("availableCount").textContent = count;
+        document.getElementById("actionAvail").textContent =
+          count > 0 ? count + " questions available" : "Select chapters to begin";
+      }
+
+      document.querySelectorAll(".chapter-card input").forEach(cb =>
+        cb.addEventListener("change", updateAvailableCount)
+      );
+
+      // ─── PREVIEW TEST ───────────────────────────────────────────────────────
       function previewTest() {
-        const testName = document.getElementById("testName").value || "Grammar Test";
+        const testName = document.getElementById("testName").value || "Grammar Frolics-2 Test";
         const studentName = document.getElementById("studentName").value;
         const testDate = document.getElementById("testDate").value;
-
-        document.getElementById("previewTestName").textContent = testName;
         const testDuration = document.getElementById("testDuration").value;
-        const totalMarks = document.getElementById("totalMarks").value;
-        const questionType = document.getElementById("questionType").value;
+        const totalMarks = parseInt(document.getElementById("totalMarks").value) || 20;
 
         document.getElementById("previewTestName").textContent = testName;
-        document.getElementById("previewStudentName").textContent = studentName || "_________________";
-        document.getElementById("previewDate").textContent = testDate || "_________________";
+        document.getElementById("previewStudentName").textContent = studentName || "____________________________";
+        document.getElementById("previewDate").textContent = testDate || "_____________";
+        document.getElementById("previewMarks").textContent = totalMarks;
+        document.getElementById("previewDuration").textContent = testDuration || "____";
 
-        const questionsContainer = document.getElementById("questionsContainer");
-        questionsContainer.innerHTML = "";
-
-        let questionNumber = 1;
-        const selectedChapters = document.querySelectorAll(".chapter-card:has(input:checked)");
-
-        if (selectedChapters.length === 0) {
+        const selectedKeys = getSelectedChapterKeys();
+        if (selectedKeys.length === 0) {
           alert("Please select at least one chapter!");
           return;
         }
 
-        selectedChapters.forEach((card) => {
-          const chapterId = card.dataset.chapter;
-          if (questions[chapterId]) {
-            const sectionDiv = document.createElement("div");
-            sectionDiv.className = "question-section";
-
-            const chapterType = card.dataset.type;
-            const chapterTitle = card.querySelector("h3").textContent;
-
-            let sectionLabel = "";
-            if (chapterType === "grammar") sectionLabel = "📝 Grammar";
-            else if (chapterType === "vocabulary") sectionLabel = "📚 Vocabulary";
-
-            sectionDiv.innerHTML = `<h3>${sectionLabel} - ${chapterTitle}</h3>`;
-
-            questions[chapterId].forEach((q) => {
-              const questionDiv = document.createElement("div");
-              questionDiv.className = "question";
-
-              let questionHTML = `<p><strong>Q${questionNumber}.</strong> ${q.text}</p>`;
-
-              q.images.forEach((img) => {
-                questionHTML += `<img src="${img}" alt="Question Image">`;
+        // Flatten all questions from selected chapters into a pool
+        const pool = [];
+        selectedKeys.forEach(chKey => {
+          const ch = questionBank[chKey];
+          if (!ch) return;
+          ch.worksheets.forEach((ws, wsIdx) => {
+            ws.questions.forEach(q => {
+              pool.push({
+                chapterKey: chKey,
+                chapterName: ch.name,
+                worksheetIdx: wsIdx,
+                instruction: ws.instruction,
+                text: q.text,
+                options: q.options || null,
+                wideOptions: q.wideOptions || false,
+                lines: q.lines || 0
               });
+            });
+          });
+        });
 
-              // Show answer only for teacher version
-              if (questionType === "teacher") {
-                questionHTML += `<div class="answer">Answer: ${q.answer}</div>`;
+        // Shuffle and select up to totalMarks questions
+        const shuffled = shuffleArray(pool);
+        const available = shuffled.length;
+        const selected = shuffled.slice(0, Math.min(totalMarks, available));
+
+        if (available < totalMarks) {
+          alert(
+            "Only " + available + " questions are available from selected chapters.\n" +
+            "Showing all " + available + " questions. Select more chapters or reduce total marks."
+          );
+        }
+
+        // Re-group by chapter (maintaining chapter order), then by worksheet
+        const grouped = new Map();
+        selectedKeys.forEach(k => {
+          grouped.set(k, { name: questionBank[k].name, worksheets: new Map() });
+        });
+
+        selected.forEach(q => {
+          const chGroup = grouped.get(q.chapterKey);
+          if (!chGroup) return;
+          if (!chGroup.worksheets.has(q.worksheetIdx)) {
+            chGroup.worksheets.set(q.worksheetIdx, { instruction: q.instruction, questions: [] });
+          }
+          chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
+        });
+
+        // Render
+        const container = document.getElementById("questionsContainer");
+        container.innerHTML = "";
+        let qNum = 1;
+
+        grouped.forEach((chData) => {
+          if (chData.worksheets.size === 0) return;
+
+          const chSection = document.createElement("div");
+          chSection.className = "question-section";
+          chSection.innerHTML = "<h3>" + chData.name + "</h3>";
+
+          const sortedWs = [...chData.worksheets.entries()].sort((a, b) => a[0] - b[0]);
+
+          sortedWs.forEach(([, wsData]) => {
+            const wsDiv = document.createElement("div");
+            wsDiv.className = "worksheet-group";
+            wsDiv.innerHTML = "<p class=\"ws-instruction\">" + wsData.instruction.replace(/\n/g, "<br>") + "</p>";
+
+            wsData.questions.forEach(q => {
+              const qDiv = document.createElement("div");
+              qDiv.className = "question-item";
+
+              let html = "<p class=\"question-text\"><strong>" + qNum + ".</strong> " +
+                q.text.replace(/\n/g, "<br>") + "</p>";
+
+              if (q.options && q.options.length > 0) {
+                if (q.wideOptions) {
+                  html += "<div class=\"options-list\">";
+                  q.options.forEach(opt => {
+                    html += "<span class=\"option-item\">" + opt + "</span>";
+                  });
+                  html += "</div>";
+                } else {
+                  html += "<div class=\"options-grid\">";
+                  q.options.forEach(opt => {
+                    html += "<span class=\"option-item\">" + opt + "</span>";
+                  });
+                  html += "</div>";
+                }
               }
 
-              questionDiv.innerHTML = questionHTML;
-              sectionDiv.appendChild(questionDiv);
-              questionNumber++;
+              for (let i = 0; i < q.lines; i++) {
+                html += "<div class=\"answer-line\"></div>";
+              }
+
+              qDiv.innerHTML = html;
+              wsDiv.appendChild(qDiv);
+              qNum++;
             });
 
-            questionsContainer.appendChild(sectionDiv);
-          }
+            chSection.appendChild(wsDiv);
+          });
+
+          container.appendChild(chSection);
         });
 
         document.getElementById("testPreview").classList.add("show");
@@ -752,9 +1343,7 @@
 
       function printTest() {
         previewTest();
-        setTimeout(() => {
-          window.print();
-        }, 500);
+        setTimeout(() => window.print(), 600);
       }
     </script>
   </body>
