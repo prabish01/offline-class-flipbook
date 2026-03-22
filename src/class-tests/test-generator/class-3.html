@@ -437,6 +437,61 @@
         .action-buttons { flex-direction: column; }
         .btn { width: 100%; }
       }
+
+      /* Answer Key */
+      .answer-key-preview {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        margin-top: 30px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        display: none;
+        border-top: 4px solid #00b894;
+      }
+      .answer-key-preview.show { display: block; }
+      .answer-key-header {
+        text-align: center;
+        border-bottom: 2px solid #333;
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+      }
+      .answer-key-header h2 { color: #00b894; font-size: 1.6rem; margin-bottom: 5px; }
+      .answer-key-header .ak-tag {
+        display: inline-block; background: #00b894; color: white;
+        padding: 4px 16px; border-radius: 20px; font-size: 0.9rem;
+        font-weight: bold; margin-bottom: 8px;
+      }
+      .ak-chapter { margin-bottom: 24px; }
+      .ak-chapter h3 {
+        color: #333; font-size: 1rem; margin-bottom: 10px;
+        padding: 6px 12px; background: #e8fdf5;
+        border-radius: 8px; border-left: 4px solid #00b894;
+        font-family: Arial, sans-serif;
+      }
+      .ak-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 6px 12px;
+        font-family: Arial, sans-serif;
+        font-size: 0.9rem;
+        padding: 0 8px;
+      }
+      .ak-item { color: #111; line-height: 1.6; }
+      .ak-item strong { color: #00b894; margin-right: 4px; }
+      .ak-vary { color: #999; font-style: italic; }
+      .btn-answer-preview { background: linear-gradient(135deg, #00b894 0%, #00cec9 100%); color: white; }
+      .btn-answer-preview:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,184,148,0.4); }
+      .btn-answer-print { background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%); color: white; }
+      .btn-answer-print:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(225,112,85,0.4); }
+      @media print {
+        .answer-key-preview {
+          border-radius: 0 !important; box-shadow: none !important;
+          padding: 15px 20px !important; margin: 0 !important;
+          background: white !important; display: block !important;
+        }
+        .test-preview { display: none !important; }
+        .ak-chapter h3 { background: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      }
     </style>
   </head>
   <body>
@@ -596,6 +651,8 @@
         <button class="btn btn-preview" onclick="previewTest()">&#128065;&#65039; Preview Test</button>
         <span class="available-count" id="actionAvail">Select chapters to begin</span>
         <button class="btn btn-print" onclick="printTest()">&#128424;&#65039; Print Test</button>
+        <button class="btn btn-answer-preview" onclick="previewAnswers()">&#128273; Answer Preview</button>
+        <button class="btn btn-answer-print" onclick="printAnswers()">&#128424;&#65039; Print Answer Key</button>
       </div>
 
       <!-- Test Preview -->
@@ -617,6 +674,16 @@
         <hr class="test-divider" />
         <div id="questionsContainer"></div>
       </div>
+
+      <!-- Answer Key Preview -->
+      <div class="answer-key-preview" id="answerKeyPreview">
+        <div class="answer-key-header">
+          <div class="ak-tag">ANSWER KEY — FOR TEACHER USE ONLY</div>
+          <h2 id="akTestName">Answer Key</h2>
+          <div style="font-size:0.9rem;color:#555;margin-top:6px;" id="akMeta"></div>
+        </div>
+        <div id="answersContainer"></div>
+      </div>
     </div>
 
     <script>
@@ -631,36 +698,36 @@
             {
               instruction: "A – Look at each sentence. Write whether the underlined/highlighted part is the subject or the predicate.",
               questions: [
-                { text: "The baby / is crying." },
-                { text: "My friend / plays football." },
-                { text: "The birds / are flying in the sky." },
-                { text: "The dog / barked at the stranger." },
-                { text: "The sun / rises in the east." },
-                { text: "The teacher / wrote on the board." },
-                { text: "My parents / are watching TV." },
-                { text: "The stars / are shining brightly." },
-                { text: "The rabbit / jumped into the bush." },
-                { text: "His brother / is singing a song." },
-                { text: "The baby / laughed loudly." },
-                { text: "Our car / is very fast." },
-                { text: "The flowers / are blooming." },
-                { text: "A monkey / climbed the tree." },
-                { text: "My grandmother / told me a story." }
+                { text: "The baby / is crying.", answer: "Subject" },
+                { text: "My friend / plays football.", answer: "Subject" },
+                { text: "The birds / are flying in the sky.", answer: "Subject" },
+                { text: "The dog / barked at the stranger.", answer: "Subject" },
+                { text: "The sun / rises in the east.", answer: "Subject" },
+                { text: "The teacher / wrote on the board.", answer: "Predicate" },
+                { text: "My parents / are watching TV.", answer: "Predicate" },
+                { text: "The stars / are shining brightly.", answer: "Predicate" },
+                { text: "The rabbit / jumped into the bush.", answer: "Predicate" },
+                { text: "His brother / is singing a song.", answer: "Predicate" },
+                { text: "The baby / laughed loudly.", answer: "Subject" },
+                { text: "Our car / is very fast.", answer: "Subject" },
+                { text: "The flowers / are blooming.", answer: "Subject" },
+                { text: "A monkey / climbed the tree.", answer: "Subject" },
+                { text: "My grandmother / told me a story.", answer: "Subject" }
               ]
             },
             {
               instruction: "B – In each sentence, underline the subject and circle the predicate.",
               questions: [
-                { text: "The elephant splashed water." },
-                { text: "My sister reads every night." },
-                { text: "The children are laughing loudly." },
-                { text: "A bird sat on the window." },
-                { text: "The farmer works in the field." },
-                { text: "Her bag is on the chair." },
-                { text: "The cake smells delicious." },
-                { text: "The train arrived late." },
-                { text: "His puppy followed him home." },
-                { text: "Our neighbours went on a holiday." }
+                { text: "The elephant splashed water.", answer: "Subject: The elephant" },
+                { text: "My sister reads every night.", answer: "Subject: My sister" },
+                { text: "The children are laughing loudly.", answer: "Subject: The children" },
+                { text: "A bird sat on the window.", answer: "Subject: A bird" },
+                { text: "The farmer works in the field.", answer: "Subject: The farmer" },
+                { text: "Her bag is on the chair.", answer: "Subject: Her bag" },
+                { text: "The cake smells delicious.", answer: "Subject: The cake" },
+                { text: "The train arrived late.", answer: "Subject: The train" },
+                { text: "His puppy followed him home.", answer: "Subject: His puppy" },
+                { text: "Our neighbours went on a holiday.", answer: "Subject: Our neighbours" }
               ]
             }
           ]
@@ -672,38 +739,38 @@
             {
               instruction: "A – Read each group of words. Write P if it is a phrase. Write S if it is a sentence.",
               questions: [
-                { text: "The girl is painting a picture. ___" },
-                { text: "the smiling boy ___" },
-                { text: "in the blue bag ___" },
-                { text: "My father is reading a newspaper. ___" },
-                { text: "a group of ducks ___" },
-                { text: "The stars twinkled in the sky. ___" },
-                { text: "behind the curtain ___" },
-                { text: "We planted flowers in the garden. ___" },
-                { text: "under the tree ___" },
-                { text: "walking down ___" },
-                { text: "The bus stopped at the station. ___" },
-                { text: "The children are playing under the tree. ___" }
+                { text: "The girl is painting a picture. ___", answer: "S" },
+                { text: "the smiling boy ___", answer: "P" },
+                { text: "in the blue bag ___", answer: "P" },
+                { text: "My father is reading a newspaper. ___", answer: "S" },
+                { text: "a group of ducks ___", answer: "P" },
+                { text: "The stars twinkled in the sky. ___", answer: "S" },
+                { text: "behind the curtain ___", answer: "P" },
+                { text: "We planted flowers in the garden. ___", answer: "S" },
+                { text: "under the tree ___", answer: "P" },
+                { text: "walking down ___", answer: "P" },
+                { text: "The bus stopped at the station. ___", answer: "S" },
+                { text: "The children are playing under the tree. ___", answer: "S" }
               ]
             },
             {
               instruction: "B – Complete each sentence with a full stop, question mark or exclamation mark.",
               questions: [
-                { text: "Put your toys away ___" },
-                { text: "Finish your lunch ___" },
-                { text: "Please tell me a story ___" },
-                { text: "My uncle lives in Delhi ___" },
-                { text: "Kindly close the window ___" },
-                { text: "Take out your maths book ___" },
-                { text: "We have a test on Monday ___" },
-                { text: "What a loud sound that was ___" },
-                { text: "Where is your school bag ___" },
-                { text: "Are you feeling better now ___" },
-                { text: "Oh dear, I dropped the juice ___" },
-                { text: "Who is knocking at the door ___" },
-                { text: "Hooray, we are going on a picnic ___" },
-                { text: "Could you share your eraser with me ___" },
-                { text: "The flowers are blooming in the garden ___" }
+                { text: "Put your toys away ___", answer: "." },
+                { text: "Finish your lunch ___", answer: "." },
+                { text: "Please tell me a story ___", answer: "." },
+                { text: "My uncle lives in Delhi ___", answer: "." },
+                { text: "Kindly close the window ___", answer: "." },
+                { text: "Take out your maths book ___", answer: "." },
+                { text: "We have a test on Monday ___", answer: "." },
+                { text: "What a loud sound that was ___", answer: "!" },
+                { text: "Where is your school bag ___", answer: "?" },
+                { text: "Are you feeling better now ___", answer: "?" },
+                { text: "Oh dear, I dropped the juice ___", answer: "!" },
+                { text: "Who is knocking at the door ___", answer: "?" },
+                { text: "Hooray, we are going on a picnic ___", answer: "!" },
+                { text: "Could you share your eraser with me ___", answer: "?" },
+                { text: "The flowers are blooming in the garden ___", answer: "." }
               ]
             }
           ]
@@ -715,27 +782,27 @@
             {
               instruction: "A – In each sentence, there is an error in the use of articles. Underline the incorrect article and write the correct one.",
               questions: [
-                { text: "That is an useful idea." },
-                { text: "She saw the elephant at the zoo." },
-                { text: "He wants to be a astronaut." },
-                { text: "They met an European artist." },
-                { text: "How long is a Indus River?" },
-                { text: "I read the interesting story." },
-                { text: "A Bahamas comprises more than 3000 islands." },
-                { text: "He lives in a People's Republic of China." },
-                { text: "Is a Nile the longest river in the world?" },
-                { text: "We took photos near a Gateway of India." },
-                { text: "We waited for a hour in the queue." },
-                { text: "He wears an uniform to school." },
-                { text: "I found an one-rupee note in the old book." },
-                { text: "My cousin ate an banana and an apricot." },
-                { text: "We heard a unusual sound in the forest." },
-                { text: "We learned about a United Kingdom today." },
-                { text: "I saw a cat. A cat was chasing a butterfly." },
-                { text: "A Earth revolves around the Sun." },
-                { text: "My cousin visited an Akshardham Temple last year." },
-                { text: "A President of India inaugurated the event." },
-                { text: "We saw dolphins swimming in a China Sea." }
+                { text: "That is an useful idea.", answer: "a" },
+                { text: "She saw the elephant at the zoo.", answer: "an" },
+                { text: "He wants to be a astronaut.", answer: "an" },
+                { text: "They met an European artist.", answer: "a" },
+                { text: "How long is a Indus River?", answer: "the" },
+                { text: "I read the interesting story.", answer: "an" },
+                { text: "A Bahamas comprises more than 3000 islands.", answer: "The" },
+                { text: "He lives in a People's Republic of China.", answer: "the" },
+                { text: "Is a Nile the longest river in the world?", answer: "the" },
+                { text: "We took photos near a Gateway of India.", answer: "the" },
+                { text: "We waited for a hour in the queue.", answer: "an" },
+                { text: "He wears an uniform to school.", answer: "a" },
+                { text: "I found an one-rupee note in the old book.", answer: "a" },
+                { text: "My cousin ate an banana and an apricot.", answer: "a" },
+                { text: "We heard a unusual sound in the forest.", answer: "an" },
+                { text: "We learned about a United Kingdom today.", answer: "the" },
+                { text: "I saw a cat. A cat was chasing a butterfly.", answer: "The" },
+                { text: "A Earth revolves around the Sun.", answer: "The" },
+                { text: "My cousin visited an Akshardham Temple last year.", answer: "the" },
+                { text: "A President of India inaugurated the event.", answer: "The" },
+                { text: "We saw dolphins swimming in a China Sea.", answer: "the" }
               ]
             }
           ]
@@ -747,21 +814,21 @@
             {
               instruction: "A – Write C for countable nouns and U for uncountable nouns.",
               questions: [
-                { text: "Apples ___" },
-                { text: "milk ___" },
-                { text: "chairs ___" },
-                { text: "sugar ___" },
-                { text: "oranges ___" },
-                { text: "rice ___" },
-                { text: "pencils ___" },
-                { text: "salt ___" },
-                { text: "books ___" },
-                { text: "butter ___" },
-                { text: "eggs ___" },
-                { text: "tea ___" },
-                { text: "cars ___" },
-                { text: "water ___" },
-                { text: "bananas ___" }
+                { text: "Apples ___", answer: "C" },
+                { text: "milk ___", answer: "U" },
+                { text: "chairs ___", answer: "C" },
+                { text: "sugar ___", answer: "U" },
+                { text: "oranges ___", answer: "C" },
+                { text: "rice ___", answer: "U" },
+                { text: "pencils ___", answer: "C" },
+                { text: "salt ___", answer: "U" },
+                { text: "books ___", answer: "C" },
+                { text: "butter ___", answer: "U" },
+                { text: "eggs ___", answer: "C" },
+                { text: "tea ___", answer: "U" },
+                { text: "cars ___", answer: "C" },
+                { text: "water ___", answer: "U" },
+                { text: "bananas ___", answer: "C" }
               ]
             }
           ]
@@ -773,26 +840,26 @@
             {
               instruction: "A – Circle the subject, underline the object, and double underline the verb in each sentence. (Note: Two sentences do not have an object.)",
               questions: [
-                { text: "Ravi kicked the ball." },
-                { text: "She ate an apple." },
-                { text: "The cat chased the mouse." },
-                { text: "They cleaned the classroom." },
-                { text: "We watched a movie." },
-                { text: "The boy read a book." },
-                { text: "My mother baked a cake." },
-                { text: "The door opened slowly." },
-                { text: "I found a pencil." },
-                { text: "The teacher scolded the student." },
-                { text: "The dog buried the bone." },
-                { text: "The engine roared loudly." },
-                { text: "The monkey stole a banana." },
-                { text: "They painted the wall." },
-                { text: "I opened the window." },
-                { text: "My brother flew a kite." },
-                { text: "We built a sandcastle." },
-                { text: "The driver started the car." },
-                { text: "The dogs played with the ball." },
-                { text: "The girl watered the plants." }
+                { text: "Ravi kicked the ball.", answer: "Object: ball" },
+                { text: "She ate an apple.", answer: "Object: apple" },
+                { text: "The cat chased the mouse.", answer: "Object: mouse" },
+                { text: "They cleaned the classroom.", answer: "Object: classroom" },
+                { text: "We watched a movie.", answer: "Object: movie" },
+                { text: "The boy read a book.", answer: "Object: book" },
+                { text: "My mother baked a cake.", answer: "Object: cake" },
+                { text: "The door opened slowly.", answer: "No object" },
+                { text: "I found a pencil.", answer: "Object: pencil" },
+                { text: "The teacher scolded the student.", answer: "Object: student" },
+                { text: "The dog buried the bone.", answer: "Object: bone" },
+                { text: "The engine roared loudly.", answer: "No object" },
+                { text: "The monkey stole a banana.", answer: "Object: banana" },
+                { text: "They painted the wall.", answer: "Object: wall" },
+                { text: "I opened the window.", answer: "Object: window" },
+                { text: "My brother flew a kite.", answer: "Object: kite" },
+                { text: "We built a sandcastle.", answer: "Object: sandcastle" },
+                { text: "The driver started the car.", answer: "Object: car" },
+                { text: "The dogs played with the ball.", answer: "Object: ball" },
+                { text: "The girl watered the plants.", answer: "Object: plants" }
               ]
             }
           ]
@@ -804,28 +871,28 @@
             {
               instruction: "A – Circle the subject pronouns. Underline the object pronouns.",
               questions: [
-                { text: "I like apples. My mom gives me one every day." },
-                { text: "You are funny. Everyone likes you." },
-                { text: "He is my friend. I play with him." },
-                { text: "She sings well. We clapped for her." },
-                { text: "It is my pencil. Please give it back." },
-                { text: "We are going to the zoo. Come with us!" },
-                { text: "They are playing cricket. I will join them." },
-                { text: "John has a ball. He threw it to me." },
-                { text: "We saw a puppy. The puppy followed us home." }
+                { text: "I like apples. My mom gives me one every day.", answer: "Subject: I / Object: me" },
+                { text: "You are funny. Everyone likes you.", answer: "Subject: You / Object: you" },
+                { text: "He is my friend. I play with him.", answer: "Subject: He / Object: him" },
+                { text: "She sings well. We clapped for her.", answer: "Subject: She / Object: her" },
+                { text: "It is my pencil. Please give it back.", answer: "Subject: It / Object: it" },
+                { text: "We are going to the zoo. Come with us!", answer: "Subject: We / Object: us" },
+                { text: "They are playing cricket. I will join them.", answer: "Subject: They / Object: them" },
+                { text: "John has a ball. He threw it to me.", answer: "Subject: He / Object: me" },
+                { text: "We saw a puppy. The puppy followed us home.", answer: "Subject: We / Object: us" }
               ]
             },
             {
               instruction: "B – Choose the object pronoun to complete each sentence.",
               questions: [
-                { text: "Tina is my friend. I like ___________ a lot. (he / her / she)" },
-                { text: "We are going to the park. Come with ___________! (us / we / they)" },
-                { text: "Raj has a puppy. He plays with ___________ every day. (he / him / it)" },
-                { text: "My friends are nice. I enjoy being with ___________. (them / they / we)" },
-                { text: "I saw Sita yesterday. She gave ___________ a flower. (I / mine / me)" },
-                { text: "We gave the ball to Rohan. He kicked ___________ too far. (it / them / us)" },
-                { text: "My teacher is kind. Everyone likes ___________. (she / her / him)" },
-                { text: "That's your pen. Please take ___________ back. (it / him / them)" }
+                { text: "Tina is my friend. I like ___________ a lot. (he / her / she)", answer: "her" },
+                { text: "We are going to the park. Come with ___________! (us / we / they)", answer: "us" },
+                { text: "Raj has a puppy. He plays with ___________ every day. (he / him / it)", answer: "it" },
+                { text: "My friends are nice. I enjoy being with ___________. (them / they / we)", answer: "them" },
+                { text: "I saw Sita yesterday. She gave ___________ a flower. (I / mine / me)", answer: "me" },
+                { text: "We gave the ball to Rohan. He kicked ___________ too far. (it / them / us)", answer: "it" },
+                { text: "My teacher is kind. Everyone likes ___________. (she / her / him)", answer: "her/him" },
+                { text: "That's your pen. Please take ___________ back. (it / him / them)", answer: "it" }
               ]
             },
             {
@@ -848,22 +915,22 @@
             {
               instruction: "A – Fill in each blank with a suitable adjective.",
               questions: [
-                { text: "I ate a ___________ mango." },
-                { text: "There are ___________ stars in the sky." },
-                { text: "She has ___________ pencils in her box." },
-                { text: "We drank ___________ water after the game." },
-                { text: "The baby has a ___________ blanket." },
-                { text: "I saw a ___________ butterfly in the garden." },
-                { text: "He gave me a ___________ piece of cake." },
-                { text: "My brother has ___________ books on his shelf." },
-                { text: "We saw ___________ monkeys at the zoo." },
-                { text: "The soup is ___________ and tasty." },
-                { text: "She wore a ___________ dress to the party." },
-                { text: "I found ___________ coins in my pocket." },
-                { text: "We need ___________ rice to cook dinner." },
-                { text: "He has ___________ sharp pencils in his pouch." },
-                { text: "The kitten is very ___________ and cute." },
-                { text: "There are ___________ birds on the tree." }
+                { text: "I ate a ___________ mango.", answer: "sweet" },
+                { text: "There are ___________ stars in the sky.", answer: "many" },
+                { text: "She has ___________ pencils in her box.", answer: "two" },
+                { text: "We drank ___________ water after the game.", answer: "some" },
+                { text: "The baby has a ___________ blanket.", answer: "black" },
+                { text: "I saw a ___________ butterfly in the garden.", answer: "beautiful" },
+                { text: "He gave me a ___________ piece of cake.", answer: "small" },
+                { text: "My brother has ___________ books on his shelf.", answer: "seven" },
+                { text: "We saw ___________ monkeys at the zoo.", answer: "a few" },
+                { text: "The soup is ___________ and tasty.", answer: "hot" },
+                { text: "She wore a ___________ dress to the party.", answer: "pretty" },
+                { text: "I found ___________ coins in my pocket.", answer: "three" },
+                { text: "We need ___________ rice to cook dinner.", answer: "enough" },
+                { text: "He has ___________ sharp pencils in his pouch.", answer: "six" },
+                { text: "The kitten is very ___________ and cute.", answer: "small" },
+                { text: "There are ___________ birds on the tree.", answer: "too many" }
               ]
             }
           ]
@@ -875,19 +942,19 @@
             {
               instruction: "A – Fill in the blanks with possessive pronouns or possessive adjectives. Pay attention to the subject pronoun in each sentence.",
               questions: [
-                { text: "You have a toy. It is ___________ toy." },
-                { text: "I have a bag. It is ___________ bag." },
-                { text: "He has a cap. The cap is ___________." },
-                { text: "He has a car. It is ___________ car." },
-                { text: "She has a doll. The doll is ___________." },
-                { text: "It is a cat. This is ___________ tail." },
-                { text: "I have a pen. This pen is ___________." },
-                { text: "She has a doll. It is ___________ doll." },
-                { text: "You have a toy. That toy is ___________." },
-                { text: "We have a garden. It is ___________ garden." },
-                { text: "We have a house. The house is ___________." },
-                { text: "They have books. Those are ___________ books." },
-                { text: "They have bicycles. The bicycles are ___________." }
+                { text: "You have a toy. It is ___________ toy.", answer: "your" },
+                { text: "I have a bag. It is ___________ bag.", answer: "my" },
+                { text: "He has a cap. The cap is ___________.", answer: "his" },
+                { text: "He has a car. It is ___________ car.", answer: "his" },
+                { text: "She has a doll. The doll is ___________.", answer: "hers" },
+                { text: "It is a cat. This is ___________ tail.", answer: "its" },
+                { text: "I have a pen. This pen is ___________.", answer: "mine" },
+                { text: "She has a doll. It is ___________ doll.", answer: "her" },
+                { text: "You have a toy. That toy is ___________.", answer: "yours" },
+                { text: "We have a garden. It is ___________ garden.", answer: "our" },
+                { text: "We have a house. The house is ___________.", answer: "ours" },
+                { text: "They have books. Those are ___________ books.", answer: "theirs" },
+                { text: "They have bicycles. The bicycles are ___________.", answer: "their" }
               ]
             }
           ]
@@ -899,16 +966,16 @@
             {
               instruction: "A – Choose the correct form of the adjective to complete each sentence.",
               questions: [
-                { text: "This box is ___________ than that one. (heavy / heavier / heaviest)" },
-                { text: "This is the ___________ day of the year. (cold / colder / coldest)" },
-                { text: "My dog is ___________ than your dog. (friendly / friendlier / friendliest)" },
-                { text: "She is the ___________ girl in the class. (tall / taller / tallest)" },
-                { text: "A car is ___________ than a bicycle. (fast / faster / fastest)" },
-                { text: "This painting is ___________ than the other one. (beautiful / more beautiful / most beautiful)" },
-                { text: "Rohan is ___________ than his brother. (short / shorter / shortest)" },
-                { text: "This cake is the ___________ I have ever tasted! (delicious / more delicious / most delicious)" },
-                { text: "The road is becoming ___________ now. (narrow / narrower / narrowest)" },
-                { text: "The giraffe is the ___________ animal in the zoo. (tall / taller / tallest)" }
+                { text: "This box is ___________ than that one. (heavy / heavier / heaviest)", answer: "heavier" },
+                { text: "This is the ___________ day of the year. (cold / colder / coldest)", answer: "coldest" },
+                { text: "My dog is ___________ than your dog. (friendly / friendlier / friendliest)", answer: "friendlier" },
+                { text: "She is the ___________ girl in the class. (tall / taller / tallest)", answer: "tallest" },
+                { text: "A car is ___________ than a bicycle. (fast / faster / fastest)", answer: "faster" },
+                { text: "This painting is ___________ than the other one. (beautiful / more beautiful / most beautiful)", answer: "more beautiful" },
+                { text: "Rohan is ___________ than his brother. (short / shorter / shortest)", answer: "shorter" },
+                { text: "This cake is the ___________ I have ever tasted! (delicious / more delicious / most delicious)", answer: "most delicious" },
+                { text: "The road is becoming ___________ now. (narrow / narrower / narrowest)", answer: "narrower" },
+                { text: "The giraffe is the ___________ animal in the zoo. (tall / taller / tallest)", answer: "tallest" }
               ]
             }
           ]
@@ -920,29 +987,29 @@
             {
               instruction: "A – Underline the verbs in these sentences.",
               questions: [
-                { text: "He is my best friend." },
-                { text: "I am seven years old." },
-                { text: "She has a lovely dress." },
-                { text: "The cat chases the mouse." },
-                { text: "They have two footballs." },
-                { text: "The boy jumps over the puddle." },
-                { text: "I have a blue water bottle." },
-                { text: "We draw pictures in art class." },
-                { text: "We are in the classroom." }
+                { text: "He is my best friend.", answer: "is" },
+                { text: "I am seven years old.", answer: "am" },
+                { text: "She has a lovely dress.", answer: "has" },
+                { text: "The cat chases the mouse.", answer: "chases" },
+                { text: "They have two footballs.", answer: "have" },
+                { text: "The boy jumps over the puddle.", answer: "jumps" },
+                { text: "I have a blue water bottle.", answer: "have" },
+                { text: "We draw pictures in art class.", answer: "draw" },
+                { text: "We are in the classroom.", answer: "are" }
               ]
             },
             {
               instruction: "B – Fill in the blanks with suitable verbs.",
               questions: [
-                { text: "He ___________ tall." },
-                { text: "They ___________ happy." },
-                { text: "She ___________ long hair." },
-                { text: "The baby ___________ at night." },
-                { text: "We ___________ lunch at school." },
-                { text: "I ___________ my bicycle every day." },
-                { text: "The birds ___________ in the morning." },
-                { text: "They ___________ many crayons." },
-                { text: "I ___________ ready to go." }
+                { text: "He ___________ tall.", answer: "is" },
+                { text: "They ___________ happy.", answer: "are" },
+                { text: "She ___________ long hair.", answer: "has" },
+                { text: "The baby ___________ at night.", answer: "slept" },
+                { text: "We ___________ lunch at school.", answer: "had" },
+                { text: "I ___________ my bicycle every day.", answer: "ride" },
+                { text: "The birds ___________ in the morning.", answer: "sing" },
+                { text: "They ___________ many crayons.", answer: "have" },
+                { text: "I ___________ ready to go.", answer: "am" }
               ]
             }
           ]
@@ -954,36 +1021,36 @@
             {
               instruction: "A – Choose the correct verb to complete each sentence.",
               questions: [
-                { text: "She ___________ a glass of milk every morning. (drink / drinks)" },
-                { text: "We ___________ to school by bus. (go / goes)" },
-                { text: "The baby ___________ loudly. (cries / cry)" },
-                { text: "I ___________ my homework in the evening. (does / do)" },
-                { text: "He ___________ football with his friends. (play / plays)" },
-                { text: "They ___________ in a big house. (live / lives)" },
-                { text: "Rani ___________ to music every day. (listen / listens)" },
-                { text: "You ___________ very neatly. (write / writes)" },
-                { text: "My father ___________ tea in the morning. (drink / drinks)" },
-                { text: "The sun ___________ in the east. (rise / rises)" },
-                { text: "The dog ___________ at strangers. (bark / barks)" },
-                { text: "He always ___________ his lunch at school. (bring / brings)" },
-                { text: "I ___________ my room every Saturday. (clean / cleans)" },
-                { text: "She ___________ very fast. (run / runs)" },
-                { text: "They ___________ cartoons on weekends. (watch / watches)" },
-                { text: "The teacher ___________ us new words every day. (teach / teaches)" }
+                { text: "She ___________ a glass of milk every morning. (drink / drinks)", answer: "drinks" },
+                { text: "We ___________ to school by bus. (go / goes)", answer: "go" },
+                { text: "The baby ___________ loudly. (cries / cry)", answer: "cries" },
+                { text: "I ___________ my homework in the evening. (does / do)", answer: "do" },
+                { text: "He ___________ football with his friends. (play / plays)", answer: "plays" },
+                { text: "They ___________ in a big house. (live / lives)", answer: "live" },
+                { text: "Rani ___________ to music every day. (listen / listens)", answer: "listens" },
+                { text: "You ___________ very neatly. (write / writes)", answer: "write" },
+                { text: "My father ___________ tea in the morning. (drink / drinks)", answer: "drinks" },
+                { text: "The sun ___________ in the east. (rise / rises)", answer: "rises" },
+                { text: "The dog ___________ at strangers. (bark / barks)", answer: "barks" },
+                { text: "He always ___________ his lunch at school. (bring / brings)", answer: "brings" },
+                { text: "I ___________ my room every Saturday. (clean / cleans)", answer: "clean" },
+                { text: "She ___________ very fast. (run / runs)", answer: "runs" },
+                { text: "They ___________ cartoons on weekends. (watch / watches)", answer: "watch" },
+                { text: "The teacher ___________ us new words every day. (teach / teaches)", answer: "teaches" }
               ]
             },
             {
               instruction: "B – Make sentences in the simple present tense with these sets of words.",
               questions: [
-                { text: "they / study", lines: 1 },
-                { text: "he / mix", lines: 1 },
-                { text: "she / like", lines: 1 },
-                { text: "the sun / rise", lines: 1 },
-                { text: "he / work", lines: 1 },
-                { text: "the train / leave", lines: 1 },
-                { text: "I / carry", lines: 1 },
-                { text: "mother / cook", lines: 1 },
-                { text: "the baby / laugh", lines: 1 }
+                { text: "they / study", lines: 1, answer: "study" },
+                { text: "he / mix", lines: 1, answer: "mixes" },
+                { text: "she / like", lines: 1, answer: "likes" },
+                { text: "the sun / rise", lines: 1, answer: "rises" },
+                { text: "he / work", lines: 1, answer: "works" },
+                { text: "the train / leave", lines: 1, answer: "leaves" },
+                { text: "I / carry", lines: 1, answer: "carry" },
+                { text: "mother / cook", lines: 1, answer: "cooks" },
+                { text: "the baby / laugh", lines: 1, answer: "laughs" }
               ]
             }
           ]
@@ -995,35 +1062,35 @@
             {
               instruction: "A – Fill in the blanks with the simple past tense form of the verbs given in brackets.",
               questions: [
-                { text: "She ___________ (visit) her grandmother yesterday." },
-                { text: "I ___________ (eat) a sandwich for lunch." },
-                { text: "He ___________ (go) to the market." },
-                { text: "They ___________ (watch) a movie last night." },
-                { text: "The bird ___________ (fly) across the sky." },
-                { text: "We ___________ (clean) our room in the morning." },
-                { text: "She ___________ (buy) a new dress." },
-                { text: "The baby ___________ (cry) loudly." },
-                { text: "He ___________ (drink) a glass of milk." },
-                { text: "I ___________ (write) a letter to my friend." },
-                { text: "They ___________ (laugh) at the funny clown." },
-                { text: "He ___________ (read) a storybook before bed." },
-                { text: "The cat ___________ (sleep) under the table." },
-                { text: "She ___________ (visit) her grandmother yesterday." },
-                { text: "She ___________ (sing) a song at the party." }
+                { text: "She ___________ (visit) her grandmother yesterday.", answer: "visited" },
+                { text: "I ___________ (eat) a sandwich for lunch.", answer: "ate" },
+                { text: "He ___________ (go) to the market.", answer: "went" },
+                { text: "They ___________ (watch) a movie last night.", answer: "watched" },
+                { text: "The bird ___________ (fly) across the sky.", answer: "flew" },
+                { text: "We ___________ (clean) our room in the morning.", answer: "cleaned" },
+                { text: "She ___________ (buy) a new dress.", answer: "bought" },
+                { text: "The baby ___________ (cry) loudly.", answer: "cried" },
+                { text: "He ___________ (drink) a glass of milk.", answer: "drank" },
+                { text: "I ___________ (write) a letter to my friend.", answer: "wrote" },
+                { text: "They ___________ (laugh) at the funny clown.", answer: "laughed" },
+                { text: "He ___________ (read) a storybook before bed.", answer: "read" },
+                { text: "The cat ___________ (sleep) under the table.", answer: "slept" },
+                { text: "She ___________ (visit) her grandmother yesterday.", answer: "visited" },
+                { text: "She ___________ (sing) a song at the party.", answer: "sang" }
               ]
             },
             {
               instruction: "B – Choose the correct verb form.",
               questions: [
-                { text: "They ___________ to the zoo last Sunday. (go / went)" },
-                { text: "I ___________ a storybook before bed. (read / read)" },
-                { text: "He ___________ a song at the party yesterday. (sings / sang)" },
-                { text: "The baby always ___________ loudly. (cries / cried)" },
-                { text: "We ___________ the floor this morning. (clean / cleaned)" },
-                { text: "My mother ___________ tea in the evening. (made / makes)" },
-                { text: "The teacher ___________ a story every day. (told / tells)" },
-                { text: "I ___________ my friend at the mall yesterday. (meet / met)" },
-                { text: "They ___________ games in the playground last Sunday. (played / play)" }
+                { text: "They ___________ to the zoo last Sunday. (go / went)", answer: "went" },
+                { text: "I ___________ a storybook before bed. (read / read)", answer: "read" },
+                { text: "He ___________ a song at the party yesterday. (sings / sang)", answer: "sang" },
+                { text: "The baby always ___________ loudly. (cries / cried)", answer: "cries" },
+                { text: "We ___________ the floor this morning. (clean / cleaned)", answer: "cleaned" },
+                { text: "My mother ___________ tea in the evening. (made / makes)", answer: "makes" },
+                { text: "The teacher ___________ a story every day. (told / tells)", answer: "tells" },
+                { text: "I ___________ my friend at the mall yesterday. (meet / met)", answer: "met" },
+                { text: "They ___________ games in the playground last Sunday. (played / play)", answer: "played" }
               ]
             }
           ]
@@ -1035,42 +1102,42 @@
             {
               instruction: "A – Fill in the blanks with the simple future tense form of the verbs given in brackets.",
               questions: [
-                { text: "I ___________ (visit) my cousins next week." },
-                { text: "She ___________ (bake) a cake for the party." },
-                { text: "We ___________ (go) on a picnic tomorrow." },
-                { text: "They ___________ (plant) trees in the school garden." },
-                { text: "He ___________ (read) a new storybook tonight." },
-                { text: "My brother ___________ (clean) his room on Sunday." },
-                { text: "The children ___________ (watch) a cartoon later." },
-                { text: "You ___________ (feel) better after some rest." },
-                { text: "I ___________ (help) you with your homework." },
-                { text: "It ___________ (rain) in the evening." },
-                { text: "We ___________ (celebrate) your birthday together." },
-                { text: "She ___________ (learn) to swim this summer." },
-                { text: "He ___________ (carry) your bag for you." },
-                { text: "The dog ___________ (run) to catch the ball." },
-                { text: "They ___________ (build) a sandcastle at the beach." }
+                { text: "I ___________ (visit) my cousins next week.", answer: "shall visit" },
+                { text: "She ___________ (bake) a cake for the party.", answer: "will bake" },
+                { text: "We ___________ (go) on a picnic tomorrow.", answer: "will go" },
+                { text: "They ___________ (plant) trees in the school garden.", answer: "will plant" },
+                { text: "He ___________ (read) a new storybook tonight.", answer: "will read" },
+                { text: "My brother ___________ (clean) his room on Sunday.", answer: "will clean" },
+                { text: "The children ___________ (watch) a cartoon later.", answer: "will watch" },
+                { text: "You ___________ (feel) better after some rest.", answer: "will feel" },
+                { text: "I ___________ (help) you with your homework.", answer: "will help" },
+                { text: "It ___________ (rain) in the evening.", answer: "will rain" },
+                { text: "We ___________ (celebrate) your birthday together.", answer: "shall celebrate" },
+                { text: "She ___________ (learn) to swim this summer.", answer: "will learn" },
+                { text: "He ___________ (carry) your bag for you.", answer: "will carry" },
+                { text: "The dog ___________ (run) to catch the ball.", answer: "will run" },
+                { text: "They ___________ (build) a sandcastle at the beach.", answer: "will build" }
               ]
             },
             {
               instruction: "B – Choose the correct verb form to complete each sentence.",
               questions: [
-                { text: "He ___________ to school every day. (went / goes / will go)" },
-                { text: "We ___________ a movie last night. (watch / watched / will watch)" },
-                { text: "I ___________ my homework tomorrow. (did / will do / do)" },
-                { text: "They ___________ football in the park every Sunday. (play / played / will play)" },
-                { text: "She ___________ a story to the class yesterday. (narrates / narrated / narrate)" },
-                { text: "My father ___________ us to the zoo next week. (takes / took / will take)" },
-                { text: "I ___________ a new book every month. (read / will read / reading)" },
-                { text: "The dog ___________ loudly last night. (barks / barked / will bark)" },
-                { text: "We ___________ the classroom after lunch every day. (cleaned / clean / will clean)" },
-                { text: "She ___________ a sandwich for lunch tomorrow. (eats / ate / will eat)" },
-                { text: "The sun ___________ in the east. (rose / will rise / rises)" },
-                { text: "We ___________ our grandparents last weekend. (visit / visited / will visit)" },
-                { text: "I ___________ my shoes before entering the house. (remove / removed / will remove)" },
-                { text: "They ___________ a picnic next Saturday. (had / have / will have)" },
-                { text: "She always ___________ milk before bed. (drank / drinks / will drink)" },
-                { text: "You ___________ very tired yesterday. (look / looked / will look)" }
+                { text: "He ___________ to school every day. (went / goes / will go)", answer: "goes" },
+                { text: "We ___________ a movie last night. (watch / watched / will watch)", answer: "watched" },
+                { text: "I ___________ my homework tomorrow. (did / will do / do)", answer: "will do" },
+                { text: "They ___________ football in the park every Sunday. (play / played / will play)", answer: "play" },
+                { text: "She ___________ a story to the class yesterday. (narrates / narrated / narrate)", answer: "narrated" },
+                { text: "My father ___________ us to the zoo next week. (takes / took / will take)", answer: "will take" },
+                { text: "I ___________ a new book every month. (read / will read / reading)", answer: "read" },
+                { text: "The dog ___________ loudly last night. (barks / barked / will bark)", answer: "barked" },
+                { text: "We ___________ the classroom after lunch every day. (cleaned / clean / will clean)", answer: "clean" },
+                { text: "She ___________ a sandwich for lunch tomorrow. (eats / ate / will eat)", answer: "will eat" },
+                { text: "The sun ___________ in the east. (rose / will rise / rises)", answer: "rises" },
+                { text: "We ___________ our grandparents last weekend. (visit / visited / will visit)", answer: "visited" },
+                { text: "I ___________ my shoes before entering the house. (remove / removed / will remove)", answer: "remove" },
+                { text: "They ___________ a picnic next Saturday. (had / have / will have)", answer: "will have" },
+                { text: "She always ___________ milk before bed. (drank / drinks / will drink)", answer: "drinks" },
+                { text: "You ___________ very tired yesterday. (look / looked / will look)", answer: "looked" }
               ]
             }
           ]
@@ -1082,16 +1149,16 @@
             {
               instruction: "A – Choose the correct option to complete each sentence.",
               questions: [
-                { text: "She usually (wakes / is waking) up at 6 a.m." },
-                { text: "Look! The cat (chases / is chasing) a mouse." },
-                { text: "We (go / are going) to the market every Sunday." },
-                { text: "My brother (plays / is playing) cricket now." },
-                { text: "I (am reading / read) a book at the moment." },
-                { text: "He (drinks / is drinking) milk every morning." },
-                { text: "Listen! They (sing / are singing) a song." },
-                { text: "The train (leaves / is leaving) at 9 a.m. every day." },
-                { text: "The children (are studying / study) for the test right now." },
-                { text: "She (writes / is writing) a letter to her friend now." }
+                { text: "She usually (wakes / is waking) up at 6 a.m.", answer: "wakes" },
+                { text: "Look! The cat (chases / is chasing) a mouse.", answer: "is chasing" },
+                { text: "We (go / are going) to the market every Sunday.", answer: "go" },
+                { text: "My brother (plays / is playing) cricket now.", answer: "is playing" },
+                { text: "I (am reading / read) a book at the moment.", answer: "am reading" },
+                { text: "He (drinks / is drinking) milk every morning.", answer: "drinks" },
+                { text: "Listen! They (sing / are singing) a song.", answer: "are singing" },
+                { text: "The train (leaves / is leaving) at 9 a.m. every day.", answer: "leaves" },
+                { text: "The children (are studying / study) for the test right now.", answer: "are studying" },
+                { text: "She (writes / is writing) a letter to her friend now.", answer: "is writing" }
               ]
             }
           ]
@@ -1103,16 +1170,16 @@
             {
               instruction: "A – Choose the correct option to complete each sentence.",
               questions: [
-                { text: "I ___________ (read / was reading) when the lights went out." },
-                { text: "She ___________ (cooked / was cooking) dinner last night." },
-                { text: "We ___________ (watched / were watching) a film at 9 p.m. yesterday." },
-                { text: "They ___________ (played / were playing) football in the rain." },
-                { text: "He ___________ (was sleeping / slept) when I called him." },
-                { text: "The children ___________ (were singing / sang) loudly in class." },
-                { text: "Riya ___________ (was doing / did) her homework before dinner." },
-                { text: "The cat ___________ (was chasing / chased) the mouse across the yard." },
-                { text: "I ___________ (met / was meeting) an old friend at the market." },
-                { text: "While I ___________ (was walking / walked) to school, it started to rain." }
+                { text: "I ___________ (read / was reading) when the lights went out.", answer: "was reading" },
+                { text: "She ___________ (cooked / was cooking) dinner last night.", answer: "cooked" },
+                { text: "We ___________ (watched / were watching) a film at 9 p.m. yesterday.", answer: "were watching" },
+                { text: "They ___________ (played / were playing) football in the rain.", answer: "were playing" },
+                { text: "He ___________ (was sleeping / slept) when I called him.", answer: "was sleeping" },
+                { text: "The children ___________ (were singing / sang) loudly in class.", answer: "were singing" },
+                { text: "Riya ___________ (was doing / did) her homework before dinner.", answer: "did" },
+                { text: "The cat ___________ (was chasing / chased) the mouse across the yard.", answer: "was chasing" },
+                { text: "I ___________ (met / was meeting) an old friend at the market.", answer: "met" },
+                { text: "While I ___________ (was walking / walked) to school, it started to rain.", answer: "was walking" }
               ]
             }
           ]
@@ -1124,21 +1191,21 @@
             {
               instruction: "A – Choose the correct adverb from the options.",
               questions: [
-                { text: "I will visit my grandmother ___________. (yesterday / tomorrow / everywhere)" },
-                { text: "She looked for her book ___________. (there / fast / beautifully)" },
-                { text: "She danced on the stage ___________. (beautifully / tomorrow / inside)" },
-                { text: "We played in the park ___________. (here / upstairs / yesterday)" },
-                { text: "He spoke to the teacher ___________. (politely / loudly / quietly)" },
-                { text: "The children are playing ___________. (today / everywhere / outside)" },
-                { text: "He will complete his homework ___________. (near / yesterday / tonight)" },
-                { text: "They worked ___________ to finish the project. (hard / there / early)" },
-                { text: "Please sit ___________. (outside / always / soon)" },
-                { text: "The baby slept ___________ in the cradle. (loudly / peacefully / carefully)" },
-                { text: "The bell rang ___________. (last night / behind / here)" },
-                { text: "We can eat our lunch ___________. (tomorrow / here / always)" },
-                { text: "My sister called me ___________. (downstairs / earlier / tomorrow)" },
-                { text: "They will go on a trip ___________. (above / soon / near)" },
-                { text: "The cat jumped ___________ over the wall. (quickly / tomorrow / upstairs)" }
+                { text: "I will visit my grandmother ___________. (yesterday / tomorrow / everywhere)", answer: "tomorrow" },
+                { text: "She looked for her book ___________. (there / fast / beautifully)", answer: "there" },
+                { text: "She danced on the stage ___________. (beautifully / tomorrow / inside)", answer: "beautifully" },
+                { text: "We played in the park ___________. (here / upstairs / yesterday)", answer: "yesterday" },
+                { text: "He spoke to the teacher ___________. (politely / loudly / quietly)", answer: "politely" },
+                { text: "The children are playing ___________. (today / everywhere / outside)", answer: "outside" },
+                { text: "He will complete his homework ___________. (near / yesterday / tonight)", answer: "tonight" },
+                { text: "They worked ___________ to finish the project. (hard / there / early)", answer: "hard" },
+                { text: "Please sit ___________. (outside / always / soon)", answer: "outside" },
+                { text: "The baby slept ___________ in the cradle. (loudly / peacefully / carefully)", answer: "peacefully" },
+                { text: "The bell rang ___________. (last night / behind / here)", answer: "last night" },
+                { text: "We can eat our lunch ___________. (tomorrow / here / always)", answer: "here" },
+                { text: "My sister called me ___________. (downstairs / earlier / tomorrow)", answer: "downstairs" },
+                { text: "They will go on a trip ___________. (above / soon / near)", answer: "soon" },
+                { text: "The cat jumped ___________ over the wall. (quickly / tomorrow / upstairs)", answer: "quickly" }
               ]
             }
           ]
@@ -1150,21 +1217,21 @@
             {
               instruction: "A – Complete each sentence by filling in the blank with the correct conjunction.\na) when &nbsp; b) so &nbsp; c) because &nbsp; d) while",
               questions: [
-                { text: "We were almost at the station ___________ the train started moving." },
-                { text: "She was cooking ___________ he was setting the table." },
-                { text: "He was very tired, ___________ he went to bed early." },
-                { text: "We were playing outside ___________ it started to rain." },
-                { text: "I took an umbrella ___________ it looked like it might rain." },
-                { text: "She was reading a story ___________ her brother was drawing." },
-                { text: "We all clapped ___________ the singer finished her song." },
-                { text: "He wore a jacket ___________ it was very cold outside." },
-                { text: "They studied hard, ___________ they did well in the exam." },
-                { text: "I was watching TV ___________ my mother was cooking." },
-                { text: "The lights went out ___________ we were having dinner." },
-                { text: "I could not come to school ___________ I was sick." },
-                { text: "We left early ___________ we could catch the bus." },
-                { text: "My phone rang ___________ I was in the meeting." },
-                { text: "I stayed up late ___________ I wanted to finish my book." }
+                { text: "We were almost at the station ___________ the train started moving.", answer: "when" },
+                { text: "She was cooking ___________ he was setting the table.", answer: "while" },
+                { text: "He was very tired, ___________ he went to bed early.", answer: "so" },
+                { text: "We were playing outside ___________ it started to rain.", answer: "when" },
+                { text: "I took an umbrella ___________ it looked like it might rain.", answer: "because" },
+                { text: "She was reading a story ___________ her brother was drawing.", answer: "while" },
+                { text: "We all clapped ___________ the singer finished her song.", answer: "when" },
+                { text: "He wore a jacket ___________ it was very cold outside.", answer: "because" },
+                { text: "They studied hard, ___________ they did well in the exam.", answer: "so" },
+                { text: "I was watching TV ___________ my mother was cooking.", answer: "while" },
+                { text: "The lights went out ___________ we were having dinner.", answer: "when" },
+                { text: "I could not come to school ___________ I was sick.", answer: "because" },
+                { text: "We left early ___________ we could catch the bus.", answer: "so" },
+                { text: "My phone rang ___________ I was in the meeting.", answer: "when" },
+                { text: "I stayed up late ___________ I wanted to finish my book.", answer: "because" }
               ]
             }
           ]
@@ -1176,16 +1243,16 @@
             {
               instruction: "A – Circle the words that should begin with a capital letter.",
               questions: [
-                { text: "the taj mahal is in agra." },
-                { text: "my cousin lives in australia." },
-                { text: "rahul and i are best friends." },
-                { text: "christmas is in december." },
-                { text: "the pacific ocean is the largest ocean." },
-                { text: "we went to the zoo on saturday." },
-                { text: "the river ganga flows through india." },
-                { text: "we visited mumbai and chennai in june." },
-                { text: "mother said, 'we will go to pushkar in may.'" },
-                { text: "my sister ananya is going to delhi in august." }
+                { text: "the taj mahal is in agra.", answer: "The Taj Mahal is in Agra." },
+                { text: "my cousin lives in australia.", answer: "My cousin lives in Australia." },
+                { text: "rahul and i are best friends.", answer: "Rahul and I are best friends." },
+                { text: "christmas is in december.", answer: "Christmas is in December." },
+                { text: "the pacific ocean is the largest ocean.", answer: "The Pacific Ocean is the largest ocean." },
+                { text: "we went to the zoo on saturday.", answer: "We went to the zoo on Saturday." },
+                { text: "the river ganga flows through india.", answer: "The River Ganga flows through India." },
+                { text: "we visited mumbai and chennai in june.", answer: "We visited Mumbai and Chennai in June." },
+                { text: "mother said, 'we will go to pushkar in may.'", answer: "Mother said, 'We will go to Pushkar in May.'" },
+                { text: "my sister ananya is going to delhi in august.", answer: "My sister Ananya is going to Delhi in August." }
               ]
             }
           ]
@@ -1194,6 +1261,8 @@
       };
 
       // ─── HELPERS ────────────────────────────────────────────────────────────
+      let lastGeneratedQuestions = [];
+
       function shuffleArray(arr) {
         const a = [...arr];
         for (let i = a.length - 1; i > 0; i--) {
@@ -1266,6 +1335,7 @@
                 worksheetIdx: wsIdx,
                 instruction: ws.instruction,
                 text: q.text,
+                answer: q.answer || null,
                 options: q.options || null,
                 wideOptions: q.wideOptions || false,
                 lines: q.lines || 0
@@ -1278,6 +1348,7 @@
         const shuffled = shuffleArray(pool);
         const available = shuffled.length;
         const selected = shuffled.slice(0, Math.min(totalMarks, available));
+        lastGeneratedQuestions = selected;
 
         if (available < totalMarks) {
           alert(
@@ -1321,6 +1392,7 @@
             wsDiv.innerHTML = "<p class=\"ws-instruction\">" + wsData.instruction.replace(/\n/g, "<br>") + "</p>";
 
             wsData.questions.forEach(q => {
+              q.qNum = qNum;
               const qDiv = document.createElement("div");
               qDiv.className = "question-item";
 
@@ -1364,6 +1436,55 @@
 
       function printTest() {
         previewTest();
+        setTimeout(() => window.print(), 600);
+      }
+
+      function previewAnswers() {
+        if (lastGeneratedQuestions.length === 0) {
+          previewTest();
+        }
+        const testName = document.getElementById("testName").value || "Test";
+        const testDate = document.getElementById("testDate").value;
+        document.getElementById("akTestName").textContent = testName + " — Answer Key";
+        document.getElementById("akMeta").textContent = (testDate ? "Date: " + testDate + "  |  " : "") + "Total Questions: " + lastGeneratedQuestions.length;
+
+        const container = document.getElementById("answersContainer");
+        container.innerHTML = "";
+
+        const grouped = new Map();
+        lastGeneratedQuestions.forEach(q => {
+          if (!grouped.has(q.chapterName)) grouped.set(q.chapterName, []);
+          grouped.get(q.chapterName).push(q);
+        });
+
+        grouped.forEach((questions, chapterName) => {
+          const chDiv = document.createElement("div");
+          chDiv.className = "ak-chapter";
+          chDiv.innerHTML = "<h3>" + chapterName + "</h3>";
+          const grid = document.createElement("div");
+          grid.className = "ak-grid";
+          questions.forEach(q => {
+            const item = document.createElement("div");
+            item.className = "ak-item";
+            const ans = q.answer;
+            if (!ans || ans === "vary") {
+              item.innerHTML = "<strong>" + q.qNum + ".</strong> <span class='ak-vary'>Answers may vary</span>";
+            } else {
+              item.innerHTML = "<strong>" + q.qNum + ".</strong> " + ans;
+            }
+            grid.appendChild(item);
+          });
+          chDiv.appendChild(grid);
+          container.appendChild(chDiv);
+        });
+
+        document.getElementById("answerKeyPreview").classList.add("show");
+        document.getElementById("answerKeyPreview").scrollIntoView({ behavior: "smooth" });
+      }
+
+      function printAnswers() {
+        if (lastGeneratedQuestions.length === 0) previewTest();
+        previewAnswers();
         setTimeout(() => window.print(), 600);
       }
     </script>
