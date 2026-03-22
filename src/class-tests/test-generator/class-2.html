@@ -437,6 +437,61 @@
         .action-buttons { flex-direction: column; }
         .btn { width: 100%; }
       }
+
+      /* Answer Key */
+      .answer-key-preview {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        margin-top: 30px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        display: none;
+        border-top: 4px solid #00b894;
+      }
+      .answer-key-preview.show { display: block; }
+      .answer-key-header {
+        text-align: center;
+        border-bottom: 2px solid #333;
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+      }
+      .answer-key-header h2 { color: #00b894; font-size: 1.6rem; margin-bottom: 5px; }
+      .answer-key-header .ak-tag {
+        display: inline-block; background: #00b894; color: white;
+        padding: 4px 16px; border-radius: 20px; font-size: 0.9rem;
+        font-weight: bold; margin-bottom: 8px;
+      }
+      .ak-chapter { margin-bottom: 24px; }
+      .ak-chapter h3 {
+        color: #333; font-size: 1rem; margin-bottom: 10px;
+        padding: 6px 12px; background: #e8fdf5;
+        border-radius: 8px; border-left: 4px solid #00b894;
+        font-family: Arial, sans-serif;
+      }
+      .ak-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 6px 12px;
+        font-family: Arial, sans-serif;
+        font-size: 0.9rem;
+        padding: 0 8px;
+      }
+      .ak-item { color: #111; line-height: 1.6; }
+      .ak-item strong { color: #00b894; margin-right: 4px; }
+      .ak-vary { color: #999; font-style: italic; }
+      .btn-answer-preview { background: linear-gradient(135deg, #00b894 0%, #00cec9 100%); color: white; }
+      .btn-answer-preview:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,184,148,0.4); }
+      .btn-answer-print { background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%); color: white; }
+      .btn-answer-print:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(225,112,85,0.4); }
+      @media print {
+        .answer-key-preview {
+          border-radius: 0 !important; box-shadow: none !important;
+          padding: 15px 20px !important; margin: 0 !important;
+          background: white !important; display: block !important;
+        }
+        .test-preview { display: none !important; }
+        .ak-chapter h3 { background: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      }
     </style>
   </head>
   <body>
@@ -590,6 +645,8 @@
         <button class="btn btn-preview" onclick="previewTest()">&#128065;&#65039; Preview Test</button>
         <span class="available-count" id="actionAvail">Select chapters to begin</span>
         <button class="btn btn-print" onclick="printTest()">&#128424;&#65039; Print Test</button>
+        <button class="btn btn-answer-preview" onclick="previewAnswers()">&#128273; Answer Preview</button>
+        <button class="btn btn-answer-print" onclick="printAnswers()">&#128424;&#65039; Print Answer Key</button>
       </div>
 
       <!-- Test Preview -->
@@ -611,6 +668,16 @@
         <hr class="test-divider" />
         <div id="questionsContainer"></div>
       </div>
+
+      <!-- Answer Key Preview -->
+      <div class="answer-key-preview" id="answerKeyPreview">
+        <div class="answer-key-header">
+          <div class="ak-tag">ANSWER KEY — FOR TEACHER USE ONLY</div>
+          <h2 id="akTestName">Answer Key</h2>
+          <div style="font-size:0.9rem;color:#555;margin-top:6px;" id="akMeta"></div>
+        </div>
+        <div id="answersContainer"></div>
+      </div>
     </div>
 
     <script>
@@ -625,36 +692,36 @@
             {
               instruction: "A – Underline the two common nouns in each sentence.",
               questions: [
-                { text: "This lady is my teacher." },
-                { text: "A girl drew a picture." },
-                { text: "A boy found a wallet." },
-                { text: "The farmer fed the cows." },
-                { text: "The cat chased the mouse." },
-                { text: "She bought a book and a pen." },
-                { text: "The dog barked at the stranger." },
-                { text: "He cleaned the table and the chair." },
-                { text: "The doctor checked the patient." },
-                { text: "The teacher wrote on the whiteboard." }
+                { text: "This lady is my teacher.", answer: "lady, teacher" },
+                { text: "A girl drew a picture.", answer: "girl, picture" },
+                { text: "A boy found a wallet.", answer: "boy, wallet" },
+                { text: "The farmer fed the cows.", answer: "farmer, cows" },
+                { text: "The cat chased the mouse.", answer: "cat, mouse" },
+                { text: "She bought a book and a pen.", answer: "book, pen" },
+                { text: "The dog barked at the stranger.", answer: "dog, stranger" },
+                { text: "He cleaned the table and the chair.", answer: "table, chair" },
+                { text: "The doctor checked the patient.", answer: "doctor, patient" },
+                { text: "The teacher wrote on the whiteboard.", answer: "teacher, whiteboard" }
               ]
             },
             {
               instruction: "B – Circle the proper nouns. Underline the common nouns.",
               questions: [
-                { text: "We went to Delhi." },
-                { text: "Mia opened the box." },
-                { text: "Luna chased a mouse." },
-                { text: "Bella plays with a toy." },
-                { text: "I met Meena at the park." },
-                { text: "Disneyland has a castle." },
-                { text: "She lives in Mumbai." },
-                { text: "Deepa found a coin." },
-                { text: "Lily draws a picture." },
-                { text: "He ate lunch at Domino's." },
-                { text: "The boy played with Sheru." },
-                { text: "They visited Kolkata last week." },
-                { text: "She saw animals at Mysore Zoo." },
-                { text: "We had dinner at Haldiram's." },
-                { text: "He took a photo at India Gate." }
+                { text: "We went to Delhi.", answer: "Proper: Delhi" },
+                { text: "Mia opened the box.", answer: "Proper: Mia | Common: box" },
+                { text: "Luna chased a mouse.", answer: "Proper: Luna | Common: mouse" },
+                { text: "Bella plays with a toy.", answer: "Proper: Bella | Common: toy" },
+                { text: "I met Meena at the park.", answer: "Proper: Meena | Common: park" },
+                { text: "Disneyland has a castle.", answer: "Proper: Disneyland | Common: castle" },
+                { text: "She lives in Mumbai.", answer: "Proper: Mumbai" },
+                { text: "Deepa found a coin.", answer: "Proper: Deepa | Common: coin" },
+                { text: "Lily draws a picture.", answer: "Proper: Lily | Common: picture" },
+                { text: "He ate lunch at Domino's.", answer: "Proper: Domino's | Common: lunch" },
+                { text: "The boy played with Sheru.", answer: "Proper: Sheru | Common: boy" },
+                { text: "They visited Kolkata last week.", answer: "Proper: Kolkata" },
+                { text: "She saw animals at Mysore Zoo.", answer: "Proper: Mysore Zoo | Common: animals" },
+                { text: "We had dinner at Haldiram's.", answer: "Proper: Haldiram's | Common: dinner" },
+                { text: "He took a photo at India Gate.", answer: "Proper: India Gate | Common: photo" }
               ]
             }
           ]
@@ -666,30 +733,30 @@
             {
               instruction: "A – Add 's' or 'es' to make many.",
               questions: [
-                { text: "tiger: ___________" },
-                { text: "snake: ___________" },
-                { text: "wish: ___________" },
-                { text: "cross: ___________" },
-                { text: "window: ___________" },
-                { text: "circus: ___________" },
-                { text: "loss: ___________" },
-                { text: "iris: ___________" },
-                { text: "eye: ___________" },
-                { text: "fax: ___________" },
-                { text: "boss: ___________" },
-                { text: "topaz: ___________" },
-                { text: "mix: ___________" },
-                { text: "brush: ___________" },
-                { text: "beach: ___________" },
-                { text: "tree: ___________" },
-                { text: "bottle: ___________" },
-                { text: "branch: ___________" },
-                { text: "leech: ___________" },
-                { text: "arch: ___________" },
-                { text: "grass: ___________" },
-                { text: "hospital: ___________" },
-                { text: "dish: ___________" },
-                { text: "batch: ___________" }
+                { text: "tiger: ___________", answer: "tigers" },
+                { text: "snake: ___________", answer: "snakes" },
+                { text: "wish: ___________", answer: "wishes" },
+                { text: "cross: ___________", answer: "crosses" },
+                { text: "window: ___________", answer: "windows" },
+                { text: "circus: ___________", answer: "circuses" },
+                { text: "loss: ___________", answer: "losses" },
+                { text: "iris: ___________", answer: "irises" },
+                { text: "eye: ___________", answer: "eyes" },
+                { text: "fax: ___________", answer: "faxes" },
+                { text: "boss: ___________", answer: "bosses" },
+                { text: "topaz: ___________", answer: "topazes" },
+                { text: "mix: ___________", answer: "mixes" },
+                { text: "brush: ___________", answer: "brushes" },
+                { text: "beach: ___________", answer: "beaches" },
+                { text: "tree: ___________", answer: "trees" },
+                { text: "bottle: ___________", answer: "bottles" },
+                { text: "branch: ___________", answer: "branches" },
+                { text: "leech: ___________", answer: "leeches" },
+                { text: "arch: ___________", answer: "arches" },
+                { text: "grass: ___________", answer: "grasses" },
+                { text: "hospital: ___________", answer: "hospitals" },
+                { text: "dish: ___________", answer: "dishes" },
+                { text: "batch: ___________", answer: "batches" }
               ]
             }
           ]
@@ -701,16 +768,16 @@
             {
               instruction: "A – Choose the correct option to complete each sentence (a / an / the).",
               questions: [
-                { text: "I saw ___ cow in the field. (a / an / the)" },
-                { text: "She has ___ orange in her lunchbox. (a / an / the)" },
-                { text: "___ cottage in the corner belongs to my aunt. (A / An / The)" },
-                { text: "I saw ___ elephant at the zoo. (a / an / the)" },
-                { text: "I lost ___ umbrella you gave me. (a / an / the)" },
-                { text: "Carry ___ umbrella because it is raining. (a / an / the)" },
-                { text: "There is ___ mango on the tree. (a / an / the)" },
-                { text: "I saw ___ autorickshaw on the road. (a / an / the)" },
-                { text: "We visited ___ temple in Sector 12 last weekend. (a / an / the)" },
-                { text: "She bought ___ pencil from the shop. (a / an / the)" }
+                { text: "I saw ___ cow in the field. (a / an / the)", answer: "a" },
+                { text: "She has ___ orange in her lunchbox. (a / an / the)", answer: "an" },
+                { text: "___ cottage in the corner belongs to my aunt. (A / An / The)", answer: "The" },
+                { text: "I saw ___ elephant at the zoo. (a / an / the)", answer: "an" },
+                { text: "I lost ___ umbrella you gave me. (a / an / the)", answer: "the" },
+                { text: "Carry ___ umbrella because it is raining. (a / an / the)", answer: "an" },
+                { text: "There is ___ mango on the tree. (a / an / the)", answer: "a" },
+                { text: "I saw ___ autorickshaw on the road. (a / an / the)", answer: "an" },
+                { text: "We visited ___ temple in Sector 12 last weekend. (a / an / the)", answer: "the" },
+                { text: "She bought ___ pencil from the shop. (a / an / the)", answer: "a" }
               ]
             }
           ]
@@ -722,18 +789,18 @@
             {
               instruction: "A – Fill in each blank with the male or the female of the underlined noun.",
               questions: [
-                { text: "My father and ___________ are both doctors." },
-                { text: "The lady and the ___________ were dressed well." },
-                { text: "My uncle and ___________ visited us yesterday." },
-                { text: "The king and the ___________ live in a big palace." },
-                { text: "The boy is playing with the ___________." },
-                { text: "The brother and the ___________ are doing homework." },
-                { text: "A man and a ___________ are waiting at the bus stop." },
-                { text: "A prince and a ___________ are in the story." },
-                { text: "My grandfather and ___________ are cooking dinner." },
-                { text: "The waiter gave food to the ___________." },
-                { text: "The lion and the ___________ live in the jungle." },
-                { text: "The nephew and the ___________ are playing carrom." }
+                { text: "My father and ___________ are both doctors.", answer: "mother" },
+                { text: "The lady and the ___________ were dressed well.", answer: "gentleman" },
+                { text: "My uncle and ___________ visited us yesterday.", answer: "aunt" },
+                { text: "The king and the ___________ live in a big palace.", answer: "queen" },
+                { text: "The boy is playing with the ___________.", answer: "girl" },
+                { text: "The brother and the ___________ are doing homework.", answer: "sister" },
+                { text: "A man and a ___________ are waiting at the bus stop.", answer: "woman" },
+                { text: "A prince and a ___________ are in the story.", answer: "princess" },
+                { text: "My grandfather and ___________ are cooking dinner.", answer: "grandmother" },
+                { text: "The waiter gave food to the ___________.", answer: "waitress" },
+                { text: "The lion and the ___________ live in the jungle.", answer: "lioness" },
+                { text: "The nephew and the ___________ are playing carrom.", answer: "niece" }
               ]
             }
           ]
@@ -745,16 +812,16 @@
             {
               instruction: "A – Choose the correct pronoun to complete each sentence.",
               questions: [
-                { text: "Hello, children! ___________ am your class teacher. (He / I / They)" },
-                { text: "Riya is kind. ___________ helps her friends. (He / She / It)" },
-                { text: "John and I are friends. ___________ play together. (We / They / He)" },
-                { text: "This is my dog. ___________ is very cute. (She / It / They)" },
-                { text: "Tom and Jerry are funny. ___________ make me laugh. (We / He / They)" },
-                { text: "My name is Sara. ___________ am six years old. (I / You / We)" },
-                { text: "This is Ali. ___________ is my brother. (She / He / They)" },
-                { text: "Meena and I are dancing. ___________ are happy. (He / You / We)" },
-                { text: "Children, ___________ must sit down now. (You / They / We)" },
-                { text: "The birds are singing. ___________ are in the tree. (It / They / We)" }
+                { text: "Hello, children! ___________ am your class teacher. (He / I / They)", answer: "I" },
+                { text: "Riya is kind. ___________ helps her friends. (He / She / It)", answer: "She" },
+                { text: "John and I are friends. ___________ play together. (We / They / He)", answer: "We" },
+                { text: "This is my dog. ___________ is very cute. (She / It / They)", answer: "It" },
+                { text: "Tom and Jerry are funny. ___________ make me laugh. (We / He / They)", answer: "They" },
+                { text: "My name is Sara. ___________ am six years old. (I / You / We)", answer: "I" },
+                { text: "This is Ali. ___________ is my brother. (She / He / They)", answer: "He" },
+                { text: "Meena and I are dancing. ___________ are happy. (He / You / We)", answer: "We" },
+                { text: "Children, ___________ must sit down now. (You / They / We)", answer: "You" },
+                { text: "The birds are singing. ___________ are in the tree. (It / They / We)", answer: "They" }
               ]
             }
           ]
@@ -766,21 +833,21 @@
             {
               instruction: "A – Circle the adjectives. Underline the nouns they describe.",
               questions: [
-                { text: "She wore a pink dress." },
-                { text: "He opened the heavy door." },
-                { text: "We found a lost dog." },
-                { text: "I saw a bright light." },
-                { text: "They built a strong wall." },
-                { text: "He gave me a clean plate." },
-                { text: "She has a cute smile." },
-                { text: "The short man laughed." },
-                { text: "He rode a brown horse." },
-                { text: "I read a funny story." },
-                { text: "He drew a pretty picture." },
-                { text: "She carried a large bag." },
-                { text: "We saw a fast car." },
-                { text: "We heard a soft sound." },
-                { text: "He had a delicious meal." }
+                { text: "She wore a pink dress.", answer: "Adj: pink | Noun: dress" },
+                { text: "He opened the heavy door.", answer: "Adj: heavy | Noun: door" },
+                { text: "We found a lost dog.", answer: "Adj: lost | Noun: dog" },
+                { text: "I saw a bright light.", answer: "Adj: bright | Noun: light" },
+                { text: "They built a strong wall.", answer: "Adj: strong | Noun: wall" },
+                { text: "He gave me a clean plate.", answer: "Adj: clean | Noun: plate" },
+                { text: "She has a cute smile.", answer: "Adj: cute | Noun: smile" },
+                { text: "The short man laughed.", answer: "Adj: short | Noun: man" },
+                { text: "He rode a brown horse.", answer: "Adj: brown | Noun: horse" },
+                { text: "I read a funny story.", answer: "Adj: funny | Noun: story" },
+                { text: "He drew a pretty picture.", answer: "Adj: pretty | Noun: picture" },
+                { text: "She carried a large bag.", answer: "Adj: large | Noun: bag" },
+                { text: "We saw a fast car.", answer: "Adj: fast | Noun: car" },
+                { text: "We heard a soft sound.", answer: "Adj: soft | Noun: sound" },
+                { text: "He had a delicious meal.", answer: "Adj: delicious | Noun: meal" }
               ]
             }
           ]
@@ -792,22 +859,22 @@
             {
               instruction: "A – Complete the sentences with my, our, your, his, her, its or their. The highlighted words will help you.",
               questions: [
-                { text: "She has a new car. It is ___________ car." },
-                { text: "They bought a new house. It is ___________ house." },
-                { text: "He found a lost wallet. It is ___________ wallet." },
-                { text: "You have a big bag. That is ___________ bag." },
-                { text: "I like this notebook. It is ___________ notebook." },
-                { text: "The boy has a new kite. It is ___________ kite." },
-                { text: "The teacher showed a map. It is ___________ map." },
-                { text: "The baby is crying. That is ___________ toy." },
-                { text: "I have a red pencil. That is ___________ pencil." },
-                { text: "We are visiting a park. It is ___________ park." },
-                { text: "The cat caught a mouse. It is ___________ mouse." },
-                { text: "She saw a new dress. It is ___________ dress." },
-                { text: "They are playing in the garden. It is ___________ garden." },
-                { text: "My friend got a puppy. It is ___________ puppy." },
-                { text: "We bought new shoes. They are ___________ shoes." },
-                { text: "The dog found a bone. It is ___________ bone." }
+                { text: "She has a new car. It is ___________ car.", answer: "her" },
+                { text: "They bought a new house. It is ___________ house.", answer: "their" },
+                { text: "He found a lost wallet. It is ___________ wallet.", answer: "his" },
+                { text: "You have a big bag. That is ___________ bag.", answer: "your" },
+                { text: "I like this notebook. It is ___________ notebook.", answer: "my" },
+                { text: "The boy has a new kite. It is ___________ kite.", answer: "his" },
+                { text: "The teacher showed a map. It is ___________ map.", answer: "its" },
+                { text: "The baby is crying. That is ___________ toy.", answer: "its" },
+                { text: "I have a red pencil. That is ___________ pencil.", answer: "my" },
+                { text: "We are visiting a park. It is ___________ park.", answer: "our" },
+                { text: "The cat caught a mouse. It is ___________ mouse.", answer: "its" },
+                { text: "She saw a new dress. It is ___________ dress.", answer: "her" },
+                { text: "They are playing in the garden. It is ___________ garden.", answer: "their" },
+                { text: "My friend got a puppy. It is ___________ puppy.", answer: "his / her" },
+                { text: "We bought new shoes. They are ___________ shoes.", answer: "our" },
+                { text: "The dog found a bone. It is ___________ bone.", answer: "its" }
               ]
             }
           ]
@@ -819,22 +886,22 @@
             {
               instruction: "A – Circle the correct option to complete these sentences.",
               questions: [
-                { text: "My father (am / is / are) a doctor." },
-                { text: "I (am / is / are) happy." },
-                { text: "They (am / is / are) my friends." },
-                { text: "She (am / is / are) in the kitchen." },
-                { text: "We (am / is / are) ready to go." },
-                { text: "The cat (am / is / are) on the roof." },
-                { text: "You (am / is / are) my best friend." },
-                { text: "My parents (am / is / are) at home." },
-                { text: "She (am / is / are) very smart." },
-                { text: "We (am / is / are) in the classroom." },
-                { text: "He (am / is / are) my uncle." },
-                { text: "They (am / is / are) good friends." },
-                { text: "It (am / is / are) a naughty dog." },
-                { text: "My brother and I (am / is / are) playing outside." },
-                { text: "The teacher (am / is / are) kind and helpful." },
-                { text: "These apples (am / is / are) fresh." }
+                { text: "My father (am / is / are) a doctor.", answer: "is" },
+                { text: "I (am / is / are) happy.", answer: "am" },
+                { text: "They (am / is / are) my friends.", answer: "are" },
+                { text: "She (am / is / are) in the kitchen.", answer: "is" },
+                { text: "We (am / is / are) ready to go.", answer: "are" },
+                { text: "The cat (am / is / are) on the roof.", answer: "is" },
+                { text: "You (am / is / are) my best friend.", answer: "are" },
+                { text: "My parents (am / is / are) at home.", answer: "are" },
+                { text: "She (am / is / are) very smart.", answer: "is" },
+                { text: "We (am / is / are) in the classroom.", answer: "are" },
+                { text: "He (am / is / are) my uncle.", answer: "is" },
+                { text: "They (am / is / are) good friends.", answer: "are" },
+                { text: "It (am / is / are) a naughty dog.", answer: "is" },
+                { text: "My brother and I (am / is / are) playing outside.", answer: "are" },
+                { text: "The teacher (am / is / are) kind and helpful.", answer: "is" },
+                { text: "These apples (am / is / are) fresh.", answer: "are" }
               ]
             }
           ]
@@ -1213,6 +1280,8 @@
       );
 
       // ─── PREVIEW TEST ───────────────────────────────────────────────────────
+      let lastGeneratedQuestions = [];
+
       function previewTest() {
         const testName = document.getElementById("testName").value || "Grammar Frolics-2 Test";
         const studentName = document.getElementById("studentName").value;
@@ -1284,6 +1353,7 @@
         const container = document.getElementById("questionsContainer");
         container.innerHTML = "";
         let qNum = 1;
+        lastGeneratedQuestions = [];
 
         grouped.forEach((chData) => {
           if (chData.worksheets.size === 0) return;
@@ -1329,6 +1399,7 @@
               qDiv.innerHTML = html;
               wsDiv.appendChild(qDiv);
               qNum++;
+              lastGeneratedQuestions.push({ qNum: qNum - 1, answer: q.answer || null, text: q.text, chapterName: chData.name, instruction: wsData.instruction });
             });
 
             chSection.appendChild(wsDiv);
@@ -1343,6 +1414,56 @@
 
       function printTest() {
         previewTest();
+        setTimeout(() => window.print(), 600);
+      }
+
+      function previewAnswers() {
+        if (lastGeneratedQuestions.length === 0) {
+          previewTest();
+        }
+        const testName = document.getElementById("testName").value || "Test";
+        const testDate = document.getElementById("testDate").value;
+        document.getElementById("akTestName").textContent = testName + " — Answer Key";
+        document.getElementById("akMeta").textContent = (testDate ? "Date: " + testDate + "  |  " : "") + "Total Questions: " + lastGeneratedQuestions.length;
+
+        const container = document.getElementById("answersContainer");
+        container.innerHTML = "";
+
+        // Group by chapter
+        const grouped = new Map();
+        lastGeneratedQuestions.forEach(q => {
+          if (!grouped.has(q.chapterName)) grouped.set(q.chapterName, []);
+          grouped.get(q.chapterName).push(q);
+        });
+
+        grouped.forEach((questions, chapterName) => {
+          const chDiv = document.createElement("div");
+          chDiv.className = "ak-chapter";
+          chDiv.innerHTML = "<h3>" + chapterName + "</h3>";
+          const grid = document.createElement("div");
+          grid.className = "ak-grid";
+          questions.forEach(q => {
+            const item = document.createElement("div");
+            item.className = "ak-item";
+            const ans = q.answer;
+            if (!ans || ans === "vary") {
+              item.innerHTML = "<strong>" + q.qNum + ".</strong> <span class='ak-vary'>Answers may vary</span>";
+            } else {
+              item.innerHTML = "<strong>" + q.qNum + ".</strong> " + ans;
+            }
+            grid.appendChild(item);
+          });
+          chDiv.appendChild(grid);
+          container.appendChild(chDiv);
+        });
+
+        document.getElementById("answerKeyPreview").classList.add("show");
+        document.getElementById("answerKeyPreview").scrollIntoView({ behavior: "smooth" });
+      }
+
+      function printAnswers() {
+        if (lastGeneratedQuestions.length === 0) previewTest();
+        previewAnswers();
         setTimeout(() => window.print(), 600);
       }
     </script>

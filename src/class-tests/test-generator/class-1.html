@@ -437,6 +437,61 @@
         .action-buttons { flex-direction: column; }
         .btn { width: 100%; }
       }
+
+      /* Answer Key */
+      .answer-key-preview {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        margin-top: 30px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        display: none;
+        border-top: 4px solid #00b894;
+      }
+      .answer-key-preview.show { display: block; }
+      .answer-key-header {
+        text-align: center;
+        border-bottom: 2px solid #333;
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+      }
+      .answer-key-header h2 { color: #00b894; font-size: 1.6rem; margin-bottom: 5px; }
+      .answer-key-header .ak-tag {
+        display: inline-block; background: #00b894; color: white;
+        padding: 4px 16px; border-radius: 20px; font-size: 0.9rem;
+        font-weight: bold; margin-bottom: 8px;
+      }
+      .ak-chapter { margin-bottom: 24px; }
+      .ak-chapter h3 {
+        color: #333; font-size: 1rem; margin-bottom: 10px;
+        padding: 6px 12px; background: #e8fdf5;
+        border-radius: 8px; border-left: 4px solid #00b894;
+        font-family: Arial, sans-serif;
+      }
+      .ak-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 6px 12px;
+        font-family: Arial, sans-serif;
+        font-size: 0.9rem;
+        padding: 0 8px;
+      }
+      .ak-item { color: #111; line-height: 1.6; }
+      .ak-item strong { color: #00b894; margin-right: 4px; }
+      .ak-vary { color: #999; font-style: italic; }
+      .btn-answer-preview { background: linear-gradient(135deg, #00b894 0%, #00cec9 100%); color: white; }
+      .btn-answer-preview:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,184,148,0.4); }
+      .btn-answer-print { background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%); color: white; }
+      .btn-answer-print:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(225,112,85,0.4); }
+      @media print {
+        .answer-key-preview {
+          border-radius: 0 !important; box-shadow: none !important;
+          padding: 15px 20px !important; margin: 0 !important;
+          background: white !important; display: block !important;
+        }
+        .test-preview { display: none !important; }
+        .ak-chapter h3 { background: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      }
     </style>
   </head>
   <body>
@@ -518,6 +573,8 @@
         <button class="btn btn-preview" onclick="previewTest()">&#128065;&#65039; Preview Test</button>
         <span class="available-count" id="actionAvail">Select chapters to begin</span>
         <button class="btn btn-print" onclick="printTest()">&#128424;&#65039; Print Test</button>
+        <button class="btn btn-answer-preview" onclick="previewAnswers()">&#128273; Answer Preview</button>
+        <button class="btn btn-answer-print" onclick="printAnswers()">&#128424;&#65039; Print Answer Key</button>
       </div>
 
       <!-- Test Preview -->
@@ -539,6 +596,16 @@
         <hr class="test-divider" />
         <div id="questionsContainer"></div>
       </div>
+
+      <!-- Answer Key Preview -->
+      <div class="answer-key-preview" id="answerKeyPreview">
+        <div class="answer-key-header">
+          <div class="ak-tag">ANSWER KEY — FOR TEACHER USE ONLY</div>
+          <h2 id="akTestName">Answer Key</h2>
+          <div style="font-size:0.9rem;color:#555;margin-top:6px;" id="akMeta"></div>
+        </div>
+        <div id="answersContainer"></div>
+      </div>
     </div>
 
     <script>
@@ -553,35 +620,35 @@
             {
               instruction: "A. Choose 'a' or 'an'.",
               questions: [
-                { text: "___ octopus" },
-                { text: "___ butterfly" },
-                { text: "___ ice cream" },
-                { text: "___ orange" },
-                { text: "___ rose" },
-                { text: "___ iguana" },
-                { text: "___ apple" },
-                { text: "___ puppy" }
+                { text: "___ octopus", answer: "an" },
+                { text: "___ butterfly", answer: "a" },
+                { text: "___ ice cream", answer: "an" },
+                { text: "___ orange", answer: "an" },
+                { text: "___ rose", answer: "a" },
+                { text: "___ iguana", answer: "an" },
+                { text: "___ apple", answer: "an" },
+                { text: "___ puppy", answer: "a" }
               ]
             },
             {
               instruction: "B. Write a or an before each naming word.",
               questions: [
-                { text: "___ cookie" },
-                { text: "___ alligator" },
-                { text: "___ lemon" },
-                { text: "___ ostrich" },
-                { text: "___ aeroplane" },
-                { text: "___ ace" },
-                { text: "___ bun" },
-                { text: "___ elephant" },
-                { text: "___ zoo" },
-                { text: "___ doughnut" },
-                { text: "___ lion" },
-                { text: "___ eagle" },
-                { text: "___ urn" },
-                { text: "___ avocado" },
-                { text: "___ bicycle" },
-                { text: "___ fish" }
+                { text: "___ cookie", answer: "a" },
+                { text: "___ alligator", answer: "an" },
+                { text: "___ lemon", answer: "a" },
+                { text: "___ ostrich", answer: "an" },
+                { text: "___ aeroplane", answer: "an" },
+                { text: "___ ace", answer: "an" },
+                { text: "___ bun", answer: "a" },
+                { text: "___ elephant", answer: "an" },
+                { text: "___ zoo", answer: "a" },
+                { text: "___ doughnut", answer: "a" },
+                { text: "___ lion", answer: "a" },
+                { text: "___ eagle", answer: "an" },
+                { text: "___ urn", answer: "an" },
+                { text: "___ avocado", answer: "an" },
+                { text: "___ bicycle", answer: "a" },
+                { text: "___ fish", answer: "a" }
               ]
             }
           ]
@@ -593,13 +660,13 @@
             {
               instruction: "A. Write 'This is' or 'That is' to complete the sentences.",
               questions: [
-                { text: "__________ my dog." },
-                { text: "__________ a snake." },
-                { text: "__________ a schoolbag." },
-                { text: "__________ an island." },
-                { text: "__________ an elephant." },
-                { text: "__________ a tiger." },
-                { text: "__________ a hot-air balloon." }
+                { text: "__________ my dog.", answer: "This is" },
+                { text: "__________ a snake.", answer: "That is" },
+                { text: "__________ a schoolbag.", answer: "This is" },
+                { text: "__________ an island.", answer: "That is" },
+                { text: "__________ an elephant.", answer: "That is" },
+                { text: "__________ a tiger.", answer: "This is" },
+                { text: "__________ a hot-air balloon.", answer: "That is" }
               ]
             }
           ]
@@ -611,14 +678,14 @@
             {
               instruction: "A. Write 'These are' or 'Those are' to complete the sentences.",
               questions: [
-                { text: "__________ my pets." },
-                { text: "__________ wolves." },
-                { text: "__________ fresh mangoes." },
-                { text: "__________ birds." },
-                { text: "__________ balloons." },
-                { text: "__________ pigeons." },
-                { text: "__________ stars." },
-                { text: "__________ my friends." }
+                { text: "__________ my pets.", answer: "These are" },
+                { text: "__________ wolves.", answer: "Those are" },
+                { text: "__________ fresh mangoes.", answer: "These are" },
+                { text: "__________ birds.", answer: "Those are" },
+                { text: "__________ balloons.", answer: "Those are" },
+                { text: "__________ pigeons.", answer: "These are" },
+                { text: "__________ stars.", answer: "Those are" },
+                { text: "__________ my friends.", answer: "These are" }
               ]
             }
           ]
@@ -630,40 +697,40 @@
             {
               instruction: "A. Choose the correct word to complete each sentence (is / are).",
               questions: [
-                { text: "The cat ___ in the basket." },
-                { text: "The phone ___ on the table." },
-                { text: "The books ___ on the shelf." },
-                { text: "Her dress ___ beautiful." },
-                { text: "The windows ___ open." },
-                { text: "This apple ___ very sweet." },
-                { text: "These apples ___ fresh." },
-                { text: "The chicks ___ in the nest." },
-                { text: "The students ___ in the classroom." },
-                { text: "The cake ___ ready to eat." },
-                { text: "The flowers ___ beautiful." },
-                { text: "The movie ___ really good." },
-                { text: "The chairs ___ made of wood." },
-                { text: "My friend ___ very kind." }
+                { text: "The cat ___ in the basket.", answer: "is" },
+                { text: "The phone ___ on the table.", answer: "is" },
+                { text: "The books ___ on the shelf.", answer: "are" },
+                { text: "Her dress ___ beautiful.", answer: "is" },
+                { text: "The windows ___ open.", answer: "are" },
+                { text: "This apple ___ very sweet.", answer: "is" },
+                { text: "These apples ___ fresh.", answer: "are" },
+                { text: "The chicks ___ in the nest.", answer: "are" },
+                { text: "The students ___ in the classroom.", answer: "are" },
+                { text: "The cake ___ ready to eat.", answer: "is" },
+                { text: "The flowers ___ beautiful.", answer: "are" },
+                { text: "The movie ___ really good.", answer: "is" },
+                { text: "The chairs ___ made of wood.", answer: "are" },
+                { text: "My friend ___ very kind.", answer: "is" }
               ]
             },
             {
               instruction: "B. Fill in the blanks with am, is or are.",
               questions: [
-                { text: "I ___ busy today." },
-                { text: "She ___ a good singer." },
-                { text: "They ___ my best friends." },
-                { text: "He ___ from Canada." },
-                { text: "We ___ excited for the trip." },
-                { text: "It ___ very cold outside." },
-                { text: "You ___ very kind." },
-                { text: "I ___ not well." },
-                { text: "He ___ not here right now." },
-                { text: "We ___ in the same class." },
-                { text: "You ___ my favourite teacher." },
-                { text: "She ___ at the park right now." },
-                { text: "We ___ ready to go." },
-                { text: "He ___ always on time." },
-                { text: "I ___ very hungry." }
+                { text: "I ___ busy today.", answer: "am" },
+                { text: "She ___ a good singer.", answer: "is" },
+                { text: "They ___ my best friends.", answer: "are" },
+                { text: "He ___ from Canada.", answer: "is" },
+                { text: "We ___ excited for the trip.", answer: "are" },
+                { text: "It ___ very cold outside.", answer: "is" },
+                { text: "You ___ very kind.", answer: "are" },
+                { text: "I ___ not well.", answer: "am" },
+                { text: "He ___ not here right now.", answer: "is" },
+                { text: "We ___ in the same class.", answer: "are" },
+                { text: "You ___ my favourite teacher.", answer: "are" },
+                { text: "She ___ at the park right now.", answer: "is" },
+                { text: "We ___ ready to go.", answer: "are" },
+                { text: "He ___ always on time.", answer: "is" },
+                { text: "I ___ very hungry.", answer: "am" }
               ]
             }
           ]
@@ -675,43 +742,43 @@
             {
               instruction: "A. Choose the correct word to complete each sentence (has / have).",
               questions: [
-                { text: "The lion ____ a long tail." },
-                { text: "My shirts ____ shiny buttons." },
-                { text: "This room ____ a secret door." },
-                { text: "Those butterflies ____ colourful wings." },
-                { text: "A shark ____ sharp teeth." },
-                { text: "Our houses ____ two windows." },
-                { text: "The king ____ a golden crown." },
-                { text: "These rabbits ____ soft fur." },
-                { text: "The bottle ____ clean water." },
-                { text: "A car ____ four wheels." },
-                { text: "These students ____ new backpacks." },
-                { text: "His watch ____ a leather strap." },
-                { text: "Some dogs ____ curly tails." },
-                { text: "That tree ____ green leaves." }
+                { text: "The lion ____ a long tail.", answer: "has" },
+                { text: "My shirts ____ shiny buttons.", answer: "have" },
+                { text: "This room ____ a secret door.", answer: "has" },
+                { text: "Those butterflies ____ colourful wings.", answer: "have" },
+                { text: "A shark ____ sharp teeth.", answer: "has" },
+                { text: "Our houses ____ two windows.", answer: "have" },
+                { text: "The king ____ a golden crown.", answer: "has" },
+                { text: "These rabbits ____ soft fur.", answer: "have" },
+                { text: "The bottle ____ clean water.", answer: "has" },
+                { text: "A car ____ four wheels.", answer: "has" },
+                { text: "These students ____ new backpacks.", answer: "have" },
+                { text: "His watch ____ a leather strap.", answer: "has" },
+                { text: "Some dogs ____ curly tails.", answer: "have" },
+                { text: "That tree ____ green leaves.", answer: "has" }
               ]
             },
             {
               instruction: "B. Complete each sentence with has or have.",
               questions: [
-                { text: "He ____ a red bicycle." },
-                { text: "They ____ a big garden." },
-                { text: "She ____ a pet cat." },
-                { text: "It ____ a long trunk." },
-                { text: "You ____ a great voice." },
-                { text: "I ____ an idea." },
-                { text: "He ____ two brothers." },
-                { text: "We ____ extra pencils." },
-                { text: "She ____ a beautiful smile." },
-                { text: "I ____ a new backpack." },
-                { text: "It ____ sharp claws." },
-                { text: "They ____ a fun game to play." },
-                { text: "You ____ a kind heart." },
-                { text: "He ____ a fast car." },
-                { text: "We ____ tickets to the show." },
-                { text: "She ____ long hair." },
-                { text: "I ____ some homework to do." },
-                { text: "They ____ three dogs." }
+                { text: "He ____ a red bicycle.", answer: "has" },
+                { text: "They ____ a big garden.", answer: "have" },
+                { text: "She ____ a pet cat.", answer: "has" },
+                { text: "It ____ a long trunk.", answer: "has" },
+                { text: "You ____ a great voice.", answer: "have" },
+                { text: "I ____ an idea.", answer: "have" },
+                { text: "He ____ two brothers.", answer: "has" },
+                { text: "We ____ extra pencils.", answer: "have" },
+                { text: "She ____ a beautiful smile.", answer: "has" },
+                { text: "I ____ a new backpack.", answer: "have" },
+                { text: "It ____ sharp claws.", answer: "has" },
+                { text: "They ____ a fun game to play.", answer: "have" },
+                { text: "You ____ a kind heart.", answer: "have" },
+                { text: "He ____ a fast car.", answer: "has" },
+                { text: "We ____ tickets to the show.", answer: "have" },
+                { text: "She ____ long hair.", answer: "has" },
+                { text: "I ____ some homework to do.", answer: "have" },
+                { text: "They ____ three dogs.", answer: "have" }
               ]
             }
           ]
@@ -760,6 +827,8 @@
       );
 
       // ─── PREVIEW TEST ───────────────────────────────────────────────────────
+      let lastGeneratedQuestions = [];
+
       function previewTest() {
         const testName = document.getElementById("testName").value || "Grammar Frolics-1 Test";
         const studentName = document.getElementById("studentName").value;
@@ -792,6 +861,7 @@
                 worksheetIdx: wsIdx,
                 instruction: ws.instruction,
                 text: q.text,
+                answer: q.answer || null,
                 options: q.options || null,
                 wideOptions: q.wideOptions || false,
                 lines: q.lines || 0
@@ -831,6 +901,7 @@
         const container = document.getElementById("questionsContainer");
         container.innerHTML = "";
         let qNum = 1;
+        lastGeneratedQuestions = [];
 
         grouped.forEach((chData) => {
           if (chData.worksheets.size === 0) return;
@@ -876,6 +947,7 @@
               qDiv.innerHTML = html;
               wsDiv.appendChild(qDiv);
               qNum++;
+              lastGeneratedQuestions.push({ qNum: qNum - 1, answer: q.answer || null, text: q.text, chapterName: chData.name, instruction: wsData.instruction });
             });
 
             chSection.appendChild(wsDiv);
@@ -890,6 +962,56 @@
 
       function printTest() {
         previewTest();
+        setTimeout(() => window.print(), 600);
+      }
+
+      function previewAnswers() {
+        if (lastGeneratedQuestions.length === 0) {
+          previewTest();
+        }
+        const testName = document.getElementById("testName").value || "Test";
+        const testDate = document.getElementById("testDate").value;
+        document.getElementById("akTestName").textContent = testName + " — Answer Key";
+        document.getElementById("akMeta").textContent = (testDate ? "Date: " + testDate + "  |  " : "") + "Total Questions: " + lastGeneratedQuestions.length;
+
+        const container = document.getElementById("answersContainer");
+        container.innerHTML = "";
+
+        // Group by chapter
+        const grouped = new Map();
+        lastGeneratedQuestions.forEach(q => {
+          if (!grouped.has(q.chapterName)) grouped.set(q.chapterName, []);
+          grouped.get(q.chapterName).push(q);
+        });
+
+        grouped.forEach((questions, chapterName) => {
+          const chDiv = document.createElement("div");
+          chDiv.className = "ak-chapter";
+          chDiv.innerHTML = "<h3>" + chapterName + "</h3>";
+          const grid = document.createElement("div");
+          grid.className = "ak-grid";
+          questions.forEach(q => {
+            const item = document.createElement("div");
+            item.className = "ak-item";
+            const ans = q.answer;
+            if (!ans || ans === "vary") {
+              item.innerHTML = "<strong>" + q.qNum + ".</strong> <span class='ak-vary'>Answers may vary</span>";
+            } else {
+              item.innerHTML = "<strong>" + q.qNum + ".</strong> " + ans;
+            }
+            grid.appendChild(item);
+          });
+          chDiv.appendChild(grid);
+          container.appendChild(chDiv);
+        });
+
+        document.getElementById("answerKeyPreview").classList.add("show");
+        document.getElementById("answerKeyPreview").scrollIntoView({ behavior: "smooth" });
+      }
+
+      function printAnswers() {
+        if (lastGeneratedQuestions.length === 0) previewTest();
+        previewAnswers();
         setTimeout(() => window.print(), 600);
       }
     </script>
