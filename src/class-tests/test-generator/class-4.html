@@ -179,9 +179,11 @@
         padding: 6px 12px; background: #e8fdf5;
         border-radius: 8px; border-left: 4px solid #00b894; font-family: Arial, sans-serif;
       }
+      .ak-ws { margin-bottom: 14px; }
+      .ak-ws-label { font-size: 0.82rem; color: #636e72; font-style: italic; margin-bottom: 6px; padding-left: 4px; }
       .ak-grid {
-        display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        gap: 6px 12px; font-family: Arial, sans-serif; font-size: 0.9rem; padding: 0 8px;
+        display: grid; grid-template-columns: repeat(2, 1fr);
+        gap: 4px 20px; font-family: Arial, sans-serif; font-size: 0.9rem; padding: 0 8px;
       }
       .ak-item { color: #111; line-height: 1.6; }
       .ak-item strong { color: #00b894; margin-right: 4px; }
@@ -501,16 +503,16 @@
             {
               instruction: "B – Rewrite the sentences after replacing the common nouns with suitable proper nouns.",
               questions: [
-                { text: "The girl won the race.", lines: 1 },
-                { text: "The river flows through our city.", lines: 1 },
-                { text: "The school is very big.", lines: 1 },
-                { text: "The shop sells fresh fruits.", lines: 1 },
-                { text: "The teacher is very kind.", lines: 1 },
-                { text: "The hotel is near the beach.", lines: 1 },
-                { text: "The hospital is far from here.", lines: 1 },
-                { text: "The country is very beautiful.", lines: 1 },
-                { text: "The boy is playing in the park.", lines: 1 },
-                { text: "The mountain is covered with snow.", lines: 1 }
+                { text: "The girl won the race.", lines: 1, answer: "Priya won the race." },
+                { text: "The river flows through our city.", lines: 1, answer: "The Ganga flows through our city." },
+                { text: "The school is very big.", lines: 1, answer: "Delhi Public School is very big." },
+                { text: "The shop sells fresh fruits.", lines: 1, answer: "Fresh Mart sells fresh fruits." },
+                { text: "The teacher is very kind.", lines: 1, answer: "Mrs Sharma is very kind." },
+                { text: "The hotel is near the beach.", lines: 1, answer: "Hotel Sea View is near the beach." },
+                { text: "The hospital is far from here.", lines: 1, answer: "Apollo Hospital is far from here." },
+                { text: "The country is very beautiful.", lines: 1, answer: "India is very beautiful." },
+                { text: "The boy is playing in the park.", lines: 1, answer: "Rahul is playing in the park." },
+                { text: "The mountain is covered with snow.", lines: 1, answer: "Mount Everest is covered with snow." }
               ]
             },
             {
@@ -643,16 +645,16 @@
             {
               instruction: "B – Rewrite the sentences by changing the masculine nouns into feminine nouns. Make other necessary changes.",
               questions: [
-                { text: "The king is wise and just.", lines: 1 },
-                { text: "My uncle told me an interesting story.", lines: 1 },
-                { text: "The prince rode on a white stallion.", lines: 1 },
-                { text: "The lion is called the king of the jungle.", lines: 1 },
-                { text: "The hero performed very well on stage.", lines: 1 },
-                { text: "His brother is a good singer.", lines: 1 },
-                { text: "The tiger hunted a stag.", lines: 1 },
-                { text: "The gentleman helped the old man.", lines: 1 },
-                { text: "The hero of the film is very brave.", lines: 1 },
-                { text: "The father loves his son dearly.", lines: 1 }
+                { text: "The king is wise and just.", lines: 1, answer: "The queen is wise and just." },
+                { text: "My uncle told me an interesting story.", lines: 1, answer: "My aunt told me an interesting story." },
+                { text: "The prince rode on a white stallion.", lines: 1, answer: "The princess rode on a white mare." },
+                { text: "The lion is called the king of the jungle.", lines: 1, answer: "The lioness is called the queen of the jungle." },
+                { text: "The hero performed very well on stage.", lines: 1, answer: "The heroine performed very well on stage." },
+                { text: "His brother is a good singer.", lines: 1, answer: "His sister is a good singer." },
+                { text: "The tiger hunted a stag.", lines: 1, answer: "The tigress hunted a doe." },
+                { text: "The gentleman helped the old man.", lines: 1, answer: "The lady helped the old woman." },
+                { text: "The hero of the film is very brave.", lines: 1, answer: "The heroine of the film is very brave." },
+                { text: "The father loves his son dearly.", lines: 1, answer: "The mother loves her daughter dearly." }
               ]
             }
           ]
@@ -881,32 +883,32 @@
             {
               instruction: "B – Change to declarative and negative forms.",
               questions: [
-                { text: "Did you play football yesterday?", lines: 2 },
-                { text: "Did she visit her grandmother last week?", lines: 2 },
-                { text: "Did she complete the homework last night?", lines: 2 },
-                { text: "Did they watch the movie on Saturday?", lines: 2 },
-                { text: "Did he meet you at the mall on Sunday?", lines: 2 }
+                { text: "Did you play football yesterday?", lines: 2, answer: "D: You played football yesterday. / N: You did not play football yesterday." },
+                { text: "Did she visit her grandmother last week?", lines: 2, answer: "D: She visited her grandmother last week. / N: She did not visit her grandmother last week." },
+                { text: "Did she complete the homework last night?", lines: 2, answer: "D: She completed the homework last night. / N: She did not complete the homework last night." },
+                { text: "Did they watch the movie on Saturday?", lines: 2, answer: "D: They watched the movie on Saturday. / N: They did not watch the movie on Saturday." },
+                { text: "Did he meet you at the mall on Sunday?", lines: 2, answer: "D: He met you at the mall on Sunday. / N: He did not meet you at the mall on Sunday." }
               ]
             },
             {
               instruction: "C – Change to interrogative and declarative forms.",
               questions: [
-                { text: "He did not watch TV last night.", lines: 2 },
-                { text: "They did not go to the park on Sunday.", lines: 2 },
-                { text: "They did not attend the meeting last week.", lines: 2 },
-                { text: "She did not eat breakfast this morning.", lines: 2 },
-                { text: "The teacher did not check our homework.", lines: 2 }
+                { text: "He did not watch TV last night.", lines: 2, answer: "Int: Did he watch TV last night? / D: He watched TV last night." },
+                { text: "They did not go to the park on Sunday.", lines: 2, answer: "Int: Did they go to the park on Sunday? / D: They went to the park on Sunday." },
+                { text: "They did not attend the meeting last week.", lines: 2, answer: "Int: Did they attend the meeting last week? / D: They attended the meeting last week." },
+                { text: "She did not eat breakfast this morning.", lines: 2, answer: "Int: Did she eat breakfast this morning? / D: She ate breakfast this morning." },
+                { text: "The teacher did not check our homework.", lines: 2, answer: "Int: Did the teacher check our homework? / D: The teacher checked our homework." }
               ]
             },
             {
               instruction: "D – Change to interrogative and negative forms.",
               questions: [
-                { text: "I read a story yesterday.", lines: 2 },
-                { text: "We went to the zoo last month.", lines: 2 },
-                { text: "They saw a movie last night.", lines: 2 },
-                { text: "She cooked breakfast for us.", lines: 2 },
-                { text: "My father bought a new car last year.", lines: 2 },
-                { text: "Rajni went on a holiday to Dubai in 2024.", lines: 2 }
+                { text: "I read a story yesterday.", lines: 2, answer: "Int: Did I read a story yesterday? / N: I did not read a story yesterday." },
+                { text: "We went to the zoo last month.", lines: 2, answer: "Int: Did we go to the zoo last month? / N: We did not go to the zoo last month." },
+                { text: "They saw a movie last night.", lines: 2, answer: "Int: Did they see a movie last night? / N: They did not see a movie last night." },
+                { text: "She cooked breakfast for us.", lines: 2, answer: "Int: Did she cook breakfast for us? / N: She did not cook breakfast for us." },
+                { text: "My father bought a new car last year.", lines: 2, answer: "Int: Did my father buy a new car last year? / N: My father did not buy a new car last year." },
+                { text: "Rajni went on a holiday to Dubai in 2024.", lines: 2, answer: "Int: Did Rajni go on a holiday to Dubai in 2024? / N: Rajni did not go on a holiday to Dubai in 2024." }
               ]
             }
           ]
@@ -1490,29 +1492,42 @@
         document.getElementById("akMeta").textContent = (testDate ? "Date: " + testDate + "  |  " : "") + "Total Questions: " + lastGeneratedQuestions.length;
         const container = document.getElementById("answersContainer");
         container.innerHTML = "";
-        const grouped = new Map();
+        const groupedRaw = new Map();
         lastGeneratedQuestions.forEach(q => {
-          if (!grouped.has(q.chapterName)) grouped.set(q.chapterName, []);
-          grouped.get(q.chapterName).push(q);
+          if (!groupedRaw.has(q.chapterKey)) groupedRaw.set(q.chapterKey, new Map());
+          const wsMap = groupedRaw.get(q.chapterKey);
+          const wsKey = q.worksheetIdx + "||" + q.instruction;
+          if (!wsMap.has(wsKey)) wsMap.set(wsKey, { instruction: q.instruction, chapterName: q.chapterName, questions: [] });
+          wsMap.get(wsKey).questions.push(q);
         });
-        grouped.forEach((questions, chapterName) => {
+        const grouped = new Map();
+        Object.keys(questionBank).forEach(k => { if (groupedRaw.has(k)) grouped.set(k, groupedRaw.get(k)); });
+        grouped.forEach((wsMap) => {
+          const chapterName = [...wsMap.values()][0].chapterName;
           const chDiv = document.createElement("div");
           chDiv.className = "ak-chapter";
           chDiv.innerHTML = "<h3>" + chapterName + "</h3>";
-          const grid = document.createElement("div");
-          grid.className = "ak-grid";
-          questions.forEach(q => {
-            const item = document.createElement("div");
-            item.className = "ak-item";
-            const ans = q.answer;
-            if (!ans || ans === "vary") {
-              item.innerHTML = "<strong>" + q.qNum + ".</strong> <span class='ak-vary'>Answers may vary</span>";
-            } else {
-              item.innerHTML = "<strong>" + q.qNum + ".</strong> " + ans;
-            }
-            grid.appendChild(item);
+          const sortedWs = [...wsMap.entries()].sort((a, b) => parseInt(a[0]) - parseInt(b[0]));
+          sortedWs.forEach(([, { instruction, questions }]) => {
+            const wsDiv = document.createElement("div");
+            wsDiv.className = "ak-ws";
+            wsDiv.innerHTML = "<div class='ak-ws-label'>" + instruction + "</div>";
+            const grid = document.createElement("div");
+            grid.className = "ak-grid";
+            questions.sort((a, b) => a.qNum - b.qNum).forEach(q => {
+              const item = document.createElement("div");
+              item.className = "ak-item";
+              const ans = q.answer;
+              if (!ans || ans === "vary") {
+                item.innerHTML = "<strong>" + q.qNum + ".</strong> <span class='ak-vary'>Answers may vary</span>";
+              } else {
+                item.innerHTML = "<strong>" + q.qNum + ".</strong> " + ans;
+              }
+              grid.appendChild(item);
+            });
+            wsDiv.appendChild(grid);
+            chDiv.appendChild(wsDiv);
           });
-          chDiv.appendChild(grid);
           container.appendChild(chDiv);
         });
         document.getElementById("answerKeyPreview").classList.add("show");

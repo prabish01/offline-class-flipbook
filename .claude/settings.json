@@ -11,7 +11,15 @@
       "Bash(head -20 grep -n \"lastGeneratedQuestions\\\\|q\\\\.qNum\" \"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-3.html\")",
       "Bash(for f:*)",
       "Bash(echo \"=== $f ===\")",
-      "Read(//Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/**)"
+      "Read(//Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/**)",
+      "Bash(grep -B 5 \"{ text: \"\"me\"\", lines: 1 }\" \"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-3.html\")",
+      "Bash(/tmp/search_missing_answers.sh:*)",
+      "Bash(grep -n '{ text: \"\"[^\"\"]*\"\", lines: [0-9]* }' \"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-1.html\")",
+      "Bash(grep -n '{ text: \"\"[^\"\"]*\"\", lines: [0-9]* }' \"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-2.html\")",
+      "Bash(grep -n '{ text: \"\"[^\"\"]*\"\", lines: [0-9]* }' \"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-3.html\")",
+      "Bash(grep -n '{ text: \"\"[^\"\"]*\"\", lines: [0-9]* }' \"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-4.html\")",
+      "Bash(grep -n '{ text: \"\"[^\"\"]*\"\", lines: [0-9]* }' \"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-5.html\")",
+      "Bash(grep -E '{ text: \"\"[^\"\"]*\"\", lines: [0-9]+ },' \"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-3.html\")"
     ]
   }
 }
