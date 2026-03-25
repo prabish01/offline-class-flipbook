@@ -19,7 +19,33 @@
       "Bash(grep -n '{ text: \"\"[^\"\"]*\"\", lines: [0-9]* }' \"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-3.html\")",
       "Bash(grep -n '{ text: \"\"[^\"\"]*\"\", lines: [0-9]* }' \"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-4.html\")",
       "Bash(grep -n '{ text: \"\"[^\"\"]*\"\", lines: [0-9]* }' \"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-5.html\")",
-      "Bash(grep -E '{ text: \"\"[^\"\"]*\"\", lines: [0-9]+ },' \"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-3.html\")"
+      "Bash(grep -E '{ text: \"\"[^\"\"]*\"\", lines: [0-9]+ },' \"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-3.html\")",
+      "Bash(grep -l \"img\\\\|image\\\\|\\\\.png\\\\|\\\\.jpg\\\\|\\\\.svg\" src/class-tests/test-generator/*.html)",
+      "Bash(for i:*)",
+      "Bash(do cat:*)",
+      "Bash(echo \"--- class $i ---\")",
+      "Bash(do echo:*)",
+      "Read(//Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-flipbooks/class-$i/**)",
+      "Bash(f=\"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-flipbooks/class-$i/index.html\")",
+      "Bash(echo \"=== class-$i ===\")",
+      "Read(//Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/**)",
+      "Bash(python3 -:*)",
+      "Bash(do f=\"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-flipbooks/class-$i/index.html\" echo \"=== class-$i: controls/zoom lines ===\" grep -n 'id=\"\"\"\"controls\"\"\"\"\\\\|id=\"\"\"\"zoom\"\"\"\"\\\\|id=\"\"\"\"nxt\"\"\"\"\\\\|number-pages\\\\|</div>' \"$f\")",
+      "Bash(do f=\"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-flipbooks/class-$i/index.html\" echo \"=== class-$i ===\" grep -n 'id=\"\"\"\"controls\"\"\"\"\\\\|number-pages\\\\|</div>\\\\|zoom\\\\|pdfToggle\\\\|pointerBtn' \"$f\")",
+      "Bash(wc -l \"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/\"*.html)",
+      "Bash(python3 /tmp/add_auto_custom_word.py \"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-1.html\")",
+      "Bash(python3 /tmp/add_auto_custom_word.py \"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-$i.html\")",
+      "Bash(head -5 grep -n \"Test Preview\\\\|answer-key-preview\\\\|testPreview\" \"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-1.html\")",
+      "Bash(head -10 grep -n \"lastGeneratedQuestions\\\\|previewMarks\\\\|previewDuration\" \"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-8.html\")",
+      "Bash(f=\"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-$i.html\")",
+      "Bash(echo -n \"class-$i: \")",
+      "Bash(checks=\"\")",
+      "Bash(checks=\"$checks modeAutoBtn✓\")",
+      "Bash(checks=\"$checks modeAutoBtn✗\")",
+      "Bash(do f=\"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-$i.html\" echo -n \"class-$i questionBank structure: \" grep -m1 \"worksheets\" \"$f\")"
+    ],
+    "additionalDirectories": [
+      "/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook"
     ]
   }
 }

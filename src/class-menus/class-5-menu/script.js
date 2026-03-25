@@ -1,10 +1,10 @@
 // Class 5 Menu Navigation
 document.getElementById("flip").addEventListener("click", () => {
-  window.location.href = "../../class-book-selections/class-5/index.html";
+  window.location.href = "../../class-flipbooks/class-5/index.html";
 });
 
 document.getElementById("anima").addEventListener("click", () => {
-  window.location.href = "../../class-animations/class-5-animations/select.html";
+  window.location.href = "../../class-animations/class-5-animations/index.html";
 });
 
 document.getElementById("test").addEventListener("click", () => {

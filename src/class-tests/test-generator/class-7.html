@@ -437,6 +437,27 @@
         .action-buttons { flex-direction: column; }
         .btn { width: 100%; }
       }
+
+      /* Mode Toggle */
+      .mode-toggle{display:flex;gap:10px;margin:0 0 18px;}
+      .mode-btn{padding:8px 22px;border:2px solid #667eea;border-radius:50px;cursor:pointer;font-family:'Comic Sans MS',cursive;font-weight:bold;font-size:0.9rem;background:transparent;color:#667eea;transition:all 0.2s;}
+      .mode-btn.active{background:#667eea;color:white;}
+      .mode-btn:hover:not(.active){background:rgba(102,126,234,0.1);}
+      #customPanel{display:none;}
+      .custom-chapter{background:#f5f5ff;border:1px solid #c5cae9;border-radius:12px;padding:14px 18px;margin-bottom:12px;}
+      .custom-chapter-header{display:flex;align-items:center;justify-content:space-between;color:#667eea;font-weight:bold;font-size:1rem;margin-bottom:8px;}
+      .custom-select-all{background:none;border:2px solid #667eea;color:#667eea;padding:3px 10px;border-radius:20px;cursor:pointer;font-size:0.78rem;font-family:'Comic Sans MS',cursive;}
+      .custom-select-all:hover{background:#667eea;color:white;}
+      .custom-ws{margin-bottom:8px;padding:8px 12px;background:white;border-radius:8px;border-left:3px solid #a29bfe;}
+      .custom-ws-instr{font-size:0.82rem;color:#636e72;font-style:italic;margin-bottom:6px;}
+      .custom-q-list{list-style:none;padding:0;margin:0;}
+      .custom-q-item{padding:4px 0;border-bottom:1px solid #f0f0f0;}
+      .custom-q-item:last-child{border-bottom:none;}
+      .custom-q-text{font-size:0.85rem;color:#333;}
+      .btn-word-teacher{background:linear-gradient(135deg,#2d3436 0%,#636e72 100%);color:white;}
+      .btn-word-teacher:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(45,52,54,0.4);}
+      .btn-word-student{background:linear-gradient(135deg,#0984e3 0%,#74b9ff 100%);color:white;}
+      .btn-word-student:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(9,132,227,0.4);}
     </style>
   </head>
   <body>
@@ -475,6 +496,11 @@
       <div class="chapters-section">
         <h2>&#128218; Select Chapters</h2>
         <p class="marks-info">Available questions from selected chapters: <span id="availableCount">0</span></p>
+        <div class="mode-toggle">
+          <button id="modeAutoBtn" class="mode-btn active" onclick="setMode('auto')">&#127922; Auto</button>
+          <button id="modeCustomBtn" class="mode-btn" onclick="setMode('custom')">&#9999;&#65039; Custom</button>
+        </div>
+        <div id="autoPanel">
         <div class="chapters-grid">
           <label class="chapter-card" data-chapter="ch1">
             <input type="checkbox" id="ch1" />
@@ -609,13 +635,17 @@
             <p>Correct punctuation and capitals</p>
           </label>
         </div>
-      </div>
+        </div><!-- /autoPanel -->
+        <div id="customPanel"></div>
+      </div><!-- /chapters-section -->
 
       <!-- Action Buttons -->
       <div class="action-buttons">
-        <button class="btn btn-preview" onclick="previewTest()">&#128065;&#65039; Preview Test</button>
+        <button class="btn btn-preview" onclick="generateTest()">&#128065;&#65039; Preview Test</button>
         <span class="available-count" id="actionAvail">Select chapters to begin</span>
         <button class="btn btn-print" onclick="printTest()">&#128424;&#65039; Print Test</button>
+        <button class="btn btn-word-teacher" onclick="downloadWord(true)">&#128196; Word (Teacher)</button>
+        <button class="btn btn-word-student" onclick="downloadWord(false)">&#128196; Word (Student)</button>
       </div>
 
       <!-- Test Preview -->
@@ -1542,6 +1572,272 @@
       function printTest() {
         previewTest();
         setTimeout(() => window.print(), 600);
+      }
+
+      // Auto / Custom Mode
+      if (typeof lastGeneratedQuestions === 'undefined') var lastGeneratedQuestions = [];
+      var currentMode = 'auto';
+
+      function setMode(mode) {
+        currentMode = mode;
+        document.getElementById('modeAutoBtn').classList.toggle('active', mode === 'auto');
+        document.getElementById('modeCustomBtn').classList.toggle('active', mode === 'custom');
+        document.getElementById('autoPanel').style.display = mode === 'auto' ? '' : 'none';
+        var cp = document.getElementById('customPanel');
+        if (mode === 'custom') {
+          if (!cp.getAttribute('data-built')) buildCustomPanel();
+          cp.style.display = '';
+        } else {
+          cp.style.display = 'none';
+        }
+      }
+
+      function buildCustomPanel() {
+        var cp = document.getElementById('customPanel');
+        cp.innerHTML = '';
+        Object.keys(questionBank).forEach(function(chKey) {
+          var ch = questionBank[chKey];
+          var chDiv = document.createElement('div');
+          chDiv.className = 'custom-chapter';
+          var hdr = document.createElement('div');
+          hdr.className = 'custom-chapter-header';
+          hdr.innerHTML = '<span>' + ch.name + '</span>'
+            + '<button class="custom-select-all" onclick="toggleChAll(\'' + chKey + '\',this)">Select All</button>';
+          chDiv.appendChild(hdr);
+          ch.worksheets.forEach(function(ws, wsIdx) {
+            var wsDiv = document.createElement('div');
+            wsDiv.className = 'custom-ws';
+            var instrSafe = ws.instruction.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+            wsDiv.innerHTML = '<div class="custom-ws-instr">' + instrSafe + '</div>';
+            var ul = document.createElement('ul');
+            ul.className = 'custom-q-list';
+            ws.questions.forEach(function(q, qIdx) {
+              var li = document.createElement('li');
+              li.className = 'custom-q-item';
+              var id = 'cq_' + chKey + '_' + wsIdx + '_' + qIdx;
+              var preview = q.text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+              if (preview.length > 100) preview = preview.substring(0, 100) + '...';
+              li.innerHTML = '<label for="' + id + '" style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;width:100%;">'
+                + '<input type="checkbox" id="' + id + '" class="custom-q-cb"'
+                + ' data-ch-key="' + chKey + '" data-ws-idx="' + wsIdx + '" data-q-idx="' + qIdx + '"'
+                + ' style="margin-top:3px;cursor:pointer;accent-color:#667eea;flex-shrink:0;">'
+                + '<span class="custom-q-text">' + preview + '</span></label>';
+              ul.appendChild(li);
+            });
+            wsDiv.appendChild(ul);
+            chDiv.appendChild(wsDiv);
+          });
+          cp.appendChild(chDiv);
+        });
+        cp.setAttribute('data-built', '1');
+      }
+
+      function toggleChAll(chKey, btn) {
+        var cbs = document.querySelectorAll('.custom-q-cb[data-ch-key="' + chKey + '"]');
+        var anyUnchecked = Array.prototype.some.call(cbs, function(cb) { return !cb.checked; });
+        Array.prototype.forEach.call(cbs, function(cb) { cb.checked = anyUnchecked; });
+        btn.textContent = anyUnchecked ? 'Deselect All' : 'Select All';
+      }
+
+      function previewCustomTest() {
+        var testName = document.getElementById('testName').value || 'Grammar Test';
+        var studentName = document.getElementById('studentName').value;
+        var testDate = document.getElementById('testDate').value;
+        var testDuration = document.getElementById('testDuration').value;
+        var totalMarks = parseInt(document.getElementById('totalMarks').value) || 20;
+
+        document.getElementById('previewTestName').textContent = testName;
+        var snEl = document.getElementById('previewStudentName'); if (snEl) snEl.textContent = studentName || '____________________________';
+        document.getElementById('previewDate').textContent = testDate || '_____________';
+        document.getElementById('previewMarks').textContent = totalMarks;
+        document.getElementById('previewDuration').textContent = testDuration || '____';
+
+        var selected = [];
+        document.querySelectorAll('.custom-q-cb:checked').forEach(function(cb) {
+          var chKey = cb.getAttribute('data-ch-key');
+          var wsIdx = parseInt(cb.getAttribute('data-ws-idx'));
+          var qIdx = parseInt(cb.getAttribute('data-q-idx'));
+          var ch = questionBank[chKey];
+          var ws = ch.worksheets[wsIdx];
+          var q = ws.questions[qIdx];
+          selected.push({ chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx,
+            instruction: ws.instruction, text: q.text, answer: q.answer || null,
+            options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0 });
+        });
+
+        if (selected.length === 0) {
+          alert('Please tick at least one question in Custom mode!');
+          return;
+        }
+
+        var grouped = new Map();
+        Object.keys(questionBank).forEach(function(k) {
+          grouped.set(k, { name: questionBank[k].name, worksheets: new Map() });
+        });
+        selected.forEach(function(q) {
+          var chGroup = grouped.get(q.chapterKey);
+          if (!chGroup) return;
+          if (!chGroup.worksheets.has(q.worksheetIdx)) {
+            chGroup.worksheets.set(q.worksheetIdx, { instruction: q.instruction, questions: [] });
+          }
+          chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
+        });
+
+        var container = document.getElementById('questionsContainer');
+        container.innerHTML = '';
+        var qNum = 1;
+        lastGeneratedQuestions = [];
+
+        grouped.forEach(function(chData, chKey) {
+          if (chData.worksheets.size === 0) return;
+          var chSection = document.createElement('div');
+          chSection.className = 'question-section';
+          chSection.innerHTML = '<h3>' + chData.name + '</h3>';
+          var sortedWs = Array.from(chData.worksheets.entries()).sort(function(a,b){ return a[0]-b[0]; });
+          sortedWs.forEach(function(entry) {
+            var wsData = entry[1];
+            var wsDiv = document.createElement('div');
+            wsDiv.className = 'worksheet-group';
+            wsDiv.innerHTML = '<p class="ws-instruction">' + wsData.instruction.replace(/\n/g,'<br>') + '</p>';
+            wsData.questions.forEach(function(q) {
+              var qDiv = document.createElement('div');
+              qDiv.className = 'question-item';
+              var html = '<p class="question-text"><strong>' + qNum + '.</strong> ' + q.text.replace(/\n/g,'<br>') + '</p>';
+              if (q.options && q.options.length > 0) {
+                var cls = q.wideOptions ? 'options-list' : 'options-grid';
+                html += '<div class="' + cls + '">';
+                q.options.forEach(function(opt){ html += '<span class="option-item">' + opt + '</span>'; });
+                html += '</div>';
+              }
+              for (var i = 0; i < q.lines; i++) { html += '<div class="answer-line"></div>'; }
+              qDiv.innerHTML = html;
+              wsDiv.appendChild(qDiv);
+              lastGeneratedQuestions.push({ qNum: qNum, chapterKey: chKey, chapterName: chData.name,
+                worksheetIdx: entry[0], instruction: wsData.instruction, answer: q.answer || null, text: q.text });
+              qNum++;
+            });
+            chSection.appendChild(wsDiv);
+          });
+          container.appendChild(chSection);
+        });
+
+        document.getElementById('testPreview').classList.add('show');
+        document.getElementById('testPreview').scrollIntoView({ behavior: 'smooth' });
+      }
+
+      // Wrapper called by Preview Test button
+      function generateTest() {
+        if (currentMode === 'custom') {
+          previewCustomTest();
+        } else {
+          lastGeneratedQuestions = [];
+          previewTest();
+          // For classes that don't internally populate lastGeneratedQuestions
+          if (lastGeneratedQuestions.length === 0 && typeof getSelectedChapterKeys === 'function') {
+            var keys = getSelectedChapterKeys();
+            var qNum = 1;
+            keys.forEach(function(k) {
+              var ch = questionBank[k];
+              if (!ch) return;
+              ch.worksheets.forEach(function(ws, wsIdx) {
+                ws.questions.forEach(function(q) {
+                  lastGeneratedQuestions.push({ qNum: qNum++, chapterKey: k, chapterName: ch.name,
+                    worksheetIdx: wsIdx, instruction: ws.instruction, answer: q.answer || null, text: q.text });
+                });
+              });
+            });
+          }
+        }
+      }
+
+      // Word Export
+      function _esc(s) {
+        if (!s) return '';
+        return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      }
+
+      function downloadWord(includeAnswers) {
+        if (lastGeneratedQuestions.length === 0) {
+          generateTest();
+          if (lastGeneratedQuestions.length === 0) return;
+        }
+        var testName = document.getElementById('testName').value || 'Grammar Test';
+        var studentName = document.getElementById('studentName').value || '';
+        var testDate = document.getElementById('testDate').value || '';
+        var totalMarks = document.getElementById('totalMarks').value || '';
+        var testDuration = document.getElementById('testDuration').value || '';
+
+        var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><style>'
+          + 'body{font-family:Arial,sans-serif;margin:2cm;color:#000;font-size:11pt}'
+          + '.title{text-align:center;font-size:15pt;font-weight:bold;margin-bottom:4px}'
+          + '.ak-lbl{text-align:center;color:green;font-weight:bold;font-size:12pt;margin-bottom:8px}'
+          + 'table{width:100%;border-collapse:collapse;margin-bottom:8px}'
+          + 'td{padding:3px 6px;font-size:10pt}'
+          + 'hr{border:none;border-top:2px solid #333;margin:8px 0}'
+          + '.ch{font-weight:bold;font-size:12pt;margin:16px 0 4px;border-bottom:1px solid #999;padding-bottom:3px}'
+          + '.instr{font-style:italic;color:#444;margin-bottom:8px;font-size:10pt}'
+          + '.q{margin-bottom:10px;font-size:10.5pt}'
+          + '.ans{color:green;font-size:10pt;margin-top:2px}'
+          + '.ans-line{border-bottom:1px solid #aaa;height:18px;margin-top:4px}'
+          + '<\/style><\/head><body>';
+
+        html += '<p class="title">Grammar Frolics - ' + _esc(testName) + '</p>';
+        if (includeAnswers) html += '<p class="ak-lbl">ANSWER KEY - TEACHER USE ONLY</p>';
+        html += '<hr><table><tr>'
+          + '<td width="55%">Name: <u>' + (_esc(studentName) || '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;') + '</u></td>'
+          + '<td>Date: <u>' + (_esc(testDate) || '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;') + '</u></td>'
+          + '</tr><tr>'
+          + '<td>Total Marks: ' + _esc(totalMarks) + '</td>'
+          + '<td>Time: ' + _esc(testDuration) + ' mins</td>'
+          + '</tr></table><hr>';
+
+        var grouped = {};
+        var chapterOrder = [];
+        lastGeneratedQuestions.forEach(function(q) {
+          if (!grouped[q.chapterKey]) {
+            grouped[q.chapterKey] = { name: q.chapterName, wsOrder: [], worksheets: {} };
+            chapterOrder.push(q.chapterKey);
+          }
+          var wsKey = String(q.worksheetIdx) + '||' + q.instruction;
+          if (!grouped[q.chapterKey].worksheets[wsKey]) {
+            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, questions: [] };
+            grouped[q.chapterKey].wsOrder.push(wsKey);
+          }
+          grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
+        });
+
+        chapterOrder.forEach(function(chKey) {
+          var ch = grouped[chKey];
+          html += '<div class="ch">' + _esc(ch.name) + '</div>';
+          ch.wsOrder.forEach(function(wsKey) {
+            var ws = ch.worksheets[wsKey];
+            html += '<div class="instr">' + _esc(ws.instruction).replace(/\n/g,'<br>') + '</div>';
+            ws.questions.slice().sort(function(a,b){return a.qNum-b.qNum;}).forEach(function(q) {
+              html += '<div class="q"><strong>' + q.qNum + '.</strong> ' + _esc(q.text).replace(/\n/g,'<br>');
+              if (includeAnswers) {
+                if (q.answer && q.answer !== 'vary') {
+                  html += '<div class="ans">- ' + _esc(q.answer) + '</div>';
+                } else {
+                  html += '<div class="ans" style="color:#999;">- Answers may vary</div>';
+                }
+              } else {
+                html += '<div class="ans-line"></div>';
+              }
+              html += '</div>';
+            });
+          });
+        });
+        html += '<\/body><\/html>';
+
+        var blob = new Blob(['\ufeff', html], {type: 'application/msword'});
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = testName + (includeAnswers ? ' - Teacher.doc' : ' - Student.doc');
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function(){ URL.revokeObjectURL(url); }, 100);
       }
     </script>
   </body>

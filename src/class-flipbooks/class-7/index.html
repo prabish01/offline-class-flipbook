@@ -241,6 +241,7 @@
 	<span id="controls">
 		<label for="page-number" style='font-size: 1.15vw;'>GO TO PAGE -</label> <input type="text" size="2" id="page-number"> of <span id="number-pages"></span>
 	</span>
+<span id="pdfToggle" style="display:flex;align-items:center;background-color:white;color:#FF6B9D;border-radius:1vw;box-shadow:0px 4px 12px rgba(0,0,0,0.15);padding:0.6vw 1.4vw;cursor:pointer;transition:all 0.2s ease;font-family:'Comic Sans MS',cursive;font-weight:700;font-size:1.1vw;white-space:nowrap;">PDF View</span>
 	<span style="display:flex;position: relative; margin: 0 0.5vw;">
 	<span id="zoom">
 		<span id="zm" style="height: 18px;"><svg xmlns="http://www.w3.org/2000/svg" style="height:1.4vw;width: 18px;" viewBox="0 0 512 512"><path fill="#FF6B9D" d="M500.3 443.7l-119.7-119.7c27.22-40.41 40.65-90.9 33.46-144.7c-12.23-91.55-87.28-166-178.9-177.6c-136.2-17.24-250.7 97.28-233.4 233.4c11.6 91.64 86.07 166.7 177.6 178.9c53.81 7.191 104.3-6.235 144.7-33.46l119.7 119.7c15.62 15.62 40.95 15.62 56.57 .0003C515.9 484.7 515.9 459.3 500.3 443.7zM288 232H231.1V288c0 13.26-10.74 24-23.1 24C194.7 312 184 301.3 184 288V232H127.1C114.7 232 104 221.3 104 208s10.74-24 23.1-24H184V128c0-13.26 10.74-24 23.1-24S231.1 114.7 231.1 128v56h56C301.3 184 312 194.7 312 208S301.3 232 288 232z"/></svg></span>
@@ -279,7 +280,12 @@
 	<div class="toolbar-header">Drawing Tools</div>
 	
 	<!-- Tool Selection -->
-	<button class="tool-btn active" id="markerBtn" data-tool="marker" title="Marker">
+	<button class="tool-btn active" id="pointerBtn" title="Pointer (Mouse Mode)">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="20" height="20">
+			<path fill="currentColor" d="M0 55.2V426c0 12.2 9.9 22 22 22c6.3 0 12.4-2.7 16.6-7.5L121.2 346l58.1 116.3c7.9 16.8 28.1 23.9 44.9 16s23.9-28.1 16-44.9L197.3 318h70.8c12.2 0 22-9.9 22-22c0-6.3-2.7-12.4-7.5-16.6L38 5.4C34 1.9 29.1 0 24 0C10.7 0 0 10.7 0 24z"/>
+		</svg>
+	</button>
+	<button class="tool-btn" id="markerBtn" data-tool="marker" title="Marker">
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20">
 			<path fill="currentColor" d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"/>
 		</svg>
@@ -380,5 +386,45 @@
 	document.getElementsByTagName('head')[0].appendChild(script);
 </script>
 
+
+
+<!-- PDF Viewer Overlay -->
+<div id="pdfOverlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:3000;flex-direction:column;">
+	<div style="position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:3001;">
+		<span id="pdfCloseBtn" style="display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#ff6b9d 0%,#ffa07a 50%,#ffd93d 100%);color:white;border-radius:1vw;box-shadow:0px 4px 12px rgba(0,0,0,0.3);padding:0.5vw 1.2vw;cursor:pointer;font-family:'Comic Sans MS',cursive;font-weight:700;font-size:1vw;white-space:nowrap;border:2px solid white;">&#8592; Flip View</span>
+	</div>
+	<iframe id="pdfFrame" src="" style="width:100%;height:100%;border:none;" allowfullscreen></iframe>
+</div>
+
+<script>
+(function() {
+	var pdfOpen = false;
+	var toggleBtn = document.getElementById('pdfToggle');
+	var overlay   = document.getElementById('pdfOverlay');
+	var frame     = document.getElementById('pdfFrame');
+	var closeBtn  = document.getElementById('pdfCloseBtn');
+	var pdfSrc    = '../../../assets/pages/class-7/Master_Book_7_Grammar_Frolics_final.pdf';
+
+	function openPdf() {
+		if (!frame.src || frame.src === window.location.href) frame.src = pdfSrc;
+		overlay.style.display = 'flex';
+		pdfOpen = true;
+		toggleBtn.textContent = 'Flip View';
+		toggleBtn.style.background = 'linear-gradient(135deg, #ff6b9d 0%, #ffa07a 50%, #ffd93d 100%)';
+		toggleBtn.style.color = 'white';
+	}
+
+	function closePdf() {
+		overlay.style.display = 'none';
+		pdfOpen = false;
+		toggleBtn.textContent = 'PDF View';
+		toggleBtn.style.background = 'white';
+		toggleBtn.style.color = '#FF6B9D';
+	}
+
+	toggleBtn.addEventListener('click', function() { pdfOpen ? closePdf() : openPdf(); });
+	closeBtn.addEventListener('click', closePdf);
+})();
+</script>
 </body>
 </html>

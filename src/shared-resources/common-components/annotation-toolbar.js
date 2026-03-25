@@ -121,14 +121,26 @@
 			}, 500);
 		}
 		
+		// Pointer (mouse mode) button — deactivates drawing
+		const pointerBtn = document.getElementById('pointerBtn');
+		if (pointerBtn) {
+			pointerBtn.addEventListener('click', function() {
+				document.querySelectorAll('.tool-btn[data-tool], #pointerBtn').forEach(b => b.classList.remove('active'));
+				this.classList.add('active');
+				currentTool = null;
+				canvas.classList.remove('drawing-active');
+				canvas.style.cursor = 'default';
+			});
+		}
+
 		// Tool selection
 		document.querySelectorAll('.tool-btn[data-tool]').forEach(btn => {
 			btn.addEventListener('click', function() {
-				document.querySelectorAll('.tool-btn[data-tool]').forEach(b => b.classList.remove('active'));
+				document.querySelectorAll('.tool-btn[data-tool], #pointerBtn').forEach(b => b.classList.remove('active'));
 				this.classList.add('active');
 				currentTool = this.dataset.tool;
 				canvas.classList.add('drawing-active');
-				canvas.style.cursor = currentTool === 'eraser' ? 'crosshair' : 'crosshair';
+				canvas.style.cursor = 'crosshair';
 			});
 		});
 		
@@ -178,20 +190,43 @@
 		
 		// Toggle toolbar
 		const toolbar = document.querySelector('.annotation-toolbar');
+
+		// Start collapsed by default
+		toolbar.classList.add('collapsed');
+
+		// Create floating tab button to open/close toolbar
+		const tab = document.createElement('button');
+		tab.className = 'toolbar-open-tab';
+		tab.title = 'Open Drawing Tools';
+		tab.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="white" d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>';
+		document.body.appendChild(tab);
+
+		function updateTabState() {
+			if (toolbar.classList.contains('collapsed')) {
+				tab.style.right = '0';
+				tab.title = 'Open Drawing Tools';
+				tab.querySelector('path').setAttribute('d', 'M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z');
+			} else {
+				tab.style.right = '100px';
+				tab.title = 'Close Drawing Tools';
+				tab.querySelector('path').setAttribute('d', 'M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z');
+			}
+		}
+
+		tab.addEventListener('click', function() {
+			toolbar.classList.toggle('collapsed');
+			updateTabState();
+		});
+
 		const toggleBtn = document.getElementById('toggleToolbar');
 		if (toggleBtn) {
 			toggleBtn.addEventListener('click', function() {
 				toolbar.classList.toggle('collapsed');
-				const svg = this.querySelector('svg path');
-				if (toolbar.classList.contains('collapsed')) {
-					svg.setAttribute('d', 'M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z');
-					this.title = 'Show Toolbar';
-				} else {
-					svg.setAttribute('d', 'M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z');
-					this.title = 'Hide Toolbar';
-				}
+				updateTabState();
 			});
 		}
+
+		updateTabState();
 		
 		// Drawing functions
 		function getMousePos(e) {
@@ -307,8 +342,9 @@
 			document.body.appendChild(element);
 			addElementControls(element);
 			attachElementHandlers(element);
+			selectElement(element);
 		}
-		
+
 		// Create interactive shape element
 		function createShapeElement(shapeType, x, y, width, height) {
 			const albumRect = album.getBoundingClientRect();
@@ -319,42 +355,50 @@
 			element.style.width = width + 'px';
 			element.style.height = height + 'px';
 			element.dataset.shapeType = shapeType;
-			
-			// Create SVG for the shape
+
+			// Use a fixed 100x100 viewBox so shapes scale perfectly on resize
 			const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+			svg.setAttribute('viewBox', '0 0 100 100');
+			svg.setAttribute('preserveAspectRatio', 'none');
 			svg.style.width = '100%';
 			svg.style.height = '100%';
 			svg.style.position = 'absolute';
+			svg.style.overflow = 'visible';
 			svg.style.pointerEvents = 'none';
-			
+
+			// Scale stroke-width relative to viewBox so it stays visually consistent
+			const sw = (brushSize / Math.min(width, height)) * 100;
+
 			if (shapeType === 'shape') {
-				// Circle
 				const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-				circle.setAttribute('cx', '50%');
-				circle.setAttribute('cy', '50%');
-				circle.setAttribute('r', Math.min(width, height) / 2 + 'px');
+				circle.setAttribute('cx', '50');
+				circle.setAttribute('cy', '50');
+				circle.setAttribute('r', '46');  // inset so stroke stays inside viewBox
 				circle.setAttribute('fill', 'none');
 				circle.setAttribute('stroke', currentColor);
-				circle.setAttribute('stroke-width', brushSize);
+				circle.setAttribute('stroke-width', Math.max(sw, 1));
 				svg.appendChild(circle);
 			} else if (shapeType === 'rectangle') {
 				const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-				rect.setAttribute('width', '100%');
-				rect.setAttribute('height', '100%');
+				const half = sw / 2;
+				rect.setAttribute('x', half);
+				rect.setAttribute('y', half);
+				rect.setAttribute('width', 100 - sw);
+				rect.setAttribute('height', 100 - sw);
 				rect.setAttribute('fill', 'none');
 				rect.setAttribute('stroke', currentColor);
-				rect.setAttribute('stroke-width', brushSize);
+				rect.setAttribute('stroke-width', Math.max(sw, 1));
 				svg.appendChild(rect);
 			} else if (shapeType === 'arrow') {
 				const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
 				line.setAttribute('x1', '0');
 				line.setAttribute('y1', '0');
-				line.setAttribute('x2', width);
-				line.setAttribute('y2', height);
+				line.setAttribute('x2', '100');
+				line.setAttribute('y2', '100');
 				line.setAttribute('stroke', currentColor);
-				line.setAttribute('stroke-width', brushSize);
+				line.setAttribute('stroke-width', Math.max(sw, 1));
 				line.setAttribute('marker-end', 'url(#arrowhead)');
-				
+
 				const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
 				const marker = document.createElementNS('http://www.w3.org/2000/svg', 'marker');
 				marker.setAttribute('id', 'arrowhead');
@@ -363,21 +407,22 @@
 				marker.setAttribute('refX', '5');
 				marker.setAttribute('refY', '3');
 				marker.setAttribute('orient', 'auto');
-				
+
 				const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
 				polygon.setAttribute('points', '0 0, 10 3, 0 6');
 				polygon.setAttribute('fill', currentColor);
-				
+
 				marker.appendChild(polygon);
 				defs.appendChild(marker);
 				svg.appendChild(defs);
 				svg.appendChild(line);
 			}
-			
+
 			element.appendChild(svg);
 			document.body.appendChild(element);
 			addElementControls(element);
 			attachElementHandlers(element);
+			selectElement(element);
 		}
 		
 		// Add resize and delete controls to element
@@ -477,6 +522,16 @@
 				isDragging = false;
 				isResizing = false;
 				saveInteractiveElements();
+			}
+		});
+
+		// Deselect when clicking outside any interactive element
+		document.addEventListener('mousedown', function(e) {
+			if (!e.target.closest('.interactive-element')) {
+				document.querySelectorAll('.interactive-element').forEach(el => {
+					el.classList.remove('selected');
+				});
+				selectedElement = null;
 			}
 		});
 		
