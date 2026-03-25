@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -432,10 +432,19 @@
       }
 
       @media (max-width: 768px) {
-        h1 { font-size: 2rem; }
-        .info-grid, .chapters-grid { grid-template-columns: 1fr; }
-        .action-buttons { flex-direction: column; }
-        .btn { width: 100%; }
+        h1 {
+          font-size: 2rem;
+        }
+        .info-grid,
+        .chapters-grid {
+          grid-template-columns: 1fr;
+        }
+        .action-buttons {
+          flex-direction: column;
+        }
+        .btn {
+          width: 100%;
+        }
       }
 
       /* Answer Key */
@@ -444,32 +453,57 @@
         border-radius: 20px;
         padding: 40px;
         margin-top: 30px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         display: none;
         border-top: 4px solid #00b894;
       }
-      .answer-key-preview.show { display: block; }
+      .answer-key-preview.show {
+        display: block;
+      }
       .answer-key-header {
         text-align: center;
         border-bottom: 2px solid #333;
         padding-bottom: 15px;
         margin-bottom: 25px;
       }
-      .answer-key-header h2 { color: #00b894; font-size: 1.6rem; margin-bottom: 5px; }
-      .answer-key-header .ak-tag {
-        display: inline-block; background: #00b894; color: white;
-        padding: 4px 16px; border-radius: 20px; font-size: 0.9rem;
-        font-weight: bold; margin-bottom: 8px;
+      .answer-key-header h2 {
+        color: #00b894;
+        font-size: 1.6rem;
+        margin-bottom: 5px;
       }
-      .ak-chapter { margin-bottom: 24px; }
+      .answer-key-header .ak-tag {
+        display: inline-block;
+        background: #00b894;
+        color: white;
+        padding: 4px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+      .ak-chapter {
+        margin-bottom: 24px;
+      }
       .ak-chapter h3 {
-        color: #333; font-size: 1rem; margin-bottom: 10px;
-        padding: 6px 12px; background: #e8fdf5;
-        border-radius: 8px; border-left: 4px solid #00b894;
+        color: #333;
+        font-size: 1rem;
+        margin-bottom: 10px;
+        padding: 6px 12px;
+        background: #e8fdf5;
+        border-radius: 8px;
+        border-left: 4px solid #00b894;
         font-family: Arial, sans-serif;
       }
-      .ak-ws { margin-bottom: 14px; }
-      .ak-ws-label { font-size: 0.82rem; color: #636e72; font-style: italic; margin-bottom: 6px; padding-left: 4px; }
+      .ak-ws {
+        margin-bottom: 14px;
+      }
+      .ak-ws-label {
+        font-size: 0.82rem;
+        color: #636e72;
+        font-style: italic;
+        margin-bottom: 6px;
+        padding-left: 4px;
+      }
       .ak-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -478,43 +512,203 @@
         font-size: 0.9rem;
         padding: 0 8px;
       }
-      .ak-item { color: #111; line-height: 1.6; }
-      .ak-item strong { color: #00b894; margin-right: 4px; }
-      .ak-vary { color: #999; font-style: italic; }
-      .btn-answer-preview { background: linear-gradient(135deg, #00b894 0%, #00cec9 100%); color: white; }
-      .btn-answer-preview:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,184,148,0.4); }
-      .btn-answer-print { background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%); color: white; }
-      .btn-answer-print:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(225,112,85,0.4); }
+      .ak-item {
+        color: #111;
+        line-height: 1.6;
+      }
+      .ak-item strong {
+        color: #00b894;
+        margin-right: 4px;
+      }
+      .ak-vary {
+        color: #999;
+        font-style: italic;
+      }
+      .btn-answer-preview {
+        background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+        color: white;
+      }
+      .btn-answer-preview:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 184, 148, 0.4);
+      }
+      .btn-answer-print {
+        background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+        color: white;
+      }
+      .btn-answer-print:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(225, 112, 85, 0.4);
+      }
       @media print {
         .answer-key-preview {
-          border-radius: 0 !important; box-shadow: none !important;
-          padding: 15px 20px !important; margin: 0 !important;
-          background: white !important; display: block !important;
+          border-radius: 0 !important;
+          box-shadow: none !important;
+          padding: 15px 20px !important;
+          margin: 0 !important;
+          background: white !important;
+          display: block !important;
         }
-        .test-preview { display: none !important; }
-        .ak-chapter h3 { background: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .test-preview {
+          display: none !important;
+        }
+        .ak-chapter h3 {
+          background: #eee !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
       }
 
       /* Mode Toggle */
-      .mode-toggle{display:flex;gap:10px;margin:0 0 18px;}
-      .mode-btn{padding:8px 22px;border:2px solid #667eea;border-radius:50px;cursor:pointer;font-family:'Comic Sans MS',cursive;font-weight:bold;font-size:0.9rem;background:transparent;color:#667eea;transition:all 0.2s;}
-      .mode-btn.active{background:#667eea;color:white;}
-      .mode-btn:hover:not(.active){background:rgba(102,126,234,0.1);}
-      #customPanel{display:none;}
-      .custom-chapter{background:#f5f5ff;border:1px solid #c5cae9;border-radius:12px;padding:14px 18px;margin-bottom:12px;}
-      .custom-chapter-header{display:flex;align-items:center;justify-content:space-between;color:#667eea;font-weight:bold;font-size:1rem;margin-bottom:8px;}
-      .custom-select-all{background:none;border:2px solid #667eea;color:#667eea;padding:3px 10px;border-radius:20px;cursor:pointer;font-size:0.78rem;font-family:'Comic Sans MS',cursive;}
-      .custom-select-all:hover{background:#667eea;color:white;}
-      .custom-ws{margin-bottom:8px;padding:8px 12px;background:white;border-radius:8px;border-left:3px solid #a29bfe;}
-      .custom-ws-instr{font-size:0.82rem;color:#636e72;font-style:italic;margin-bottom:6px;}
-      .custom-q-list{list-style:none;padding:0;margin:0;}
-      .custom-q-item{padding:4px 0;border-bottom:1px solid #f0f0f0;}
-      .custom-q-item:last-child{border-bottom:none;}
-      .custom-q-text{font-size:0.85rem;color:#333;}
-      .btn-word-teacher{background:linear-gradient(135deg,#2d3436 0%,#636e72 100%);color:white;}
-      .btn-word-teacher:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(45,52,54,0.4);}
-      .btn-word-student{background:linear-gradient(135deg,#0984e3 0%,#74b9ff 100%);color:white;}
-      .btn-word-student:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(9,132,227,0.4);}
+      .mode-toggle {
+        display: flex;
+        gap: 10px;
+        margin: 0 0 18px;
+      }
+      .mode-btn {
+        padding: 8px 22px;
+        border: 2px solid #667eea;
+        border-radius: 50px;
+        cursor: pointer;
+        font-family: "Comic Sans MS", cursive;
+        font-weight: bold;
+        font-size: 0.9rem;
+        background: transparent;
+        color: #667eea;
+        transition: all 0.2s;
+      }
+      .mode-btn.active {
+        background: #667eea;
+        color: white;
+      }
+      .mode-btn:hover:not(.active) {
+        background: rgba(102, 126, 234, 0.1);
+      }
+      #customPanel {
+        display: none;
+      }
+      .custom-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-top: 20px;
+      }
+      .custom-selection {
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+        padding-right: 12px;
+      }
+      .custom-preview-container {
+        position: sticky;
+        top: 20px;
+        height: fit-content;
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+        background: white;
+        border: 2px solid #667eea;
+        border-radius: 12px;
+        padding: 20px;
+      }
+      .custom-preview-header {
+        text-align: center;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid #667eea;
+      }
+      .custom-preview-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #667eea;
+        margin-bottom: 4px;
+      }
+      .custom-preview-count {
+        font-size: 0.9rem;
+        color: #636e72;
+      }
+      .custom-preview-content {
+        font-size: 0.85rem;
+      }
+      .custom-preview-empty {
+        text-align: center;
+        color: #999;
+        font-style: italic;
+        padding: 40px 20px;
+      }
+      .custom-chapter {
+        background: #f5f5ff;
+        border: 1px solid #c5cae9;
+        border-radius: 12px;
+        padding: 14px 18px;
+        margin-bottom: 12px;
+      }
+      .custom-chapter-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #667eea;
+        font-weight: bold;
+        font-size: 1rem;
+        margin-bottom: 8px;
+      }
+      .custom-select-all {
+        background: none;
+        border: 2px solid #667eea;
+        color: #667eea;
+        padding: 3px 10px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.78rem;
+        font-family: "Comic Sans MS", cursive;
+      }
+      .custom-select-all:hover {
+        background: #667eea;
+        color: white;
+      }
+      .custom-ws {
+        margin-bottom: 8px;
+        padding: 8px 12px;
+        background: white;
+        border-radius: 8px;
+        border-left: 3px solid #a29bfe;
+      }
+      .custom-ws-instr {
+        font-size: 0.82rem;
+        color: #636e72;
+        font-style: italic;
+        margin-bottom: 6px;
+      }
+      .custom-q-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .custom-q-item {
+        padding: 4px 0;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .custom-q-item:last-child {
+        border-bottom: none;
+      }
+      .custom-q-text {
+        font-size: 0.85rem;
+        color: #333;
+      }
+      .btn-word-teacher {
+        background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+        color: white;
+      }
+      .btn-word-teacher:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(45, 52, 54, 0.4);
+      }
+      .btn-word-student {
+        background: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%);
+        color: white;
+      }
+      .btn-word-student:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(9, 132, 227, 0.4);
+      }
     </style>
   </head>
   <body>
@@ -562,113 +756,115 @@
           <button id="modeCustomBtn" class="mode-btn" onclick="setMode('custom')">&#9999;&#65039; Custom</button>
         </div>
         <div id="autoPanel">
-        <div class="chapters-grid">
-          <label class="chapter-card" data-chapter="g2">
-            <input type="checkbox" id="g2" />
-            <span class="chapter-number">Chapter 2</span>
-            <h3>Proper and Common Nouns</h3>
-            <p>Identifying types of nouns</p>
-          </label>
-          <label class="chapter-card" data-chapter="g3">
-            <input type="checkbox" id="g3" />
-            <span class="chapter-number">Chapter 3</span>
-            <h3>One and Many</h3>
-            <p>Singular and plural forms</p>
-          </label>
-          <label class="chapter-card" data-chapter="g4">
-            <input type="checkbox" id="g4" />
-            <span class="chapter-number">Chapter 4</span>
-            <h3>A, An and The</h3>
-            <p>Using articles correctly</p>
-          </label>
-          <label class="chapter-card" data-chapter="g5">
-            <input type="checkbox" id="g5" />
-            <span class="chapter-number">Chapter 5</span>
-            <h3>Male and Female</h3>
-            <p>Gender of nouns</p>
-          </label>
-          <label class="chapter-card" data-chapter="g6">
-            <input type="checkbox" id="g6" />
-            <span class="chapter-number">Chapter 6</span>
-            <h3>Pronouns</h3>
-            <p>Choosing the correct pronoun</p>
-          </label>
-          <label class="chapter-card" data-chapter="g7">
-            <input type="checkbox" id="g7" />
-            <span class="chapter-number">Chapter 7</span>
-            <h3>Adjectives</h3>
-            <p>Describing words</p>
-          </label>
-          <label class="chapter-card" data-chapter="g8">
-            <input type="checkbox" id="g8" />
-            <span class="chapter-number">Chapter 8</span>
-            <h3>Possessives</h3>
-            <p>my, our, your, his, her, its, their</p>
-          </label>
-          <label class="chapter-card" data-chapter="g10">
-            <input type="checkbox" id="g10" />
-            <span class="chapter-number">Chapter 10</span>
-            <h3>Being Words</h3>
-            <p>Using am, is and are</p>
-          </label>
-          <label class="chapter-card" data-chapter="g11">
-            <input type="checkbox" id="g11" />
-            <span class="chapter-number">Chapter 11</span>
-            <h3>Having Verbs</h3>
-            <p>Using has and have</p>
-          </label>
-          <label class="chapter-card" data-chapter="g12">
-            <input type="checkbox" id="g12" />
-            <span class="chapter-number">Chapter 12</span>
-            <h3>Simple Present Tense</h3>
-            <p>Present tense verb forms</p>
-          </label>
-          <label class="chapter-card" data-chapter="g13">
-            <input type="checkbox" id="g13" />
-            <span class="chapter-number">Chapter 13</span>
-            <h3>Simple Past Tense</h3>
-            <p>Past tense verb forms</p>
-          </label>
-          <label class="chapter-card" data-chapter="g14">
-            <input type="checkbox" id="g14" />
-            <span class="chapter-number">Chapter 14</span>
-            <h3>Present Continuous Tense</h3>
-            <p>am/is/are + -ing form</p>
-          </label>
-          <label class="chapter-card" data-chapter="g15">
-            <input type="checkbox" id="g15" />
-            <span class="chapter-number">Chapter 15</span>
-            <h3>Adverbs</h3>
-            <p>Words that describe actions</p>
-          </label>
-          <label class="chapter-card" data-chapter="g17">
-            <input type="checkbox" id="g17" />
-            <span class="chapter-number">Chapter 17</span>
-            <h3>Joining Words</h3>
-            <p>and, but, or</p>
-          </label>
-          <label class="chapter-card" data-chapter="g18">
-            <input type="checkbox" id="g18" />
-            <span class="chapter-number">Chapter 18</span>
-            <h3>The Comma</h3>
-            <p>Inserting commas correctly</p>
-          </label>
-          <label class="chapter-card" data-chapter="g20">
-            <input type="checkbox" id="g20" />
-            <span class="chapter-number">Chapter 20</span>
-            <h3>Capital Letters</h3>
-            <p>Rewriting with correct capitals</p>
-          </label>
-          <label class="chapter-card" data-chapter="g21">
-            <input type="checkbox" id="g21" />
-            <span class="chapter-number">Chapter 21</span>
-            <h3>End Punctuation Marks</h3>
-            <p>Full stop, question mark, exclamation</p>
-          </label>
+          <div class="chapters-grid">
+            <label class="chapter-card" data-chapter="g2">
+              <input type="checkbox" id="g2" />
+              <span class="chapter-number">Chapter 2</span>
+              <h3>Proper and Common Nouns</h3>
+              <p>Identifying types of nouns</p>
+            </label>
+            <label class="chapter-card" data-chapter="g3">
+              <input type="checkbox" id="g3" />
+              <span class="chapter-number">Chapter 3</span>
+              <h3>One and Many</h3>
+              <p>Singular and plural forms</p>
+            </label>
+            <label class="chapter-card" data-chapter="g4">
+              <input type="checkbox" id="g4" />
+              <span class="chapter-number">Chapter 4</span>
+              <h3>A, An and The</h3>
+              <p>Using articles correctly</p>
+            </label>
+            <label class="chapter-card" data-chapter="g5">
+              <input type="checkbox" id="g5" />
+              <span class="chapter-number">Chapter 5</span>
+              <h3>Male and Female</h3>
+              <p>Gender of nouns</p>
+            </label>
+            <label class="chapter-card" data-chapter="g6">
+              <input type="checkbox" id="g6" />
+              <span class="chapter-number">Chapter 6</span>
+              <h3>Pronouns</h3>
+              <p>Choosing the correct pronoun</p>
+            </label>
+            <label class="chapter-card" data-chapter="g7">
+              <input type="checkbox" id="g7" />
+              <span class="chapter-number">Chapter 7</span>
+              <h3>Adjectives</h3>
+              <p>Describing words</p>
+            </label>
+            <label class="chapter-card" data-chapter="g8">
+              <input type="checkbox" id="g8" />
+              <span class="chapter-number">Chapter 8</span>
+              <h3>Possessives</h3>
+              <p>my, our, your, his, her, its, their</p>
+            </label>
+            <label class="chapter-card" data-chapter="g10">
+              <input type="checkbox" id="g10" />
+              <span class="chapter-number">Chapter 10</span>
+              <h3>Being Words</h3>
+              <p>Using am, is and are</p>
+            </label>
+            <label class="chapter-card" data-chapter="g11">
+              <input type="checkbox" id="g11" />
+              <span class="chapter-number">Chapter 11</span>
+              <h3>Having Verbs</h3>
+              <p>Using has and have</p>
+            </label>
+            <label class="chapter-card" data-chapter="g12">
+              <input type="checkbox" id="g12" />
+              <span class="chapter-number">Chapter 12</span>
+              <h3>Simple Present Tense</h3>
+              <p>Present tense verb forms</p>
+            </label>
+            <label class="chapter-card" data-chapter="g13">
+              <input type="checkbox" id="g13" />
+              <span class="chapter-number">Chapter 13</span>
+              <h3>Simple Past Tense</h3>
+              <p>Past tense verb forms</p>
+            </label>
+            <label class="chapter-card" data-chapter="g14">
+              <input type="checkbox" id="g14" />
+              <span class="chapter-number">Chapter 14</span>
+              <h3>Present Continuous Tense</h3>
+              <p>am/is/are + -ing form</p>
+            </label>
+            <label class="chapter-card" data-chapter="g15">
+              <input type="checkbox" id="g15" />
+              <span class="chapter-number">Chapter 15</span>
+              <h3>Adverbs</h3>
+              <p>Words that describe actions</p>
+            </label>
+            <label class="chapter-card" data-chapter="g17">
+              <input type="checkbox" id="g17" />
+              <span class="chapter-number">Chapter 17</span>
+              <h3>Joining Words</h3>
+              <p>and, but, or</p>
+            </label>
+            <label class="chapter-card" data-chapter="g18">
+              <input type="checkbox" id="g18" />
+              <span class="chapter-number">Chapter 18</span>
+              <h3>The Comma</h3>
+              <p>Inserting commas correctly</p>
+            </label>
+            <label class="chapter-card" data-chapter="g20">
+              <input type="checkbox" id="g20" />
+              <span class="chapter-number">Chapter 20</span>
+              <h3>Capital Letters</h3>
+              <p>Rewriting with correct capitals</p>
+            </label>
+            <label class="chapter-card" data-chapter="g21">
+              <input type="checkbox" id="g21" />
+              <span class="chapter-number">Chapter 21</span>
+              <h3>End Punctuation Marks</h3>
+              <p>Full stop, question mark, exclamation</p>
+            </label>
+          </div>
         </div>
-        </div><!-- /autoPanel -->
+        <!-- /autoPanel -->
         <div id="customPanel"></div>
-      </div><!-- /chapters-section -->
+      </div>
+      <!-- /chapters-section -->
 
       <!-- Action Buttons -->
       <div class="action-buttons">
@@ -706,7 +902,7 @@
         <div class="answer-key-header">
           <div class="ak-tag">ANSWER KEY — FOR TEACHER USE ONLY</div>
           <h2 id="akTestName">Answer Key</h2>
-          <div style="font-size:0.9rem;color:#555;margin-top:6px;" id="akMeta"></div>
+          <div style="font-size: 0.9rem; color: #555; margin-top: 6px" id="akMeta"></div>
         </div>
         <div id="answersContainer"></div>
       </div>
@@ -717,7 +913,6 @@
 
       // ─── QUESTION BANK ─────────────────────────────────────────────────────
       const questionBank = {
-
         g2: {
           name: "Ch 2: Proper and Common Nouns",
           worksheets: [
@@ -733,8 +928,8 @@
                 { text: "The dog barked at the stranger.", answer: "dog, stranger" },
                 { text: "He cleaned the table and the chair.", answer: "table, chair" },
                 { text: "The doctor checked the patient.", answer: "doctor, patient" },
-                { text: "The teacher wrote on the whiteboard.", answer: "teacher, whiteboard" }
-              ]
+                { text: "The teacher wrote on the whiteboard.", answer: "teacher, whiteboard" },
+              ],
             },
             {
               instruction: "B – Circle the proper nouns. Underline the common nouns.",
@@ -753,10 +948,10 @@
                 { text: "They visited Kolkata last week.", answer: "Proper: Kolkata" },
                 { text: "She saw animals at Mysore Zoo.", answer: "Proper: Mysore Zoo | Common: animals" },
                 { text: "We had dinner at Haldiram's.", answer: "Proper: Haldiram's | Common: dinner" },
-                { text: "He took a photo at India Gate.", answer: "Proper: India Gate | Common: photo" }
-              ]
-            }
-          ]
+                { text: "He took a photo at India Gate.", answer: "Proper: India Gate | Common: photo" },
+              ],
+            },
+          ],
         },
 
         g3: {
@@ -788,10 +983,10 @@
                 { text: "grass: ___________", answer: "grasses" },
                 { text: "hospital: ___________", answer: "hospitals" },
                 { text: "dish: ___________", answer: "dishes" },
-                { text: "batch: ___________", answer: "batches" }
-              ]
-            }
-          ]
+                { text: "batch: ___________", answer: "batches" },
+              ],
+            },
+          ],
         },
 
         g4: {
@@ -809,10 +1004,10 @@
                 { text: "There is ___ mango on the tree. (a / an / the)", answer: "a" },
                 { text: "I saw ___ autorickshaw on the road. (a / an / the)", answer: "an" },
                 { text: "We visited ___ temple in Sector 12 last weekend. (a / an / the)", answer: "the" },
-                { text: "She bought ___ pencil from the shop. (a / an / the)", answer: "a" }
-              ]
-            }
-          ]
+                { text: "She bought ___ pencil from the shop. (a / an / the)", answer: "a" },
+              ],
+            },
+          ],
         },
 
         g5: {
@@ -832,10 +1027,10 @@
                 { text: "My grandfather and ___________ are cooking dinner.", answer: "grandmother" },
                 { text: "The waiter gave food to the ___________.", answer: "waitress" },
                 { text: "The lion and the ___________ live in the jungle.", answer: "lioness" },
-                { text: "The nephew and the ___________ are playing carrom.", answer: "niece" }
-              ]
-            }
-          ]
+                { text: "The nephew and the ___________ are playing carrom.", answer: "niece" },
+              ],
+            },
+          ],
         },
 
         g6: {
@@ -853,10 +1048,10 @@
                 { text: "This is Ali. ___________ is my brother. (She / He / They)", answer: "He" },
                 { text: "Meena and I are dancing. ___________ are happy. (He / You / We)", answer: "We" },
                 { text: "Children, ___________ must sit down now. (You / They / We)", answer: "You" },
-                { text: "The birds are singing. ___________ are in the tree. (It / They / We)", answer: "They" }
-              ]
-            }
-          ]
+                { text: "The birds are singing. ___________ are in the tree. (It / They / We)", answer: "They" },
+              ],
+            },
+          ],
         },
 
         g7: {
@@ -879,10 +1074,10 @@
                 { text: "She carried a large bag.", answer: "Adj: large | Noun: bag" },
                 { text: "We saw a fast car.", answer: "Adj: fast | Noun: car" },
                 { text: "We heard a soft sound.", answer: "Adj: soft | Noun: sound" },
-                { text: "He had a delicious meal.", answer: "Adj: delicious | Noun: meal" }
-              ]
-            }
-          ]
+                { text: "He had a delicious meal.", answer: "Adj: delicious | Noun: meal" },
+              ],
+            },
+          ],
         },
 
         g8: {
@@ -906,10 +1101,10 @@
                 { text: "They are playing in the garden. It is ___________ garden.", answer: "their" },
                 { text: "My friend got a puppy. It is ___________ puppy.", answer: "his / her" },
                 { text: "We bought new shoes. They are ___________ shoes.", answer: "our" },
-                { text: "The dog found a bone. It is ___________ bone.", answer: "its" }
-              ]
-            }
-          ]
+                { text: "The dog found a bone. It is ___________ bone.", answer: "its" },
+              ],
+            },
+          ],
         },
 
         g10: {
@@ -933,10 +1128,10 @@
                 { text: "It (am / is / are) a naughty dog.", answer: "is" },
                 { text: "My brother and I (am / is / are) playing outside.", answer: "are" },
                 { text: "The teacher (am / is / are) kind and helpful.", answer: "is" },
-                { text: "These apples (am / is / are) fresh.", answer: "are" }
-              ]
-            }
-          ]
+                { text: "These apples (am / is / are) fresh.", answer: "are" },
+              ],
+            },
+          ],
         },
 
         g11: {
@@ -964,10 +1159,10 @@
                 { text: "You ___________ many friends.", answer: "have" },
                 { text: "The cat ___________ green eyes.", answer: "has" },
                 { text: "I ___________ a lot of homework.", answer: "have" },
-                { text: "The boys ___________ a football.", answer: "have" }
-              ]
-            }
-          ]
+                { text: "The boys ___________ a football.", answer: "have" },
+              ],
+            },
+          ],
         },
 
         g12: {
@@ -989,8 +1184,8 @@
                 { text: "It ___________ in July. (rain / rains)", answer: "rains" },
                 { text: "My father ___________ a car. (drives / drive)", answer: "drives" },
                 { text: "I ___________ my pet cat. (love / loves)", answer: "love" },
-                { text: "The dogs ___________ loudly. (bark / barks)", answer: "bark" }
-              ]
+                { text: "The dogs ___________ loudly. (bark / barks)", answer: "bark" },
+              ],
             },
             {
               instruction: "B – Complete the sentences with the simple present tense form of the verb in brackets.",
@@ -1008,10 +1203,10 @@
                 { text: "She and I ___________ (wash) the dishes.", answer: "wash" },
                 { text: "The boys ___________ (study) every day.", answer: "study" },
                 { text: "You ___________ (go) to school.", answer: "go" },
-                { text: "The baby ___________ (try) to walk.", answer: "tries" }
-              ]
-            }
-          ]
+                { text: "The baby ___________ (try) to walk.", answer: "tries" },
+              ],
+            },
+          ],
         },
 
         g13: {
@@ -1035,8 +1230,8 @@
                 { text: "He ___________ (paint) the wall blue.", answer: "painted" },
                 { text: "They ___________ (start) the game early.", answer: "started" },
                 { text: "She ___________ (arrive) on time.", answer: "arrived" },
-                { text: "We ___________ (close) the door quietly.", answer: "closed" }
-              ]
+                { text: "We ___________ (close) the door quietly.", answer: "closed" },
+              ],
             },
             {
               instruction: "B – In each set, circle the verb that changes its form completely in the past tense.",
@@ -1050,8 +1245,8 @@
                 { text: "ran &mdash; loved &mdash; lived", answer: "ran" },
                 { text: "danced &mdash; baked &mdash; saw", answer: "saw" },
                 { text: "washed &mdash; caught &mdash; jumped", answer: "caught" },
-                { text: "drank &mdash; washed &mdash; laughed", answer: "drank" }
-              ]
+                { text: "drank &mdash; washed &mdash; laughed", answer: "drank" },
+              ],
             },
             {
               instruction: "C – Tick the sentences where the verbs have been used correctly.",
@@ -1071,10 +1266,10 @@
                 { text: "He took my pencil by mistake.", answer: "✓" },
                 { text: "She danced at the school event.", answer: "✓" },
                 { text: "They get new shoes last week.", answer: "✗" },
-                { text: "I slept early last night.", answer: "✓" }
-              ]
-            }
-          ]
+                { text: "I slept early last night.", answer: "✓" },
+              ],
+            },
+          ],
         },
 
         g14: {
@@ -1097,8 +1292,8 @@
                 { text: "Mom is ___________ (cook) dinner.", answer: "cooking" },
                 { text: "The dog is ___________ (bark) loudly.", answer: "barking" },
                 { text: "The cat is ___________ (sleep) on the mat.", answer: "sleeping" },
-                { text: "Mallika is ___________ (read) a storybook.", answer: "reading" }
-              ]
+                { text: "Mallika is ___________ (read) a storybook.", answer: "reading" },
+              ],
             },
             {
               instruction: "B – Fill in the blanks using the am / is / are + ing form of the verb in brackets.",
@@ -1112,10 +1307,10 @@
                 { text: "You ___________ (eat) your lunch.", answer: "are eating" },
                 { text: "He ___________ (write) a letter.", answer: "is writing" },
                 { text: "I ___________ (read) a book.", answer: "am reading" },
-                { text: "She ___________ (paint) a picture.", answer: "is painting" }
-              ]
-            }
-          ]
+                { text: "She ___________ (paint) a picture.", answer: "is painting" },
+              ],
+            },
+          ],
         },
 
         g15: {
@@ -1138,10 +1333,10 @@
                 { text: "She answered politely.", answer: "politely" },
                 { text: "The cat moved silently.", answer: "silently" },
                 { text: "He finished his homework quickly.", answer: "quickly" },
-                { text: "They played safely in the yard.", answer: "safely" }
-              ]
-            }
-          ]
+                { text: "They played safely in the yard.", answer: "safely" },
+              ],
+            },
+          ],
         },
 
         g17: {
@@ -1158,8 +1353,8 @@
                 { text: "The sun is shining, ___________ the wind is cold. (and / but)", answer: "but" },
                 { text: "We can read books ___________ draw pictures. (and / but)", answer: "and" },
                 { text: "I have a dog ___________ a cat. (and / but)", answer: "and" },
-                { text: "They are laughing ___________ playing. (and / but)", answer: "and" }
-              ]
+                { text: "They are laughing ___________ playing. (and / but)", answer: "and" },
+              ],
             },
             {
               instruction: "B – Choose the correct joining word (but / and / or) to complete these sentences.",
@@ -1175,10 +1370,10 @@
                 { text: "I want to go to the park, ___________ it is raining. (but / and / or)", answer: "but" },
                 { text: "She reads books ___________ writes stories. (but / and / or)", answer: "and" },
                 { text: "I want to play, ___________ I have homework. (but / and / or)", answer: "but" },
-                { text: "We baked cookies ___________ made lemonade. (but / and / or)", answer: "and" }
-              ]
-            }
-          ]
+                { text: "We baked cookies ___________ made lemonade. (but / and / or)", answer: "and" },
+              ],
+            },
+          ],
         },
 
         g18: {
@@ -1196,10 +1391,10 @@
                 { text: "His favourite subjects are maths science history and geography.", answer: "His favourite subjects are maths, science, history and geography." },
                 { text: "The bakery sells bread cakes pastries and cookies.", answer: "The bakery sells bread, cakes, pastries and cookies." },
                 { text: "She wore a red dress silver shoes and a matching necklace.", answer: "She wore a red dress, silver shoes and a matching necklace." },
-                { text: "The library offers novels books comics and magazines.", answer: "The library offers novels, books, comics and magazines." }
-              ]
-            }
-          ]
+                { text: "The library offers novels books comics and magazines.", answer: "The library offers novels, books, comics and magazines." },
+              ],
+            },
+          ],
         },
 
         g20: {
@@ -1217,10 +1412,10 @@
                 { text: "we celebrate diwali with lights and sweets.", lines: 1, answer: "We celebrate Diwali with lights and sweets." },
                 { text: "i have a cricket match on sunday.", lines: 1, answer: "I have a cricket match on Sunday." },
                 { text: "independence day is in august.", lines: 1, answer: "Independence Day is in August." },
-                { text: "mumbai is the busiest city of maharashtra.", lines: 1, answer: "Mumbai is the busiest city of Maharashtra." }
-              ]
-            }
-          ]
+                { text: "mumbai is the busiest city of maharashtra.", lines: 1, answer: "Mumbai is the busiest city of Maharashtra." },
+              ],
+            },
+          ],
         },
 
         g21: {
@@ -1243,8 +1438,8 @@
                 { text: "Congratulations on your success ___", answer: "!" },
                 { text: "She visited the museum yesterday ___", answer: "." },
                 { text: "That was an amazing performance ___", answer: "!" },
-                { text: "We went to the market this morning ___", answer: "." }
-              ]
+                { text: "We went to the market this morning ___", answer: "." },
+              ],
             },
             {
               instruction: "B – Fill in the blanks with full stops, question marks or exclamation marks as required.",
@@ -1263,12 +1458,11 @@
                 { text: "What a beautiful rainbow ___", answer: "!" },
                 { text: "I see a bird in the tree ___", answer: "." },
                 { text: "Please pass the salt ___", answer: "." },
-                { text: "Yay, it's my birthday ___", answer: "!" }
-              ]
-            }
-          ]
-        }
-
+                { text: "Yay, it's my birthday ___", answer: "!" },
+              ],
+            },
+          ],
+        },
       };
 
       // ─── HELPERS ────────────────────────────────────────────────────────────
@@ -1282,7 +1476,7 @@
       }
 
       function getSelectedChapterKeys() {
-        return Object.keys(questionBank).filter(k => {
+        return Object.keys(questionBank).filter((k) => {
           const el = document.getElementById(k);
           return el && el.checked;
         });
@@ -1290,10 +1484,10 @@
 
       function countAvailableQuestions(keys) {
         let total = 0;
-        keys.forEach(k => {
+        keys.forEach((k) => {
           const ch = questionBank[k];
           if (!ch) return;
-          ch.worksheets.forEach(ws => {
+          ch.worksheets.forEach((ws) => {
             total += ws.questions.length;
           });
         });
@@ -1303,13 +1497,10 @@
       function updateAvailableCount() {
         const count = countAvailableQuestions(getSelectedChapterKeys());
         document.getElementById("availableCount").textContent = count;
-        document.getElementById("actionAvail").textContent =
-          count > 0 ? count + " questions available" : "Select chapters to begin";
+        document.getElementById("actionAvail").textContent = count > 0 ? count + " questions available" : "Select chapters to begin";
       }
 
-      document.querySelectorAll(".chapter-card input").forEach(cb =>
-        cb.addEventListener("change", updateAvailableCount)
-      );
+      document.querySelectorAll(".chapter-card input").forEach((cb) => cb.addEventListener("change", updateAvailableCount));
 
       // ─── PREVIEW TEST ───────────────────────────────────────────────────────
       let lastGeneratedQuestions = [];
@@ -1335,11 +1526,11 @@
 
         // Flatten all questions from selected chapters into a pool
         const pool = [];
-        selectedKeys.forEach(chKey => {
+        selectedKeys.forEach((chKey) => {
           const ch = questionBank[chKey];
           if (!ch) return;
           ch.worksheets.forEach((ws, wsIdx) => {
-            ws.questions.forEach(q => {
+            ws.questions.forEach((q) => {
               pool.push({
                 chapterKey: chKey,
                 chapterName: ch.name,
@@ -1349,7 +1540,7 @@
                 answer: q.answer || null,
                 options: q.options || null,
                 wideOptions: q.wideOptions || false,
-                lines: q.lines || 0
+                lines: q.lines || 0,
               });
             });
           });
@@ -1361,19 +1552,16 @@
         const selected = shuffled.slice(0, Math.min(totalMarks, available));
 
         if (available < totalMarks) {
-          alert(
-            "Only " + available + " questions are available from selected chapters.\n" +
-            "Showing all " + available + " questions. Select more chapters or reduce total marks."
-          );
+          alert("Only " + available + " questions are available from selected chapters.\n" + "Showing all " + available + " questions. Select more chapters or reduce total marks.");
         }
 
         // Re-group by chapter (maintaining chapter order), then by worksheet
         const grouped = new Map();
-        selectedKeys.forEach(k => {
+        selectedKeys.forEach((k) => {
           grouped.set(k, { name: questionBank[k].name, worksheets: new Map() });
         });
 
-        selected.forEach(q => {
+        selected.forEach((q) => {
           const chGroup = grouped.get(q.chapterKey);
           if (!chGroup) return;
           if (!chGroup.worksheets.has(q.worksheetIdx)) {
@@ -1400,33 +1588,32 @@
           sortedWs.forEach(([wsIdx, wsData]) => {
             const wsDiv = document.createElement("div");
             wsDiv.className = "worksheet-group";
-            wsDiv.innerHTML = "<p class=\"ws-instruction\">" + wsData.instruction.replace(/\n/g, "<br>") + "</p>";
+            wsDiv.innerHTML = '<p class="ws-instruction">' + wsData.instruction.replace(/\n/g, "<br>") + "</p>";
 
-            wsData.questions.forEach(q => {
+            wsData.questions.forEach((q) => {
               const qDiv = document.createElement("div");
               qDiv.className = "question-item";
 
-              let html = "<p class=\"question-text\"><strong>" + qNum + ".</strong> " +
-                q.text.replace(/\n/g, "<br>") + "</p>";
+              let html = '<p class="question-text"><strong>' + qNum + ".</strong> " + q.text.replace(/\n/g, "<br>") + "</p>";
 
               if (q.options && q.options.length > 0) {
                 if (q.wideOptions) {
-                  html += "<div class=\"options-list\">";
-                  q.options.forEach(opt => {
-                    html += "<span class=\"option-item\">" + opt + "</span>";
+                  html += '<div class="options-list">';
+                  q.options.forEach((opt) => {
+                    html += '<span class="option-item">' + opt + "</span>";
                   });
                   html += "</div>";
                 } else {
-                  html += "<div class=\"options-grid\">";
-                  q.options.forEach(opt => {
-                    html += "<span class=\"option-item\">" + opt + "</span>";
+                  html += '<div class="options-grid">';
+                  q.options.forEach((opt) => {
+                    html += '<span class="option-item">' + opt + "</span>";
                   });
                   html += "</div>";
                 }
               }
 
               for (let i = 0; i < q.lines; i++) {
-                html += "<div class=\"answer-line\"></div>";
+                html += '<div class="answer-line"></div>';
               }
 
               qDiv.innerHTML = html;
@@ -1463,7 +1650,7 @@
         container.innerHTML = "";
 
         const groupedRaw = new Map();
-        lastGeneratedQuestions.forEach(q => {
+        lastGeneratedQuestions.forEach((q) => {
           if (!groupedRaw.has(q.chapterKey)) groupedRaw.set(q.chapterKey, new Map());
           const wsMap = groupedRaw.get(q.chapterKey);
           const wsKey = q.worksheetIdx + "||" + q.instruction;
@@ -1471,7 +1658,9 @@
           wsMap.get(wsKey).questions.push(q);
         });
         const grouped = new Map();
-        Object.keys(questionBank).forEach(k => { if (groupedRaw.has(k)) grouped.set(k, groupedRaw.get(k)); });
+        Object.keys(questionBank).forEach((k) => {
+          if (groupedRaw.has(k)) grouped.set(k, groupedRaw.get(k));
+        });
         grouped.forEach((wsMap) => {
           const chapterName = [...wsMap.values()][0].chapterName;
           const chDiv = document.createElement("div");
@@ -1484,17 +1673,19 @@
             wsDiv.innerHTML = "<div class='ak-ws-label'>" + instruction + "</div>";
             const grid = document.createElement("div");
             grid.className = "ak-grid";
-            questions.sort((a, b) => a.qNum - b.qNum).forEach(q => {
-              const item = document.createElement("div");
-              item.className = "ak-item";
-              const ans = q.answer;
-              if (!ans || ans === "vary") {
-                item.innerHTML = "<strong>" + q.qNum + ".</strong> <span class='ak-vary'>Answers may vary</span>";
-              } else {
-                item.innerHTML = "<strong>" + q.qNum + ".</strong> " + ans;
-              }
-              grid.appendChild(item);
-            });
+            questions
+              .sort((a, b) => a.qNum - b.qNum)
+              .forEach((q) => {
+                const item = document.createElement("div");
+                item.className = "ak-item";
+                const ans = q.answer;
+                if (!ans || ans === "vary") {
+                  item.innerHTML = "<strong>" + q.qNum + ".</strong> <span class='ak-vary'>Answers may vary</span>";
+                } else {
+                  item.innerHTML = "<strong>" + q.qNum + ".</strong> " + ans;
+                }
+                grid.appendChild(item);
+              });
             wsDiv.appendChild(grid);
             chDiv.appendChild(wsDiv);
           });
@@ -1512,105 +1703,244 @@
       }
 
       // Auto / Custom Mode
-      var currentMode = 'auto';
+      var currentMode = "auto";
 
       function setMode(mode) {
         currentMode = mode;
-        document.getElementById('modeAutoBtn').classList.toggle('active', mode === 'auto');
-        document.getElementById('modeCustomBtn').classList.toggle('active', mode === 'custom');
-        document.getElementById('autoPanel').style.display = mode === 'auto' ? '' : 'none';
-        var cp = document.getElementById('customPanel');
-        if (mode === 'custom') {
-          if (!cp.getAttribute('data-built')) buildCustomPanel();
-          cp.style.display = '';
+        document.getElementById("modeAutoBtn").classList.toggle("active", mode === "auto");
+        document.getElementById("modeCustomBtn").classList.toggle("active", mode === "custom");
+        document.getElementById("autoPanel").style.display = mode === "auto" ? "" : "none";
+        var cp = document.getElementById("customPanel");
+        if (mode === "custom") {
+          if (!cp.getAttribute("data-built")) buildCustomPanel();
+          cp.style.display = "block";
         } else {
-          cp.style.display = 'none';
+          cp.style.display = "none";
         }
       }
 
       function buildCustomPanel() {
-        var cp = document.getElementById('customPanel');
-        cp.innerHTML = '';
-        Object.keys(questionBank).forEach(function(chKey) {
+        var cp = document.getElementById("customPanel");
+        cp.innerHTML = "";
+
+        // Create two-column layout
+        var layout = document.createElement("div");
+        layout.className = "custom-layout";
+
+        // Left column: question selection
+        var selectionDiv = document.createElement("div");
+        selectionDiv.className = "custom-selection";
+        selectionDiv.id = "customSelection";
+
+        Object.keys(questionBank).forEach(function (chKey) {
           var ch = questionBank[chKey];
-          var chDiv = document.createElement('div');
-          chDiv.className = 'custom-chapter';
-          var hdr = document.createElement('div');
-          hdr.className = 'custom-chapter-header';
-          hdr.innerHTML = '<span>' + ch.name + '</span>'
-            + '<button class="custom-select-all" onclick="toggleChAll(\'' + chKey + '\',this)">Select All</button>';
+          var chDiv = document.createElement("div");
+          chDiv.className = "custom-chapter";
+          var hdr = document.createElement("div");
+          hdr.className = "custom-chapter-header";
+          hdr.innerHTML = "<span>" + ch.name + "</span>" + '<button class="custom-select-all" onclick="toggleChAll(\'' + chKey + "',this)\">Select All</button>";
           chDiv.appendChild(hdr);
-          ch.worksheets.forEach(function(ws, wsIdx) {
-            var wsDiv = document.createElement('div');
-            wsDiv.className = 'custom-ws';
-            var instrSafe = ws.instruction.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
-            wsDiv.innerHTML = '<div class="custom-ws-instr">' + instrSafe + '</div>';
-            var ul = document.createElement('ul');
-            ul.className = 'custom-q-list';
-            ws.questions.forEach(function(q, qIdx) {
-              var li = document.createElement('li');
-              li.className = 'custom-q-item';
-              var id = 'cq_' + chKey + '_' + wsIdx + '_' + qIdx;
-              var preview = q.text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-              if (preview.length > 100) preview = preview.substring(0, 100) + '...';
-              li.innerHTML = '<label for="' + id + '" style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;width:100%;">'
-                + '<input type="checkbox" id="' + id + '" class="custom-q-cb"'
-                + ' data-ch-key="' + chKey + '" data-ws-idx="' + wsIdx + '" data-q-idx="' + qIdx + '"'
-                + ' style="margin-top:3px;cursor:pointer;accent-color:#667eea;flex-shrink:0;">'
-                + '<span class="custom-q-text">' + preview + '</span></label>';
+          ch.worksheets.forEach(function (ws, wsIdx) {
+            var wsDiv = document.createElement("div");
+            wsDiv.className = "custom-ws";
+            var instrSafe = ws.instruction.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
+            wsDiv.innerHTML = '<div class="custom-ws-instr">' + instrSafe + "</div>";
+            var ul = document.createElement("ul");
+            ul.className = "custom-q-list";
+            ws.questions.forEach(function (q, qIdx) {
+              var li = document.createElement("li");
+              li.className = "custom-q-item";
+              var id = "cq_" + chKey + "_" + wsIdx + "_" + qIdx;
+              var preview = q.text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+              if (preview.length > 100) preview = preview.substring(0, 100) + "...";
+              li.innerHTML =
+                '<label for="' +
+                id +
+                '" style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;width:100%;">' +
+                '<input type="checkbox" id="' +
+                id +
+                '" class="custom-q-cb"' +
+                ' data-ch-key="' +
+                chKey +
+                '" data-ws-idx="' +
+                wsIdx +
+                '" data-q-idx="' +
+                qIdx +
+                '"' +
+                ' style="margin-top:3px;cursor:pointer;accent-color:#667eea;flex-shrink:0;" onchange="updateCustomPreview()">' +
+                '<span class="custom-q-text">' +
+                preview +
+                "</span></label>";
               ul.appendChild(li);
             });
             wsDiv.appendChild(ul);
             chDiv.appendChild(wsDiv);
           });
-          cp.appendChild(chDiv);
+          selectionDiv.appendChild(chDiv);
         });
-        cp.setAttribute('data-built', '1');
+
+        // Right column: live preview
+        var previewDiv = document.createElement("div");
+        previewDiv.className = "custom-preview-container";
+        previewDiv.innerHTML =
+          '<div class="custom-preview-header">' +
+          '<div class="custom-preview-title">Live Preview</div>' +
+          '<div class="custom-preview-count" id="customPreviewCount">0 questions selected</div>' +
+          '</div>' +
+          '<div class="custom-preview-content" id="customPreviewContent">' +
+          '<div class="custom-preview-empty">Select questions to see preview</div>' +
+          '</div>';
+
+        layout.appendChild(selectionDiv);
+        layout.appendChild(previewDiv);
+        cp.appendChild(layout);
+        cp.setAttribute("data-built", "1");
       }
 
       function toggleChAll(chKey, btn) {
         var cbs = document.querySelectorAll('.custom-q-cb[data-ch-key="' + chKey + '"]');
-        var anyUnchecked = Array.prototype.some.call(cbs, function(cb) { return !cb.checked; });
-        Array.prototype.forEach.call(cbs, function(cb) { cb.checked = anyUnchecked; });
-        btn.textContent = anyUnchecked ? 'Deselect All' : 'Select All';
+        var anyUnchecked = Array.prototype.some.call(cbs, function (cb) {
+          return !cb.checked;
+        });
+        Array.prototype.forEach.call(cbs, function (cb) {
+          cb.checked = anyUnchecked;
+        });
+        btn.textContent = anyUnchecked ? "Deselect All" : "Select All";
+        updateCustomPreview();
       }
 
-      function previewCustomTest() {
-        var testName = document.getElementById('testName').value || 'Grammar Test';
-        var studentName = document.getElementById('studentName').value;
-        var testDate = document.getElementById('testDate').value;
-        var testDuration = document.getElementById('testDuration').value;
-        var totalMarks = parseInt(document.getElementById('totalMarks').value) || 20;
+      function updateCustomPreview() {
+        var checkedBoxes = document.querySelectorAll(".custom-q-cb:checked");
+        var count = checkedBoxes.length;
+        var countEl = document.getElementById("customPreviewCount");
+        var contentEl = document.getElementById("customPreviewContent");
 
-        document.getElementById('previewTestName').textContent = testName;
-        document.getElementById('previewStudentName').textContent = studentName || '____________________________';
-        document.getElementById('previewDate').textContent = testDate || '_____________';
-        document.getElementById('previewMarks').textContent = totalMarks;
-        document.getElementById('previewDuration').textContent = testDuration || '____';
+        countEl.textContent = count + " question" + (count !== 1 ? "s" : "") + " selected";
 
-        var selected = [];
-        document.querySelectorAll('.custom-q-cb:checked').forEach(function(cb) {
-          var chKey = cb.getAttribute('data-ch-key');
-          var wsIdx = parseInt(cb.getAttribute('data-ws-idx'));
-          var qIdx = parseInt(cb.getAttribute('data-q-idx'));
+        if (count === 0) {
+          contentEl.innerHTML = '<div class="custom-preview-empty">Select questions to see preview</div>';
+          return;
+        }
+
+        // Build preview content
+        var selectedQuestions = [];
+        var qNum = 1;
+
+        Array.prototype.forEach.call(checkedBoxes, function (cb) {
+          var chKey = cb.getAttribute("data-ch-key");
+          var wsIdx = parseInt(cb.getAttribute("data-ws-idx"));
+          var qIdx = parseInt(cb.getAttribute("data-q-idx"));
+
           var ch = questionBank[chKey];
           var ws = ch.worksheets[wsIdx];
           var q = ws.questions[qIdx];
-          selected.push({ chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx,
-            instruction: ws.instruction, text: q.text, answer: q.answer || null,
-            options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0 });
+
+          selectedQuestions.push({
+            qNum: qNum++,
+            chapterKey: chKey,
+            chapterName: ch.name,
+            worksheetIdx: wsIdx,
+            instruction: ws.instruction,
+            text: q.text,
+            options: q.options || null,
+            wideOptions: q.wideOptions || false,
+            lines: q.lines || 0,
+            answer: q.answer || null,
+          });
+        });
+
+        // Group by chapter and worksheet
+        var grouped = {};
+        var chapterOrder = [];
+        selectedQuestions.forEach(function (q) {
+          if (!grouped[q.chapterKey]) {
+            grouped[q.chapterKey] = { name: q.chapterName, wsOrder: [], worksheets: {} };
+            chapterOrder.push(q.chapterKey);
+          }
+          var wsKey = String(q.worksheetIdx) + "||" + q.instruction;
+          if (!grouped[q.chapterKey].worksheets[wsKey]) {
+            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, questions: [] };
+            grouped[q.chapterKey].wsOrder.push(wsKey);
+          }
+          grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
+        });
+
+        // Build HTML
+        var html = "";
+        chapterOrder.forEach(function (chKey) {
+          var ch = grouped[chKey];
+          html += '<div style="margin-bottom:16px;"><div style="font-weight:bold;color:#667eea;margin-bottom:8px;font-size:1rem;">' + _esc(ch.name) + "</div>";
+          ch.wsOrder.forEach(function (wsKey) {
+            var ws = ch.worksheets[wsKey];
+            html += '<div style="font-style:italic;color:#636e72;font-size:0.82rem;margin-bottom:6px;">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
+            ws.questions
+              .slice()
+              .sort(function (a, b) {
+                return a.qNum - b.qNum;
+              })
+              .forEach(function (q) {
+                html += '<div style="margin-bottom:10px;font-size:0.85rem;"><strong>' + q.qNum + ".</strong> " + _esc(q.text).replace(/\n/g, "<br>");
+                if (q.options && q.options.length > 0) {
+                  if (q.wideOptions) {
+                    html += '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;">';
+                    q.options.forEach(function (opt) {
+                      html += '<span style="padding:2px 6px;background:#f0f0f0;border-radius:4px;font-size:0.8rem;">' + _esc(opt) + "</span>";
+                    });
+                    html += "</div>";
+                  } else {
+                    html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px;">';
+                    q.options.forEach(function (opt) {
+                      html += '<span style="padding:2px 6px;background:#f0f0f0;border-radius:4px;font-size:0.8rem;">' + _esc(opt) + "</span>";
+                    });
+                    html += "</div>";
+                  }
+                }
+                for (var i = 0; i < q.lines; i++) {
+                  html += '<div style="border-bottom:1px solid #ccc;height:16px;margin-top:4px;"></div>';
+                }
+                html += "</div>";
+              });
+          });
+          html += "</div>";
+        });
+
+        contentEl.innerHTML = html;
+      }
+
+      function previewCustomTest() {
+        var testName = document.getElementById("testName").value || "Grammar Test";
+        var studentName = document.getElementById("studentName").value;
+        var testDate = document.getElementById("testDate").value;
+        var testDuration = document.getElementById("testDuration").value;
+        var totalMarks = parseInt(document.getElementById("totalMarks").value) || 20;
+
+        document.getElementById("previewTestName").textContent = testName;
+        document.getElementById("previewStudentName").textContent = studentName || "____________________________";
+        document.getElementById("previewDate").textContent = testDate || "_____________";
+        document.getElementById("previewMarks").textContent = totalMarks;
+        document.getElementById("previewDuration").textContent = testDuration || "____";
+
+        var selected = [];
+        document.querySelectorAll(".custom-q-cb:checked").forEach(function (cb) {
+          var chKey = cb.getAttribute("data-ch-key");
+          var wsIdx = parseInt(cb.getAttribute("data-ws-idx"));
+          var qIdx = parseInt(cb.getAttribute("data-q-idx"));
+          var ch = questionBank[chKey];
+          var ws = ch.worksheets[wsIdx];
+          var q = ws.questions[qIdx];
+          selected.push({ chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx, instruction: ws.instruction, text: q.text, answer: q.answer || null, options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0 });
         });
 
         if (selected.length === 0) {
-          alert('Please tick at least one question in Custom mode!');
+          alert("Please tick at least one question in Custom mode!");
           return;
         }
 
         var grouped = new Map();
-        Object.keys(questionBank).forEach(function(k) {
+        Object.keys(questionBank).forEach(function (k) {
           grouped.set(k, { name: questionBank[k].name, worksheets: new Map() });
         });
-        selected.forEach(function(q) {
+        selected.forEach(function (q) {
           var chGroup = grouped.get(q.chapterKey);
           if (!chGroup) return;
           if (!chGroup.worksheets.has(q.worksheetIdx)) {
@@ -1619,37 +1949,42 @@
           chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
         });
 
-        var container = document.getElementById('questionsContainer');
-        container.innerHTML = '';
+        var container = document.getElementById("questionsContainer");
+        container.innerHTML = "";
         var qNum = 1;
         lastGeneratedQuestions = [];
 
-        grouped.forEach(function(chData, chKey) {
+        grouped.forEach(function (chData, chKey) {
           if (chData.worksheets.size === 0) return;
-          var chSection = document.createElement('div');
-          chSection.className = 'question-section';
-          chSection.innerHTML = '<h3>' + chData.name + '</h3>';
-          var sortedWs = Array.from(chData.worksheets.entries()).sort(function(a,b){ return a[0]-b[0]; });
-          sortedWs.forEach(function(entry) {
+          var chSection = document.createElement("div");
+          chSection.className = "question-section";
+          chSection.innerHTML = "<h3>" + chData.name + "</h3>";
+          var sortedWs = Array.from(chData.worksheets.entries()).sort(function (a, b) {
+            return a[0] - b[0];
+          });
+          sortedWs.forEach(function (entry) {
             var wsData = entry[1];
-            var wsDiv = document.createElement('div');
-            wsDiv.className = 'worksheet-group';
-            wsDiv.innerHTML = '<p class="ws-instruction">' + wsData.instruction.replace(/\n/g,'<br>') + '</p>';
-            wsData.questions.forEach(function(q) {
-              var qDiv = document.createElement('div');
-              qDiv.className = 'question-item';
-              var html = '<p class="question-text"><strong>' + qNum + '.</strong> ' + q.text.replace(/\n/g,'<br>') + '</p>';
+            var wsDiv = document.createElement("div");
+            wsDiv.className = "worksheet-group";
+            wsDiv.innerHTML = '<p class="ws-instruction">' + wsData.instruction.replace(/\n/g, "<br>") + "</p>";
+            wsData.questions.forEach(function (q) {
+              var qDiv = document.createElement("div");
+              qDiv.className = "question-item";
+              var html = '<p class="question-text"><strong>' + qNum + ".</strong> " + q.text.replace(/\n/g, "<br>") + "</p>";
               if (q.options && q.options.length > 0) {
-                var cls = q.wideOptions ? 'options-list' : 'options-grid';
+                var cls = q.wideOptions ? "options-list" : "options-grid";
                 html += '<div class="' + cls + '">';
-                q.options.forEach(function(opt){ html += '<span class="option-item">' + opt + '</span>'; });
-                html += '</div>';
+                q.options.forEach(function (opt) {
+                  html += '<span class="option-item">' + opt + "</span>";
+                });
+                html += "</div>";
               }
-              for (var i = 0; i < q.lines; i++) { html += '<div class="answer-line"></div>'; }
+              for (var i = 0; i < q.lines; i++) {
+                html += '<div class="answer-line"></div>';
+              }
               qDiv.innerHTML = html;
               wsDiv.appendChild(qDiv);
-              lastGeneratedQuestions.push({ qNum: qNum, chapterKey: chKey, chapterName: chData.name,
-                worksheetIdx: entry[0], instruction: wsData.instruction, answer: q.answer || null, text: q.text });
+              lastGeneratedQuestions.push({ qNum: qNum, chapterKey: chKey, chapterName: chData.name, worksheetIdx: entry[0], instruction: wsData.instruction, answer: q.answer || null, text: q.text });
               qNum++;
             });
             chSection.appendChild(wsDiv);
@@ -1657,20 +1992,20 @@
           container.appendChild(chSection);
         });
 
-        document.getElementById('testPreview').classList.add('show');
-        document.getElementById('testPreview').scrollIntoView({ behavior: 'smooth' });
+        document.getElementById("testPreview").classList.add("show");
+        document.getElementById("testPreview").scrollIntoView({ behavior: "smooth" });
       }
 
       // Wrapper called by Preview Test button
       function generateTest() {
-        if (currentMode === 'custom') previewCustomTest();
+        if (currentMode === "custom") previewCustomTest();
         else previewTest();
       }
 
       // Word Export
       function _esc(s) {
-        if (!s) return '';
-        return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        if (!s) return "";
+        return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
       }
 
       function downloadWord(includeAnswers) {
@@ -1678,44 +2013,54 @@
           generateTest();
           if (lastGeneratedQuestions.length === 0) return;
         }
-        var testName = document.getElementById('testName').value || 'Grammar Test';
-        var studentName = document.getElementById('studentName').value || '';
-        var testDate = document.getElementById('testDate').value || '';
-        var totalMarks = document.getElementById('totalMarks').value || '';
-        var testDuration = document.getElementById('testDuration').value || '';
+        var testName = document.getElementById("testName").value || "Grammar Test";
+        var studentName = document.getElementById("studentName").value || "";
+        var testDate = document.getElementById("testDate").value || "";
+        var totalMarks = document.getElementById("totalMarks").value || "";
+        var testDuration = document.getElementById("testDuration").value || "";
 
-        var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><style>'
-          + 'body{font-family:Arial,sans-serif;margin:2cm;color:#000;font-size:11pt}'
-          + '.title{text-align:center;font-size:15pt;font-weight:bold;margin-bottom:4px}'
-          + '.ak-lbl{text-align:center;color:green;font-weight:bold;font-size:12pt;margin-bottom:8px}'
-          + 'table{width:100%;border-collapse:collapse;margin-bottom:8px}'
-          + 'td{padding:3px 6px;font-size:10pt}'
-          + 'hr{border:none;border-top:2px solid #333;margin:8px 0}'
-          + '.ch{font-weight:bold;font-size:12pt;margin:16px 0 4px;border-bottom:1px solid #999;padding-bottom:3px}'
-          + '.instr{font-style:italic;color:#444;margin-bottom:8px;font-size:10pt}'
-          + '.q{margin-bottom:10px;font-size:10.5pt}'
-          + '.ans{color:green;font-size:10pt;margin-top:2px}'
-          + '.ans-line{border-bottom:1px solid #aaa;height:18px;margin-top:4px}'
-          + '<\/style><\/head><body>';
+        var html =
+          '<!DOCTYPE html><html><head><meta charset="UTF-8"><style>' +
+          "body{font-family:Arial,sans-serif;margin:2cm;color:#000;font-size:11pt}" +
+          ".title{text-align:center;font-size:15pt;font-weight:bold;margin-bottom:4px}" +
+          ".ak-lbl{text-align:center;color:green;font-weight:bold;font-size:12pt;margin-bottom:8px}" +
+          "table{width:100%;border-collapse:collapse;margin-bottom:8px}" +
+          "td{padding:3px 6px;font-size:10pt}" +
+          "hr{border:none;border-top:2px solid #333;margin:8px 0}" +
+          ".ch{font-weight:bold;font-size:12pt;margin:16px 0 4px;border-bottom:1px solid #999;padding-bottom:3px}" +
+          ".instr{font-style:italic;color:#444;margin-bottom:8px;font-size:10pt}" +
+          ".q{margin-bottom:10px;font-size:10.5pt}" +
+          ".ans{color:green;font-size:10pt;margin-top:2px}" +
+          ".ans-line{border-bottom:1px solid #aaa;height:18px;margin-top:4px}" +
+          "<\/style><\/head><body>";
 
-        html += '<p class="title">Grammar Frolics - ' + _esc(testName) + '</p>';
+        html += '<p class="title">Grammar Frolics - ' + _esc(testName) + "</p>";
         if (includeAnswers) html += '<p class="ak-lbl">ANSWER KEY - TEACHER USE ONLY</p>';
-        html += '<hr><table><tr>'
-          + '<td width="55%">Name: <u>' + (_esc(studentName) || '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;') + '</u></td>'
-          + '<td>Date: <u>' + (_esc(testDate) || '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;') + '</u></td>'
-          + '</tr><tr>'
-          + '<td>Total Marks: ' + _esc(totalMarks) + '</td>'
-          + '<td>Time: ' + _esc(testDuration) + ' mins</td>'
-          + '</tr></table><hr>';
+        html +=
+          "<hr><table><tr>" +
+          '<td width="55%">Name: <u>' +
+          (_esc(studentName) || "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") +
+          "</u></td>" +
+          "<td>Date: <u>" +
+          (_esc(testDate) || "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") +
+          "</u></td>" +
+          "</tr><tr>" +
+          "<td>Total Marks: " +
+          _esc(totalMarks) +
+          "</td>" +
+          "<td>Time: " +
+          _esc(testDuration) +
+          " mins</td>" +
+          "</tr></table><hr>";
 
         var grouped = {};
         var chapterOrder = [];
-        lastGeneratedQuestions.forEach(function(q) {
+        lastGeneratedQuestions.forEach(function (q) {
           if (!grouped[q.chapterKey]) {
             grouped[q.chapterKey] = { name: q.chapterName, wsOrder: [], worksheets: {} };
             chapterOrder.push(q.chapterKey);
           }
-          var wsKey = String(q.worksheetIdx) + '||' + q.instruction;
+          var wsKey = String(q.worksheetIdx) + "||" + q.instruction;
           if (!grouped[q.chapterKey].worksheets[wsKey]) {
             grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, questions: [] };
             grouped[q.chapterKey].wsOrder.push(wsKey);
@@ -1723,38 +2068,53 @@
           grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
         });
 
-        chapterOrder.forEach(function(chKey) {
+        chapterOrder.forEach(function (chKey) {
           var ch = grouped[chKey];
-          html += '<div class="ch">' + _esc(ch.name) + '</div>';
-          ch.wsOrder.forEach(function(wsKey) {
+          html += '<div class="ch">' + _esc(ch.name) + "</div>";
+          ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
-            html += '<div class="instr">' + _esc(ws.instruction).replace(/\n/g,'<br>') + '</div>';
-            ws.questions.slice().sort(function(a,b){return a.qNum-b.qNum;}).forEach(function(q) {
-              html += '<div class="q"><strong>' + q.qNum + '.</strong> ' + _esc(q.text).replace(/\n/g,'<br>');
-              if (includeAnswers) {
-                if (q.answer && q.answer !== 'vary') {
-                  html += '<div class="ans">- ' + _esc(q.answer) + '</div>';
-                } else {
-                  html += '<div class="ans" style="color:#999;">- Answers may vary</div>';
+            html += '<div class="instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
+            var sortedQuestions = ws.questions
+              .slice()
+              .sort(function (a, b) {
+                return a.qNum - b.qNum;
+              });
+
+            // First display all questions
+            sortedQuestions.forEach(function (q) {
+                html += '<div class="q"><strong>' + q.qNum + ".</strong> " + _esc(q.text).replace(/\n/g, "<br>");
+                if (!includeAnswers) {
+                  html += '<div class="ans-line"></div>';
                 }
-              } else {
-                html += '<div class="ans-line"></div>';
-              }
-              html += '</div>';
-            });
+                html += "</div>";
+              });
+
+            // Then display answers section if needed
+            if (includeAnswers) {
+              html += '<div style="margin-top:16px;font-weight:bold;color:#333;font-size:11pt;">Answers:</div>';
+              sortedQuestions.forEach(function (q) {
+                if (q.answer && q.answer !== "vary") {
+                  html += '<div class="ans"><strong>' + q.qNum + '.</strong> ' + _esc(q.answer) + "</div>";
+                } else {
+                  html += '<div class="ans" style="color:#999;"><strong>' + q.qNum + '.</strong> Answers may vary</div>';
+                }
+              });
+            }
           });
         });
-        html += '<\/body><\/html>';
+        html += "<\/body><\/html>";
 
-        var blob = new Blob(['\ufeff', html], {type: 'application/msword'});
+        var blob = new Blob(["\ufeff", html], { type: "application/msword" });
         var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
+        var a = document.createElement("a");
         a.href = url;
-        a.download = testName + (includeAnswers ? ' - Teacher.doc' : ' - Student.doc');
+        a.download = testName + (includeAnswers ? " - Teacher.doc" : " - Student.doc");
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        setTimeout(function(){ URL.revokeObjectURL(url); }, 100);
+        setTimeout(function () {
+          URL.revokeObjectURL(url);
+        }, 100);
       }
     </script>
   </body>

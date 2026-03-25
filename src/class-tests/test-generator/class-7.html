@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -432,32 +432,172 @@
       }
 
       @media (max-width: 768px) {
-        h1 { font-size: 2rem; }
-        .info-grid, .chapters-grid { grid-template-columns: 1fr; }
-        .action-buttons { flex-direction: column; }
-        .btn { width: 100%; }
+        h1 {
+          font-size: 2rem;
+        }
+        .info-grid,
+        .chapters-grid {
+          grid-template-columns: 1fr;
+        }
+        .action-buttons {
+          flex-direction: column;
+        }
+        .btn {
+          width: 100%;
+        }
       }
 
       /* Mode Toggle */
-      .mode-toggle{display:flex;gap:10px;margin:0 0 18px;}
-      .mode-btn{padding:8px 22px;border:2px solid #667eea;border-radius:50px;cursor:pointer;font-family:'Comic Sans MS',cursive;font-weight:bold;font-size:0.9rem;background:transparent;color:#667eea;transition:all 0.2s;}
-      .mode-btn.active{background:#667eea;color:white;}
-      .mode-btn:hover:not(.active){background:rgba(102,126,234,0.1);}
-      #customPanel{display:none;}
-      .custom-chapter{background:#f5f5ff;border:1px solid #c5cae9;border-radius:12px;padding:14px 18px;margin-bottom:12px;}
-      .custom-chapter-header{display:flex;align-items:center;justify-content:space-between;color:#667eea;font-weight:bold;font-size:1rem;margin-bottom:8px;}
-      .custom-select-all{background:none;border:2px solid #667eea;color:#667eea;padding:3px 10px;border-radius:20px;cursor:pointer;font-size:0.78rem;font-family:'Comic Sans MS',cursive;}
-      .custom-select-all:hover{background:#667eea;color:white;}
-      .custom-ws{margin-bottom:8px;padding:8px 12px;background:white;border-radius:8px;border-left:3px solid #a29bfe;}
-      .custom-ws-instr{font-size:0.82rem;color:#636e72;font-style:italic;margin-bottom:6px;}
-      .custom-q-list{list-style:none;padding:0;margin:0;}
-      .custom-q-item{padding:4px 0;border-bottom:1px solid #f0f0f0;}
-      .custom-q-item:last-child{border-bottom:none;}
-      .custom-q-text{font-size:0.85rem;color:#333;}
-      .btn-word-teacher{background:linear-gradient(135deg,#2d3436 0%,#636e72 100%);color:white;}
-      .btn-word-teacher:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(45,52,54,0.4);}
-      .btn-word-student{background:linear-gradient(135deg,#0984e3 0%,#74b9ff 100%);color:white;}
-      .btn-word-student:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(9,132,227,0.4);}
+      .mode-toggle {
+        display: flex;
+        gap: 10px;
+        margin: 0 0 18px;
+      }
+      .mode-btn {
+        padding: 8px 22px;
+        border: 2px solid #667eea;
+        border-radius: 50px;
+        cursor: pointer;
+        font-family: "Comic Sans MS", cursive;
+        font-weight: bold;
+        font-size: 0.9rem;
+        background: transparent;
+        color: #667eea;
+        transition: all 0.2s;
+      }
+      .mode-btn.active {
+        background: #667eea;
+        color: white;
+      }
+      .mode-btn:hover:not(.active) {
+        background: rgba(102, 126, 234, 0.1);
+      }
+      #customPanel {
+        display: none;
+      }
+      .custom-chapter {
+        background: #f5f5ff;
+        border: 1px solid #c5cae9;
+        border-radius: 12px;
+        padding: 14px 18px;
+        margin-bottom: 12px;
+      }
+      .custom-chapter-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #667eea;
+        font-weight: bold;
+        font-size: 1rem;
+        margin-bottom: 8px;
+      }
+      .custom-select-all {
+        background: none;
+        border: 2px solid #667eea;
+        color: #667eea;
+        padding: 3px 10px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.78rem;
+        font-family: "Comic Sans MS", cursive;
+      }
+      .custom-select-all:hover {
+        background: #667eea;
+        color: white;
+      }
+      .custom-ws {
+        margin-bottom: 8px;
+        padding: 8px 12px;
+        background: white;
+        border-radius: 8px;
+        border-left: 3px solid #a29bfe;
+      }
+      .custom-ws-instr {
+        font-size: 0.82rem;
+        color: #636e72;
+        font-style: italic;
+        margin-bottom: 6px;
+      }
+      .custom-q-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .custom-q-item {
+        padding: 4px 0;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .custom-q-item:last-child {
+        border-bottom: none;
+      }
+      .custom-q-text {
+        font-size: 0.85rem;
+        color: #333;
+      }
+      .custom-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-top: 20px;
+      }
+      .custom-selection {
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+        padding-right: 12px;
+      }
+      .custom-preview-container {
+        position: sticky;
+        top: 20px;
+        height: fit-content;
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+        background: white;
+        border: 2px solid #667eea;
+        border-radius: 12px;
+        padding: 20px;
+      }
+      .custom-preview-header {
+        text-align: center;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid #667eea;
+      }
+      .custom-preview-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #667eea;
+        margin-bottom: 4px;
+      }
+      .custom-preview-count {
+        font-size: 0.9rem;
+        color: #636e72;
+      }
+      .custom-preview-content {
+        font-size: 0.85rem;
+      }
+      .custom-preview-empty {
+        text-align: center;
+        color: #999;
+        font-style: italic;
+        padding: 40px 20px;
+      }
+
+      .btn-word-teacher {
+        background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+        color: white;
+      }
+      .btn-word-teacher:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(45, 52, 54, 0.4);
+      }
+      .btn-word-student {
+        background: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%);
+        color: white;
+      }
+      .btn-word-student:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(9, 132, 227, 0.4);
+      }
     </style>
   </head>
   <body>
@@ -501,143 +641,145 @@
           <button id="modeCustomBtn" class="mode-btn" onclick="setMode('custom')">&#9999;&#65039; Custom</button>
         </div>
         <div id="autoPanel">
-        <div class="chapters-grid">
-          <label class="chapter-card" data-chapter="ch1">
-            <input type="checkbox" id="ch1" />
-            <span class="chapter-number">Chapter 1</span>
-            <h3>Kinds of Sentences</h3>
-            <p>Yes/No Questions, Wh-Questions, sentence types</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch2">
-            <input type="checkbox" id="ch2" />
-            <span class="chapter-number">Chapter 2</span>
-            <h3>Subject and Predicate</h3>
-            <p>Compound subjects and predicates</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch3">
-            <input type="checkbox" id="ch3" />
-            <span class="chapter-number">Chapter 3</span>
-            <h3>Subject-Verb Agreement</h3>
-            <p>Correct verb forms</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch4">
-            <input type="checkbox" id="ch4" />
-            <span class="chapter-number">Chapter 4</span>
-            <h3>Nouns</h3>
-            <p>Identify, change forms, masculine/feminine</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch5">
-            <input type="checkbox" id="ch5" />
-            <span class="chapter-number">Chapter 5</span>
-            <h3>Pronouns</h3>
-            <p>Kinds and correct usage of pronouns</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch6">
-            <input type="checkbox" id="ch6" />
-            <span class="chapter-number">Chapter 6</span>
-            <h3>Articles</h3>
-            <p>a, an, the — when to use or omit</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch7">
-            <input type="checkbox" id="ch7" />
-            <span class="chapter-number">Chapter 7</span>
-            <h3>Adjectives</h3>
-            <p>Kinds and degrees of adjectives</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch8">
-            <input type="checkbox" id="ch8" />
-            <span class="chapter-number">Chapter 8</span>
-            <h3>Non-Finite Verbs</h3>
-            <p>Infinitives, Gerunds, Participles</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch9">
-            <input type="checkbox" id="ch9" />
-            <span class="chapter-number">Chapter 9</span>
-            <h3>Auxiliary Verbs</h3>
-            <p>Modal and primary auxiliaries</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch10">
-            <input type="checkbox" id="ch10" />
-            <span class="chapter-number">Chapter 10</span>
-            <h3>The Present Tense</h3>
-            <p>Simple, Continuous, Perfect present</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch11">
-            <input type="checkbox" id="ch11" />
-            <span class="chapter-number">Chapter 11</span>
-            <h3>The Past Tense</h3>
-            <p>Simple, Continuous, Perfect past</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch12">
-            <input type="checkbox" id="ch12" />
-            <span class="chapter-number">Chapter 12</span>
-            <h3>The Future Tense</h3>
-            <p>Simple, Continuous, Perfect future</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch13">
-            <input type="checkbox" id="ch13" />
-            <span class="chapter-number">Chapter 13</span>
-            <h3>Adverbs</h3>
-            <p>Kinds, degrees, and placement</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch14">
-            <input type="checkbox" id="ch14" />
-            <span class="chapter-number">Chapter 14</span>
-            <h3>Prepositions</h3>
-            <p>Fill in and identify types</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch15">
-            <input type="checkbox" id="ch15" />
-            <span class="chapter-number">Chapter 15</span>
-            <h3>Conjunctions</h3>
-            <p>Coordinating, Subordinating, Correlative</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch16">
-            <input type="checkbox" id="ch16" />
-            <span class="chapter-number">Chapter 16</span>
-            <h3>Phrases and Clauses</h3>
-            <p>Identify and use phrases and clauses</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch17">
-            <input type="checkbox" id="ch17" />
-            <span class="chapter-number">Chapter 17</span>
-            <h3>Synthesis of Sentences</h3>
-            <p>Combining sentences</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch18">
-            <input type="checkbox" id="ch18" />
-            <span class="chapter-number">Chapter 18</span>
-            <h3>Transformation of Sentences</h3>
-            <p>Converting between sentence types</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch19">
-            <input type="checkbox" id="ch19" />
-            <span class="chapter-number">Chapter 19</span>
-            <h3>Conditional Sentences</h3>
-            <p>Zero, First, Second, Third conditional</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch20">
-            <input type="checkbox" id="ch20" />
-            <span class="chapter-number">Chapter 20</span>
-            <h3>Active and Passive Voice</h3>
-            <p>Voice identification and conversion</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch21">
-            <input type="checkbox" id="ch21" />
-            <span class="chapter-number">Chapter 21</span>
-            <h3>Direct and Indirect Speech</h3>
-            <p>Reported speech conversion</p>
-          </label>
-          <label class="chapter-card" data-chapter="ch22">
-            <input type="checkbox" id="ch22" />
-            <span class="chapter-number">Chapter 22</span>
-            <h3>Punctuation and Capital Letters</h3>
-            <p>Correct punctuation and capitals</p>
-          </label>
+          <div class="chapters-grid">
+            <label class="chapter-card" data-chapter="ch1">
+              <input type="checkbox" id="ch1" />
+              <span class="chapter-number">Chapter 1</span>
+              <h3>Kinds of Sentences</h3>
+              <p>Yes/No Questions, Wh-Questions, sentence types</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch2">
+              <input type="checkbox" id="ch2" />
+              <span class="chapter-number">Chapter 2</span>
+              <h3>Subject and Predicate</h3>
+              <p>Compound subjects and predicates</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch3">
+              <input type="checkbox" id="ch3" />
+              <span class="chapter-number">Chapter 3</span>
+              <h3>Subject-Verb Agreement</h3>
+              <p>Correct verb forms</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch4">
+              <input type="checkbox" id="ch4" />
+              <span class="chapter-number">Chapter 4</span>
+              <h3>Nouns</h3>
+              <p>Identify, change forms, masculine/feminine</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch5">
+              <input type="checkbox" id="ch5" />
+              <span class="chapter-number">Chapter 5</span>
+              <h3>Pronouns</h3>
+              <p>Kinds and correct usage of pronouns</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch6">
+              <input type="checkbox" id="ch6" />
+              <span class="chapter-number">Chapter 6</span>
+              <h3>Articles</h3>
+              <p>a, an, the — when to use or omit</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch7">
+              <input type="checkbox" id="ch7" />
+              <span class="chapter-number">Chapter 7</span>
+              <h3>Adjectives</h3>
+              <p>Kinds and degrees of adjectives</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch8">
+              <input type="checkbox" id="ch8" />
+              <span class="chapter-number">Chapter 8</span>
+              <h3>Non-Finite Verbs</h3>
+              <p>Infinitives, Gerunds, Participles</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch9">
+              <input type="checkbox" id="ch9" />
+              <span class="chapter-number">Chapter 9</span>
+              <h3>Auxiliary Verbs</h3>
+              <p>Modal and primary auxiliaries</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch10">
+              <input type="checkbox" id="ch10" />
+              <span class="chapter-number">Chapter 10</span>
+              <h3>The Present Tense</h3>
+              <p>Simple, Continuous, Perfect present</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch11">
+              <input type="checkbox" id="ch11" />
+              <span class="chapter-number">Chapter 11</span>
+              <h3>The Past Tense</h3>
+              <p>Simple, Continuous, Perfect past</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch12">
+              <input type="checkbox" id="ch12" />
+              <span class="chapter-number">Chapter 12</span>
+              <h3>The Future Tense</h3>
+              <p>Simple, Continuous, Perfect future</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch13">
+              <input type="checkbox" id="ch13" />
+              <span class="chapter-number">Chapter 13</span>
+              <h3>Adverbs</h3>
+              <p>Kinds, degrees, and placement</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch14">
+              <input type="checkbox" id="ch14" />
+              <span class="chapter-number">Chapter 14</span>
+              <h3>Prepositions</h3>
+              <p>Fill in and identify types</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch15">
+              <input type="checkbox" id="ch15" />
+              <span class="chapter-number">Chapter 15</span>
+              <h3>Conjunctions</h3>
+              <p>Coordinating, Subordinating, Correlative</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch16">
+              <input type="checkbox" id="ch16" />
+              <span class="chapter-number">Chapter 16</span>
+              <h3>Phrases and Clauses</h3>
+              <p>Identify and use phrases and clauses</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch17">
+              <input type="checkbox" id="ch17" />
+              <span class="chapter-number">Chapter 17</span>
+              <h3>Synthesis of Sentences</h3>
+              <p>Combining sentences</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch18">
+              <input type="checkbox" id="ch18" />
+              <span class="chapter-number">Chapter 18</span>
+              <h3>Transformation of Sentences</h3>
+              <p>Converting between sentence types</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch19">
+              <input type="checkbox" id="ch19" />
+              <span class="chapter-number">Chapter 19</span>
+              <h3>Conditional Sentences</h3>
+              <p>Zero, First, Second, Third conditional</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch20">
+              <input type="checkbox" id="ch20" />
+              <span class="chapter-number">Chapter 20</span>
+              <h3>Active and Passive Voice</h3>
+              <p>Voice identification and conversion</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch21">
+              <input type="checkbox" id="ch21" />
+              <span class="chapter-number">Chapter 21</span>
+              <h3>Direct and Indirect Speech</h3>
+              <p>Reported speech conversion</p>
+            </label>
+            <label class="chapter-card" data-chapter="ch22">
+              <input type="checkbox" id="ch22" />
+              <span class="chapter-number">Chapter 22</span>
+              <h3>Punctuation and Capital Letters</h3>
+              <p>Correct punctuation and capitals</p>
+            </label>
+          </div>
         </div>
-        </div><!-- /autoPanel -->
+        <!-- /autoPanel -->
         <div id="customPanel"></div>
-      </div><!-- /chapters-section -->
+      </div>
+      <!-- /chapters-section -->
 
       <!-- Action Buttons -->
       <div class="action-buttons">
@@ -674,7 +816,6 @@
 
       // ─── QUESTION BANK ─────────────────────────────────────────────────────
       const questionBank = {
-
         ch1: {
           name: "Ch 1: Kinds of Sentences",
           worksheets: [
@@ -686,8 +827,8 @@
                 { text: "Can you solve this equation? __________________" },
                 { text: "Where have you kept my notebook? __________________" },
                 { text: "Are they participating in the competition? __________________" },
-                { text: "How does this machine work? _____________________" }
-              ]
+                { text: "How does this machine work? _____________________" },
+              ],
             },
             {
               instruction: "B. Fill in the blanks to complete these interrogative sentences.",
@@ -698,8 +839,8 @@
                 { text: "__________ will you travel to Jaipur?" },
                 { text: "__________ are you looking so worried?" },
                 { text: "__________ many chapters have you completed?" },
-                { text: "__________ will you do if it rains tomorrow?" }
-              ]
+                { text: "__________ will you do if it rains tomorrow?" },
+              ],
             },
             {
               instruction: "Read the following sentences carefully and write the kind of each sentence in the blank.",
@@ -713,10 +854,10 @@
                 { text: "How beautifully she sings! __________________" },
                 { text: "Are they coming to the function tonight? __________________" },
                 { text: "Preeti will attend the meeting in the evening. _______________" },
-                { text: "Can you tell me the way to the museum? ________________" }
-              ]
-            }
-          ]
+                { text: "Can you tell me the way to the museum? ________________" },
+              ],
+            },
+          ],
         },
 
         ch2: {
@@ -734,8 +875,8 @@
                 { text: "____________________ were discussing the new rules." },
                 { text: "Either ____________________ has misplaced the keys." },
                 { text: "____________________ make a great team on the field." },
-                { text: "Neither ____________________ wants to admit the mistake." }
-              ]
+                { text: "Neither ____________________ wants to admit the mistake." },
+              ],
             },
             {
               instruction: "Complete the sentences with compound predicates.",
@@ -749,10 +890,10 @@
                 { text: "The baby ____________________________________________________." },
                 { text: "The train ____________________________________________________." },
                 { text: "The chef _____________________________________________________." },
-                { text: "The wind ___________________________________________________." }
-              ]
-            }
-          ]
+                { text: "The wind ___________________________________________________." },
+              ],
+            },
+          ],
         },
 
         ch3: {
@@ -770,8 +911,8 @@
                 { text: "Some of the students __________ absent today. (is / are)" },
                 { text: "The team __________ practising for the finals. (is / are)" },
                 { text: "The team __________ arguing among themselves. (is / are)" },
-                { text: "The captain, along with the players, __________ arriving soon. (is / are)" }
-              ]
+                { text: "The captain, along with the players, __________ arriving soon. (is / are)" },
+              ],
             },
             {
               instruction: "Each sentence has one error in the use of verbs. Rewrite the sentence correctly.",
@@ -780,10 +921,10 @@
                 { text: "The bouquet of roses smell lovely.", lines: 2 },
                 { text: "There is many books on the shelf.", lines: 2 },
                 { text: "The news are very shocking.", lines: 2 },
-                { text: "Five years are a long time to wait.", lines: 2 }
-              ]
-            }
-          ]
+                { text: "Five years are a long time to wait.", lines: 2 },
+              ],
+            },
+          ],
         },
 
         ch4: {
@@ -801,8 +942,8 @@
                 { text: "Knowledge and experience are valuable assets." },
                 { text: "The librarian arranged the books on the shelves." },
                 { text: "The captain led the players to victory." },
-                { text: "Childhood memories often bring happiness." }
-              ]
+                { text: "Childhood memories often bring happiness." },
+              ],
             },
             {
               instruction: "A. Change the highlighted noun to the correct form, as directed.",
@@ -810,8 +951,8 @@
                 { text: "The analysis was very detailed. (plural)", lines: 2 },
                 { text: "A thesis was submitted yesterday. (plural)", lines: 2 },
                 { text: "The vertebrae were carefully examined. (singular)", lines: 2 },
-                { text: "The appendices are included at the end of the book. (singular)", lines: 2 }
-              ]
+                { text: "The appendices are included at the end of the book. (singular)", lines: 2 },
+              ],
             },
             {
               instruction: "B. Fill in each blank with the correct masculine or feminine form of the noun given in brackets.",
@@ -820,10 +961,10 @@
                 { text: "The __________ (groom) welcomed the guests at the wedding." },
                 { text: "The __________ (stag) ran swiftly through the forest." },
                 { text: "The __________ (giant) lifted the heavy rock easily." },
-                { text: "The __________ (duck) swam gracefully in the pond." }
-              ]
-            }
-          ]
+                { text: "The __________ (duck) swam gracefully in the pond." },
+              ],
+            },
+          ],
         },
 
         ch5: {
@@ -841,8 +982,8 @@
                 { text: "They invited their friends to the party. __________________________" },
                 { text: "That house in the corner is ours. __________________________" },
                 { text: "The players themselves brought the equipment. _______________" },
-                { text: "Nobody believed his story. _______________________" }
-              ]
+                { text: "Nobody believed his story. _______________________" },
+              ],
             },
             {
               instruction: "Rewrite the sentences with correct pronouns.",
@@ -851,10 +992,10 @@
                 { text: "The teacher which teaches us English is very kind.", lines: 2 },
                 { text: "Whose is knocking at the door?", lines: 2 },
                 { text: "That are the houses we visited yesterday.", lines: 2 },
-                { text: "The cat hurt hisself while jumping over the wall.", lines: 2 }
-              ]
-            }
-          ]
+                { text: "The cat hurt hisself while jumping over the wall.", lines: 2 },
+              ],
+            },
+          ],
         },
 
         ch6: {
@@ -873,8 +1014,8 @@
                 { text: "He waited for _______ hour before the train arrived." },
                 { text: "My father reads _______ newspaper every morning." },
                 { text: "He is _______ heir to the throne." },
-                { text: "This is _______ unique opportunity." }
-              ]
+                { text: "This is _______ unique opportunity." },
+              ],
             },
             {
               instruction: "Rewrite the sentences after omitting the articles where they are not required.",
@@ -883,10 +1024,10 @@
                 { text: "He plays the cricket every evening.", lines: 2 },
                 { text: "The gold is a precious metal.", lines: 2 },
                 { text: "The milk is good for health.", lines: 2 },
-                { text: "We have the lunch at one o'clock.", lines: 2 }
-              ]
-            }
-          ]
+                { text: "We have the lunch at one o'clock.", lines: 2 },
+              ],
+            },
+          ],
         },
 
         ch7: {
@@ -904,8 +1045,8 @@
                 { text: "She completed the entire project in one day. _______________________" },
                 { text: "The fallen leaves covered the ground. __________________________" },
                 { text: "He told me the very truth. __________________________" },
-                { text: "Many students participated in the event. _________________________" }
-              ]
+                { text: "Many students participated in the event. _________________________" },
+              ],
             },
             {
               instruction: "Fill in the blanks with the correct degree of the adjective given in brackets.",
@@ -919,10 +1060,10 @@
                 { text: "This task is __________ than it appears. (simple)" },
                 { text: "Iron is not as __________ as gold. (valuable)" },
                 { text: "The later we leave, the __________ the traffic will be. (heavy)" },
-                { text: "That was one of the __________ performances of the evening. (remarkable)" }
-              ]
-            }
-          ]
+                { text: "That was one of the __________ performances of the evening. (remarkable)" },
+              ],
+            },
+          ],
         },
 
         ch8: {
@@ -940,16 +1081,19 @@
                 { text: "She is fond of reading novels. __________________" },
                 { text: "We stopped to rest for a while. __________________" },
                 { text: "The shining stars looked beautiful in the night sky. _________________" },
-                { text: "He promised to help me with the project. __________________" }
-              ]
+                { text: "He promised to help me with the project. __________________" },
+              ],
             },
             {
               instruction: "Complete the passage with suitable non-finite verbs.",
               questions: [
-                { text: "Last Sunday, Rohan decided __________ (visit) his grandmother. __________ (wake) up early, he packed his bag and left home. He enjoys __________ (travel) by train because he loves __________ (watch) the countryside pass by. __________ (reach) the station, he realised that he had forgotten __________ (bring) his ticket. __________ (feel) embarrassed, he called his father for help. His father advised him __________ (check) his bag carefully before __________ (panic). After __________ (search) for a few minutes, Rohan found the ticket hidden inside a book. __________ (relieve), he boarded the train and spent the journey __________ (read) a novel.", lines: 4 }
-              ]
-            }
-          ]
+                {
+                  text: "Last Sunday, Rohan decided __________ (visit) his grandmother. __________ (wake) up early, he packed his bag and left home. He enjoys __________ (travel) by train because he loves __________ (watch) the countryside pass by. __________ (reach) the station, he realised that he had forgotten __________ (bring) his ticket. __________ (feel) embarrassed, he called his father for help. His father advised him __________ (check) his bag carefully before __________ (panic). After __________ (search) for a few minutes, Rohan found the ticket hidden inside a book. __________ (relieve), he boarded the train and spent the journey __________ (read) a novel.",
+                  lines: 4,
+                },
+              ],
+            },
+          ],
         },
 
         ch9: {
@@ -962,10 +1106,10 @@
                 { text: "They ____ finished their homework already.", options: ["a) have", "b) had", "c) are"] },
                 { text: "You ____ respect your teachers.", options: ["a) must", "b) are", "c) have"] },
                 { text: "I ____ going to the market now.", options: ["a) am", "b) have", "c) did"] },
-                { text: "He ____ swim very fast when he was young.", options: ["a) can", "b) could", "c) may"] }
-              ]
-            }
-          ]
+                { text: "He ____ swim very fast when he was young.", options: ["a) can", "b) could", "c) may"] },
+              ],
+            },
+          ],
         },
 
         ch10: {
@@ -983,8 +1127,8 @@
                 { text: "Riya often _________________ (help) her mother in the kitchen." },
                 { text: "Listen! Someone ___________________ (knock) at the door." },
                 { text: "They _____________ (go) to school by bus every day." },
-                { text: "She ________________ (read) a novel these days." }
-              ]
+                { text: "She ________________ (read) a novel these days." },
+              ],
             },
             {
               instruction: "Choose the correct option.",
@@ -993,10 +1137,10 @@
                 { text: "They usually ______________ breakfast at 8 a.m.", options: ["a. have", "b. are having", "c. have had"] },
                 { text: "Look! The boys _______________ in the mud.", options: ["a. play", "b. are playing", "c. have played"] },
                 { text: "I ________________ that movie twice.", options: ["a. see", "b. am seeing", "c. have seen"] },
-                { text: "My father _________________ in this company for ten years.", options: ["a. works", "b. is working", "c. has worked"] }
-              ]
-            }
-          ]
+                { text: "My father _________________ in this company for ten years.", options: ["a. works", "b. is working", "c. has worked"] },
+              ],
+            },
+          ],
         },
 
         ch11: {
@@ -1012,8 +1156,8 @@
                 { text: "He __________ (not/complete) the task because he __________ (forget) about it." },
                 { text: "The children __________ (play) in the garden when it suddenly __________ (start) to rain." },
                 { text: "By the time the teacher __________ (enter) the class, the students __________ (become) quiet." },
-                { text: "I __________ (see) the movie after I __________ (read) the book." }
-              ]
+                { text: "I __________ (see) the movie after I __________ (read) the book." },
+              ],
             },
             {
               instruction: "Choose the correct option.",
@@ -1022,10 +1166,10 @@
                 { text: "She ______________ her room before her mother came home.", options: ["a. cleaned", "b. was cleaning", "c. had cleaned"] },
                 { text: "While I _____________ to school, I met my old friend.", options: ["a. walked", "b. was walking", "c. had walked"] },
                 { text: "They _________________ dinner when the doorbell rang.", options: ["a. had", "b. were having", "c. had had"] },
-                { text: "He ___________ the letter after he ______________ it carefully.", options: ["a. sent / read", "b. was sending / read", "c. had sent / was reading"] }
-              ]
-            }
-          ]
+                { text: "He ___________ the letter after he ______________ it carefully.", options: ["a. sent / read", "b. was sending / read", "c. had sent / was reading"] },
+              ],
+            },
+          ],
         },
 
         ch12: {
@@ -1043,8 +1187,8 @@
                 { text: "By the time you arrive, we ____________________ (start) the meeting." },
                 { text: "He ___________________ (practise) for the match at this time tomorrow." },
                 { text: "By 2028, scientists __________ (discover) new solutions to the problem." },
-                { text: "The train __________ (leave) at 6 a.m. tomorrow." }
-              ]
+                { text: "The train __________ (leave) at 6 a.m. tomorrow." },
+              ],
             },
             {
               instruction: "Choose the correct option.",
@@ -1053,10 +1197,10 @@
                 { text: "At this time tomorrow, we ____ for our exams.", options: ["a. will study", "b. will be studying", "c. will have studied"] },
                 { text: "I ____ you as soon as I reach home.", options: ["a. will call", "b. will be calling", "c. will have called"] },
                 { text: "By the end of this week, they ____ the project.", options: ["a. will complete", "b. will be completing", "c. will have completed"] },
-                { text: "At 8 p.m., he ____ dinner with his family.", options: ["a. will have", "b. will be having", "c. will have had"] }
-              ]
-            }
-          ]
+                { text: "At 8 p.m., he ____ dinner with his family.", options: ["a. will have", "b. will be having", "c. will have had"] },
+              ],
+            },
+          ],
         },
 
         ch13: {
@@ -1074,8 +1218,8 @@
                 { text: "Why are you late today? __________________________" },
                 { text: "The dog barked loudly at the stranger. __________________________" },
                 { text: "They searched for the keys everywhere. __________________________" },
-                { text: "I have never seen such a beautiful place. _________________________" }
-              ]
+                { text: "I have never seen such a beautiful place. _________________________" },
+              ],
             },
             {
               instruction: "A. Fill in the blanks with the correct degree of the adverb given in brackets.",
@@ -1084,8 +1228,8 @@
                 { text: "Of all the students, Rahul answered the questions __________. (confidently)" },
                 { text: "The baby slept __________ last night than the night before. (peacefully)" },
                 { text: "Can you speak __________, please? I cannot hear you. (loudly)" },
-                { text: "He completed the task __________ than I expected. (quickly)" }
-              ]
+                { text: "He completed the task __________ than I expected. (quickly)" },
+              ],
             },
             {
               instruction: "B. Rewrite the sentences by placing the adverb in the correct position.",
@@ -1093,10 +1237,10 @@
                 { text: "She goes to the gym. (often)", lines: 2 },
                 { text: "He has finished his homework. (already)", lines: 2 },
                 { text: "They are watching a movie. (now)", lines: 2 },
-                { text: "I have seen such a beautiful sunset. (never)", lines: 2 }
-              ]
-            }
-          ]
+                { text: "I have seen such a beautiful sunset. (never)", lines: 2 },
+              ],
+            },
+          ],
         },
 
         ch14: {
@@ -1115,8 +1259,8 @@
                 { text: "She walked ___ the room quietly." },
                 { text: "The children are playing ___ the park." },
                 { text: "There is a painting ___ the wall." },
-                { text: "The meeting will start ___ 10 a.m." }
-              ]
+                { text: "The meeting will start ___ 10 a.m." },
+              ],
             },
             {
               instruction: "Underline the preposition and identify its kind.",
@@ -1130,10 +1274,10 @@
                 { text: "The children ran across the field. __________________________" },
                 { text: "There is a clock on the wall. __________________________" },
                 { text: "The letter was sent by post. __________________________" },
-                { text: "In spite of the rain, the match continued. _________________________" }
-              ]
-            }
-          ]
+                { text: "In spite of the rain, the match continued. _________________________" },
+              ],
+            },
+          ],
         },
 
         ch15: {
@@ -1151,8 +1295,8 @@
                 { text: "She is kind ______ helpful." },
                 { text: "I will not go to the picnic ______ it stops raining." },
                 { text: "He ran fast, ______ he missed the bus." },
-                { text: "______ the teacher entered, the students became silent." }
-              ]
+                { text: "______ the teacher entered, the students became silent." },
+              ],
             },
             {
               instruction: "Choose the correct pair of correlative conjunctions.",
@@ -1161,10 +1305,10 @@
                 { text: "___ you finish your homework ___ you will not be allowed to play.", options: ["a) Either....or", "b) Neither....nor", "c) Whether....or"] },
                 { text: "She is ___ tall ___ strong enough to lift the box.", options: ["a) so....that", "b) neither....nor", "c) either....or"] },
                 { text: "She is ___ responsible ___ honest.", options: ["a) not only....but also", "b) either....or", "c) neither....nor"] },
-                { text: "It was _______ cold ______ we stayed indoors.", options: ["a) both....and", "b) so....that", "c) either....or"] }
-              ]
-            }
-          ]
+                { text: "It was _______ cold ______ we stayed indoors.", options: ["a) both....and", "b) so....that", "c) either....or"] },
+              ],
+            },
+          ],
         },
 
         ch16: {
@@ -1182,8 +1326,8 @@
                 { text: "Maria went to the market to buy vegetables.   ______" },
                 { text: "After the party ended, all the guests went home.   ______" },
                 { text: "Relaxing on the beach, Mayank watched the sunset.   ______" },
-                { text: "While completing her homework, Sara glanced at the magazine.   ______" }
-              ]
+                { text: "While completing her homework, Sara glanced at the magazine.   ______" },
+              ],
             },
             {
               instruction: "Fill in the blanks with an appropriate phrase or clause.",
@@ -1198,10 +1342,10 @@
                 { text: "The team won the match, ________________________________________." },
                 { text: "Nancy went to the mall __________________________________________." },
                 { text: "The dog, ______________________________, waited patiently for its owner." },
-                { text: "The babies played happily _________________________________________." }
-              ]
-            }
-          ]
+                { text: "The babies played happily _________________________________________." },
+              ],
+            },
+          ],
         },
 
         ch17: {
@@ -1214,8 +1358,8 @@
                 { text: "The sun was setting. The sky looked beautiful. (compound sentence)", lines: 2 },
                 { text: "The bell rang. The students rushed out of the classroom. (complex sentence)", lines: 2 },
                 { text: "The shop was closed. We returned home. (compound sentence)", lines: 2 },
-                { text: "He studied hard. He wanted to score good marks. (complex sentence)", lines: 2 }
-              ]
+                { text: "He studied hard. He wanted to score good marks. (complex sentence)", lines: 2 },
+              ],
             },
             {
               instruction: "Join each pair of sentences to form one simple sentence.",
@@ -1224,10 +1368,10 @@
                 { text: "She opened the door. She saw a stranger.", lines: 2 },
                 { text: "He worked hard. He wanted to succeed.", lines: 2 },
                 { text: "The teacher entered the classroom. The students stood up.", lines: 2 },
-                { text: "She saved money. She wanted to buy a bicycle.", lines: 2 }
-              ]
-            }
-          ]
+                { text: "She saved money. She wanted to buy a bicycle.", lines: 2 },
+              ],
+            },
+          ],
         },
 
         ch18: {
@@ -1240,8 +1384,8 @@
                 { text: "Very few cities in India are as crowded as Mumbai. (Superlative)", lines: 2 },
                 { text: "This is the most interesting book I have ever read. (Positive)", lines: 2 },
                 { text: "No other player in the team is as skilled as Arjun. (Comparative)", lines: 2 },
-                { text: "Gold is more valuable than silver. (Positive)", lines: 2 }
-              ]
+                { text: "Gold is more valuable than silver. (Positive)", lines: 2 },
+              ],
             },
             {
               instruction: "Transform these sentences, as directed.",
@@ -1250,10 +1394,10 @@
                 { text: "If you work hard, you will succeed. (Compound)", lines: 2 },
                 { text: "He was ill, so he did not attend school. (Complex)", lines: 2 },
                 { text: "The box was so heavy that I could not lift it. (Simple)", lines: 2 },
-                { text: "She is too weak to lift the bag. (Complex)", lines: 2 }
-              ]
-            }
-          ]
+                { text: "She is too weak to lift the bag. (Complex)", lines: 2 },
+              ],
+            },
+          ],
         },
 
         ch19: {
@@ -1271,8 +1415,8 @@
                 { text: "If I won the lottery, I would travel around the world. ________________" },
                 { text: "If he had listened to me, he would not have made that mistake. ________" },
                 { text: "If you don't water the plants, they die. __________________________" },
-                { text: "If we hurry, we will arrive on time. ______________________________" }
-              ]
+                { text: "If we hurry, we will arrive on time. ______________________________" },
+              ],
             },
             {
               instruction: "Complete the conditional sentences. Use suitable verbs and correct tenses.",
@@ -1286,10 +1430,10 @@
                 { text: "If I had known about the meeting, ________________________________." },
                 { text: "If he practises daily, ________________________________." },
                 { text: "If we had reached on time, ________________________________." },
-                { text: "If you mix yellow and blue, ________________________________." }
-              ]
-            }
-          ]
+                { text: "If you mix yellow and blue, ________________________________." },
+              ],
+            },
+          ],
         },
 
         ch20: {
@@ -1301,24 +1445,24 @@
                 {
                   text: "My father prepared porridge.",
                   options: ["a. Porridge is prepared by my father.", "b. Porridge was being prepared by my father.", "c. Porridge was prepared by my father."],
-                  wideOptions: true
+                  wideOptions: true,
                 },
                 {
                   text: "The workers are building a new office.",
                   options: ["a. A new office was built by the workers.", "b. A new office was being built by the workers.", "c. A new office is being built by the workers."],
-                  wideOptions: true
+                  wideOptions: true,
                 },
                 {
                   text: "The team has won many matches this season.",
                   options: ["a. Many matches had been won by the team this season.", "b. Many matches have been won by the team this season.", "c. Many matches are being won by the team this season."],
-                  wideOptions: true
+                  wideOptions: true,
                 },
                 {
                   text: "They will finish the project by next month.",
                   options: ["a. The project will be finished by them by next month.", "b. The project will have been finished by them by next month.", "c. The project would be finished by them by next month."],
-                  wideOptions: true
-                }
-              ]
+                  wideOptions: true,
+                },
+              ],
             },
             {
               instruction: "Fill in the blanks with the correct passive voice form of the verb.",
@@ -1327,10 +1471,10 @@
                 { text: "Active: The company is launching a new product next month.\nPassive: A new product _________________ by the company next month." },
                 { text: "Active: The police caught the thief after a long chase.\nPassive: The thief ________________ by the police after a long chase." },
                 { text: "Active: She sings beautifully in the choir every Sunday.\nPassive: Beautiful songs ________ by her in the choir every Sunday." },
-                { text: "Active: The artist painted a beautiful landscape.\nPassive: A beautiful landscape _________________ by the artist." }
-              ]
-            }
-          ]
+                { text: "Active: The artist painted a beautiful landscape.\nPassive: A beautiful landscape _________________ by the artist." },
+              ],
+            },
+          ],
         },
 
         ch21: {
@@ -1342,29 +1486,29 @@
                 {
                   text: "Ankita said, 'I am going to the library.'",
                   options: ["a. Ankita said that she is going to the library.", "b. Ankita said that she was going to the library."],
-                  wideOptions: true
+                  wideOptions: true,
                 },
                 {
                   text: "Ayush said, 'I enjoy playing guitar.'",
                   options: ["a. Ayush said that he enjoys playing guitar.", "b. Ayush said that he enjoyed playing guitar."],
-                  wideOptions: true
+                  wideOptions: true,
                 },
                 {
                   text: "Vivek said, 'We will visit Paris soon!'",
                   options: ["a. Vivek exclaimed that they will visit Paris soon.", "b. Vivek exclaimed that they would visit Paris soon."],
-                  wideOptions: true
+                  wideOptions: true,
                 },
                 {
                   text: "Ira said, 'The play starts at 7 o'clock.'",
                   options: ["a. Ira explained that the play starts at 8 o'clock.", "b. Ira explained that the play started at 8 o'clock."],
-                  wideOptions: true
+                  wideOptions: true,
                 },
                 {
                   text: "Anya said, 'We are going to have pizza for dinner.'",
                   options: ["a. Anya announced that they were going to have pizza for dinner.", "b. Anya announced that they are going to have pizza for dinner."],
-                  wideOptions: true
-                }
-              ]
+                  wideOptions: true,
+                },
+              ],
             },
             {
               instruction: "Change the following direct speech into indirect speech.",
@@ -1373,10 +1517,10 @@
                 { text: "Mistha says, 'Time and tide wait for none.'", lines: 2 },
                 { text: "Tina said to me, 'I will not be going for my swimming class today.'", lines: 2 },
                 { text: "Abhilasha will say, 'They always cancel the trip at the last moment.'", lines: 2 },
-                { text: "Tom said, 'I love pizza.'", lines: 2 }
-              ]
-            }
-          ]
+                { text: "Tom said, 'I love pizza.'", lines: 2 },
+              ],
+            },
+          ],
         },
 
         ch22: {
@@ -1389,8 +1533,8 @@
                 { text: "on monday, we will celebrate diwali with our cousins.", lines: 2 },
                 { text: "dr. sharma teaches english at st. marys school.", lines: 2 },
                 { text: "the ganga river flows through varanasi.", lines: 2 },
-                { text: "have you read the story the thirsty crow?", lines: 2 }
-              ]
+                { text: "have you read the story the thirsty crow?", lines: 2 },
+              ],
             },
             {
               instruction: "Rewrite these sentences after inserting punctuation marks and capital letters where required.",
@@ -1399,12 +1543,11 @@
                 { text: "rahul said i will complete my homework before dinner", lines: 2 },
                 { text: "did you finish the project on environmental pollution", lines: 2 },
                 { text: "we visited mumbai delhi and jaipur during our vacation", lines: 2 },
-                { text: "alas the little bird fell from the tree", lines: 2 }
-              ]
-            }
-          ]
-        }
-
+                { text: "alas the little bird fell from the tree", lines: 2 },
+              ],
+            },
+          ],
+        },
       };
 
       // ─── HELPERS ───────────────────────────────────────────────────────────
@@ -1418,14 +1561,14 @@
       }
 
       function getSelectedChapterKeys() {
-        return [...document.querySelectorAll(".chapter-card:has(input:checked)")].map(c => c.dataset.chapter);
+        return [...document.querySelectorAll(".chapter-card:has(input:checked)")].map((c) => c.dataset.chapter);
       }
 
       function countAvailableQuestions(keys) {
         let total = 0;
-        keys.forEach(k => {
+        keys.forEach((k) => {
           if (questionBank[k]) {
-            questionBank[k].worksheets.forEach(ws => total += ws.questions.length);
+            questionBank[k].worksheets.forEach((ws) => (total += ws.questions.length));
           }
         });
         return total;
@@ -1434,13 +1577,10 @@
       function updateAvailableCount() {
         const count = countAvailableQuestions(getSelectedChapterKeys());
         document.getElementById("availableCount").textContent = count;
-        document.getElementById("actionAvail").textContent =
-          count > 0 ? count + " questions available" : "Select chapters to begin";
+        document.getElementById("actionAvail").textContent = count > 0 ? count + " questions available" : "Select chapters to begin";
       }
 
-      document.querySelectorAll(".chapter-card input").forEach(cb =>
-        cb.addEventListener("change", updateAvailableCount)
-      );
+      document.querySelectorAll(".chapter-card input").forEach((cb) => cb.addEventListener("change", updateAvailableCount));
 
       // ─── PREVIEW TEST ───────────────────────────────────────────────────────
       function previewTest() {
@@ -1462,11 +1602,11 @@
 
         // Flatten all questions from selected chapters into a pool
         const pool = [];
-        selectedKeys.forEach(chKey => {
+        selectedKeys.forEach((chKey) => {
           const ch = questionBank[chKey];
           if (!ch) return;
           ch.worksheets.forEach((ws, wsIdx) => {
-            ws.questions.forEach(q => {
+            ws.questions.forEach((q) => {
               pool.push({
                 chapterKey: chKey,
                 chapterName: ch.name,
@@ -1475,7 +1615,7 @@
                 text: q.text,
                 options: q.options || null,
                 wideOptions: q.wideOptions || false,
-                lines: q.lines || 0
+                lines: q.lines || 0,
               });
             });
           });
@@ -1487,19 +1627,16 @@
         const selected = shuffled.slice(0, Math.min(totalMarks, available));
 
         if (available < totalMarks) {
-          alert(
-            "Only " + available + " questions are available from selected chapters.\n" +
-            "Showing all " + available + " questions. Select more chapters or reduce total marks."
-          );
+          alert("Only " + available + " questions are available from selected chapters.\n" + "Showing all " + available + " questions. Select more chapters or reduce total marks.");
         }
 
         // Re-group by chapter (maintaining chapter order), then by worksheet
         const grouped = new Map();
-        selectedKeys.forEach(k => {
+        selectedKeys.forEach((k) => {
           grouped.set(k, { name: questionBank[k].name, worksheets: new Map() });
         });
 
-        selected.forEach(q => {
+        selected.forEach((q) => {
           const chGroup = grouped.get(q.chapterKey);
           if (!chGroup) return;
           if (!chGroup.worksheets.has(q.worksheetIdx)) {
@@ -1525,33 +1662,32 @@
           sortedWs.forEach(([, wsData]) => {
             const wsDiv = document.createElement("div");
             wsDiv.className = "worksheet-group";
-            wsDiv.innerHTML = "<p class=\"ws-instruction\">" + wsData.instruction.replace(/\n/g, "<br>") + "</p>";
+            wsDiv.innerHTML = '<p class="ws-instruction">' + wsData.instruction.replace(/\n/g, "<br>") + "</p>";
 
-            wsData.questions.forEach(q => {
+            wsData.questions.forEach((q) => {
               const qDiv = document.createElement("div");
               qDiv.className = "question-item";
 
-              let html = "<p class=\"question-text\"><strong>" + qNum + ".</strong> " +
-                q.text.replace(/\n/g, "<br>") + "</p>";
+              let html = '<p class="question-text"><strong>' + qNum + ".</strong> " + q.text.replace(/\n/g, "<br>") + "</p>";
 
               if (q.options && q.options.length > 0) {
                 if (q.wideOptions) {
-                  html += "<div class=\"options-list\">";
-                  q.options.forEach(opt => {
-                    html += "<span class=\"option-item\">" + opt + "</span>";
+                  html += '<div class="options-list">';
+                  q.options.forEach((opt) => {
+                    html += '<span class="option-item">' + opt + "</span>";
                   });
                   html += "</div>";
                 } else {
-                  html += "<div class=\"options-grid\">";
-                  q.options.forEach(opt => {
-                    html += "<span class=\"option-item\">" + opt + "</span>";
+                  html += '<div class="options-grid">';
+                  q.options.forEach((opt) => {
+                    html += '<span class="option-item">' + opt + "</span>";
                   });
                   html += "</div>";
                 }
               }
 
               for (let i = 0; i < q.lines; i++) {
-                html += "<div class=\"answer-line\"></div>";
+                html += '<div class="answer-line"></div>';
               }
 
               qDiv.innerHTML = html;
@@ -1575,106 +1711,246 @@
       }
 
       // Auto / Custom Mode
-      if (typeof lastGeneratedQuestions === 'undefined') var lastGeneratedQuestions = [];
-      var currentMode = 'auto';
+      if (typeof lastGeneratedQuestions === "undefined") var lastGeneratedQuestions = [];
+      var currentMode = "auto";
 
       function setMode(mode) {
         currentMode = mode;
-        document.getElementById('modeAutoBtn').classList.toggle('active', mode === 'auto');
-        document.getElementById('modeCustomBtn').classList.toggle('active', mode === 'custom');
-        document.getElementById('autoPanel').style.display = mode === 'auto' ? '' : 'none';
-        var cp = document.getElementById('customPanel');
-        if (mode === 'custom') {
-          if (!cp.getAttribute('data-built')) buildCustomPanel();
-          cp.style.display = '';
+        document.getElementById("modeAutoBtn").classList.toggle("active", mode === "auto");
+        document.getElementById("modeCustomBtn").classList.toggle("active", mode === "custom");
+        document.getElementById("autoPanel").style.display = mode === "auto" ? "" : "none";
+        var cp = document.getElementById("customPanel");
+        if (mode === "custom") {
+          if (!cp.getAttribute("data-built")) buildCustomPanel();
+          cp.style.display = "block";
         } else {
-          cp.style.display = 'none';
+          cp.style.display = "none";
         }
       }
 
       function buildCustomPanel() {
-        var cp = document.getElementById('customPanel');
-        cp.innerHTML = '';
-        Object.keys(questionBank).forEach(function(chKey) {
+        var cp = document.getElementById("customPanel");
+        cp.innerHTML = "";
+
+        // Create two-column layout
+        var layout = document.createElement("div");
+        layout.className = "custom-layout";
+
+        // Left column: question selection
+        var selectionDiv = document.createElement("div");
+        selectionDiv.className = "custom-selection";
+        selectionDiv.id = "customSelection";
+
+        Object.keys(questionBank).forEach(function (chKey) {
           var ch = questionBank[chKey];
-          var chDiv = document.createElement('div');
-          chDiv.className = 'custom-chapter';
-          var hdr = document.createElement('div');
-          hdr.className = 'custom-chapter-header';
-          hdr.innerHTML = '<span>' + ch.name + '</span>'
-            + '<button class="custom-select-all" onclick="toggleChAll(\'' + chKey + '\',this)">Select All</button>';
+          var chDiv = document.createElement("div");
+          chDiv.className = "custom-chapter";
+          var hdr = document.createElement("div");
+          hdr.className = "custom-chapter-header";
+          hdr.innerHTML = "<span>" + ch.name + "</span>" + '<button class="custom-select-all" onclick="toggleChAll(\'' + chKey + "',this)\">Select All</button>";
           chDiv.appendChild(hdr);
-          ch.worksheets.forEach(function(ws, wsIdx) {
-            var wsDiv = document.createElement('div');
-            wsDiv.className = 'custom-ws';
-            var instrSafe = ws.instruction.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
-            wsDiv.innerHTML = '<div class="custom-ws-instr">' + instrSafe + '</div>';
-            var ul = document.createElement('ul');
-            ul.className = 'custom-q-list';
-            ws.questions.forEach(function(q, qIdx) {
-              var li = document.createElement('li');
-              li.className = 'custom-q-item';
-              var id = 'cq_' + chKey + '_' + wsIdx + '_' + qIdx;
-              var preview = q.text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-              if (preview.length > 100) preview = preview.substring(0, 100) + '...';
-              li.innerHTML = '<label for="' + id + '" style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;width:100%;">'
-                + '<input type="checkbox" id="' + id + '" class="custom-q-cb"'
-                + ' data-ch-key="' + chKey + '" data-ws-idx="' + wsIdx + '" data-q-idx="' + qIdx + '"'
-                + ' style="margin-top:3px;cursor:pointer;accent-color:#667eea;flex-shrink:0;">'
-                + '<span class="custom-q-text">' + preview + '</span></label>';
+          ch.worksheets.forEach(function (ws, wsIdx) {
+            var wsDiv = document.createElement("div");
+            wsDiv.className = "custom-ws";
+            var instrSafe = ws.instruction.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
+            wsDiv.innerHTML = '<div class="custom-ws-instr">' + instrSafe + "</div>";
+            var ul = document.createElement("ul");
+            ul.className = "custom-q-list";
+            ws.questions.forEach(function (q, qIdx) {
+              var li = document.createElement("li");
+              li.className = "custom-q-item";
+              var id = "cq_" + chKey + "_" + wsIdx + "_" + qIdx;
+              var preview = q.text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+              if (preview.length > 100) preview = preview.substring(0, 100) + "...";
+              li.innerHTML =
+                '<label for="' +
+                id +
+                '" style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;width:100%;">' +
+                '<input type="checkbox" id="' +
+                id +
+                '" class="custom-q-cb"' +
+                ' data-ch-key="' +
+                chKey +
+                '" data-ws-idx="' +
+                wsIdx +
+                '" data-q-idx="' +
+                qIdx +
+                '"' +
+                ' style="margin-top:3px;cursor:pointer;accent-color:#667eea;flex-shrink:0;" onchange="updateCustomPreview()">' +
+                '<span class="custom-q-text">' +
+                preview +
+                "</span></label>";
               ul.appendChild(li);
             });
             wsDiv.appendChild(ul);
             chDiv.appendChild(wsDiv);
           });
-          cp.appendChild(chDiv);
+          selectionDiv.appendChild(chDiv);
         });
-        cp.setAttribute('data-built', '1');
+
+        // Right column: live preview
+        var previewDiv = document.createElement("div");
+        previewDiv.className = "custom-preview-container";
+        previewDiv.innerHTML =
+          '<div class="custom-preview-header">' +
+          '<div class="custom-preview-title">Live Preview</div>' +
+          '<div class="custom-preview-count" id="customPreviewCount">0 questions selected</div>' +
+          '</div>' +
+          '<div class="custom-preview-content" id="customPreviewContent">' +
+          '<div class="custom-preview-empty">Select questions to see preview</div>' +
+          '</div>';
+
+        layout.appendChild(selectionDiv);
+        layout.appendChild(previewDiv);
+        cp.appendChild(layout);
+        cp.setAttribute("data-built", "1");
       }
 
       function toggleChAll(chKey, btn) {
         var cbs = document.querySelectorAll('.custom-q-cb[data-ch-key="' + chKey + '"]');
-        var anyUnchecked = Array.prototype.some.call(cbs, function(cb) { return !cb.checked; });
-        Array.prototype.forEach.call(cbs, function(cb) { cb.checked = anyUnchecked; });
-        btn.textContent = anyUnchecked ? 'Deselect All' : 'Select All';
+        var anyUnchecked = Array.prototype.some.call(cbs, function (cb) {
+          return !cb.checked;
+        });
+        Array.prototype.forEach.call(cbs, function (cb) {
+          cb.checked = anyUnchecked;
+        });
+        btn.textContent = anyUnchecked ? "Deselect All" : "Select All";
+        updateCustomPreview();
       }
 
-      function previewCustomTest() {
-        var testName = document.getElementById('testName').value || 'Grammar Test';
-        var studentName = document.getElementById('studentName').value;
-        var testDate = document.getElementById('testDate').value;
-        var testDuration = document.getElementById('testDuration').value;
-        var totalMarks = parseInt(document.getElementById('totalMarks').value) || 20;
+      function updateCustomPreview() {
+        var checkedBoxes = document.querySelectorAll(".custom-q-cb:checked");
+        var count = checkedBoxes.length;
+        var countEl = document.getElementById("customPreviewCount");
+        var contentEl = document.getElementById("customPreviewContent");
 
-        document.getElementById('previewTestName').textContent = testName;
-        var snEl = document.getElementById('previewStudentName'); if (snEl) snEl.textContent = studentName || '____________________________';
-        document.getElementById('previewDate').textContent = testDate || '_____________';
-        document.getElementById('previewMarks').textContent = totalMarks;
-        document.getElementById('previewDuration').textContent = testDuration || '____';
+        countEl.textContent = count + " question" + (count !== 1 ? "s" : "") + " selected";
 
-        var selected = [];
-        document.querySelectorAll('.custom-q-cb:checked').forEach(function(cb) {
-          var chKey = cb.getAttribute('data-ch-key');
-          var wsIdx = parseInt(cb.getAttribute('data-ws-idx'));
-          var qIdx = parseInt(cb.getAttribute('data-q-idx'));
+        if (count === 0) {
+          contentEl.innerHTML = '<div class="custom-preview-empty">Select questions to see preview</div>';
+          return;
+        }
+
+        // Build preview content
+        var selectedQuestions = [];
+        var qNum = 1;
+
+        Array.prototype.forEach.call(checkedBoxes, function (cb) {
+          var chKey = cb.getAttribute("data-ch-key");
+          var wsIdx = parseInt(cb.getAttribute("data-ws-idx"));
+          var qIdx = parseInt(cb.getAttribute("data-q-idx"));
+
           var ch = questionBank[chKey];
           var ws = ch.worksheets[wsIdx];
           var q = ws.questions[qIdx];
-          selected.push({ chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx,
-            instruction: ws.instruction, text: q.text, answer: q.answer || null,
-            options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0 });
+
+          selectedQuestions.push({
+            qNum: qNum++,
+            chapterKey: chKey,
+            chapterName: ch.name,
+            worksheetIdx: wsIdx,
+            instruction: ws.instruction,
+            text: q.text,
+            options: q.options || null,
+            wideOptions: q.wideOptions || false,
+            lines: q.lines || 0,
+            answer: q.answer || null,
+          });
+        });
+
+        // Group by chapter and worksheet
+        var grouped = {};
+        var chapterOrder = [];
+        selectedQuestions.forEach(function (q) {
+          if (!grouped[q.chapterKey]) {
+            grouped[q.chapterKey] = { name: q.chapterName, wsOrder: [], worksheets: {} };
+            chapterOrder.push(q.chapterKey);
+          }
+          var wsKey = String(q.worksheetIdx) + "||" + q.instruction;
+          if (!grouped[q.chapterKey].worksheets[wsKey]) {
+            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, questions: [] };
+            grouped[q.chapterKey].wsOrder.push(wsKey);
+          }
+          grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
+        });
+
+        // Build HTML
+        var html = "";
+        chapterOrder.forEach(function (chKey) {
+          var ch = grouped[chKey];
+          html += '<div style="margin-bottom:16px;"><div style="font-weight:bold;color:#667eea;margin-bottom:8px;font-size:1rem;">' + _esc(ch.name) + "</div>";
+          ch.wsOrder.forEach(function (wsKey) {
+            var ws = ch.worksheets[wsKey];
+            html += '<div style="font-style:italic;color:#636e72;font-size:0.82rem;margin-bottom:6px;">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
+            ws.questions
+              .slice()
+              .sort(function (a, b) {
+                return a.qNum - b.qNum;
+              })
+              .forEach(function (q) {
+                html += '<div style="margin-bottom:10px;font-size:0.85rem;"><strong>' + q.qNum + ".</strong> " + _esc(q.text).replace(/\n/g, "<br>");
+                if (q.options && q.options.length > 0) {
+                  if (q.wideOptions) {
+                    html += '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;">';
+                    q.options.forEach(function (opt) {
+                      html += '<span style="padding:2px 6px;background:#f0f0f0;border-radius:4px;font-size:0.8rem;">' + _esc(opt) + "</span>";
+                    });
+                    html += "</div>";
+                  } else {
+                    html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px;">';
+                    q.options.forEach(function (opt) {
+                      html += '<span style="padding:2px 6px;background:#f0f0f0;border-radius:4px;font-size:0.8rem;">' + _esc(opt) + "</span>";
+                    });
+                    html += "</div>";
+                  }
+                }
+                for (var i = 0; i < q.lines; i++) {
+                  html += '<div style="border-bottom:1px solid #ccc;height:16px;margin-top:4px;"></div>';
+                }
+                html += "</div>";
+              });
+          });
+          html += "</div>";
+        });
+
+        contentEl.innerHTML = html;
+      }
+
+      function previewCustomTest() {
+        var testName = document.getElementById("testName").value || "Grammar Test";
+        var studentName = document.getElementById("studentName").value;
+        var testDate = document.getElementById("testDate").value;
+        var testDuration = document.getElementById("testDuration").value;
+        var totalMarks = parseInt(document.getElementById("totalMarks").value) || 20;
+
+        document.getElementById("previewTestName").textContent = testName;
+        var snEl = document.getElementById("previewStudentName");
+        if (snEl) snEl.textContent = studentName || "____________________________";
+        document.getElementById("previewDate").textContent = testDate || "_____________";
+        document.getElementById("previewMarks").textContent = totalMarks;
+        document.getElementById("previewDuration").textContent = testDuration || "____";
+
+        var selected = [];
+        document.querySelectorAll(".custom-q-cb:checked").forEach(function (cb) {
+          var chKey = cb.getAttribute("data-ch-key");
+          var wsIdx = parseInt(cb.getAttribute("data-ws-idx"));
+          var qIdx = parseInt(cb.getAttribute("data-q-idx"));
+          var ch = questionBank[chKey];
+          var ws = ch.worksheets[wsIdx];
+          var q = ws.questions[qIdx];
+          selected.push({ chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx, instruction: ws.instruction, text: q.text, answer: q.answer || null, options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0 });
         });
 
         if (selected.length === 0) {
-          alert('Please tick at least one question in Custom mode!');
+          alert("Please tick at least one question in Custom mode!");
           return;
         }
 
         var grouped = new Map();
-        Object.keys(questionBank).forEach(function(k) {
+        Object.keys(questionBank).forEach(function (k) {
           grouped.set(k, { name: questionBank[k].name, worksheets: new Map() });
         });
-        selected.forEach(function(q) {
+        selected.forEach(function (q) {
           var chGroup = grouped.get(q.chapterKey);
           if (!chGroup) return;
           if (!chGroup.worksheets.has(q.worksheetIdx)) {
@@ -1683,37 +1959,42 @@
           chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
         });
 
-        var container = document.getElementById('questionsContainer');
-        container.innerHTML = '';
+        var container = document.getElementById("questionsContainer");
+        container.innerHTML = "";
         var qNum = 1;
         lastGeneratedQuestions = [];
 
-        grouped.forEach(function(chData, chKey) {
+        grouped.forEach(function (chData, chKey) {
           if (chData.worksheets.size === 0) return;
-          var chSection = document.createElement('div');
-          chSection.className = 'question-section';
-          chSection.innerHTML = '<h3>' + chData.name + '</h3>';
-          var sortedWs = Array.from(chData.worksheets.entries()).sort(function(a,b){ return a[0]-b[0]; });
-          sortedWs.forEach(function(entry) {
+          var chSection = document.createElement("div");
+          chSection.className = "question-section";
+          chSection.innerHTML = "<h3>" + chData.name + "</h3>";
+          var sortedWs = Array.from(chData.worksheets.entries()).sort(function (a, b) {
+            return a[0] - b[0];
+          });
+          sortedWs.forEach(function (entry) {
             var wsData = entry[1];
-            var wsDiv = document.createElement('div');
-            wsDiv.className = 'worksheet-group';
-            wsDiv.innerHTML = '<p class="ws-instruction">' + wsData.instruction.replace(/\n/g,'<br>') + '</p>';
-            wsData.questions.forEach(function(q) {
-              var qDiv = document.createElement('div');
-              qDiv.className = 'question-item';
-              var html = '<p class="question-text"><strong>' + qNum + '.</strong> ' + q.text.replace(/\n/g,'<br>') + '</p>';
+            var wsDiv = document.createElement("div");
+            wsDiv.className = "worksheet-group";
+            wsDiv.innerHTML = '<p class="ws-instruction">' + wsData.instruction.replace(/\n/g, "<br>") + "</p>";
+            wsData.questions.forEach(function (q) {
+              var qDiv = document.createElement("div");
+              qDiv.className = "question-item";
+              var html = '<p class="question-text"><strong>' + qNum + ".</strong> " + q.text.replace(/\n/g, "<br>") + "</p>";
               if (q.options && q.options.length > 0) {
-                var cls = q.wideOptions ? 'options-list' : 'options-grid';
+                var cls = q.wideOptions ? "options-list" : "options-grid";
                 html += '<div class="' + cls + '">';
-                q.options.forEach(function(opt){ html += '<span class="option-item">' + opt + '</span>'; });
-                html += '</div>';
+                q.options.forEach(function (opt) {
+                  html += '<span class="option-item">' + opt + "</span>";
+                });
+                html += "</div>";
               }
-              for (var i = 0; i < q.lines; i++) { html += '<div class="answer-line"></div>'; }
+              for (var i = 0; i < q.lines; i++) {
+                html += '<div class="answer-line"></div>';
+              }
               qDiv.innerHTML = html;
               wsDiv.appendChild(qDiv);
-              lastGeneratedQuestions.push({ qNum: qNum, chapterKey: chKey, chapterName: chData.name,
-                worksheetIdx: entry[0], instruction: wsData.instruction, answer: q.answer || null, text: q.text });
+              lastGeneratedQuestions.push({ qNum: qNum, chapterKey: chKey, chapterName: chData.name, worksheetIdx: entry[0], instruction: wsData.instruction, answer: q.answer || null, text: q.text });
               qNum++;
             });
             chSection.appendChild(wsDiv);
@@ -1721,28 +2002,27 @@
           container.appendChild(chSection);
         });
 
-        document.getElementById('testPreview').classList.add('show');
-        document.getElementById('testPreview').scrollIntoView({ behavior: 'smooth' });
+        document.getElementById("testPreview").classList.add("show");
+        document.getElementById("testPreview").scrollIntoView({ behavior: "smooth" });
       }
 
       // Wrapper called by Preview Test button
       function generateTest() {
-        if (currentMode === 'custom') {
+        if (currentMode === "custom") {
           previewCustomTest();
         } else {
           lastGeneratedQuestions = [];
           previewTest();
           // For classes that don't internally populate lastGeneratedQuestions
-          if (lastGeneratedQuestions.length === 0 && typeof getSelectedChapterKeys === 'function') {
+          if (lastGeneratedQuestions.length === 0 && typeof getSelectedChapterKeys === "function") {
             var keys = getSelectedChapterKeys();
             var qNum = 1;
-            keys.forEach(function(k) {
+            keys.forEach(function (k) {
               var ch = questionBank[k];
               if (!ch) return;
-              ch.worksheets.forEach(function(ws, wsIdx) {
-                ws.questions.forEach(function(q) {
-                  lastGeneratedQuestions.push({ qNum: qNum++, chapterKey: k, chapterName: ch.name,
-                    worksheetIdx: wsIdx, instruction: ws.instruction, answer: q.answer || null, text: q.text });
+              ch.worksheets.forEach(function (ws, wsIdx) {
+                ws.questions.forEach(function (q) {
+                  lastGeneratedQuestions.push({ qNum: qNum++, chapterKey: k, chapterName: ch.name, worksheetIdx: wsIdx, instruction: ws.instruction, answer: q.answer || null, text: q.text });
                 });
               });
             });
@@ -1752,8 +2032,8 @@
 
       // Word Export
       function _esc(s) {
-        if (!s) return '';
-        return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        if (!s) return "";
+        return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
       }
 
       function downloadWord(includeAnswers) {
@@ -1761,44 +2041,54 @@
           generateTest();
           if (lastGeneratedQuestions.length === 0) return;
         }
-        var testName = document.getElementById('testName').value || 'Grammar Test';
-        var studentName = document.getElementById('studentName').value || '';
-        var testDate = document.getElementById('testDate').value || '';
-        var totalMarks = document.getElementById('totalMarks').value || '';
-        var testDuration = document.getElementById('testDuration').value || '';
+        var testName = document.getElementById("testName").value || "Grammar Test";
+        var studentName = document.getElementById("studentName").value || "";
+        var testDate = document.getElementById("testDate").value || "";
+        var totalMarks = document.getElementById("totalMarks").value || "";
+        var testDuration = document.getElementById("testDuration").value || "";
 
-        var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><style>'
-          + 'body{font-family:Arial,sans-serif;margin:2cm;color:#000;font-size:11pt}'
-          + '.title{text-align:center;font-size:15pt;font-weight:bold;margin-bottom:4px}'
-          + '.ak-lbl{text-align:center;color:green;font-weight:bold;font-size:12pt;margin-bottom:8px}'
-          + 'table{width:100%;border-collapse:collapse;margin-bottom:8px}'
-          + 'td{padding:3px 6px;font-size:10pt}'
-          + 'hr{border:none;border-top:2px solid #333;margin:8px 0}'
-          + '.ch{font-weight:bold;font-size:12pt;margin:16px 0 4px;border-bottom:1px solid #999;padding-bottom:3px}'
-          + '.instr{font-style:italic;color:#444;margin-bottom:8px;font-size:10pt}'
-          + '.q{margin-bottom:10px;font-size:10.5pt}'
-          + '.ans{color:green;font-size:10pt;margin-top:2px}'
-          + '.ans-line{border-bottom:1px solid #aaa;height:18px;margin-top:4px}'
-          + '<\/style><\/head><body>';
+        var html =
+          '<!DOCTYPE html><html><head><meta charset="UTF-8"><style>' +
+          "body{font-family:Arial,sans-serif;margin:2cm;color:#000;font-size:11pt}" +
+          ".title{text-align:center;font-size:15pt;font-weight:bold;margin-bottom:4px}" +
+          ".ak-lbl{text-align:center;color:green;font-weight:bold;font-size:12pt;margin-bottom:8px}" +
+          "table{width:100%;border-collapse:collapse;margin-bottom:8px}" +
+          "td{padding:3px 6px;font-size:10pt}" +
+          "hr{border:none;border-top:2px solid #333;margin:8px 0}" +
+          ".ch{font-weight:bold;font-size:12pt;margin:16px 0 4px;border-bottom:1px solid #999;padding-bottom:3px}" +
+          ".instr{font-style:italic;color:#444;margin-bottom:8px;font-size:10pt}" +
+          ".q{margin-bottom:10px;font-size:10.5pt}" +
+          ".ans{color:green;font-size:10pt;margin-top:2px}" +
+          ".ans-line{border-bottom:1px solid #aaa;height:18px;margin-top:4px}" +
+          "<\/style><\/head><body>";
 
-        html += '<p class="title">Grammar Frolics - ' + _esc(testName) + '</p>';
+        html += '<p class="title">Grammar Frolics - ' + _esc(testName) + "</p>";
         if (includeAnswers) html += '<p class="ak-lbl">ANSWER KEY - TEACHER USE ONLY</p>';
-        html += '<hr><table><tr>'
-          + '<td width="55%">Name: <u>' + (_esc(studentName) || '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;') + '</u></td>'
-          + '<td>Date: <u>' + (_esc(testDate) || '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;') + '</u></td>'
-          + '</tr><tr>'
-          + '<td>Total Marks: ' + _esc(totalMarks) + '</td>'
-          + '<td>Time: ' + _esc(testDuration) + ' mins</td>'
-          + '</tr></table><hr>';
+        html +=
+          "<hr><table><tr>" +
+          '<td width="55%">Name: <u>' +
+          (_esc(studentName) || "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") +
+          "</u></td>" +
+          "<td>Date: <u>" +
+          (_esc(testDate) || "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") +
+          "</u></td>" +
+          "</tr><tr>" +
+          "<td>Total Marks: " +
+          _esc(totalMarks) +
+          "</td>" +
+          "<td>Time: " +
+          _esc(testDuration) +
+          " mins</td>" +
+          "</tr></table><hr>";
 
         var grouped = {};
         var chapterOrder = [];
-        lastGeneratedQuestions.forEach(function(q) {
+        lastGeneratedQuestions.forEach(function (q) {
           if (!grouped[q.chapterKey]) {
             grouped[q.chapterKey] = { name: q.chapterName, wsOrder: [], worksheets: {} };
             chapterOrder.push(q.chapterKey);
           }
-          var wsKey = String(q.worksheetIdx) + '||' + q.instruction;
+          var wsKey = String(q.worksheetIdx) + "||" + q.instruction;
           if (!grouped[q.chapterKey].worksheets[wsKey]) {
             grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, questions: [] };
             grouped[q.chapterKey].wsOrder.push(wsKey);
@@ -1806,38 +2096,51 @@
           grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
         });
 
-        chapterOrder.forEach(function(chKey) {
+        chapterOrder.forEach(function (chKey) {
           var ch = grouped[chKey];
-          html += '<div class="ch">' + _esc(ch.name) + '</div>';
-          ch.wsOrder.forEach(function(wsKey) {
+          html += '<div class="ch">' + _esc(ch.name) + "</div>";
+          ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
-            html += '<div class="instr">' + _esc(ws.instruction).replace(/\n/g,'<br>') + '</div>';
-            ws.questions.slice().sort(function(a,b){return a.qNum-b.qNum;}).forEach(function(q) {
-              html += '<div class="q"><strong>' + q.qNum + '.</strong> ' + _esc(q.text).replace(/\n/g,'<br>');
-              if (includeAnswers) {
-                if (q.answer && q.answer !== 'vary') {
-                  html += '<div class="ans">- ' + _esc(q.answer) + '</div>';
-                } else {
-                  html += '<div class="ans" style="color:#999;">- Answers may vary</div>';
-                }
-              } else {
+            html += '<div class="instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
+            var sortedQuestions = ws.questions.slice().sort(function (a, b) {
+              return a.qNum - b.qNum;
+            });
+
+            // First display all questions
+            sortedQuestions.forEach(function (q) {
+              html += '<div class="q"><strong>' + q.qNum + ".</strong> " + _esc(q.text).replace(/\n/g, "<br>");
+              if (!includeAnswers) {
                 html += '<div class="ans-line"></div>';
               }
-              html += '</div>';
+              html += "</div>";
             });
+
+            // Then display answers section if needed
+            if (includeAnswers) {
+              html += '<div style="margin-top:16px;font-weight:bold;color:#333;font-size:11pt;">Answers:</div>';
+              sortedQuestions.forEach(function (q) {
+                if (q.answer && q.answer !== "vary") {
+                  html += '<div class="ans"><strong>' + q.qNum + ".</strong> " + _esc(q.answer) + "</div>";
+                } else {
+                  html += '<div class="ans" style="color:#999;"><strong>' + q.qNum + ".</strong> Answers may vary</div>";
+                }
+              });
+            }
           });
         });
-        html += '<\/body><\/html>';
+        html += "<\/body><\/html>";
 
-        var blob = new Blob(['\ufeff', html], {type: 'application/msword'});
+        var blob = new Blob(["\ufeff", html], { type: "application/msword" });
         var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
+        var a = document.createElement("a");
         a.href = url;
-        a.download = testName + (includeAnswers ? ' - Teacher.doc' : ' - Student.doc');
+        a.download = testName + (includeAnswers ? " - Teacher.doc" : " - Student.doc");
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        setTimeout(function(){ URL.revokeObjectURL(url); }, 100);
+        setTimeout(function () {
+          URL.revokeObjectURL(url);
+        }, 100);
       }
     </script>
   </body>
