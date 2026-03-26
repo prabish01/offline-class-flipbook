@@ -709,6 +709,101 @@
         transform: translateY(-3px);
         box-shadow: 0 6px 20px rgba(9, 132, 227, 0.4);
       }
+      /* Split Word Preview Layout */
+      .word-preview-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-top: 30px;
+      }
+      .word-preview-panel {
+        background: white;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+      }
+      .word-preview-header {
+        text-align: center;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid #667eea;
+      }
+      .word-preview-header h3 {
+        color: #667eea;
+        font-size: 1.3rem;
+        margin: 0;
+      }
+      .word-preview-content {
+        flex: 1;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        max-height: 500px;
+        overflow-y: auto;
+        background: #fafafa;
+        font-family: Arial, sans-serif;
+        font-size: 11pt;
+        margin-bottom: 16px;
+      }
+      .word-preview-content .doc-title {
+        text-align: center;
+        font-size: 15pt;
+        font-weight: bold;
+        margin-bottom: 4px;
+      }
+      .word-preview-content .doc-ak-label {
+        text-align: center;
+        color: green;
+        font-weight: bold;
+        font-size: 12pt;
+        margin-bottom: 8px;
+      }
+      .word-preview-content .doc-meta {
+        border-top: 2px solid #333;
+        border-bottom: 2px solid #333;
+        padding: 8px 0;
+        margin-bottom: 12px;
+        font-size: 10pt;
+      }
+      .word-preview-content .doc-instr {
+        font-weight: bold;
+        color: #000;
+        margin-top: 20px;
+        margin-bottom: 12px;
+        font-size: 12pt;
+      }
+      .word-preview-content .doc-question {
+        margin-bottom: 10px;
+        font-size: 10.5pt;
+      }
+      .word-preview-content .doc-answer {
+        color: green;
+        font-size: 10pt;
+        margin-top: 2px;
+      }
+      .word-preview-content .doc-answers-header {
+        margin-top: 16px;
+        font-weight: bold;
+        color: #333;
+        font-size: 11pt;
+      }
+      .word-preview-empty {
+        text-align: center;
+        color: #999;
+        font-style: italic;
+        padding: 60px 20px;
+      }
+      .word-preview-panel .btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+      }
+      @media (max-width: 900px) {
+        .word-preview-layout {
+          grid-template-columns: 1fr;
+        }
+      }
     </style>
   </head>
   <body>
@@ -872,45 +967,32 @@
       </div>
       <!-- /chapters-section -->
 
-      <!-- Action Buttons -->
-      <div class="action-buttons">
-        <button class="btn btn-preview" onclick="generateTest()">&#128065;&#65039; Preview Test</button>
+      <!-- Split Word Preview Layout -->
+      <div class="word-preview-layout">
+        <div class="word-preview-panel">
+          <div class="word-preview-header">
+            <h3>&#128196; Student Version</h3>
+          </div>
+          <div class="word-preview-content" id="studentPreview">
+            <div class="word-preview-empty">Select chapters and click Generate to preview</div>
+          </div>
+          <button class="btn btn-word-student" onclick="downloadWord(false)">&#128196; Download Word (Student)</button>
+        </div>
+        <div class="word-preview-panel">
+          <div class="word-preview-header">
+            <h3>&#128196; Teacher Version</h3>
+          </div>
+          <div class="word-preview-content" id="teacherPreview">
+            <div class="word-preview-empty">Select chapters and click Generate to preview</div>
+          </div>
+          <button class="btn btn-word-teacher" onclick="downloadWord(true)">&#128196; Download Word (Teacher)</button>
+        </div>
+      </div>
+
+      <!-- Generate Button -->
+      <div class="action-buttons" style="margin-top: 20px;">
+        <button class="btn btn-preview" onclick="generateTest()">&#128065;&#65039; Generate Test</button>
         <span class="available-count" id="actionAvail">Select chapters to begin</span>
-        <button class="btn btn-print" onclick="printTest()">&#128424;&#65039; Print Test</button>
-        <button class="btn btn-answer-preview" onclick="previewAnswers()">&#128273; Answer Preview</button>
-        <button class="btn btn-answer-print" onclick="printAnswers()">&#128424;&#65039; Print Answer Key</button>
-        <button class="btn btn-word-teacher" onclick="downloadWord(true)">&#128196; Word (Teacher)</button>
-        <button class="btn btn-word-student" onclick="downloadWord(false)">&#128196; Word (Student)</button>
-      </div>
-
-      <!-- Test Preview -->
-      <div class="test-preview" id="testPreview">
-        <div class="test-header">
-          <h2>Grammar Frolics-3</h2>
-          <div class="test-meta" id="previewTestName">Grammar Test</div>
-          <div class="test-student-line">
-            <span>Name: <span id="previewStudentName">____________________________</span></span>
-            <span>Class: III &nbsp;&nbsp; Sec: _____</span>
-            <span>Roll No: _____</span>
-            <span>Date: <span id="previewDate">_____________</span></span>
-          </div>
-          <div class="test-student-line">
-            <span>Total Marks: <span id="previewMarks">____</span></span>
-            <span>Time: <span id="previewDuration">____</span> mins</span>
-          </div>
-        </div>
-        <hr class="test-divider" />
-        <div id="questionsContainer"></div>
-      </div>
-
-      <!-- Answer Key Preview -->
-      <div class="answer-key-preview" id="answerKeyPreview">
-        <div class="answer-key-header">
-          <div class="ak-tag">ANSWER KEY — FOR TEACHER USE ONLY</div>
-          <h2 id="akTestName">Answer Key</h2>
-          <div style="font-size: 0.9rem; color: #555; margin-top: 6px" id="akMeta"></div>
-        </div>
-        <div id="answersContainer"></div>
       </div>
     </div>
 
@@ -1527,17 +1609,7 @@
 
       // ─── PREVIEW TEST ───────────────────────────────────────────────────────
       function previewTest() {
-        const testName = document.getElementById("testName").value || "Grammar Frolics-3 Test";
-        const studentName = document.getElementById("studentName").value;
-        const testDate = document.getElementById("testDate").value;
-        const testDuration = document.getElementById("testDuration").value;
         const totalMarks = parseInt(document.getElementById("totalMarks").value) || 20;
-
-        document.getElementById("previewTestName").textContent = testName;
-        document.getElementById("previewStudentName").textContent = studentName || "____________________________";
-        document.getElementById("previewDate").textContent = testDate || "_____________";
-        document.getElementById("previewMarks").textContent = totalMarks;
-        document.getElementById("previewDuration").textContent = testDuration || "____";
 
         const selectedKeys = getSelectedChapterKeys();
         if (selectedKeys.length === 0) {
@@ -1571,7 +1643,6 @@
         const shuffled = shuffleArray(pool);
         const available = shuffled.length;
         const selected = shuffled.slice(0, Math.min(totalMarks, available));
-        lastGeneratedQuestions = selected;
 
         if (available < totalMarks) {
           alert("Only " + available + " questions are available from selected chapters.\n" + "Showing all " + available + " questions. Select more chapters or reduce total marks.");
@@ -1592,135 +1663,21 @@
           chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
         });
 
-        // Render
-        const container = document.getElementById("questionsContainer");
-        container.innerHTML = "";
         let qNum = 1;
+        lastGeneratedQuestions = [];
 
-        grouped.forEach((chData) => {
+        grouped.forEach((chData, chKey) => {
           if (chData.worksheets.size === 0) return;
-
-          const chSection = document.createElement("div");
-          chSection.className = "question-section";
-          chSection.innerHTML = "<h3>" + chData.name + "</h3>";
 
           const sortedWs = [...chData.worksheets.entries()].sort((a, b) => a[0] - b[0]);
 
-          sortedWs.forEach(([, wsData]) => {
-            const wsDiv = document.createElement("div");
-            wsDiv.className = "worksheet-group";
-            wsDiv.innerHTML = '<p class="ws-instruction">' + wsData.instruction.replace(/\n/g, "<br>") + "</p>";
-
+          sortedWs.forEach(([wsIdx, wsData]) => {
             wsData.questions.forEach((q) => {
-              q.qNum = qNum;
-              const qDiv = document.createElement("div");
-              qDiv.className = "question-item";
-
-              let html = '<p class="question-text"><strong>' + qNum + ".</strong> " + q.text.replace(/\n/g, "<br>") + "</p>";
-
-              if (q.options && q.options.length > 0) {
-                if (q.wideOptions) {
-                  html += '<div class="options-list">';
-                  q.options.forEach((opt) => {
-                    html += '<span class="option-item">' + opt + "</span>";
-                  });
-                  html += "</div>";
-                } else {
-                  html += '<div class="options-grid">';
-                  q.options.forEach((opt) => {
-                    html += '<span class="option-item">' + opt + "</span>";
-                  });
-                  html += "</div>";
-                }
-              }
-
-              for (let i = 0; i < q.lines; i++) {
-                html += '<div class="answer-line"></div>';
-              }
-
-              qDiv.innerHTML = html;
-              wsDiv.appendChild(qDiv);
+              lastGeneratedQuestions.push({ qNum: qNum, chapterKey: chKey, chapterName: chData.name, worksheetIdx: wsIdx, instruction: wsData.instruction, answer: q.answer || null, text: q.text });
               qNum++;
             });
-
-            chSection.appendChild(wsDiv);
           });
-
-          container.appendChild(chSection);
         });
-
-        document.getElementById("testPreview").classList.add("show");
-        document.getElementById("testPreview").scrollIntoView({ behavior: "smooth" });
-      }
-
-      function printTest() {
-        previewTest();
-        setTimeout(() => window.print(), 600);
-      }
-
-      function previewAnswers() {
-        if (lastGeneratedQuestions.length === 0) {
-          previewTest();
-        }
-        const testName = document.getElementById("testName").value || "Test";
-        const testDate = document.getElementById("testDate").value;
-        document.getElementById("akTestName").textContent = testName + " — Answer Key";
-        document.getElementById("akMeta").textContent = (testDate ? "Date: " + testDate + "  |  " : "") + "Total Questions: " + lastGeneratedQuestions.length;
-
-        const container = document.getElementById("answersContainer");
-        container.innerHTML = "";
-
-        const groupedRaw = new Map();
-        lastGeneratedQuestions.forEach((q) => {
-          if (!groupedRaw.has(q.chapterKey)) groupedRaw.set(q.chapterKey, new Map());
-          const wsMap = groupedRaw.get(q.chapterKey);
-          const wsKey = q.worksheetIdx + "||" + q.instruction;
-          if (!wsMap.has(wsKey)) wsMap.set(wsKey, { instruction: q.instruction, chapterName: q.chapterName, questions: [] });
-          wsMap.get(wsKey).questions.push(q);
-        });
-        const grouped = new Map();
-        Object.keys(questionBank).forEach((k) => {
-          if (groupedRaw.has(k)) grouped.set(k, groupedRaw.get(k));
-        });
-        grouped.forEach((wsMap) => {
-          const chapterName = [...wsMap.values()][0].chapterName;
-          const chDiv = document.createElement("div");
-          chDiv.className = "ak-chapter";
-          chDiv.innerHTML = "<h3>" + chapterName + "</h3>";
-          const sortedWs = [...wsMap.entries()].sort((a, b) => parseInt(a[0]) - parseInt(b[0]));
-          sortedWs.forEach(([, { instruction, questions }]) => {
-            const wsDiv = document.createElement("div");
-            wsDiv.className = "ak-ws";
-            wsDiv.innerHTML = "<div class='ak-ws-label'>" + instruction + "</div>";
-            const grid = document.createElement("div");
-            grid.className = "ak-grid";
-            questions
-              .sort((a, b) => a.qNum - b.qNum)
-              .forEach((q) => {
-                const item = document.createElement("div");
-                item.className = "ak-item";
-                const ans = q.answer;
-                if (!ans || ans === "vary") {
-                  item.innerHTML = "<strong>" + q.qNum + ".</strong> <span class='ak-vary'>Answers may vary</span>";
-                } else {
-                  item.innerHTML = "<strong>" + q.qNum + ".</strong> " + ans;
-                }
-                grid.appendChild(item);
-              });
-            wsDiv.appendChild(grid);
-            chDiv.appendChild(wsDiv);
-          });
-          container.appendChild(chDiv);
-        });
-
-        document.getElementById("answerKeyPreview").classList.add("show");
-        document.getElementById("answerKeyPreview").scrollIntoView({ behavior: "smooth" });
-      }
-
-      function printAnswers() {
-        if (lastGeneratedQuestions.length === 0) previewTest();
-        previewAnswers();
-        setTimeout(() => window.print(), 600);
       }
 
       // Auto / Custom Mode
@@ -1929,18 +1886,6 @@
       }
 
       function previewCustomTest() {
-        var testName = document.getElementById("testName").value || "Grammar Test";
-        var studentName = document.getElementById("studentName").value;
-        var testDate = document.getElementById("testDate").value;
-        var testDuration = document.getElementById("testDuration").value;
-        var totalMarks = parseInt(document.getElementById("totalMarks").value) || 20;
-
-        document.getElementById("previewTestName").textContent = testName;
-        document.getElementById("previewStudentName").textContent = studentName || "____________________________";
-        document.getElementById("previewDate").textContent = testDate || "_____________";
-        document.getElementById("previewMarks").textContent = totalMarks;
-        document.getElementById("previewDuration").textContent = testDuration || "____";
-
         var selected = [];
         document.querySelectorAll(".custom-q-cb:checked").forEach(function (cb) {
           var chKey = cb.getAttribute("data-ch-key");
@@ -1970,57 +1915,92 @@
           chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
         });
 
-        var container = document.getElementById("questionsContainer");
-        container.innerHTML = "";
         var qNum = 1;
         lastGeneratedQuestions = [];
-
         grouped.forEach(function (chData, chKey) {
           if (chData.worksheets.size === 0) return;
-          var chSection = document.createElement("div");
-          chSection.className = "question-section";
-          chSection.innerHTML = "<h3>" + chData.name + "</h3>";
-          var sortedWs = Array.from(chData.worksheets.entries()).sort(function (a, b) {
-            return a[0] - b[0];
-          });
+          var sortedWs = Array.from(chData.worksheets.entries()).sort(function (a, b) { return a[0] - b[0]; });
           sortedWs.forEach(function (entry) {
             var wsData = entry[1];
-            var wsDiv = document.createElement("div");
-            wsDiv.className = "worksheet-group";
-            wsDiv.innerHTML = '<p class="ws-instruction">' + wsData.instruction.replace(/\n/g, "<br>") + "</p>";
             wsData.questions.forEach(function (q) {
-              var qDiv = document.createElement("div");
-              qDiv.className = "question-item";
-              var html = '<p class="question-text"><strong>' + qNum + ".</strong> " + q.text.replace(/\n/g, "<br>") + "</p>";
-              if (q.options && q.options.length > 0) {
-                var cls = q.wideOptions ? "options-list" : "options-grid";
-                html += '<div class="' + cls + '">';
-                q.options.forEach(function (opt) {
-                  html += '<span class="option-item">' + opt + "</span>";
-                });
-                html += "</div>";
-              }
-              for (var i = 0; i < q.lines; i++) {
-                html += '<div class="answer-line"></div>';
-              }
-              qDiv.innerHTML = html;
-              wsDiv.appendChild(qDiv);
-              lastGeneratedQuestions.push({ qNum: qNum, chapterKey: chKey, chapterName: chData.name, worksheetIdx: entry[0], instruction: wsData.instruction, answer: q.answer || null, text: q.text });
-              qNum++;
+              lastGeneratedQuestions.push({ qNum: qNum++, chapterKey: chKey, chapterName: chData.name, worksheetIdx: entry[0], instruction: wsData.instruction, answer: q.answer || null, text: q.text });
             });
-            chSection.appendChild(wsDiv);
           });
-          container.appendChild(chSection);
         });
+      }
 
-        document.getElementById("testPreview").classList.add("show");
-        document.getElementById("testPreview").scrollIntoView({ behavior: "smooth" });
+      // Render Word-style previews in both panels
+      function updateWordPreviews() {
+        if (lastGeneratedQuestions.length === 0) {
+          document.getElementById("studentPreview").innerHTML = '<div class="word-preview-empty">Select chapters and click Generate to preview</div>';
+          document.getElementById("teacherPreview").innerHTML = '<div class="word-preview-empty">Select chapters and click Generate to preview</div>';
+          return;
+        }
+        var testName = document.getElementById("testName").value || "Grammar Test";
+        var studentName = document.getElementById("studentName").value || "";
+        var testDate = document.getElementById("testDate").value || "";
+        var totalMarks = document.getElementById("totalMarks").value || "";
+        var testDuration = document.getElementById("testDuration").value || "";
+        var grouped = {};
+        var chapterOrder = [];
+        lastGeneratedQuestions.forEach(function (q) {
+          if (!grouped[q.chapterKey]) {
+            grouped[q.chapterKey] = { name: q.chapterName, wsOrder: [], worksheets: {} };
+            chapterOrder.push(q.chapterKey);
+          }
+          var wsKey = String(q.worksheetIdx) + "||" + q.instruction;
+          if (!grouped[q.chapterKey].worksheets[wsKey]) {
+            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, questions: [] };
+            grouped[q.chapterKey].wsOrder.push(wsKey);
+          }
+          grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
+        });
+        var studentHtml = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + '</div>';
+        studentHtml += '<div class="doc-meta"><div>Name: ' + (_esc(studentName) || '________________') + ' &nbsp;&nbsp; Date: ' + (_esc(testDate) || '____________') + '</div>';
+        studentHtml += '<div>Total Marks: ' + _esc(totalMarks) + ' &nbsp;&nbsp; Time: ' + _esc(testDuration) + ' mins</div></div>';
+        chapterOrder.forEach(function (chKey) {
+          var ch = grouped[chKey];
+          ch.wsOrder.forEach(function (wsKey) {
+            var ws = ch.worksheets[wsKey];
+            studentHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + '</div>';
+            ws.questions.slice().sort(function (a, b) { return a.qNum - b.qNum; }).forEach(function (q) {
+              studentHtml += '<div class="doc-question">' + q.qNum + '. ' + _esc(q.text).replace(/\n/g, "<br>") + '</div>';
+            });
+          });
+        });
+        document.getElementById("studentPreview").innerHTML = studentHtml;
+        var teacherHtml = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + '</div>';
+        teacherHtml += '<div class="doc-ak-label">ANSWER KEY - TEACHER USE ONLY</div>';
+        teacherHtml += '<div class="doc-meta"><div>Name: ' + (_esc(studentName) || '________________') + ' &nbsp;&nbsp; Date: ' + (_esc(testDate) || '____________') + '</div>';
+        teacherHtml += '<div>Total Marks: ' + _esc(totalMarks) + ' &nbsp;&nbsp; Time: ' + _esc(testDuration) + ' mins</div></div>';
+        chapterOrder.forEach(function (chKey) {
+          var ch = grouped[chKey];
+          ch.wsOrder.forEach(function (wsKey) {
+            var ws = ch.worksheets[wsKey];
+            teacherHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + '</div>';
+            var sorted = ws.questions.slice().sort(function (a, b) { return a.qNum - b.qNum; });
+            sorted.forEach(function (q) {
+              teacherHtml += '<div class="doc-question">' + q.qNum + '. ' + _esc(q.text).replace(/\n/g, "<br>") + '</div>';
+            });
+            teacherHtml += '<div class="doc-answers-header">Answers:</div>';
+            sorted.forEach(function (q) {
+              if (q.answer && q.answer !== "vary") {
+                teacherHtml += '<div class="doc-answer">' + q.qNum + '. ' + _esc(q.answer) + '</div>';
+              } else {
+                teacherHtml += '<div class="doc-answer" style="color:#999;">' + q.qNum + '. Answers may vary</div>';
+              }
+            });
+          });
+        });
+        document.getElementById("teacherPreview").innerHTML = teacherHtml;
+        document.querySelector(".word-preview-layout").scrollIntoView({ behavior: "smooth" });
       }
 
       // Wrapper called by Preview Test button
       function generateTest() {
         if (currentMode === "custom") previewCustomTest();
         else previewTest();
+        updateWordPreviews();
       }
 
       // Word Export
@@ -2042,14 +2022,14 @@
 
         var html =
           '<!DOCTYPE html><html><head><meta charset="UTF-8"><style>' +
-          "body{font-family:Arial,sans-serif;margin:2cm;color:#000;font-size:11pt}" +
+          "@page{margin:1.27cm}body{font-family:Arial,sans-serif;margin:0;padding:0;color:#000;font-size:11pt}" +
           ".title{text-align:center;font-size:15pt;font-weight:bold;margin-bottom:4px}" +
           ".ak-lbl{text-align:center;color:green;font-weight:bold;font-size:12pt;margin-bottom:8px}" +
           "table{width:100%;border-collapse:collapse;margin-bottom:8px}" +
           "td{padding:3px 6px;font-size:10pt}" +
           "hr{border:none;border-top:2px solid #333;margin:8px 0}" +
-          ".ch{font-weight:bold;font-size:12pt;margin:16px 0 4px;border-bottom:1px solid #999;padding-bottom:3px}" +
-          ".instr{font-style:italic;color:#444;margin-bottom:8px;font-size:10pt}" +
+          ".ch{font-weight:bold;font-size:16pt;margin:16px 0 16px;border-bottom:1px solid #999;padding-bottom:4px}" +
+          ".instr{font-weight:bold;color:#000;margin-top:20px;margin-bottom:12px;font-size:12pt}" +
           ".q{margin-bottom:10px;font-size:10.5pt}" +
           ".ans{color:green;font-size:10pt;margin-top:2px}" +
           ".ans-line{border-bottom:1px solid #aaa;height:18px;margin-top:4px}" +
@@ -2091,7 +2071,6 @@
 
         chapterOrder.forEach(function (chKey) {
           var ch = grouped[chKey];
-          html += '<div class="ch">' + _esc(ch.name) + "</div>";
           ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
             html += '<div class="instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
@@ -2101,7 +2080,7 @@
 
             // First display all questions
             sortedQuestions.forEach(function (q) {
-              html += '<div class="q"><strong>' + q.qNum + ".</strong> " + _esc(q.text).replace(/\n/g, "<br>");
+              html += '<div class="q">' + q.qNum + ". " + _esc(q.text).replace(/\n/g, "<br>");
               if (!includeAnswers) {
                 html += '<div class="ans-line"></div>';
               }

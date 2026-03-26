@@ -42,7 +42,8 @@
       "Bash(checks=\"\")",
       "Bash(checks=\"$checks modeAutoBtn✓\")",
       "Bash(checks=\"$checks modeAutoBtn✗\")",
-      "Bash(do f=\"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-$i.html\" echo -n \"class-$i questionBank structure: \" grep -m1 \"worksheets\" \"$f\")"
+      "Bash(do f=\"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-$i.html\" echo -n \"class-$i questionBank structure: \" grep -m1 \"worksheets\" \"$f\")",
+      "Bash(wc -l \"/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook/src/class-tests/test-generator/class-\"*.html)"
     ],
     "additionalDirectories": [
       "/Users/prabishdangi/Desktop/Personal/SilverStone Captial/offline-flipbook"
