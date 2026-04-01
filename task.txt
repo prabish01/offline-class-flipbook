@@ -1,9 +1,0 @@
->In the test generator, add “Auto” (randomized) and “Custom” (manual) question selection.
-
-here auto means normal current random question generator that currently implemented....and the custom manual means we have to tick the questions manually chapter wise which we want in the test generator
-
-
-
->Export test papers in Word format as well..so we are going to imporvise here...currently we have preview question preview answer..things like that...so now once the question is generated, we will have few buttons like download as word (for teacher), as word (for student)
-
-

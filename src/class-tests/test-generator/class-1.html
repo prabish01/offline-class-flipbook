@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test Generator - Class 1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
+      h1 .fas, h2 .fas, .btn .fas, p .fas, label .fas { margin-right: 6px; }
       * {
         margin: 0;
         padding: 0;
@@ -810,14 +812,14 @@
     <button class="back-btn" onclick="window.history.back()">&#8592; Back</button>
 
     <div class="header">
-      <h1>&#128221; Test Generator</h1>
+      <h1><i class="fas fa-file-pen"></i> Test Generator</h1>
       <p class="subtitle">Grammar Frolics-1 &#8212; Create a custom test by selecting chapters</p>
     </div>
 
     <div class="container">
       <!-- Test Information -->
       <div class="test-info">
-        <h2>&#128203; Test Information</h2>
+        <h2><i class="fas fa-clipboard-list"></i> Test Information</h2>
         <div class="info-grid">
           <div class="info-field">
             <label for="testName">Test Name</label>
@@ -835,85 +837,213 @@
             <label for="testDuration">Test Duration (mins)</label>
             <input type="number" id="testDuration" placeholder="e.g., 30" value="30" />
           </div>
-          <div class="info-field">
-            <label for="totalMarks">Total Marks</label>
-            <input type="number" id="totalMarks" placeholder="e.g., 20" value="20" min="1" />
-          </div>
+
         </div>
       </div>
 
       <!-- Chapter Selection -->
       <div class="chapters-section">
-        <h2>&#128218; Select Chapters</h2>
-        <p class="marks-info">Available questions from selected chapters: <span id="availableCount">0</span></p>
-        <div class="mode-toggle">
-          <button id="modeAutoBtn" class="mode-btn active" onclick="setMode('auto')">&#127922; Auto</button>
-          <button id="modeCustomBtn" class="mode-btn" onclick="setMode('custom')">&#9999;&#65039; Custom</button>
+        <h2><i class="fas fa-book-open"></i> Select Chapters</h2>
+        <p class="marks-info">Available: <span id="availablePicCount">0</span> picture &nbsp;|&nbsp; <span id="availableTextCount">0</span> text</p>
+        <div class="chapters-grid">
+          <label class="chapter-card" data-chapter="ch1" data-type="picture">
+            <input type="checkbox" id="ch1" />
+            <span class="chapter-number">Chapter 1</span>
+            <h3>Naming Words – People</h3>
+            <p><i class="fas fa-image"></i> Picture exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch2" data-type="picture">
+            <input type="checkbox" id="ch2" />
+            <span class="chapter-number">Chapter 2</span>
+            <h3>Naming Words – Places</h3>
+            <p><i class="fas fa-image"></i> Picture exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch3" data-type="picture">
+            <input type="checkbox" id="ch3" />
+            <span class="chapter-number">Chapter 3</span>
+            <h3>Naming Words – Animals</h3>
+            <p><i class="fas fa-image"></i> Picture exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch4" data-type="picture">
+            <input type="checkbox" id="ch4" />
+            <span class="chapter-number">Chapter 4</span>
+            <h3>Naming Words – Things</h3>
+            <p><i class="fas fa-image"></i> Picture exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch5" data-type="picture">
+            <input type="checkbox" id="ch5" />
+            <span class="chapter-number">Chapter 5</span>
+            <h3>Naming Words – Revision</h3>
+            <p><i class="fas fa-image"></i> Picture exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch6" data-type="picture">
+            <input type="checkbox" id="ch6" />
+            <span class="chapter-number">Chapter 6</span>
+            <h3>One and Many</h3>
+            <p><i class="fas fa-image"></i> Picture exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch7" data-type="text">
+            <input type="checkbox" id="ch7" />
+            <span class="chapter-number">Chapter 7</span>
+            <h3>A or An</h3>
+            <p><i class="fas fa-pen"></i> Text exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch8" data-type="text">
+            <input type="checkbox" id="ch8" />
+            <span class="chapter-number">Chapter 8</span>
+            <h3>This is / That is</h3>
+            <p><i class="fas fa-pen"></i> Text exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch9" data-type="text">
+            <input type="checkbox" id="ch9" />
+            <span class="chapter-number">Chapter 9</span>
+            <h3>These are / Those are</h3>
+            <p><i class="fas fa-pen"></i> Text exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch10" data-type="picture">
+            <input type="checkbox" id="ch10" />
+            <span class="chapter-number">Chapter 10</span>
+            <h3>Male or Female – People</h3>
+            <p><i class="fas fa-image"></i> Picture exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch11" data-type="picture">
+            <input type="checkbox" id="ch11" />
+            <span class="chapter-number">Chapter 11</span>
+            <h3>Male or Female – Animals</h3>
+            <p><i class="fas fa-image"></i> Picture exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch12" data-type="picture">
+            <input type="checkbox" id="ch12" />
+            <span class="chapter-number">Chapter 12</span>
+            <h3>Pronouns</h3>
+            <p><i class="fas fa-image"></i> Picture exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch13" data-type="picture">
+            <input type="checkbox" id="ch13" />
+            <span class="chapter-number">Chapter 13</span>
+            <h3>Describing Words</h3>
+            <p><i class="fas fa-image"></i> Picture exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch14" data-type="picture">
+            <input type="checkbox" id="ch14" />
+            <span class="chapter-number">Chapter 14</span>
+            <h3>Action Words</h3>
+            <p><i class="fas fa-image"></i> Picture exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch15" data-type="text">
+            <input type="checkbox" id="ch15" />
+            <span class="chapter-number">Chapter 15</span>
+            <h3>Being Verbs</h3>
+            <p><i class="fas fa-pen"></i> Text exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch16" data-type="text">
+            <input type="checkbox" id="ch16" />
+            <span class="chapter-number">Chapter 16</span>
+            <h3>Having Verbs</h3>
+            <p><i class="fas fa-pen"></i> Text exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="ch22" data-type="picture">
+            <input type="checkbox" id="ch22" />
+            <span class="chapter-number">Chapter 22</span>
+            <h3>Position Words</h3>
+            <p><i class="fas fa-image"></i> Picture exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="voc2" data-type="picture">
+            <input type="checkbox" id="voc2" />
+            <span class="chapter-number">Vocabulary 2</span>
+            <h3>Opposites</h3>
+            <p><i class="fas fa-image"></i> Picture exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="voc4" data-type="picture">
+            <input type="checkbox" id="voc4" />
+            <span class="chapter-number">Vocabulary 4</span>
+            <h3>Compound Words</h3>
+            <p><i class="fas fa-image"></i> Picture exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="voc5" data-type="picture">
+            <input type="checkbox" id="voc5" />
+            <span class="chapter-number">Vocabulary 5</span>
+            <h3>One-word Substitution</h3>
+            <p><i class="fas fa-image"></i> Picture exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="voc6" data-type="picture">
+            <input type="checkbox" id="voc6" />
+            <span class="chapter-number">Vocabulary 6</span>
+            <h3>Homes of Animals</h3>
+            <p><i class="fas fa-image"></i> Picture exercise</p>
+          </label>
+          <label class="chapter-card" data-chapter="voc7" data-type="picture">
+            <input type="checkbox" id="voc7" />
+            <span class="chapter-number">Vocabulary 7</span>
+            <h3>Sounds of Animals</h3>
+            <p><i class="fas fa-image"></i> Picture exercise</p>
+          </label>
         </div>
-        <div id="autoPanel">
-          <div class="chapters-grid">
-            <label class="chapter-card" data-chapter="ch7">
-              <input type="checkbox" id="ch7" />
-              <span class="chapter-number">Chapter 7</span>
-              <h3>A or An</h3>
-              <p>Choosing the correct article before words</p>
-            </label>
-            <label class="chapter-card" data-chapter="ch8">
-              <input type="checkbox" id="ch8" />
-              <span class="chapter-number">Chapter 8</span>
-              <h3>This is / That is</h3>
-              <p>Completing sentences with This is or That is</p>
-            </label>
-            <label class="chapter-card" data-chapter="ch9">
-              <input type="checkbox" id="ch9" />
-              <span class="chapter-number">Chapter 9</span>
-              <h3>These are / Those are</h3>
-              <p>Completing sentences with These are or Those are</p>
-            </label>
-            <label class="chapter-card" data-chapter="ch15">
-              <input type="checkbox" id="ch15" />
-              <span class="chapter-number">Chapter 15</span>
-              <h3>Being Verbs</h3>
-              <p>Using am, is and are correctly</p>
-            </label>
-            <label class="chapter-card" data-chapter="ch16">
-              <input type="checkbox" id="ch16" />
-              <span class="chapter-number">Chapter 16</span>
-              <h3>Having Verbs</h3>
-              <p>Using has and have correctly</p>
-            </label>
-          </div>
-        </div>
-        <!-- /autoPanel -->
-        <div id="customPanel"></div>
       </div>
       <!-- /chapters-section -->
+
+      <!-- Generate Config Dialog -->
+      <div id="generateDialog" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2000;align-items:center;justify-content:center;">
+        <div style="background:white;border-radius:20px;padding:36px;max-width:480px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.3);font-family:'Comic Sans MS',cursive;">
+          <h2 style="color:#667eea;margin:0 0 6px;font-size:1.6rem;"><i class="fas fa-sliders" style="margin-right:8px;"></i>Configure Test</h2>
+          <p style="color:#888;margin:0 0 24px;font-size:0.9rem;">Available from selected chapters: <strong id="dlgPicAvail">0</strong> picture &nbsp;|&nbsp; <strong id="dlgTextAvail">0</strong> text</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+            <div>
+              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;"><i class="fas fa-image"></i> Picture questions</label>
+              <input type="number" id="dlgPicCount" min="0" value="0" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+            </div>
+            <div>
+              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;">Marks each</label>
+              <input type="number" id="dlgPicMarks" min="1" value="2" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+            </div>
+            <div>
+              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;"><i class="fas fa-pen"></i> Text questions</label>
+              <input type="number" id="dlgTextCount" min="0" value="0" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+            </div>
+            <div>
+              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;">Marks each</label>
+              <input type="number" id="dlgTextMarks" min="1" value="1" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+            </div>
+          </div>
+
+          <div style="background:#f0f0f0;border-radius:10px;padding:12px 16px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-weight:bold;color:#333;">Total Marks:</span>
+            <span id="dlgTotal" style="font-size:1.4rem;font-weight:bold;color:#667eea;">0</span>
+          </div>
+
+          <div style="display:flex;gap:12px;">
+            <button onclick="closeDlg()" style="flex:1;padding:14px;border:2px solid #e0e0e0;background:white;border-radius:50px;font-size:1rem;font-weight:bold;cursor:pointer;font-family:inherit;color:#666;">Cancel</button>
+            <button onclick="confirmGenerate()" style="flex:2;padding:14px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;border-radius:50px;font-size:1rem;font-weight:bold;cursor:pointer;font-family:inherit;">Generate Test</button>
+          </div>
+        </div>
+      </div>
 
       <!-- Split Word Preview Layout -->
       <div class="word-preview-layout">
         <div class="word-preview-panel">
           <div class="word-preview-header">
-            <h3>&#128196; Student Version</h3>
+            <h3><i class="fas fa-file-lines"></i>Student Version</h3>
           </div>
           <div class="word-preview-content" id="studentPreview">
             <div class="word-preview-empty">Select chapters and click Generate to preview</div>
           </div>
-          <button class="btn btn-word-student" onclick="downloadWord(false)">&#128196; Download Word (Student)</button>
+          <button class="btn btn-word-student" onclick="downloadWord(false)"><i class="fas fa-file-lines"></i>Download Word (Student)</button>
         </div>
         <div class="word-preview-panel">
           <div class="word-preview-header">
-            <h3>&#128196; Teacher Version</h3>
+            <h3><i class="fas fa-file-lines"></i>Teacher Version</h3>
           </div>
           <div class="word-preview-content" id="teacherPreview">
             <div class="word-preview-empty">Select chapters and click Generate to preview</div>
           </div>
-          <button class="btn btn-word-teacher" onclick="downloadWord(true)">&#128196; Download Word (Teacher)</button>
+          <button class="btn btn-word-teacher" onclick="downloadWord(true)"><i class="fas fa-file-lines"></i>Download Word (Teacher)</button>
         </div>
       </div>
 
       <!-- Generate Button -->
       <div class="action-buttons" style="margin-top: 20px;">
-        <button class="btn btn-preview" onclick="generateTest()">&#128065;&#65039; Generate Test</button>
+        <button class="btn btn-preview" onclick="generateTest()"><i class="fas fa-wand-magic-sparkles"></i> Generate Test</button>
         <span class="available-count" id="actionAvail">Select chapters to begin</span>
       </div>
     </div>
@@ -923,6 +1053,121 @@
 
       // ─── QUESTION BANK ─────────────────────────────────────────────────────
       const questionBank = {
+        ch1: {
+          name: "Ch 1: Naming Words – People",
+          worksheets: [
+            { instruction: "A. Fill in the blanks with letters to complete the names of these people.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 1 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+            { instruction: "B. Who will help you with these jobs? Match the pictures of these people with their jobs.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 1 B.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+        ch2: {
+          name: "Ch 2: Naming Words – Places",
+          worksheets: [
+            { instruction: "A. Write the names of these places. Choose the words from the box.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 2 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+            { instruction: "B. Match the people with the places they work at.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 2 B.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+        ch3: {
+          name: "Ch 3: Naming Words – Animals",
+          worksheets: [
+            { instruction: "A. Unscramble the letters and find the names of these animals.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 3 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+            { instruction: "B. Help these animals reach their homes.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 3 B.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+        ch4: {
+          name: "Ch 4: Naming Words – Things",
+          worksheets: [
+            { instruction: "A. Answer these questions.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 4 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+        ch5: {
+          name: "Ch 5: Naming Words – Revision",
+          worksheets: [
+            { instruction: "A. Find the odd one in each set.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 5 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+            { instruction: "B. Look at the pictures. Choose the correct kind of naming word for each picture.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 5 B.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+        ch6: {
+          name: "Ch 6: One and Many",
+          worksheets: [
+            { instruction: "A. Write 'One' if the picture shows one. Write 'Many' if the picture shows many.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 6 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+            { instruction: "B. Make each word Many by adding 's' at the end.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 6 B.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+        ch10: {
+          name: "Ch 10: Male or Female – People",
+          worksheets: [
+            { instruction: "A. Tick the word that matches the picture.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 10 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+            { instruction: "B. Match the name of each male person with the picture of its female.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 10 B.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+        ch11: {
+          name: "Ch 11: Male or Female – Animals",
+          worksheets: [
+            { instruction: "A. Match each male animal with its female animal.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 11 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+        ch12: {
+          name: "Ch 12: Pronouns",
+          worksheets: [
+            { instruction: "A. Look at the picture and choose the correct pronouns for each.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 12 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+            { instruction: "B. Look at the pictures and choose the correct pronoun for each.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 12 B.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+        ch13: {
+          name: "Ch 13: Describing Words",
+          worksheets: [
+            { instruction: "A. Choose the correct describing word to match the picture.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 13 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+            { instruction: "C. Write suitable describing words to describe the parts of the elephant. Pick the words from the box.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 13 C.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+        ch14: {
+          name: "Ch 14: Action Words",
+          worksheets: [
+            { instruction: "A. Unscramble the action words and write them in the lines.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 14 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+            { instruction: "B. Look at the action words. Match each action word with the animal that does the action.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 14 B.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+        ch22: {
+          name: "Ch 22: Position Words",
+          worksheets: [
+            { instruction: "A. Choose the position of the fox in each picture by circling the correct position words.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 22 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+            { instruction: "B. Look at the pictures and write where the people and animals are.", image: "../../../assets/images/test-generator/class-1/Grammar - Chapter 22 B.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+        voc2: {
+          name: "Voc 2: Opposites",
+          worksheets: [
+            { instruction: "A. Match the opposites.", image: "../../../assets/images/test-generator/class-1/Vocabulary - Chapter 2 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+            { instruction: "B. Circle the opposite of the word given below each picture.", image: "../../../assets/images/test-generator/class-1/Vocabulary - Chapter 2 B.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+        voc4: {
+          name: "Voc 4: Compound Words",
+          worksheets: [
+            { instruction: "A. Join two words and make a new word.", image: "../../../assets/images/test-generator/class-1/Vocabulary - Chapter 4 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+            { instruction: "B. Join two words of each set and form a new word.", image: "../../../assets/images/test-generator/class-1/Vocabulary - Chapter 4 B.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+        voc5: {
+          name: "Voc 5: One-word Substitution",
+          worksheets: [
+            { instruction: "A. Match each word in Column B with its meaning in Column A.", image: "../../../assets/images/test-generator/class-1/Vocabulary - Chapter 5 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+        voc6: {
+          name: "Voc 6: Homes of Animals",
+          worksheets: [
+            { instruction: "A. Match these animals with their homes.", image: "../../../assets/images/test-generator/class-1/Vocabulary - Chapter 6 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+        voc7: {
+          name: "Voc 7: Sounds of Animals",
+          worksheets: [
+            { instruction: "A. Circle the correct sound for each animal.", image: "../../../assets/images/test-generator/class-1/Vocabulary - Chapter 7 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+
         ch7: {
           name: "Ch 7: A or An",
           worksheets: [
@@ -1123,10 +1368,26 @@
         return total;
       }
 
+      function countByType(keys) {
+        let pic = 0, text = 0;
+        keys.forEach((k) => {
+          const ch = questionBank[k];
+          if (!ch) return;
+          ch.worksheets.forEach((ws) => {
+            if (ws.image) pic += ws.questions.length;
+            else text += ws.questions.length;
+          });
+        });
+        return { pic, text };
+      }
+
       function updateAvailableCount() {
-        const count = countAvailableQuestions(getSelectedChapterKeys());
-        document.getElementById("availableCount").textContent = count;
-        document.getElementById("actionAvail").textContent = count > 0 ? count + " questions available" : "Select chapters to begin";
+        const keys = getSelectedChapterKeys();
+        const { pic, text } = countByType(keys);
+        document.getElementById("availablePicCount").textContent = pic;
+        document.getElementById("availableTextCount").textContent = text;
+        const total = pic + text;
+        document.getElementById("actionAvail").textContent = total > 0 ? total + " questions available" : "Select chapters to begin";
       }
 
       document.querySelectorAll(".chapter-card input").forEach((cb) => cb.addEventListener("change", updateAvailableCount));
@@ -1155,6 +1416,7 @@
                 chapterName: ch.name,
                 worksheetIdx: wsIdx,
                 instruction: ws.instruction,
+                image: ws.image || null,
                 text: q.text,
                 answer: q.answer || null,
                 options: q.options || null,
@@ -1184,7 +1446,7 @@
           const chGroup = grouped.get(q.chapterKey);
           if (!chGroup) return;
           if (!chGroup.worksheets.has(q.worksheetIdx)) {
-            chGroup.worksheets.set(q.worksheetIdx, { instruction: q.instruction, questions: [] });
+            chGroup.worksheets.set(q.worksheetIdx, { instruction: q.instruction, image: q.image || null, questions: [] });
           }
           chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
         });
@@ -1204,6 +1466,7 @@
                 chapterName: chData.name,
                 worksheetIdx: wsIdx,
                 instruction: wsData.instruction,
+                image: wsData.image || null,
                 answer: q.answer || null,
                 text: q.text
               });
@@ -1370,7 +1633,7 @@
           }
           var wsKey = String(q.worksheetIdx) + "||" + q.instruction;
           if (!grouped[q.chapterKey].worksheets[wsKey]) {
-            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, questions: [] };
+            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, image: q.image || null, questions: [] };
             grouped[q.chapterKey].wsOrder.push(wsKey);
           }
           grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
@@ -1427,7 +1690,7 @@
           var ch = questionBank[chKey];
           var ws = ch.worksheets[wsIdx];
           var q = ws.questions[qIdx];
-          selected.push({ chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx, instruction: ws.instruction, text: q.text, answer: q.answer || null, options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0 });
+          selected.push({ chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx, instruction: ws.instruction, image: ws.image || null, text: q.text, answer: q.answer || null, options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0 });
         });
 
         if (selected.length === 0) {
@@ -1443,7 +1706,7 @@
           var chGroup = grouped.get(q.chapterKey);
           if (!chGroup) return;
           if (!chGroup.worksheets.has(q.worksheetIdx)) {
-            chGroup.worksheets.set(q.worksheetIdx, { instruction: q.instruction, questions: [] });
+            chGroup.worksheets.set(q.worksheetIdx, { instruction: q.instruction, image: q.image || null, questions: [] });
           }
           chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
         });
@@ -1459,17 +1722,117 @@
           sortedWs.forEach(function (entry) {
             var wsData = entry[1];
             wsData.questions.forEach(function (q) {
-              lastGeneratedQuestions.push({ qNum: qNum, chapterKey: chKey, chapterName: chData.name, worksheetIdx: entry[0], instruction: wsData.instruction, answer: q.answer || null, text: q.text });
+              lastGeneratedQuestions.push({ qNum: qNum, chapterKey: chKey, chapterName: chData.name, worksheetIdx: entry[0], instruction: wsData.instruction, image: wsData.image || null, answer: q.answer || null, text: q.text });
               qNum++;
             });
           });
         });
       }
 
-      // Wrapper called by Preview Test button
+      // ─── DIALOG ─────────────────────────────────────────────────────────────
+      function updateDlgTotal() {
+        const picCount = parseInt(document.getElementById("dlgPicCount").value) || 0;
+        const picMarks = parseInt(document.getElementById("dlgPicMarks").value) || 0;
+        const textCount = parseInt(document.getElementById("dlgTextCount").value) || 0;
+        const textMarks = parseInt(document.getElementById("dlgTextMarks").value) || 0;
+        document.getElementById("dlgTotal").textContent = (picCount * picMarks) + (textCount * textMarks);
+      }
+
+      function closeDlg() {
+        document.getElementById("generateDialog").style.display = "none";
+      }
+
+      // Wrapper called by Generate Test button
       function generateTest() {
-        if (currentMode === "custom") previewCustomTest();
-        else previewTest();
+        if (currentMode === "custom") {
+          previewCustomTest();
+          updateWordPreviews();
+          return;
+        }
+        const selectedKeys = getSelectedChapterKeys();
+        if (selectedKeys.length === 0) {
+          alert("Please select at least one chapter!");
+          return;
+        }
+        const { pic, text } = countByType(selectedKeys);
+        document.getElementById("dlgPicAvail").textContent = pic;
+        document.getElementById("dlgTextAvail").textContent = text;
+        document.getElementById("dlgPicCount").value = pic;
+        document.getElementById("dlgTextCount").value = text;
+        updateDlgTotal();
+        const dlg = document.getElementById("generateDialog");
+        dlg.style.display = "flex";
+      }
+
+      function confirmGenerate() {
+        const picCount  = parseInt(document.getElementById("dlgPicCount").value)  || 0;
+        const picMarks  = parseInt(document.getElementById("dlgPicMarks").value)  || 1;
+        const textCount = parseInt(document.getElementById("dlgTextCount").value) || 0;
+        const textMarks = parseInt(document.getElementById("dlgTextMarks").value) || 1;
+        closeDlg();
+
+        const selectedKeys = getSelectedChapterKeys();
+        const picPool = [], textPool = [];
+
+        selectedKeys.forEach((chKey) => {
+          const ch = questionBank[chKey];
+          if (!ch) return;
+          ch.worksheets.forEach((ws, wsIdx) => {
+            ws.questions.forEach((q) => {
+              const entry = {
+                chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx,
+                instruction: ws.instruction, image: ws.image || null,
+                text: q.text, answer: q.answer || null,
+                options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0,
+              };
+              if (ws.image) picPool.push(entry);
+              else textPool.push(entry);
+            });
+          });
+        });
+
+        const shuffledPic  = shuffleArray(picPool).slice(0, picCount);
+        const shuffledText = shuffleArray(textPool).slice(0, textCount);
+        const selected = [...shuffledPic, ...shuffledText];
+
+        if (shuffledPic.length < picCount)  alert("Only " + shuffledPic.length  + " picture questions available. Showing all.");
+        if (shuffledText.length < textCount) alert("Only " + shuffledText.length + " text questions available. Showing all.");
+
+        // Group by chapter maintaining order
+        const grouped = new Map();
+        selectedKeys.forEach((k) => {
+          grouped.set(k, { name: questionBank[k].name, worksheets: new Map() });
+        });
+
+        selected.forEach((q) => {
+          const chGroup = grouped.get(q.chapterKey);
+          if (!chGroup) return;
+          if (!chGroup.worksheets.has(q.worksheetIdx)) {
+            chGroup.worksheets.set(q.worksheetIdx, { instruction: q.instruction, image: q.image || null, questions: [] });
+          }
+          chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
+        });
+
+        let qNum = 1;
+        lastGeneratedQuestions = [];
+        grouped.forEach((chData, chKey) => {
+          if (chData.worksheets.size === 0) return;
+          const sortedWs = [...chData.worksheets.entries()].sort((a, b) => a[0] - b[0]);
+          sortedWs.forEach(([wsIdx, wsData]) => {
+            wsData.questions.forEach((q) => {
+              lastGeneratedQuestions.push({
+                qNum: qNum++, chapterKey: chKey, chapterName: chData.name,
+                worksheetIdx: wsIdx, instruction: wsData.instruction,
+                image: wsData.image || null, answer: q.answer || null, text: q.text,
+                marks: wsData.image ? picMarks : textMarks,
+              });
+            });
+          });
+        });
+
+        window._lastPicMarks   = picMarks;
+        window._lastTextMarks  = textMarks;
+        window._lastTotalMarks = (shuffledPic.length * picMarks) + (shuffledText.length * textMarks);
         updateWordPreviews();
       }
 
@@ -1484,7 +1847,7 @@
         var testName = document.getElementById("testName").value || "Grammar Test";
         var studentName = document.getElementById("studentName").value || "";
         var testDate = document.getElementById("testDate").value || "";
-        var totalMarks = document.getElementById("totalMarks").value || "";
+        var totalMarks = window._lastTotalMarks || "";
         var testDuration = document.getElementById("testDuration").value || "";
 
         // Group questions by chapter and worksheet
@@ -1497,7 +1860,7 @@
           }
           var wsKey = String(q.worksheetIdx) + "||" + q.instruction;
           if (!grouped[q.chapterKey].worksheets[wsKey]) {
-            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, questions: [] };
+            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, image: q.image || null, questions: [] };
             grouped[q.chapterKey].wsOrder.push(wsKey);
           }
           grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
@@ -1515,10 +1878,14 @@
           ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
             studentHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + '</div>';
-            var sortedQuestions = ws.questions.slice().sort(function (a, b) { return a.qNum - b.qNum; });
-            sortedQuestions.forEach(function (q) {
-              studentHtml += '<div class="doc-question">' + q.qNum + '. ' + _esc(q.text).replace(/\n/g, "<br>") + '</div>';
-            });
+            if (ws.image) {
+              studentHtml += '<img src="' + ws.image + '" style="max-width:100%;margin:10px 0;border-radius:8px;">';
+            } else {
+              var sortedQuestions = ws.questions.slice().sort(function (a, b) { return a.qNum - b.qNum; });
+              sortedQuestions.forEach(function (q) {
+                studentHtml += '<div class="doc-question">' + q.qNum + '. ' + _esc(q.text).replace(/\n/g, "<br>") + '</div>';
+              });
+            }
           });
         });
 
@@ -1537,19 +1904,23 @@
           ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
             teacherHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + '</div>';
-            var sortedQuestions = ws.questions.slice().sort(function (a, b) { return a.qNum - b.qNum; });
-            sortedQuestions.forEach(function (q) {
-              teacherHtml += '<div class="doc-question">' + q.qNum + '. ' + _esc(q.text).replace(/\n/g, "<br>") + '</div>';
-            });
-            // Show answers after questions
-            teacherHtml += '<div class="doc-answers-header">Answers:</div>';
-            sortedQuestions.forEach(function (q) {
-              if (q.answer && q.answer !== "vary") {
-                teacherHtml += '<div class="doc-answer">' + q.qNum + '. ' + _esc(q.answer) + '</div>';
-              } else {
-                teacherHtml += '<div class="doc-answer" style="color:#999;">' + q.qNum + '. Answers may vary</div>';
-              }
-            });
+            if (ws.image) {
+              teacherHtml += '<img src="' + ws.image + '" style="max-width:100%;margin:10px 0;border-radius:8px;">';
+            } else {
+              var sortedQuestions = ws.questions.slice().sort(function (a, b) { return a.qNum - b.qNum; });
+              sortedQuestions.forEach(function (q) {
+                teacherHtml += '<div class="doc-question">' + q.qNum + '. ' + _esc(q.text).replace(/\n/g, "<br>") + '</div>';
+              });
+              // Show answers after questions
+              teacherHtml += '<div class="doc-answers-header">Answers:</div>';
+              sortedQuestions.forEach(function (q) {
+                if (q.answer && q.answer !== "vary") {
+                  teacherHtml += '<div class="doc-answer">' + q.qNum + '. ' + _esc(q.answer) + '</div>';
+                } else {
+                  teacherHtml += '<div class="doc-answer" style="color:#999;">' + q.qNum + '. Answers may vary</div>';
+                }
+              });
+            }
           });
         });
 
@@ -1573,7 +1944,7 @@
         var testName = document.getElementById("testName").value || "Grammar Test";
         var studentName = document.getElementById("studentName").value || "";
         var testDate = document.getElementById("testDate").value || "";
-        var totalMarks = document.getElementById("totalMarks").value || "";
+        var totalMarks = window._lastTotalMarks || "";
         var testDuration = document.getElementById("testDuration").value || "";
 
         var html =
@@ -1619,7 +1990,7 @@
           }
           var wsKey = String(q.worksheetIdx) + "||" + q.instruction;
           if (!grouped[q.chapterKey].worksheets[wsKey]) {
-            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, questions: [] };
+            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, image: q.image || null, questions: [] };
             grouped[q.chapterKey].wsOrder.push(wsKey);
           }
           grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
@@ -1630,29 +2001,33 @@
           ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
             html += '<div class="instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
-            var sortedQuestions = ws.questions.slice().sort(function (a, b) {
-              return a.qNum - b.qNum;
-            });
-
-            // First display all questions
-            sortedQuestions.forEach(function (q) {
-              html += '<div class="q">' + q.qNum + ". " + _esc(q.text).replace(/\n/g, "<br>");
-              if (!includeAnswers) {
-                html += '<div class="ans-line"></div>';
-              }
-              html += "</div>";
-            });
-
-            // Then display answers section if needed
-            if (includeAnswers) {
-              html += '<div style="margin-top:16px;font-weight:bold;color:#333;font-size:11pt;">Answers:</div>';
-              sortedQuestions.forEach(function (q) {
-                if (q.answer && q.answer !== "vary") {
-                  html += '<div class="ans"><strong>' + q.qNum + ".</strong> " + _esc(q.answer) + "</div>";
-                } else {
-                  html += '<div class="ans" style="color:#999;"><strong>' + q.qNum + ".</strong> Answers may vary</div>";
-                }
+            if (ws.image) {
+              html += '<img src="' + ws.image + '" style="max-width:90%;display:block;margin:10px auto;page-break-inside:avoid;">';
+            } else {
+              var sortedQuestions = ws.questions.slice().sort(function (a, b) {
+                return a.qNum - b.qNum;
               });
+
+              // First display all questions
+              sortedQuestions.forEach(function (q) {
+                html += '<div class="q">' + q.qNum + ". " + _esc(q.text).replace(/\n/g, "<br>");
+                if (!includeAnswers) {
+                  html += '<div class="ans-line"></div>';
+                }
+                html += "</div>";
+              });
+
+              // Then display answers section if needed
+              if (includeAnswers) {
+                html += '<div style="margin-top:16px;font-weight:bold;color:#333;font-size:11pt;">Answers:</div>';
+                sortedQuestions.forEach(function (q) {
+                  if (q.answer && q.answer !== "vary") {
+                    html += '<div class="ans"><strong>' + q.qNum + ".</strong> " + _esc(q.answer) + "</div>";
+                  } else {
+                    html += '<div class="ans" style="color:#999;"><strong>' + q.qNum + ".</strong> Answers may vary</div>";
+                  }
+                });
+              }
             }
           });
         });
