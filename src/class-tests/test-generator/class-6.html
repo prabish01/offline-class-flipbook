@@ -838,14 +838,14 @@
     <button class="back-btn" onclick="window.history.back()">← Back</button>
 
     <div class="header">
-      <h1>📝 Test Generator</h1>
+      <h1><i class="fas fa-file-pen"></i> Test Generator</h1>
       <p class="subtitle">Create a custom test by selecting chapters - Class 6</p>
     </div>
 
     <div class="container">
       <!-- Test Information -->
       <div class="test-info">
-        <h2>📋 Test Information</h2>
+        <h2><i class="fas fa-clipboard-list"></i> Test Information</h2>
         <div class="info-grid">
           <div class="info-field">
             <label for="testName">Test Name</label>
@@ -879,13 +879,13 @@
 
       <!-- Chapters Selection -->
       <div class="chapters-section">
-        <h2>📚 Select Topics</h2>
+        <h2><i class="fas fa-book-open"></i> Select Chapters</h2>
 
-        <div class="section-label">📝 Grammar</div>
-        <p class="marks-info">Available questions from selected chapters: <span id="availableCount">0</span></p>
+        <div class="section-label">Grammar</div>
+        <p class="marks-info">Available: <span id="availablePicCount">0</span> picture &nbsp;|&nbsp; <span id="availableTextCount">0</span> text</p>
         <div class="mode-toggle">
-          <button id="modeAutoBtn" class="mode-btn active" onclick="setMode('auto')">&#127922; Auto</button>
-          <button id="modeCustomBtn" class="mode-btn" onclick="setMode('custom')">&#9999;&#65039; Custom</button>
+          <button id="modeAutoBtn" class="mode-btn active" onclick="setMode('auto')"><i class="fas fa-dice"></i> Auto</button>
+          <button id="modeCustomBtn" class="mode-btn" onclick="setMode('custom')"><i class="fas fa-pen"></i> Custom</button>
         </div>
         <div id="autoPanel">
           <div class="chapters-grid">
@@ -1011,7 +1011,7 @@
             >
           </div>
 
-          <div class="section-label">📚 Vocabulary</div>
+          <div class="section-label">Vocabulary</div>
           <div class="chapters-grid">
             <label class="chapter-card"
               ><input type="checkbox" id="v1" /><span class="chapter-number">Vocabulary 1</span>
@@ -1044,7 +1044,7 @@
               <p>Write similes and metaphors</p></label
             >
           </div>
-          <div class="section-label" style="margin-top: 20px">✏️ Composition</div>
+          <div class="section-label" style="margin-top: 20px">Composition</div>
           <div class="chapters-grid">
             <label class="chapter-card"
               ><input type="checkbox" id="comp2" /><span class="chapter-number">Chapter 2</span>
@@ -1092,7 +1092,7 @@
               <p>Write emails on given topics</p></label
             >
           </div>
-          <div class="section-label" style="margin-top: 20px">📖 Comprehension</div>
+          <div class="section-label" style="margin-top: 20px">Comprehension</div>
           <div class="chapters-grid">
             <label class="chapter-card"
               ><input type="checkbox" id="cmp1" /><span class="chapter-number">Chapter 1</span>
@@ -1129,7 +1129,45 @@
         <!-- /autoPanel -->
         <div id="customPanel"></div>
       </div>
+      </div>
       <!-- /chapters-section -->
+
+      <!-- Generate Config Dialog -->
+      <div id="generateDialog" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2000;align-items:center;justify-content:center;">
+        <div style="background:white;border-radius:20px;padding:36px;max-width:480px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.3);font-family:'Comic Sans MS',cursive;">
+          <h2 style="color:#667eea;margin:0 0 6px;font-size:1.6rem;"><i class="fas fa-sliders" style="margin-right:8px;"></i>Configure Test</h2>
+          <p style="color:#888;margin:0 0 24px;font-size:0.9rem;">Available from selected chapters: <strong id="dlgPicAvail">0</strong> picture &nbsp;|&nbsp; <strong id="dlgTextAvail">0</strong> text</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+            <div>
+              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;"><i class="fas fa-image"></i> Picture questions</label>
+              <input type="number" id="dlgPicCount" min="0" value="0" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+            </div>
+            <div>
+              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;">Marks each</label>
+              <input type="number" id="dlgPicMarks" min="1" value="2" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+            </div>
+            <div>
+              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;"><i class="fas fa-pen"></i> Text questions</label>
+              <input type="number" id="dlgTextCount" min="0" value="0" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+            </div>
+            <div>
+              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;">Marks each</label>
+              <input type="number" id="dlgTextMarks" min="1" value="1" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+            </div>
+          </div>
+
+          <div style="background:#f0f0f0;border-radius:10px;padding:12px 16px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-weight:bold;color:#333;">Total Marks:</span>
+            <span id="dlgTotal" style="font-size:1.4rem;font-weight:bold;color:#667eea;">0</span>
+          </div>
+
+          <div style="display:flex;gap:12px;">
+            <button onclick="closeDlg()" style="flex:1;padding:14px;border:2px solid #e0e0e0;background:white;border-radius:50px;font-size:1rem;font-weight:bold;cursor:pointer;font-family:inherit;color:#666;">Cancel</button>
+            <button onclick="confirmGenerate()" style="flex:2;padding:14px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;border-radius:50px;font-size:1rem;font-weight:bold;cursor:pointer;font-family:inherit;">Generate Test</button>
+          </div>
+        </div>
+      </div>
 
       <!-- Split Word Preview Layout -->
       <div class="word-preview-layout">
@@ -3089,42 +3127,197 @@
         ],
       };
 
-      function previewTest() {
-        const selectedChapters = document.querySelectorAll(".chapter-card:has(input:checked)");
+      function shuffleArray(a) {
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
 
-        if (selectedChapters.length === 0) {
+      function getSelectedChapterKeys() {
+        return Object.keys(questionBank).filter((k) => {
+          const el = document.getElementById(k);
+          return el && el.checked;
+        });
+      }
+
+      function countAvailableQuestions(keys) {
+        let total = 0;
+        keys.forEach((k) => {
+          const ch = questionBank[k];
+          if (!ch) return;
+          if (Array.isArray(ch)) {
+            total += ch.length;
+          } else if (ch.worksheets) {
+            ch.worksheets.forEach((ws) => {
+              total += ws.questions.length;
+            });
+          }
+        });
+        return total;
+      }
+
+      function countByType(keys) {
+        let pic = 0, text = 0;
+        keys.forEach((k) => {
+          const ch = questionBank[k];
+          if (!ch) return;
+          if (Array.isArray(ch)) {
+            text += ch.length;
+          } else if (ch.worksheets) {
+            ch.worksheets.forEach((ws) => {
+              if (ws.image) pic += ws.questions.length;
+              else text += ws.questions.length;
+            });
+          }
+        });
+        return { pic, text };
+      }
+
+      function updateAvailableCount() {
+        const counts = countByType(getSelectedChapterKeys());
+        let pEl = document.getElementById("availablePicCount");
+        let tEl = document.getElementById("availableTextCount");
+        let aEl = document.getElementById("availableCount"); // fallback
+        if (pEl) pEl.textContent = counts.pic || 0;
+        if (tEl) tEl.textContent = counts.text || 0;
+        if (aEl) aEl.textContent = (counts.pic || 0) + " picture, " + (counts.text || 0) + " text";
+      }
+
+      document.querySelectorAll(".chapter-card input").forEach((cb) => cb.addEventListener("change", updateAvailableCount));
+
+      // ─── GENERATE DIALOG & PREVIEW LOGIC ──────────────────────────────────────
+      function updateDlgTotal() {
+        const picCount = parseInt(document.getElementById("dlgPicCount").value) || 0;
+        const picMarks = parseInt(document.getElementById("dlgPicMarks").value) || 0;
+        const textCount = parseInt(document.getElementById("dlgTextCount").value) || 0;
+        const textMarks = parseInt(document.getElementById("dlgTextMarks").value) || 0;
+        document.getElementById("dlgTotal").textContent = (picCount * picMarks) + (textCount * textMarks);
+      }
+
+      function closeDlg() {
+        document.getElementById("generateDialog").style.display = "none";
+      }
+
+      // Wrapper called by Generate Test button
+      function generateTest() {
+        if (currentMode === "custom") {
+          previewCustomTest();
+          updateWordPreviews();
+          return;
+        }
+        const selectedKeys = getSelectedChapterKeys();
+        if (selectedKeys.length === 0) {
           alert("Please select at least one chapter!");
           return;
         }
+        const { pic, text } = countByType(selectedKeys);
+        document.getElementById("dlgPicAvail").textContent = pic;
+        document.getElementById("dlgTextAvail").textContent = text;
+        document.getElementById("dlgPicCount").value = pic;
+        document.getElementById("dlgTextCount").value = text;
+        updateDlgTotal();
+        const dlg = document.getElementById("generateDialog");
+        dlg.style.display = "flex";
+      }
 
-        lastGeneratedQuestions = [];
-        var qNum = 1;
-        selectedChapters.forEach(function(card) {
-          var chapterId = card.querySelector("input").id;
-          var chapter = questionBank[chapterId];
-          var chapterName = card.querySelector("h3").textContent;
-          
-          if (chapter && chapter.worksheets) {
-            chapter.worksheets.forEach(function(ws) {
-              ws.questions.forEach(function(q) {
-                lastGeneratedQuestions.push({
-                  qNum: qNum++,
-                  chapterKey: chapterId,
-                  chapterName: chapterName,
-                  instruction: ws.instruction || "",
-                  image: ws.image || null,
-                  text: q.text || "",
-                  answer: q.answer || null,
-                  lines: q.lines || 0
-                });
+      function confirmGenerate() {
+        const picCount  = parseInt(document.getElementById("dlgPicCount").value)  || 0;
+        const picMarks  = parseInt(document.getElementById("dlgPicMarks").value)  || 1;
+        const textCount = parseInt(document.getElementById("dlgTextCount").value) || 0;
+        const textMarks = parseInt(document.getElementById("dlgTextMarks").value) || 1;
+        closeDlg();
+
+        const selectedKeys = getSelectedChapterKeys();
+        const picPool = [], textPool = [];
+
+        selectedKeys.forEach((chKey) => {
+          const ch = questionBank[chKey];
+          if (!ch) return;
+
+          if (Array.isArray(ch)) {
+            const cardInput = document.getElementById(chKey);
+            const chName = cardInput ? cardInput.closest("label").querySelector("h3").textContent : chKey;
+            ch.forEach((q) => {
+              textPool.push({
+                chapterKey: chKey, chapterName: chName, worksheetIdx: 0,
+                instruction: "", image: null,
+                text: q.text, answer: q.answer || null,
+                options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0,
+              });
+            });
+          } else if (ch.worksheets) {
+            ch.worksheets.forEach((ws, wsIdx) => {
+              ws.questions.forEach((q) => {
+                const entry = {
+                  chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx,
+                  instruction: ws.instruction, image: ws.image || null,
+                  text: q.text, answer: q.answer || null,
+                  options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0,
+                };
+                if (ws.image) picPool.push(entry);
+                else textPool.push(entry);
               });
             });
           }
         });
+
+        const shuffledPic  = shuffleArray(picPool).slice(0, picCount);
+        const shuffledText = shuffleArray(textPool).slice(0, textCount);
+        const selected = [...shuffledPic, ...shuffledText];
+
+        if (shuffledPic.length < picCount)  alert("Only " + shuffledPic.length  + " picture questions available. Showing all.");
+        if (shuffledText.length < textCount) alert("Only " + shuffledText.length + " text questions available. Showing all.");
+
+        // Group by chapter maintaining order
+        const grouped = new Map();
+        selectedKeys.forEach((k) => {
+          const ch = questionBank[k];
+          if (Array.isArray(ch)) {
+            const cardInput = document.getElementById(k);
+            const chName = cardInput ? cardInput.closest("label").querySelector("h3").textContent : k;
+            grouped.set(k, { name: chName, worksheets: new Map() });
+          } else {
+            grouped.set(k, { name: ch.name, worksheets: new Map() });
+          }
+        });
+
+        selected.forEach((q) => {
+          const chGroup = grouped.get(q.chapterKey);
+          if (!chGroup) return;
+          if (!chGroup.worksheets.has(q.worksheetIdx)) {
+            chGroup.worksheets.set(q.worksheetIdx, { instruction: q.instruction, image: q.image || null, questions: [] });
+          }
+          chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
+        });
+
+        let qNum = 1;
+        lastGeneratedQuestions = [];
+        grouped.forEach((chData, chKey) => {
+          if (chData.worksheets.size === 0) return;
+          const sortedWs = [...chData.worksheets.entries()].sort((a, b) => a[0] - b[0]);
+          sortedWs.forEach(([wsIdx, wsData]) => {
+            wsData.questions.forEach((q) => {
+              lastGeneratedQuestions.push({
+                qNum: qNum++, chapterKey: chKey, chapterName: chData.name,
+                worksheetIdx: wsIdx, instruction: wsData.instruction,
+                image: wsData.image || null, answer: q.answer || null, text: q.text,
+                options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0,
+                marks: wsData.image ? picMarks : textMarks,
+              });
+            });
+          });
+        });
+
+        window._lastPicMarks   = picMarks;
+        window._lastTextMarks  = textMarks;
+        window._lastTotalMarks = (shuffledPic.length * picMarks) + (shuffledText.length * textMarks);
+        updateWordPreviews();
       }
 
       function printTest() {
-        previewTest();
+        if (lastGeneratedQuestions.length === 0) generateTest();
         setTimeout(() => {
           window.print();
         }, 500);
@@ -3379,12 +3572,7 @@
         });
       }
 
-      // Wrapper called by Preview Test button
-      function generateTest() {
-        if (currentMode === "custom") previewCustomTest();
-        else previewTest();
-        updateWordPreviews();
-      }
+
 
       // Render Word-style previews in both panels
       function updateWordPreviews() {
@@ -3396,7 +3584,7 @@
         var testName = document.getElementById("testName").value || "Grammar Test";
         var studentName = document.getElementById("studentName").value || "";
         var testDate = document.getElementById("testDate").value || "";
-        var totalMarks = document.getElementById("totalMarks").value || "";
+        var totalMarks = window._lastTotalMarks || "";
         var testDuration = document.getElementById("testDuration").value || "";
 
         // Group by chapter preserving order
@@ -3494,7 +3682,7 @@
         var testName = document.getElementById("testName").value || "Grammar Test";
         var studentName = document.getElementById("studentName").value || "";
         var testDate = document.getElementById("testDate").value || "";
-        var totalMarks = document.getElementById("totalMarks").value || "";
+        var totalMarks = window._lastTotalMarks || "";
         var testDuration = document.getElementById("testDuration").value || "";
 
         var html =

@@ -845,6 +845,13 @@
       <div class="chapters-section">
         <h2><i class="fas fa-book-open"></i> Select Chapters</h2>
         <p class="marks-info">Available: <span id="availablePicCount">0</span> picture &nbsp;|&nbsp; <span id="availableTextCount">0</span> text</p>
+<div class="mode-toggle">
+          <button id="modeAutoBtn" class="mode-btn active" onclick="setMode('auto')"><i class="fas fa-dice"></i> Auto</button>
+          <button id="modeCustomBtn" class="mode-btn" onclick="setMode('custom')"><i class="fas fa-pen"></i> Custom</button>
+        </div>
+        <div id="autoPanel">
+        
+        <div class="section-label" style="font-size:1.5rem;font-weight:bold;color:#667eea;margin:10px 0 15px;">Grammar</div>
         <div class="chapters-grid">
           <label class="chapter-card" data-chapter="ch1" data-type="picture">
             <input type="checkbox" id="ch1" />
@@ -948,6 +955,9 @@
             <h3>Position Words</h3>
             <p><i class="fas fa-image"></i> Picture exercise</p>
           </label>
+        </div>
+        <div class="section-label" style="font-size:1.5rem;font-weight:bold;color:#667eea;margin:30px 0 15px;">Vocabulary</div>
+        <div class="chapters-grid">
           <label class="chapter-card" data-chapter="voc2" data-type="picture">
             <input type="checkbox" id="voc2" />
             <span class="chapter-number">Vocabulary 2</span>
@@ -979,7 +989,10 @@
             <p><i class="fas fa-image"></i> Picture exercise</p>
           </label>
         </div>
-      </div>
+      
+        </div>
+        <div id="customPanel"></div>
+</div>
       <!-- /chapters-section -->
 
       <!-- Generate Config Dialog -->
@@ -1382,12 +1395,13 @@
       }
 
       function updateAvailableCount() {
-        const keys = getSelectedChapterKeys();
-        const { pic, text } = countByType(keys);
-        document.getElementById("availablePicCount").textContent = pic;
-        document.getElementById("availableTextCount").textContent = text;
-        const total = pic + text;
-        document.getElementById("actionAvail").textContent = total > 0 ? total + " questions available" : "Select chapters to begin";
+        const counts = countByType(getSelectedChapterKeys());
+        let pEl = document.getElementById("availablePicCount");
+        let tEl = document.getElementById("availableTextCount");
+        let aEl = document.getElementById("availableCount"); // fallback
+        if (pEl) pEl.textContent = counts.pic || 0;
+        if (tEl) tEl.textContent = counts.text || 0;
+        if (aEl) aEl.textContent = (counts.pic || 0) + " picture, " + (counts.text || 0) + " text";
       }
 
       document.querySelectorAll(".chapter-card input").forEach((cb) => cb.addEventListener("change", updateAvailableCount));

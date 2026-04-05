@@ -812,14 +812,14 @@
     <button class="back-btn" onclick="window.history.back()">&#8592; Back</button>
 
     <div class="header">
-      <h1>&#128221; Test Generator</h1>
+      <h1><i class="fas fa-file-pen"></i> Test Generator</h1>
       <p class="subtitle">Grammar Frolics-3 &#8212; Create a custom test by selecting chapters</p>
     </div>
 
     <div class="container">
       <!-- Test Information -->
       <div class="test-info">
-        <h2>&#128203; Test Information</h2>
+        <h2><i class="fas fa-clipboard-list"></i> Test Information</h2>
         <div class="info-grid">
           <div class="info-field">
             <label for="testName">Test Name</label>
@@ -846,270 +846,293 @@
 
       <!-- Chapter Selection -->
       <div class="chapters-section">
-        <h2>&#128218; Select Chapters</h2>
-        <p class="marks-info">Available questions from selected chapters: <span id="availableCount">0</span></p>
+        <h2><i class="fas fa-book-open"></i> Select Chapters</h2>
+        <p class="marks-info">Available: <span id="availablePicCount">0</span> picture &nbsp;|&nbsp; <span id="availableTextCount">0</span> text</p>
         <div class="mode-toggle">
-          <button id="modeAutoBtn" class="mode-btn active" onclick="setMode('auto')">&#127922; Auto</button>
-          <button id="modeCustomBtn" class="mode-btn" onclick="setMode('custom')">&#9999;&#65039; Custom</button>
+          <button id="modeAutoBtn" class="mode-btn active" onclick="setMode('auto')"><i class="fas fa-dice"></i> Auto</button>
+          <button id="modeCustomBtn" class="mode-btn" onclick="setMode('custom')"><i class="fas fa-pen"></i> Custom</button>
         </div>
         <div id="autoPanel">
-          <div class="chapters-grid">
-            <label class="chapter-card" data-chapter="g1">
+          
+        <div class="section-label" style="font-size:1.5rem;font-weight:bold;color:#667eea;margin:10px 0 15px;">Grammar</div>
+        <div class="chapters-grid">
+          <label class="chapter-card" data-chapter="g1">
               <input type="checkbox" id="g1" />
               <span class="chapter-number">Chapter 1</span>
               <h3>Subject and Predicate</h3>
               <p>Identifying subject and predicate</p>
             </label>
-            <label class="chapter-card" data-chapter="g2">
+          <label class="chapter-card" data-chapter="g2">
               <input type="checkbox" id="g2" />
               <span class="chapter-number">Chapter 2</span>
               <h3>The Sentence</h3>
               <p>Phrases vs sentences, punctuation</p>
             </label>
-            <label class="chapter-card" data-chapter="g3">
+          <label class="chapter-card" data-chapter="g3">
               <input type="checkbox" id="g3" />
               <span class="chapter-number">Chapter 3</span>
               <h3>Nouns</h3>
               <p>Proper nouns, noun phrases, passage nouns</p>
             </label>
-            <label class="chapter-card" data-chapter="g4">
+          <label class="chapter-card" data-chapter="g4">
               <input type="checkbox" id="g4" />
               <span class="chapter-number">Chapter 4</span>
               <h3>Singular and Plural</h3>
               <p>Complete the plurals table</p>
             </label>
-            <label class="chapter-card" data-chapter="g5">
+          <label class="chapter-card" data-chapter="g5">
               <input type="checkbox" id="g5" />
               <span class="chapter-number">Chapter 5</span>
               <h3>A, An and The</h3>
               <p>Correcting article errors</p>
             </label>
-            <label class="chapter-card" data-chapter="g6">
+          <label class="chapter-card" data-chapter="g6">
               <input type="checkbox" id="g6" />
               <span class="chapter-number">Chapter 6</span>
               <h3>Countable and Uncountable Nouns</h3>
               <p>C or U for each noun</p>
             </label>
-            <label class="chapter-card" data-chapter="g7">
+          <label class="chapter-card" data-chapter="g7">
               <input type="checkbox" id="g7" />
               <span class="chapter-number">Chapter 7</span>
               <h3>Subject and Object</h3>
               <p>Identifying subject, verb and object</p>
             </label>
-            <label class="chapter-card" data-chapter="g8">
+          <label class="chapter-card" data-chapter="g8">
               <input type="checkbox" id="g8" />
               <span class="chapter-number">Chapter 8</span>
               <h3>Gender</h3>
               <p>Feminine gender and gender examples</p>
             </label>
-            <label class="chapter-card" data-chapter="g9">
+          <label class="chapter-card" data-chapter="g9">
               <input type="checkbox" id="g9" />
               <span class="chapter-number">Chapter 9</span>
               <h3>Pronouns</h3>
               <p>Subject and object pronouns</p>
             </label>
-            <label class="chapter-card" data-chapter="g10">
+          <label class="chapter-card" data-chapter="g10">
               <input type="checkbox" id="g10" />
               <span class="chapter-number">Chapter 10</span>
               <h3>Adjectives</h3>
               <p>Filling in suitable adjectives</p>
             </label>
-            <label class="chapter-card" data-chapter="g11">
+          <label class="chapter-card" data-chapter="g11">
               <input type="checkbox" id="g11" />
               <span class="chapter-number">Chapter 11</span>
               <h3>Possessives</h3>
               <p>Possessive pronouns and adjectives</p>
             </label>
-            <label class="chapter-card" data-chapter="g12">
+          <label class="chapter-card" data-chapter="g12">
               <input type="checkbox" id="g12" />
               <span class="chapter-number">Chapter 12</span>
               <h3>Comparison of Adjectives</h3>
               <p>Positive, comparative, superlative</p>
             </label>
-            <label class="chapter-card" data-chapter="g13">
+          <label class="chapter-card" data-chapter="g13">
               <input type="checkbox" id="g13" />
               <span class="chapter-number">Chapter 13</span>
               <h3>Verbs</h3>
               <p>Identifying and using verbs</p>
             </label>
-            <label class="chapter-card" data-chapter="g14">
+          <label class="chapter-card" data-chapter="g14">
               <input type="checkbox" id="g14" />
               <span class="chapter-number">Chapter 14</span>
               <h3>Simple Present Tense</h3>
               <p>Present tense verb forms</p>
             </label>
-            <label class="chapter-card" data-chapter="g15">
+          <label class="chapter-card" data-chapter="g15">
               <input type="checkbox" id="g15" />
               <span class="chapter-number">Chapter 15</span>
               <h3>Simple Past Tense</h3>
               <p>Past tense verb forms</p>
             </label>
-            <label class="chapter-card" data-chapter="g16">
+          <label class="chapter-card" data-chapter="g16">
               <input type="checkbox" id="g16" />
               <span class="chapter-number">Chapter 16</span>
               <h3>Simple Future Tense</h3>
               <p>Future tense with will</p>
             </label>
-            <label class="chapter-card" data-chapter="g17">
+          <label class="chapter-card" data-chapter="g17">
               <input type="checkbox" id="g17" />
               <span class="chapter-number">Chapter 17</span>
               <h3>Present Continuous Tense</h3>
               <p>is/are + -ing form</p>
             </label>
-            <label class="chapter-card" data-chapter="g18">
+          <label class="chapter-card" data-chapter="g18">
               <input type="checkbox" id="g18" />
               <span class="chapter-number">Chapter 18</span>
               <h3>Past Continuous Tense</h3>
               <p>was/were + -ing form</p>
             </label>
-            <label class="chapter-card" data-chapter="g19">
+          <label class="chapter-card" data-chapter="g19">
               <input type="checkbox" id="g19" />
               <span class="chapter-number">Chapter 19</span>
               <h3>Adverbs</h3>
               <p>Choosing correct adverbs</p>
             </label>
-            <label class="chapter-card" data-chapter="g20">
+          <label class="chapter-card" data-chapter="g20">
               <input type="checkbox" id="g20" />
               <span class="chapter-number">Chapter 20</span>
               <h3>Conjunctions</h3>
               <p>when, so, because, while</p>
             </label>
-            <label class="chapter-card" data-chapter="g21">
+          <label class="chapter-card" data-chapter="g21">
               <input type="checkbox" id="g21" />
               <span class="chapter-number">Chapter 21</span>
               <h3>Prepositions</h3>
               <p>Picture prepositions and drawing exercises</p>
             </label>
-            <label class="chapter-card" data-chapter="g22">
+          <label class="chapter-card" data-chapter="g22">
               <input type="checkbox" id="g22" />
               <span class="chapter-number">Chapter 22</span>
               <h3>Punctuation and Capital Letters</h3>
               <p>Circling words needing capitals</p>
             </label>
-          </div>
         </div>
-
-        <!-- Vocabulary Section -->
-        <div style="margin-top:24px;">
-          <h3 style="color:#667eea;margin-bottom:14px;font-size:1.3rem;">Vocabulary</h3>
-          <div class="chapters-grid">
-            <label class="chapter-card" data-chapter="voc1">
+        <div class="section-label" style="font-size:1.5rem;font-weight:bold;color:#667eea;margin:30px 0 15px;">Vocabulary</div>
+        <div class="chapters-grid">
+          <label class="chapter-card" data-chapter="voc1">
               <input type="checkbox" id="voc1" />
               <span class="chapter-number">Voc Chapter 1</span>
               <h3>Prefixes</h3>
               <p>un-, im-, in-, dis- prefixes MCQ</p>
             </label>
-            <label class="chapter-card" data-chapter="voc2">
+          <label class="chapter-card" data-chapter="voc2">
               <input type="checkbox" id="voc2" />
               <span class="chapter-number">Voc Chapter 2</span>
               <h3>Similar Words</h3>
               <p>Match the similar words</p>
             </label>
-            <label class="chapter-card" data-chapter="voc3">
+          <label class="chapter-card" data-chapter="voc3">
               <input type="checkbox" id="voc3" />
               <span class="chapter-number">Voc Chapter 3</span>
               <h3>Homophones</h3>
               <p>Guess the homophone pairs</p>
             </label>
-            <label class="chapter-card" data-chapter="voc4">
+          <label class="chapter-card" data-chapter="voc4">
               <input type="checkbox" id="voc4" />
               <span class="chapter-number">Voc Chapter 4</span>
               <h3>Similes</h3>
               <p>Fill in simile blanks from picture clues</p>
             </label>
-            <label class="chapter-card" data-chapter="voc5">
+          <label class="chapter-card" data-chapter="voc5">
               <input type="checkbox" id="voc5" />
               <span class="chapter-number">Voc Chapter 5</span>
               <h3>Sound Words</h3>
               <p>Match objects to sound words</p>
             </label>
-            <label class="chapter-card" data-chapter="voc6">
+          <label class="chapter-card" data-chapter="voc6">
               <input type="checkbox" id="voc6" />
               <span class="chapter-number">Voc Chapter 6</span>
               <h3>Phrasal Verbs</h3>
               <p>Meanings of phrasal verbs MCQ</p>
             </label>
-          </div>
         </div>
-
-        <!-- Composition Section -->
-        <div style="margin-top:24px;">
-          <h3 style="color:#667eea;margin-bottom:14px;font-size:1.3rem;">Composition</h3>
-          <div class="chapters-grid">
-            <label class="chapter-card" data-chapter="comp1">
+        <div class="section-label" style="font-size:1.5rem;font-weight:bold;color:#667eea;margin:30px 0 15px;">Composition</div>
+        <div class="chapters-grid">
+          <label class="chapter-card" data-chapter="comp1">
               <input type="checkbox" id="comp1" />
               <span class="chapter-number">Comp Chapter 1</span>
               <h3>Letter to Uncle</h3>
               <p>Informal letter writing</p>
             </label>
-            <label class="chapter-card" data-chapter="comp2">
+          <label class="chapter-card" data-chapter="comp2">
               <input type="checkbox" id="comp2" />
               <span class="chapter-number">Comp Chapter 2</span>
               <h3>Leave Application</h3>
               <p>Formal letter to principal</p>
             </label>
-            <label class="chapter-card" data-chapter="comp3">
+          <label class="chapter-card" data-chapter="comp3">
               <input type="checkbox" id="comp3" />
               <span class="chapter-number">Comp Chapter 3</span>
               <h3>Picture Composition 1</h3>
               <p>Describe the picture and answer</p>
             </label>
-            <label class="chapter-card" data-chapter="comp4">
+          <label class="chapter-card" data-chapter="comp4">
               <input type="checkbox" id="comp4" />
               <span class="chapter-number">Comp Chapter 4</span>
               <h3>Picture Composition 2</h3>
               <p>Describe the picture and answer</p>
             </label>
-            <label class="chapter-card" data-chapter="comp5">
+          <label class="chapter-card" data-chapter="comp5">
               <input type="checkbox" id="comp5" />
               <span class="chapter-number">Comp Chapter 5</span>
               <h3>Paragraph Writing</h3>
               <p>Write about your favourite person</p>
             </label>
-          </div>
         </div>
-
-        <!-- Comprehension Section -->
-        <div style="margin-top:24px;">
-          <h3 style="color:#667eea;margin-bottom:14px;font-size:1.3rem;">Comprehension</h3>
-          <div class="chapters-grid">
-            <label class="chapter-card" data-chapter="cmp1">
+        <div class="section-label" style="font-size:1.5rem;font-weight:bold;color:#667eea;margin:30px 0 15px;">Comprehension</div>
+        <div class="chapters-grid">
+          <label class="chapter-card" data-chapter="cmp1">
               <input type="checkbox" id="cmp1" />
               <span class="chapter-number">Cmp Chapter 1</span>
               <h3>Picture Comprehension 1</h3>
               <p>Answer questions from picture</p>
             </label>
-            <label class="chapter-card" data-chapter="cmp2">
+          <label class="chapter-card" data-chapter="cmp2">
               <input type="checkbox" id="cmp2" />
               <span class="chapter-number">Cmp Chapter 2</span>
               <h3>Picture Comprehension 2</h3>
               <p>Answer questions from picture</p>
             </label>
-            <label class="chapter-card" data-chapter="cmp3">
+          <label class="chapter-card" data-chapter="cmp3">
               <input type="checkbox" id="cmp3" />
               <span class="chapter-number">Cmp Chapter 3</span>
               <h3>My Pet Dog</h3>
               <p>Read passage and answer</p>
             </label>
-            <label class="chapter-card" data-chapter="cmp4">
+          <label class="chapter-card" data-chapter="cmp4">
               <input type="checkbox" id="cmp4" />
               <span class="chapter-number">Cmp Chapter 4</span>
               <h3>The Little Raindrops</h3>
               <p>Read passage and answer</p>
             </label>
-            <label class="chapter-card" data-chapter="cmp5">
+          <label class="chapter-card" data-chapter="cmp5">
               <input type="checkbox" id="cmp5" />
               <span class="chapter-number">Cmp Chapter 5</span>
               <h3>The Thirsty Crow</h3>
               <p>MCQ comprehension passage</p>
             </label>
-          </div>
         </div>
-
-        <!-- /autoPanel -->
-        <div id="customPanel"></div>
       </div>
       <!-- /chapters-section -->
+
+      <!-- Generate Config Dialog -->
+      <div id="generateDialog" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2000;align-items:center;justify-content:center;">
+        <div style="background:white;border-radius:20px;padding:36px;max-width:480px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.3);font-family:'Comic Sans MS',cursive;">
+          <h2 style="color:#667eea;margin:0 0 6px;font-size:1.6rem;"><i class="fas fa-sliders" style="margin-right:8px;"></i>Configure Test</h2>
+          <p style="color:#888;margin:0 0 24px;font-size:0.9rem;">Available from selected chapters: <strong id="dlgPicAvail">0</strong> picture &nbsp;|&nbsp; <strong id="dlgTextAvail">0</strong> text</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+            <div>
+              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;"><i class="fas fa-image"></i> Picture questions</label>
+              <input type="number" id="dlgPicCount" min="0" value="0" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+            </div>
+            <div>
+              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;">Marks each</label>
+              <input type="number" id="dlgPicMarks" min="1" value="2" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+            </div>
+            <div>
+              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;"><i class="fas fa-pen"></i> Text questions</label>
+              <input type="number" id="dlgTextCount" min="0" value="0" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+            </div>
+            <div>
+              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;">Marks each</label>
+              <input type="number" id="dlgTextMarks" min="1" value="1" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+            </div>
+          </div>
+
+          <div style="background:#f0f0f0;border-radius:10px;padding:12px 16px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-weight:bold;color:#333;">Total Marks:</span>
+            <span id="dlgTotal" style="font-size:1.4rem;font-weight:bold;color:#667eea;">0</span>
+          </div>
+
+          <div style="display:flex;gap:12px;">
+            <button onclick="closeDlg()" style="flex:1;padding:14px;border:2px solid #e0e0e0;background:white;border-radius:50px;font-size:1rem;font-weight:bold;cursor:pointer;font-family:inherit;color:#666;">Cancel</button>
+            <button onclick="confirmGenerate()" style="flex:2;padding:14px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;border-radius:50px;font-size:1rem;font-weight:bold;cursor:pointer;font-family:inherit;">Generate Test</button>
+          </div>
+        </div>
+      </div>
 
       <!-- Split Word Preview Layout -->
       <div class="word-preview-layout">
@@ -1981,57 +2004,101 @@
         return total;
       }
 
+      function countByType(keys) {
+        let pic = 0, text = 0;
+        keys.forEach((k) => {
+          const ch = questionBank[k];
+          if (!ch) return;
+          ch.worksheets.forEach((ws) => {
+            if (ws.image) pic += ws.questions.length;
+            else text += ws.questions.length;
+          });
+        });
+        return { pic, text };
+      }
+
       function updateAvailableCount() {
-        const count = countAvailableQuestions(getSelectedChapterKeys());
-        document.getElementById("availableCount").textContent = count;
-        document.getElementById("actionAvail").textContent = count > 0 ? count + " questions available" : "Select chapters to begin";
+        const counts = countByType(getSelectedChapterKeys());
+        let pEl = document.getElementById("availablePicCount");
+        let tEl = document.getElementById("availableTextCount");
+        let aEl = document.getElementById("availableCount"); // fallback
+        if (pEl) pEl.textContent = counts.pic || 0;
+        if (tEl) tEl.textContent = counts.text || 0;
+        if (aEl) aEl.textContent = (counts.pic || 0) + " picture, " + (counts.text || 0) + " text";
       }
 
       document.querySelectorAll(".chapter-card input").forEach((cb) => cb.addEventListener("change", updateAvailableCount));
 
-      // ─── PREVIEW TEST ───────────────────────────────────────────────────────
-      function previewTest() {
-        const totalMarks = parseInt(document.getElementById("totalMarks").value) || 20;
+      // ─── GENERATE DIALOG & PREVIEW LOGIC ──────────────────────────────────────
+      function updateDlgTotal() {
+        const picCount = parseInt(document.getElementById("dlgPicCount").value) || 0;
+        const picMarks = parseInt(document.getElementById("dlgPicMarks").value) || 0;
+        const textCount = parseInt(document.getElementById("dlgTextCount").value) || 0;
+        const textMarks = parseInt(document.getElementById("dlgTextMarks").value) || 0;
+        document.getElementById("dlgTotal").textContent = (picCount * picMarks) + (textCount * textMarks);
+      }
 
+      function closeDlg() {
+        document.getElementById("generateDialog").style.display = "none";
+      }
+
+      // Wrapper called by Generate Test button
+      function generateTest() {
+        if (currentMode === "custom") {
+          previewCustomTest();
+          updateWordPreviews();
+          return;
+        }
         const selectedKeys = getSelectedChapterKeys();
         if (selectedKeys.length === 0) {
           alert("Please select at least one chapter!");
           return;
         }
+        const { pic, text } = countByType(selectedKeys);
+        document.getElementById("dlgPicAvail").textContent = pic;
+        document.getElementById("dlgTextAvail").textContent = text;
+        document.getElementById("dlgPicCount").value = pic;
+        document.getElementById("dlgTextCount").value = text;
+        updateDlgTotal();
+        const dlg = document.getElementById("generateDialog");
+        dlg.style.display = "flex";
+      }
 
-        // Flatten all questions from selected chapters into a pool
-        const pool = [];
+      function confirmGenerate() {
+        const picCount  = parseInt(document.getElementById("dlgPicCount").value)  || 0;
+        const picMarks  = parseInt(document.getElementById("dlgPicMarks").value)  || 1;
+        const textCount = parseInt(document.getElementById("dlgTextCount").value) || 0;
+        const textMarks = parseInt(document.getElementById("dlgTextMarks").value) || 1;
+        closeDlg();
+
+        const selectedKeys = getSelectedChapterKeys();
+        const picPool = [], textPool = [];
+
         selectedKeys.forEach((chKey) => {
           const ch = questionBank[chKey];
           if (!ch) return;
           ch.worksheets.forEach((ws, wsIdx) => {
             ws.questions.forEach((q) => {
-              pool.push({
-                chapterKey: chKey,
-                chapterName: ch.name,
-                worksheetIdx: wsIdx,
-                instruction: ws.instruction,
-                image: ws.image || null,
-                text: q.text,
-                answer: q.answer || null,
-                options: q.options || null,
-                wideOptions: q.wideOptions || false,
-                lines: q.lines || 0,
-              });
+              const entry = {
+                chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx,
+                instruction: ws.instruction, image: ws.image || null,
+                text: q.text, answer: q.answer || null,
+                options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0,
+              };
+              if (ws.image) picPool.push(entry);
+              else textPool.push(entry);
             });
           });
         });
 
-        // Shuffle and select up to totalMarks questions
-        const shuffled = shuffleArray(pool);
-        const available = shuffled.length;
-        const selected = shuffled.slice(0, Math.min(totalMarks, available));
+        const shuffledPic  = shuffleArray(picPool).slice(0, picCount);
+        const shuffledText = shuffleArray(textPool).slice(0, textCount);
+        const selected = [...shuffledPic, ...shuffledText];
 
-        if (available < totalMarks) {
-          alert("Only " + available + " questions are available from selected chapters.\n" + "Showing all " + available + " questions. Select more chapters or reduce total marks.");
-        }
+        if (shuffledPic.length < picCount)  alert("Only " + shuffledPic.length  + " picture questions available. Showing all.");
+        if (shuffledText.length < textCount) alert("Only " + shuffledText.length + " text questions available. Showing all.");
 
-        // Re-group by chapter (maintaining chapter order), then by worksheet
+        // Group by chapter maintaining order
         const grouped = new Map();
         selectedKeys.forEach((k) => {
           grouped.set(k, { name: questionBank[k].name, worksheets: new Map() });
@@ -2048,19 +2115,26 @@
 
         let qNum = 1;
         lastGeneratedQuestions = [];
-
         grouped.forEach((chData, chKey) => {
           if (chData.worksheets.size === 0) return;
-
           const sortedWs = [...chData.worksheets.entries()].sort((a, b) => a[0] - b[0]);
-
           sortedWs.forEach(([wsIdx, wsData]) => {
             wsData.questions.forEach((q) => {
-              lastGeneratedQuestions.push({ qNum: qNum, chapterKey: chKey, chapterName: chData.name, worksheetIdx: wsIdx, instruction: wsData.instruction, image: wsData.image || null, answer: q.answer || null, text: q.text });
-              qNum++;
+              lastGeneratedQuestions.push({
+                qNum: qNum++, chapterKey: chKey, chapterName: chData.name,
+                worksheetIdx: wsIdx, instruction: wsData.instruction,
+                image: wsData.image || null, answer: q.answer || null, text: q.text,
+                options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0,
+                marks: wsData.image ? picMarks : textMarks,
+              });
             });
           });
         });
+
+        window._lastPicMarks   = picMarks;
+        window._lastTextMarks  = textMarks;
+        window._lastTotalMarks = (shuffledPic.length * picMarks) + (shuffledText.length * textMarks);
+        updateWordPreviews();
       }
 
       // Auto / Custom Mode
@@ -2322,7 +2396,7 @@
         var testName = document.getElementById("testName").value || "Grammar Test";
         var studentName = document.getElementById("studentName").value || "";
         var testDate = document.getElementById("testDate").value || "";
-        var totalMarks = document.getElementById("totalMarks").value || "";
+        var totalMarks = window._lastTotalMarks || "";
         var testDuration = document.getElementById("testDuration").value || "";
         var grouped = {};
         var chapterOrder = [];
@@ -2389,14 +2463,9 @@
         document.querySelector(".word-preview-layout").scrollIntoView({ behavior: "smooth" });
       }
 
-      // Wrapper called by Preview Test button
-      function generateTest() {
-        if (currentMode === "custom") previewCustomTest();
-        else previewTest();
-        updateWordPreviews();
-      }
 
       // Word Export
+
       function _esc(s) {
         if (!s) return "";
         return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -2410,7 +2479,7 @@
         var testName = document.getElementById("testName").value || "Grammar Test";
         var studentName = document.getElementById("studentName").value || "";
         var testDate = document.getElementById("testDate").value || "";
-        var totalMarks = document.getElementById("totalMarks").value || "";
+        var totalMarks = window._lastTotalMarks || "";
         var testDuration = document.getElementById("testDuration").value || "";
 
         var html =
