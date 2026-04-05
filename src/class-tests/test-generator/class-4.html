@@ -861,6 +861,12 @@
               <p>Quality, quantity, number, possessive, demonstrative</p>
             </label>
             <label class="chapter-card"
+              ><input type="checkbox" id="g10" />
+              <span class="chapter-number">Chapter 10</span>
+              <h3>Comparison of Adjectives</h3>
+              <p>Complete table + MCQ forms</p>
+            </label>
+            <label class="chapter-card"
               ><input type="checkbox" id="g11" />
               <span class="chapter-number">Chapter 11</span>
               <h3>Kinds of Verbs</h3>
@@ -948,6 +954,45 @@
               <h3>Prefixes</h3>
               <p>Adding prefixes to form new words</p>
             </label>
+            <label class="chapter-card"
+              ><input type="checkbox" id="v4" />
+              <span class="chapter-number">Vocabulary 4</span>
+              <h3>Suffixes</h3>
+              <p>Choosing correct suffixes MCQ</p>
+            </label>
+            <label class="chapter-card"
+              ><input type="checkbox" id="v5" />
+              <span class="chapter-number">Vocabulary 5</span>
+              <h3>Proverbs</h3>
+              <p>Choosing correct meanings of proverbs</p>
+            </label>
+            <label class="chapter-card"
+              ><input type="checkbox" id="v6" />
+              <span class="chapter-number">Vocabulary 6</span>
+              <h3>Phrasal Verbs</h3>
+              <p>Match phrasal verbs with meanings</p>
+            </label>
+          </div>
+          <div class="section-label" style="margin-top: 20px">Composition</div>
+          <div class="chapters-grid">
+            <label class="chapter-card"><input type="checkbox" id="comp1" /><span class="chapter-number">Comp 1</span><h3>Picture Composition 1</h3><p>Describe the picture</p></label>
+            <label class="chapter-card"><input type="checkbox" id="comp2" /><span class="chapter-number">Comp 2</span><h3>Picture Composition 2</h3><p>Describe the picture</p></label>
+            <label class="chapter-card"><input type="checkbox" id="comp3" /><span class="chapter-number">Comp 3</span><h3>Picture Composition 3</h3><p>Describe the picture</p></label>
+            <label class="chapter-card"><input type="checkbox" id="comp4" /><span class="chapter-number">Comp 4</span><h3>Informal Letter</h3><p>Letter writing prompts</p></label>
+            <label class="chapter-card"><input type="checkbox" id="comp5" /><span class="chapter-number">Comp 5</span><h3>Formal Letter</h3><p>Formal letter writing</p></label>
+            <label class="chapter-card"><input type="checkbox" id="comp6" /><span class="chapter-number">Comp 6</span><h3>Notice Writing</h3><p>Write notices</p></label>
+            <label class="chapter-card"><input type="checkbox" id="comp7" /><span class="chapter-number">Comp 7</span><h3>Story Writing</h3><p>Develop story outlines</p></label>
+            <label class="chapter-card"><input type="checkbox" id="comp8" /><span class="chapter-number">Comp 8</span><h3>Essay Writing</h3><p>Write essays on topics</p></label>
+            <label class="chapter-card"><input type="checkbox" id="comp9" /><span class="chapter-number">Comp 9</span><h3>Biosketch</h3><p>Write biosketches from profiles</p></label>
+          </div>
+          <div class="section-label" style="margin-top: 20px">Comprehension</div>
+          <div class="chapters-grid">
+            <label class="chapter-card"><input type="checkbox" id="cmp1" /><span class="chapter-number">Cmp 1</span><h3>At the Picnic</h3><p>Picture comprehension</p></label>
+            <label class="chapter-card"><input type="checkbox" id="cmp2" /><span class="chapter-number">Cmp 2</span><h3>Two Travelers and A Purse</h3><p>MCQ passage comprehension</p></label>
+            <label class="chapter-card"><input type="checkbox" id="cmp3" /><span class="chapter-number">Cmp 3</span><h3>Being Healthy</h3><p>MCQ poem comprehension</p></label>
+            <label class="chapter-card"><input type="checkbox" id="cmp4" /><span class="chapter-number">Cmp 4</span><h3>The Silent Snake</h3><p>MCQ poem comprehension</p></label>
+            <label class="chapter-card"><input type="checkbox" id="cmp5" /><span class="chapter-number">Cmp 5</span><h3>Androcles and the Lion</h3><p>MCQ passage comprehension</p></label>
+            <label class="chapter-card"><input type="checkbox" id="cmp6" /><span class="chapter-number">Cmp 6</span><h3>Reading a Label</h3><p>Read and answer label questions</p></label>
           </div>
         </div>
         <!-- /autoPanel -->
@@ -987,6 +1032,29 @@
 
     <script>
       document.getElementById("testDate").valueAsDate = new Date();
+
+      const IMG = "../../../assets/images/test-generator/class-4/";
+
+      function renderImgAnswer(ans, forWord) {
+        if (!ans || ans === "vary") return "";
+        var hdr = forWord
+          ? '<div style="margin-top:8px;font-weight:bold;color:#333;font-size:11pt;">Answers:</div>'
+          : '<div class="doc-answers-header" style="margin-top:8px;">Answers:</div>';
+        if (ans.indexOf(" → ") !== -1) {
+          var rows = "";
+          ans.split(" | ").forEach(function(pair) {
+            var parts = pair.split(" → ");
+            rows += '<tr><td style="padding:3px 10px 3px 0;font-weight:bold;color:#2d6a4f;">' + _esc(parts[0]) + '</td>';
+            for (var i = 1; i < parts.length; i++) {
+              rows += '<td style="padding:3px 10px 3px 0;">→ ' + _esc(parts[i]) + '</td>';
+            }
+            rows += '</tr>';
+          });
+          return hdr + '<table style="border-collapse:collapse;margin:6px 0 12px;">' + rows + '</table>';
+        }
+        if (forWord) return hdr + '<div class="ans">' + _esc(ans) + '</div>';
+        return hdr + '<div class="doc-answer">' + _esc(ans) + '</div>';
+      }
 
       const questionBank = {
         g1: {
@@ -1114,8 +1182,10 @@
                 { text: "The mountain is covered with snow.", lines: 1, answer: "Mount Everest is covered with snow." },
               ],
             },
+            { instruction: "C – Complete each phrase with the correct collective noun from the box.", image: IMG + "Grammar - Chapter 4 C.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+            { instruction: "D – Circle the words that cannot be touched, seen or felt.", image: IMG + "Grammar - Chapter 4 D.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
             {
-              instruction: "C – Underline the abstract nouns in these sentences.",
+              instruction: "E – Underline the abstract nouns in these sentences.",
               questions: [
                 { text: "Her happiness was clear when she got the prize.", answer: "happiness" },
                 { text: "Children need love to grow well.", answer: "love" },
@@ -1130,7 +1200,7 @@
               ],
             },
             {
-              instruction: "D – Fill in each blank with the abstract noun form of the word in brackets.",
+              instruction: "F – Fill in each blank with the abstract noun form of the word in brackets.",
               questions: [
                 { text: "We must show ___________ (kind) to animals.", answer: "kindness" },
                 { text: "___________ (honest) is the best policy in life.", answer: "Honesty" },
@@ -1215,6 +1285,7 @@
                 { text: "A few ___________ (potato) are scattered on the floor.", answer: "potatoes" },
               ],
             },
+            { instruction: "D – Look at each picture. Choose the correct word to complete each phrase.", image: IMG + "Grammar - Chapter 5 D.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
           ],
         },
 
@@ -1431,8 +1502,9 @@
                 { text: "The train ___________ (not/leave) at 6 o'clock.", answer: "does not leave" },
               ],
             },
+            { instruction: "B – Choose the correct verb to complete the story.", image: IMG + "Grammar - Chapter 12 B.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
             {
-              instruction: "B – Rewrite the sentences after putting the words in the correct order.",
+              instruction: "C – Rewrite the sentences after putting the words in the correct order.",
               questions: [
                 { text: "live / Mumbai / in / we / .", lines: 1, answer: "We live in Mumbai." },
                 { text: "not / like / do / I / coffee / .", lines: 1, answer: "I do not like coffee." },
@@ -1680,8 +1752,9 @@
         g18: {
           name: "Ch 18: Adverbs",
           worksheets: [
+            { instruction: "A – Read the Adverbs and draw something that depicts each.", image: IMG + "Grammar - Chapter 18 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
             {
-              instruction: "A – Fill in the blanks with suitable adverbs.",
+              instruction: "B – Fill in the blanks with suitable adverbs.",
               questions: [
                 { text: "We will go to the park ___________.", answer: "tomorrow" },
                 { text: "She is busy with her homework ___________.", answer: "now" },
@@ -1930,6 +2003,284 @@
             },
           ],
         },
+
+        g10: {
+          name: "Ch 10: Comparison of Adjectives",
+          worksheets: [
+            { instruction: "A – Complete the table.", image: IMG + "Grammar - Chapter 10 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+            {
+              instruction: "B – Choose the correct option to complete each sentence.",
+              questions: [
+                { text: "This mango is ___________ than that one. (a. sweet  b. sweeter  c. sweetest  d. more sweet)", answer: "b. sweeter" },
+                { text: "Mount Everest is the ___________ mountain in the world. (a. high  b. higher  c. highest  d. most high)", answer: "c. highest" },
+                { text: "She is ___________ than her sister. (a. tall  b. taller  c. tallest  d. more tall)", answer: "b. taller" },
+                { text: "Of all the boys, Ramesh is the ___________. (a. intelligent  b. more intelligent  c. most intelligent  d. intelligenter)", answer: "c. most intelligent" },
+                { text: "Health is ___________ than wealth. (a. good  b. better  c. best  d. more good)", answer: "b. better" },
+                { text: "This problem is ___________ than the last one. (a. bad  b. worse  c. worst  d. more bad)", answer: "b. worse" },
+                { text: "She is the ___________ singer in our class. (a. good  b. better  c. best  d. most good)", answer: "c. best" },
+                { text: "This book is ___________ interesting than that one. (a. most  b. more  c. much  d. many)", answer: "b. more" },
+                { text: "The sun is ___________ than the moon. (a. bright  b. brighter  c. brightest  d. most bright)", answer: "b. brighter" },
+                { text: "My house is the ___________ in the street. (a. big  b. bigger  c. biggest  d. most big)", answer: "c. biggest" },
+              ],
+            },
+          ],
+        },
+
+        v4: {
+          name: "Voc 4: Suffixes",
+          worksheets: [
+            {
+              instruction: "A – Choose the correct suffix to complete the word in each sentence.",
+              questions: [
+                { text: "She is a great teach___ who loves working with kids. (a. -er  b. -ing  c. -ed  d. -ful)", answer: "a. -er (teacher)" },
+                { text: "The baby looked so sleep___, we put her to bed early. (a. -ness  b. -y  c. -ful  d. -less)", answer: "b. -y (sleepy)" },
+                { text: "The magician's show was full of amaze___. (a. -able  b. -ness  c. -ment  d. -ful)", answer: "c. -ment (amazement)" },
+                { text: "He reacted in a child___ manner. (a. -ly  b. -ish  c. -y  d. -ous)", answer: "b. -ish (childish)" },
+                { text: "The water is not drink___. (a. -ment  b. -er  c. -able  d. -ing)", answer: "c. -able (drinkable)" },
+                { text: "That movie was very emotion___. (a. -ed  b. -ment  c. -ful  d. -al)", answer: "d. -al (emotional)" },
+                { text: "That was the kind___ thing anyone has done for me! (a. -est  b. -ness  c. -ly  d. -ful)", answer: "a. -est (kindest)" },
+                { text: "He is a very help___ person who always supports others. (a. -er  b. -ment  c. -ful  d. -less)", answer: "c. -ful (helpful)" },
+                { text: "The scientist made a new invent___. (a. -ed  b. -ion  c. -ive  d. -ous)", answer: "b. -ion (invention)" },
+                { text: "His rude___ made everyone uncomfortable. (a. -ful  b. -ness  c. -ment  d. -tion)", answer: "b. -ness (rudeness)" },
+                { text: "The design needed some improve___. (a. -ive  b. -ible  c. -est  d. -ment)", answer: "d. -ment (improvement)" },
+                { text: "The seats of the aircraft were very comfort___. (a. -ous  b. -ness  c. -able  d. -er)", answer: "c. -able (comfortable)" },
+                { text: "She spoke so soft___, we could barely hear her. (a. -er  b. -ful  c. -ly  d. -ing)", answer: "c. -ly (softly)" },
+                { text: "She looked loving___ at the newborn puppy. (a. -er  b. -ly  c. -ful  d. -ness)", answer: "b. -ly (lovingly)" },
+              ],
+            },
+          ],
+        },
+
+        v5: {
+          name: "Voc 5: Proverbs",
+          worksheets: [
+            {
+              instruction: "A – Choose the correct meaning of each proverb.",
+              questions: [
+                { text: "Don't count your chickens before they hatch. (a. Don't assume success before it happens.  b. Always plan as if everything will surely succeed.)", answer: "a. Don't assume success before it happens." },
+                { text: "Every cloud has a silver lining. (a. Storms always bring rainbows.  b. There is something good in every bad situation.)", answer: "b. There is something good in every bad situation." },
+                { text: "Honesty is the best policy. (a. Being truthful is always the best way.  b. Lying helps you get ahead faster.)", answer: "a. Being truthful is always the best way." },
+                { text: "Make hay while the sun shines. (a. Take advantage of good opportunities while they last.  b. Waste time when things are easy.)", answer: "a. Take advantage of good opportunities while they last." },
+                { text: "Birds of a feather flock together. (a. Different people always make the best friends.  b. People with similar interests stay together.)", answer: "b. People with similar interests stay together." },
+                { text: "Don't put all your eggs in one basket. (a. Always trust just one idea or person completely.  b. Don't depend on only one plan or option.)", answer: "b. Don't depend on only one plan or option." },
+                { text: "The grass is always greener on the other side. (a. People often think others' situations are better than their own.  b. Everyone is always happy with what they have.)", answer: "a. People often think others' situations are better than their own." },
+                { text: "Necessity is the mother of invention. (a. People only invent things for fun.  b. When there is a need, people find ways to solve problems.)", answer: "b. When there is a need, people find ways to solve problems." },
+                { text: "All that glitters is not gold. (a. Not everything that looks attractive is valuable.  b. Everything shiny is always precious.)", answer: "a. Not everything that looks attractive is valuable." },
+                { text: "A fool and his money are soon parted. (a. Foolish people are good at saving money.  b. A foolish person spends money carelessly and loses it quickly.)", answer: "b. A foolish person spends money carelessly and loses it quickly." },
+              ],
+            },
+          ],
+        },
+
+        v6: {
+          name: "Voc 6: Phrasal Verbs",
+          worksheets: [
+            { instruction: "A – Match each phrasal verb with its meaning.", image: IMG + "Vocabulary - Chapter 6 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+
+        comp1: {
+          name: "Comp 1: Picture Composition 1",
+          worksheets: [
+            { instruction: "A – Look at the picture and write a few lines about it by answering the following questions.", image: IMG + "Composition - Chapter 1 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+
+        comp2: {
+          name: "Comp 2: Picture Composition 2",
+          worksheets: [
+            { instruction: "A – Look at the picture and write a few lines about it.", image: IMG + "Composition - Chapter 2 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+
+        comp3: {
+          name: "Comp 3: Picture Composition 3",
+          worksheets: [
+            { instruction: "A – Look at the picture and write a few lines about it.", image: IMG + "Composition - Chapter 3 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+
+        comp4: {
+          name: "Comp 4: Informal Letter",
+          worksheets: [
+            {
+              instruction: "A – Write these letters.",
+              questions: [
+                { text: "You are Aryan, living in Delhi. Write a letter to your friend telling him/her about how you spent your summer vacation this year.", lines: 8, answer: "vary" },
+                { text: "You are Meera, a student of Class 9. Write a letter to your cousin congratulating him/her on winning a school-level sports competition.", lines: 8, answer: "vary" },
+                { text: "You are Tanya. Write a letter to your aunt thanking her for the birthday gift she sent you.", lines: 8, answer: "vary" },
+                { text: "You are Ravi, living in Jaipur. Write a letter to your younger brother advising him to take his studies seriously.", lines: 8, answer: "vary" },
+                { text: "You are Ishaan, a student of Class 10. Write a letter to your friend describing your first experience of travelling by airplane.", lines: 8, answer: "vary" },
+                { text: "You are Neha, living in Bhopal. Write a letter to your friend inviting him/her to spend the winter holidays at your place.", lines: 8, answer: "vary" },
+              ],
+            },
+          ],
+        },
+
+        comp5: {
+          name: "Comp 5: Formal Letter",
+          worksheets: [
+            {
+              instruction: "A – Write these letters.",
+              questions: [
+                { text: "You are Kavya Malhotra, Class 10 at Springdale Public School, Amritsar. Write a letter to the Principal requesting leave for three days to attend your cousin's wedding.", lines: 8, answer: "vary" },
+                { text: "You are Manav Kapoor, living in Bengaluru. Write a letter to the Traffic Police Officer complaining about heavy traffic congestion in your area.", lines: 8, answer: "vary" },
+                { text: "You are Isha Saxena, Class 9, Green Valley School, Indore. Write a letter to the Librarian requesting the addition of new novels and magazines.", lines: 8, answer: "vary" },
+                { text: "You are Anuj Mehta, Class 10, Delhi Public School, Ahmedabad. Write a letter to the Principal suggesting ways to make your school more eco-friendly.", lines: 8, answer: "vary" },
+                { text: "You are Aanya Sharma, Class 4, Green Valley Public School, Jaipur. Write a letter to the Principal requesting permission to organize a cleanliness drive under the Swachh Bharat Abhiyan.", lines: 8, answer: "vary" },
+              ],
+            },
+          ],
+        },
+
+        comp6: {
+          name: "Comp 6: Notice Writing",
+          worksheets: [
+            {
+              instruction: "A – Write these notices.",
+              questions: [
+                { text: "You are the Class Monitor of Class 4B. Write a notice informing your classmates about a drawing competition to be held next week.", lines: 6, answer: "vary" },
+                { text: "You are a student of Class 5. Your school is organizing a tree plantation drive on Saturday. Write a notice inviting students to take part.", lines: 6, answer: "vary" },
+                { text: "You are the Sports Captain. Write a notice informing students about the Annual Sports Day and encourage them to participate.", lines: 6, answer: "vary" },
+                { text: "You are Anaya, a student of Class 6. You have lost your pencil box in the school playground. Write a notice asking if anyone has found it.", lines: 6, answer: "vary" },
+                { text: "You are Aarav of Class 8. Your school is planning a one-day educational trip to a museum. Write a notice giving details.", lines: 6, answer: "vary" },
+              ],
+            },
+          ],
+        },
+
+        comp7: {
+          name: "Comp 7: Story Writing",
+          worksheets: [
+            {
+              instruction: "A – Develop these ideas into short stories.",
+              questions: [
+                { text: "Title: The Secret Garden Gate — Characters: Aarav, his grandmother. Setting: Old house with a locked garden gate. Problem: Aarav wonders what lies behind the gate.", lines: 10, answer: "vary" },
+                { text: "Title: The Lost Puppy — Characters: Ria, a stray puppy. Setting: A rainy street. Problem: Ria finds a shivering puppy with no home.", lines: 10, answer: "vary" },
+                { text: "Title: The Brave Little Boat — Characters: A toy boat, Rohan. Setting: A park lake on a windy day. Problem: The boat is blown far away.", lines: 10, answer: "vary" },
+                { text: "Title: The Magic Pencil — Characters: Meera, her teacher. Setting: Classroom during art class. Problem: Meera loses her favourite pencil before a drawing competition.", lines: 10, answer: "vary" },
+              ],
+            },
+          ],
+        },
+
+        comp8: {
+          name: "Comp 8: Essay Writing",
+          worksheets: [
+            {
+              instruction: "A – Write essays on these topics.",
+              questions: [
+                { text: "Rainy Season", lines: 10, answer: "vary" },
+                { text: "My Garden", lines: 10, answer: "vary" },
+                { text: "Pollution", lines: 10, answer: "vary" },
+                { text: "Cleanliness and Hygiene", lines: 10, answer: "vary" },
+                { text: "My School", lines: 10, answer: "vary" },
+                { text: "My Favourite Teacher", lines: 10, answer: "vary" },
+                { text: "A Memorable Day at School", lines: 10, answer: "vary" },
+                { text: "Importance of Reading", lines: 10, answer: "vary" },
+                { text: "My Favourite Subject", lines: 10, answer: "vary" },
+                { text: "My Pet", lines: 10, answer: "vary" },
+              ],
+            },
+          ],
+        },
+
+        comp9: {
+          name: "Comp 9: Biosketch",
+          worksheets: [
+            { instruction: "A – Write the biosketch for these profiles.", image: IMG + "Composition - Chapter 9 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+            { instruction: "B – Write the biosketch for these profiles.", image: IMG + "Composition - Chapter 9 B.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+
+        cmp1: {
+          name: "Cmp 1: At the Picnic",
+          worksheets: [
+            { instruction: "A – Look at the picture and answer the questions.", image: IMG + "Comprehension - Chapter 1 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
+
+        cmp2: {
+          name: "Cmp 2: Two Travelers and A Purse",
+          worksheets: [
+            {
+              instruction: "A – Answer these questions.",
+              questions: [
+                { text: "Why was the second traveler unhappy when the first said 'I am lucky'? (a. because he was jealous  b. because they were walking together and should share the find  c. because he wanted to run away  d. because he disliked the purse)", answer: "b. because they were walking together and should share the find" },
+                { text: "Why did the crowd of people run toward the travelers? (a. to help them  b. to give directions  c. to sell them food  d. to search for their stolen purse)", answer: "d. to search for their stolen purse" },
+                { text: "Why did the first traveler grow pale with fear? (a. because he was guilty of taking the purse  b. because he saw a wild animal  c. because he was tired  d. because he was hungry)", answer: "a. because he was guilty of taking the purse" },
+                { text: "What does 'pale' mean in 'he grew pale with fear'? (a. very strong  b. dark and bright  c. light in colour  d. brave and bold)", answer: "c. light in colour" },
+                { text: "What lesson does the story teach about friendship? (a. Friends should share both good and bad times.  b. Friends should travel alone.  c. Friends should fight over things.  d. Friends should never trust each other.)", answer: "a. Friends should share both good and bad times." },
+                { text: "Why did the second traveler say 'You must say I am undone'? (a. to tease the first traveler  b. because he was angry at the crowd  c. because he wanted to leave him  d. to remind him of his selfishness)", answer: "d. to remind him of his selfishness" },
+                { text: "What does 'undone' mean in the story? (a. very happy  b. in great trouble  c. running fast  d. lucky)", answer: "b. in great trouble" },
+              ],
+            },
+          ],
+        },
+
+        cmp3: {
+          name: "Cmp 3: Being Healthy",
+          worksheets: [
+            {
+              instruction: "A – Answer these questions.",
+              questions: [
+                { text: "Why does the poem suggest eating 'veggies and fruits so bright'? (a. because they look colourful  b. because they are tasty  c. because they help the body grow and stay healthy  d. because they are easy to cook)", answer: "c. because they help the body grow and stay healthy" },
+                { text: "What does 'fuel for your body' most likely mean? (a. petrol for running  b. toys to play with  c. clothes to wear  d. energy from healthy food)", answer: "d. energy from healthy food" },
+                { text: "Why does the poem mention running, jumping, and games? (a. They are fun only.  b. They help the body stay strong through exercise.  c. They are school activities.  d. They don't need equipment.)", answer: "b. They help the body stay strong through exercise." },
+                { text: "What can happen if someone does not get enough sleep? (a. They will feel refreshed.  b. They will grow taller quickly.  c. They may not feel their best or stay healthy.  d. They will eat more food.)", answer: "c. They may not feel their best or stay healthy." },
+                { text: "What overall message does the poem give? (a. eat, sleep, and move to build good health habits  b. only study hard for success  c. play all day without eating  d. sleep less to have more fun)", answer: "a. eat, sleep, and move to build good health habits" },
+              ],
+            },
+          ],
+        },
+
+        cmp4: {
+          name: "Cmp 4: The Silent Snake",
+          worksheets: [
+            {
+              instruction: "A – Answer these questions.",
+              questions: [
+                { text: "What do the birds do in the air? (a. run and skip  b. sing and whistle  c. flutter  d. hum)", answer: "b. sing and whistle" },
+                { text: "How do the squirrels move along the bough? (a. slowly walk  b. race  c. skip  d. fly)", answer: "c. skip" },
+                { text: "Which creature is described as 'always dumb'? (a. frogs  b. birds  c. snake  d. rabbits)", answer: "c. snake" },
+                { text: "Why is the snake described as 'silent' and 'creepy-creep'? (a. because it is lazy  b. because it hides in trees  c. because it sings softly  d. because it moves quietly without making noise)", answer: "d. because it moves quietly without making noise" },
+                { text: "How are the other animals different from the snake? (a. They are all dangerous.  b. They make noise and play actively, while the snake is quiet.  c. They move very slowly.  d. They live in water.)", answer: "b. They make noise and play actively, while the snake is quiet." },
+                { text: "What effect does the poet create by repeating 'creepy-creep'? (a. to make the snake sound slow and scary  b. to show the snake is funny  c. to show the snake is friendly  d. to show the snake can talk)", answer: "a. to make the snake sound slow and scary" },
+                { text: "Why might the poet include many animal sounds? (a. to make the poem noisy  b. to confuse the reader  c. to teach children animal names  d. to contrast lively animals with the snake's silence)", answer: "d. to contrast lively animals with the snake's silence" },
+                { text: "What does the poem suggest about the snake's nature? (a. It is playful like other animals.  b. It enjoys singing.  c. It is quiet, watchful, and a little scary.  d. It lives in water only.)", answer: "c. It is quiet, watchful, and a little scary." },
+              ],
+            },
+          ],
+        },
+
+        cmp5: {
+          name: "Cmp 5: Androcles and the Lion",
+          worksheets: [
+            {
+              instruction: "A – Answer these questions.",
+              questions: [
+                { text: "Who was Androcles? (a. a king  b. a farmer  c. a soldier  d. a slave)", answer: "d. a slave" },
+                { text: "Where did Androcles hide after running away? (a. in a house  b. in the market  c. in the forest  d. in the palace)", answer: "c. in the forest" },
+                { text: "What was stuck in the lion's paw? (a. a stone  b. a thorn  c. a nail  d. a rope)", answer: "b. a thorn" },
+                { text: "Who caught Androcles later? (a. the ruler  b. the villagers  c. the lion  d. his friends)", answer: "a. the ruler" },
+                { text: "What did the lion do when it saw Androcles in the arena? (a. attacked him  b. slept quietly  c. showed affection  d. ran away)", answer: "c. showed affection" },
+                { text: "Why did the lion not attack Androcles? (a. It was afraid of him.  b. It remembered his kindness.  c. It was not hungry.  d. It was weak.)", answer: "b. It remembered his kindness." },
+                { text: "What does this story teach us? (a. Lions are dangerous.  b. Running away is good.  c. Kindness brings rewards.  d. Forests are safe places.)", answer: "c. Kindness brings rewards." },
+                { text: "Why do you think the ruler set both free? (a. He was moved by the lion's gratitude.  b. He wanted to punish the master.  c. He was afraid of the lion.  d. He wanted to test the people.)", answer: "a. He was moved by the lion's gratitude." },
+                { text: "What quality of Androcles is shown when he helped the lion? (a. laziness and greed  b. fear and weakness  c. anger and pride  d. bravery and kindness)", answer: "d. bravery and kindness" },
+                { text: "I expressed my ___ to my teacher for helping me prepare for the exam. (a. happiness  b. anger  c. gratitude  d. excitement)", answer: "c. gratitude" },
+                { text: "Choose the correct meaning of 'affection'. (a. a feeling of love or fondness  b. hatred or dislike  c. indifference  d. anger or frustration)", answer: "a. a feeling of love or fondness" },
+              ],
+            },
+          ],
+        },
+
+        cmp6: {
+          name: "Cmp 6: Reading a Label",
+          worksheets: [
+            { instruction: "A – Read the label of a biscuit packet and answer the questions.", image: IMG + "Comprehension - Chapter 6 A.png", questions: [{ text: "[Image Exercise]", answer: "vary" }] },
+          ],
+        },
       };
 
       let lastGeneratedQuestions = [];
@@ -1990,6 +2341,7 @@
                 chapterName: ch.name,
                 worksheetIdx: wsIdx,
                 instruction: ws.instruction,
+                image: ws.image || null,
                 text: q.text,
                 answer: q.answer || null,
                 options: q.options || null,
@@ -2017,7 +2369,7 @@
           const chGroup = grouped.get(q.chapterKey);
           if (!chGroup) return;
           if (!chGroup.worksheets.has(q.worksheetIdx)) {
-            chGroup.worksheets.set(q.worksheetIdx, { instruction: q.instruction, questions: [] });
+            chGroup.worksheets.set(q.worksheetIdx, { instruction: q.instruction, image: q.image || null, questions: [] });
           }
           chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
         });
@@ -2029,7 +2381,7 @@
           const sortedWs = [...chData.worksheets.entries()].sort((a, b) => a[0] - b[0]);
           sortedWs.forEach(([wsIdx, wsData]) => {
             wsData.questions.forEach((q) => {
-              lastGeneratedQuestions.push({ qNum: qNum++, chapterKey: chKey, chapterName: chData.name, worksheetIdx: wsIdx, instruction: wsData.instruction, answer: q.answer || null, text: q.text });
+              lastGeneratedQuestions.push({ qNum: qNum++, chapterKey: chKey, chapterName: chData.name, worksheetIdx: wsIdx, instruction: wsData.instruction, image: wsData.image || null, answer: q.answer || null, text: q.text });
             });
           });
         });
@@ -2316,7 +2668,7 @@
           var ch = questionBank[chKey];
           var ws = ch.worksheets[wsIdx];
           var q = ws.questions[qIdx];
-          selected.push({ chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx, instruction: ws.instruction, text: q.text, answer: q.answer || null, options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0 });
+          selected.push({ chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx, instruction: ws.instruction, image: ws.image || null, text: q.text, answer: q.answer || null, options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0 });
         });
 
         if (selected.length === 0) {
@@ -2332,7 +2684,7 @@
           var chGroup = grouped.get(q.chapterKey);
           if (!chGroup) return;
           if (!chGroup.worksheets.has(q.worksheetIdx)) {
-            chGroup.worksheets.set(q.worksheetIdx, { instruction: q.instruction, questions: [] });
+            chGroup.worksheets.set(q.worksheetIdx, { instruction: q.instruction, image: q.image || null, questions: [] });
           }
           chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
         });
@@ -2345,7 +2697,7 @@
           sortedWs.forEach(function (entry) {
             var wsData = entry[1];
             wsData.questions.forEach(function (q) {
-              lastGeneratedQuestions.push({ qNum: qNum++, chapterKey: chKey, chapterName: chData.name, worksheetIdx: entry[0], instruction: wsData.instruction, answer: q.answer || null, text: q.text });
+              lastGeneratedQuestions.push({ qNum: qNum++, chapterKey: chKey, chapterName: chData.name, worksheetIdx: entry[0], instruction: wsData.instruction, image: wsData.image || null, answer: q.answer || null, text: q.text });
             });
           });
         });
@@ -2379,7 +2731,7 @@
           }
           var wsKey = String(q.worksheetIdx) + "||" + q.instruction;
           if (!grouped[q.chapterKey].worksheets[wsKey]) {
-            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, questions: [] };
+            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, image: q.image || null, questions: [] };
             grouped[q.chapterKey].wsOrder.push(wsKey);
           }
           grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
@@ -2392,9 +2744,13 @@
           ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
             studentHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + '</div>';
-            ws.questions.slice().sort(function (a, b) { return a.qNum - b.qNum; }).forEach(function (q) {
-              studentHtml += '<div class="doc-question">' + q.qNum + '. ' + _esc(q.text).replace(/\n/g, "<br>") + '</div>';
-            });
+            if (ws.image) {
+              studentHtml += '<img src="' + ws.image + '" style="max-width:100%;margin:10px 0;border-radius:8px;">';
+            } else {
+              ws.questions.slice().sort(function (a, b) { return a.qNum - b.qNum; }).forEach(function (q) {
+                studentHtml += '<div class="doc-question">' + q.qNum + '. ' + _esc(q.text).replace(/\n/g, "<br>") + '</div>';
+              });
+            }
           });
         });
         document.getElementById("studentPreview").innerHTML = studentHtml;
@@ -2407,18 +2763,24 @@
           ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
             teacherHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + '</div>';
-            var sorted = ws.questions.slice().sort(function (a, b) { return a.qNum - b.qNum; });
-            sorted.forEach(function (q) {
-              teacherHtml += '<div class="doc-question">' + q.qNum + '. ' + _esc(q.text).replace(/\n/g, "<br>") + '</div>';
-            });
-            teacherHtml += '<div class="doc-answers-header">Answers:</div>';
-            sorted.forEach(function (q) {
-              if (q.answer && q.answer !== "vary") {
-                teacherHtml += '<div class="doc-answer">' + q.qNum + '. ' + _esc(q.answer) + '</div>';
-              } else {
-                teacherHtml += '<div class="doc-answer" style="color:#999;">' + q.qNum + '. Answers may vary</div>';
-              }
-            });
+            if (ws.image) {
+              teacherHtml += '<img src="' + ws.image + '" style="max-width:100%;margin:10px 0;border-radius:8px;">';
+              var imgAns = ws.questions[0] && ws.questions[0].answer;
+              teacherHtml += renderImgAnswer(imgAns, false);
+            } else {
+              var sorted = ws.questions.slice().sort(function (a, b) { return a.qNum - b.qNum; });
+              sorted.forEach(function (q) {
+                teacherHtml += '<div class="doc-question">' + q.qNum + '. ' + _esc(q.text).replace(/\n/g, "<br>") + '</div>';
+              });
+              teacherHtml += '<div class="doc-answers-header">Answers:</div>';
+              sorted.forEach(function (q) {
+                if (q.answer && q.answer !== "vary") {
+                  teacherHtml += '<div class="doc-answer">' + q.qNum + '. ' + _esc(q.answer) + '</div>';
+                } else {
+                  teacherHtml += '<div class="doc-answer" style="color:#999;">' + q.qNum + '. Answers may vary</div>';
+                }
+              });
+            }
           });
         });
         document.getElementById("teacherPreview").innerHTML = teacherHtml;
@@ -2485,7 +2847,7 @@
           }
           var wsKey = String(q.worksheetIdx) + "||" + q.instruction;
           if (!grouped[q.chapterKey].worksheets[wsKey]) {
-            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, questions: [] };
+            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, image: q.image || null, questions: [] };
             grouped[q.chapterKey].wsOrder.push(wsKey);
           }
           grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
@@ -2496,29 +2858,37 @@
           ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
             html += '<div class="instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
-            var sortedQuestions = ws.questions.slice().sort(function (a, b) {
-              return a.qNum - b.qNum;
-            });
 
-            // First display all questions
-            sortedQuestions.forEach(function (q) {
-              html += '<div class="q">' + q.qNum + ". " + _esc(q.text).replace(/\n/g, "<br>");
-              if (!includeAnswers) {
-                html += '<div class="ans-line"></div>';
+            if (ws.image) {
+              html += '<img src="' + ws.image + '" style="max-width:100%;margin:10px 0;">';
+              if (includeAnswers) {
+                html += renderImgAnswer(ws.questions[0] && ws.questions[0].answer, true);
               }
-              html += "</div>";
-            });
-
-            // Then display answers section if needed
-            if (includeAnswers) {
-              html += '<div style="margin-top:16px;font-weight:bold;color:#333;font-size:11pt;">Answers:</div>';
-              sortedQuestions.forEach(function (q) {
-                if (q.answer && q.answer !== "vary") {
-                  html += '<div class="ans"><strong>' + q.qNum + ".</strong> " + _esc(q.answer) + "</div>";
-                } else {
-                  html += '<div class="ans" style="color:#999;"><strong>' + q.qNum + ".</strong> Answers may vary</div>";
-                }
+            } else {
+              var sortedQuestions = ws.questions.slice().sort(function (a, b) {
+                return a.qNum - b.qNum;
               });
+
+              // First display all questions
+              sortedQuestions.forEach(function (q) {
+                html += '<div class="q">' + q.qNum + ". " + _esc(q.text).replace(/\n/g, "<br>");
+                if (!includeAnswers) {
+                  html += '<div class="ans-line"></div>';
+                }
+                html += "</div>";
+              });
+
+              // Then display answers section if needed
+              if (includeAnswers) {
+                html += '<div style="margin-top:16px;font-weight:bold;color:#333;font-size:11pt;">Answers:</div>';
+                sortedQuestions.forEach(function (q) {
+                  if (q.answer && q.answer !== "vary") {
+                    html += '<div class="ans"><strong>' + q.qNum + ".</strong> " + _esc(q.answer) + "</div>";
+                  } else {
+                    html += '<div class="ans" style="color:#999;"><strong>' + q.qNum + ".</strong> Answers may vary</div>";
+                  }
+                });
+              }
             }
           });
         });

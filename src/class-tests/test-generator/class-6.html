@@ -1002,6 +1002,11 @@
               <h3>Direct and Indirect Speech</h3>
               <p>Change direct↔indirect speech</p></label
             >
+            <label class="chapter-card"
+              ><input type="checkbox" id="g24" /><span class="chapter-number">Chapter 24</span>
+              <h3>Punctuation and Capital Letters</h3>
+              <p>Rewrite with correct punctuation and capitalisation</p></label
+            >
           </div>
 
           <div class="section-label">📚 Vocabulary</div>
@@ -1035,6 +1040,87 @@
               ><input type="checkbox" id="v6" /><span class="chapter-number">Vocabulary 6</span>
               <h3>Similes and Metaphors</h3>
               <p>Write similes and metaphors</p></label
+            >
+          </div>
+          <div class="section-label" style="margin-top: 20px">✏️ Composition</div>
+          <div class="chapters-grid">
+            <label class="chapter-card"
+              ><input type="checkbox" id="comp2" /><span class="chapter-number">Chapter 2</span>
+              <h3>Newspaper Article</h3>
+              <p>Write a newspaper article on given topics</p></label
+            >
+            <label class="chapter-card"
+              ><input type="checkbox" id="comp3" /><span class="chapter-number">Chapter 3</span>
+              <h3>Informal Letter</h3>
+              <p>Write informal letters on given prompts</p></label
+            >
+            <label class="chapter-card"
+              ><input type="checkbox" id="comp4" /><span class="chapter-number">Chapter 4</span>
+              <h3>Formal Letter</h3>
+              <p>Write formal letters on given prompts</p></label
+            >
+            <label class="chapter-card"
+              ><input type="checkbox" id="comp5" /><span class="chapter-number">Chapter 5</span>
+              <h3>Notice Writing</h3>
+              <p>Draft notices for various occasions</p></label
+            >
+            <label class="chapter-card"
+              ><input type="checkbox" id="comp6" /><span class="chapter-number">Chapter 6</span>
+              <h3>Diary Writing</h3>
+              <p>Write diary entries on given prompts</p></label
+            >
+            <label class="chapter-card"
+              ><input type="checkbox" id="comp7" /><span class="chapter-number">Chapter 7</span>
+              <h3>Debate Writing</h3>
+              <p>Write debates on given topics</p></label
+            >
+            <label class="chapter-card"
+              ><input type="checkbox" id="comp8" /><span class="chapter-number">Chapter 8</span>
+              <h3>Picture Composition</h3>
+              <p>Write compositions based on pictures</p></label
+            >
+            <label class="chapter-card"
+              ><input type="checkbox" id="comp9" /><span class="chapter-number">Chapter 9</span>
+              <h3>Message Writing</h3>
+              <p>Write messages based on given conversations</p></label
+            >
+            <label class="chapter-card"
+              ><input type="checkbox" id="comp10" /><span class="chapter-number">Chapter 10</span>
+              <h3>Email Writing</h3>
+              <p>Write emails on given topics</p></label
+            >
+          </div>
+          <div class="section-label" style="margin-top: 20px">📖 Comprehension</div>
+          <div class="chapters-grid">
+            <label class="chapter-card"
+              ><input type="checkbox" id="cmp1" /><span class="chapter-number">Chapter 1</span>
+              <h3>The Importance of Trees</h3>
+              <p>MCQ comprehension questions</p></label
+            >
+            <label class="chapter-card"
+              ><input type="checkbox" id="cmp2" /><span class="chapter-number">Chapter 2</span>
+              <h3>Benefits of Reading</h3>
+              <p>MCQ comprehension questions</p></label
+            >
+            <label class="chapter-card"
+              ><input type="checkbox" id="cmp3" /><span class="chapter-number">Chapter 3</span>
+              <h3>The Rainbow</h3>
+              <p>MCQ comprehension questions</p></label
+            >
+            <label class="chapter-card"
+              ><input type="checkbox" id="cmp4" /><span class="chapter-number">Chapter 4</span>
+              <h3>Daffodils</h3>
+              <p>MCQ comprehension questions</p></label
+            >
+            <label class="chapter-card"
+              ><input type="checkbox" id="cmp5" /><span class="chapter-number">Chapter 5</span>
+              <h3>Reading the Thesaurus</h3>
+              <p>MCQ comprehension questions</p></label
+            >
+            <label class="chapter-card"
+              ><input type="checkbox" id="cmp6" /><span class="chapter-number">Chapter 6</span>
+              <h3>The Injured Bird</h3>
+              <p>MCQ comprehension questions</p></label
             >
           </div>
         </div>
@@ -1078,158 +1164,320 @@
 
       const questionBank = {
         g1: [
-          { text: "Grammar - Chapter 1", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 1 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 1", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 1 B.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 1", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 1 C.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 1", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 1 D.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 1", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 1 E.png"], answer: "Complete the exercises" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 1 A.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 1 B.png"], answer: "vary" },
+          { text: "Use each of the words to form the four kinds of sentences. Follow the example.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 1 C.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 1 D.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 1 E.png"], answer: "vary" },
         ],
         g2: [
-          { text: "Grammar - Chapter 2", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 2 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 2", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 2 B.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 2", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 2 C.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 2", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 2 D.png"], answer: "Complete the exercises" },
+          { text: "Match the columns to complete the sentences.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 2 A.png"], answer: "vary" },
+          { text: "Read each group of words and identify whether it is the subject or the predicate. Then, supply the missing part. Follow the example.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 2 B.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 2 C.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 2 D.png"], answer: "vary" },
         ],
         g3: [
-          { text: "Grammar - Chapter 3", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 3 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 3", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 3 B.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 3", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 3 C.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 3", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 3 D.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 3", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 3 E.png"], answer: "Complete the exercises" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 3 A.png"], answer: "vary" },
+          { text: "Colour the boxes containing nouns as per the key.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 3 B.png"], answer: "vary" },
+          { text: "Identify whether these are common nouns or abstract nouns. Then, use each to make sentences.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 3 C.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 3 D.png"], answer: "vary" },
+          { text: "With the help of the clues, complete the crossword with suitable collective nouns.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 3 E.png"], answer: "vary" },
         ],
         g4: [
-          { text: "Grammar - Chapter 4", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 4 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 4", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 4 B.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 4", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 4 C.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 4", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 4 D.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 4", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 4 A.png"], answer: "vary" },
+          { text: "Grammar - Chapter 4", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 4 B.png"], answer: "vary" },
+          { text: "Grammar - Chapter 4", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 4 C.png"], answer: "vary" },
+          { text: "Grammar - Chapter 4", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 4 D.png"], answer: "vary" },
         ],
         g5: [
-          { text: "Grammar - Chapter 5", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 5 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 5", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 5 B.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 5", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 5 C.png"], answer: "Complete the exercises" },
+          { text: "Match the columns.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 5 A.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 5 B.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 5 C.png"], answer: "vary" },
         ],
         g6: [
-          { text: "Grammar - Chapter 6", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 6 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 6", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 6 B.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 6", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 6 C.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 6", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 6 D.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 6", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 6 A.png"], answer: "vary" },
+          { text: "Grammar - Chapter 6", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 6 B.png"], answer: "vary" },
+          { text: "Grammar - Chapter 6", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 6 C.png"], answer: "vary" },
+          { text: "Grammar - Chapter 6", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 6 D.png"], answer: "vary" },
         ],
         g7: [
-          { text: "Grammar - Chapter 7", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 7 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 7", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 7 B.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 7", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 7 C.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 7", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 7 D.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 7", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 7 E.png"], answer: "Complete the exercises" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 7 A.png"], answer: "vary" },
+          { text: "In each of the sentences, the definite article has been omitted. Write the words between which the article has to be inserted in the correct columns. In case there is no word before the article, insert an em dash. Follow the example.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 7 B.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 7 C.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 7 D.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 7 E.png"], answer: "vary" },
         ],
         g8: [
-          { text: "Grammar - Chapter 8", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 8 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 8", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 8 B.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 8", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 8 C.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 8", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 8 D.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 8", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 8 E.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 8", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 8 F.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 8", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 8 G.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 8", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 8 H.png"], answer: "Complete the exercises" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 8 A.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 8 B.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 8 C.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 8 D.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 8 E.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 8 F.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 8 G.png"], answer: "vary" },
+          { text: "In each set, choose the correct sentence.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 8 H.png"], answer: "vary" },
         ],
         g9: [
-          { text: "Grammar - Chapter 9", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 9 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 9", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 9 B.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 9", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 9 A.png"], answer: "vary" },
+          { text: "Grammar - Chapter 9", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 9 B.png"], answer: "vary" },
         ],
         g10: [
-          { text: "Grammar - Chapter 10", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 10 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 10", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 10 B.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 10", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 10 C.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 10", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 10 D.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 10", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 10 E.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 10", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 10 F.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 10", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 10 A.png"], answer: "vary" },
+          { text: "Grammar - Chapter 10", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 10 B.png"], answer: "vary" },
+          { text: "Grammar - Chapter 10", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 10 C.png"], answer: "vary" },
+          { text: "Grammar - Chapter 10", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 10 D.png"], answer: "vary" },
+          { text: "Grammar - Chapter 10", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 10 E.png"], answer: "vary" },
+          { text: "Grammar - Chapter 10", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 10 F.png"], answer: "vary" },
         ],
         g11: [
-          { text: "Grammar - Chapter 11", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 11 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 11", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 11 B.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 11", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 11 C.png"], answer: "Complete the exercises" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 11 A.png"], answer: "vary" },
+          { text: "Complete the table.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 11 B.png"], answer: "vary" },
+          { text: "Choose five words from the above exercise and use them to make sentences.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 11 C.png"], answer: "vary" },
         ],
         g12: [
-          { text: "Grammar - Chapter 12", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 12 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 12", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 12 B.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 12", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 12 C.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 12", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 12 D.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 12", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 12 A.png"], answer: "vary" },
+          { text: "Grammar - Chapter 12", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 12 B.png"], answer: "vary" },
+          { text: "Grammar - Chapter 12", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 12 C.png"], answer: "vary" },
+          { text: "Grammar - Chapter 12", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 12 D.png"], answer: "vary" },
         ],
         g13: [
-          { text: "Grammar - Chapter 13", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 13 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 13", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 13 B.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 13", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 13 C.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 13", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 13 D.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 13", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 13 E.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 13", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 13 A.png"], answer: "vary" },
+          { text: "Grammar - Chapter 13", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 13 B.png"], answer: "vary" },
+          { text: "Grammar - Chapter 13", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 13 C.png"], answer: "vary" },
+          { text: "Grammar - Chapter 13", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 13 D.png"], answer: "vary" },
+          { text: "Grammar - Chapter 13", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 13 E.png"], answer: "vary" },
         ],
         g14: [
-          { text: "Grammar - Chapter 14", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 14 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 14", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 14 B.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 14", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 14 C.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 14", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 14 D.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 14", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 14 E.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 14", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 14 A.png"], answer: "vary" },
+          { text: "Grammar - Chapter 14", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 14 B.png"], answer: "vary" },
+          { text: "Grammar - Chapter 14", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 14 C.png"], answer: "vary" },
+          { text: "Grammar - Chapter 14", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 14 D.png"], answer: "vary" },
+          { text: "Grammar - Chapter 14", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 14 E.png"], answer: "vary" },
         ],
         g15: [
-          { text: "Grammar - Chapter 15", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 15 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 15", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 15 B.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 15", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 15 C.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 15", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 15 D.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 15", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 15 A.png"], answer: "vary" },
+          { text: "Grammar - Chapter 15", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 15 B.png"], answer: "vary" },
+          { text: "Grammar - Chapter 15", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 15 C.png"], answer: "vary" },
+          { text: "Grammar - Chapter 15", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 15 D.png"], answer: "vary" },
         ],
         g16: [
-          { text: "Grammar - Chapter 16", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 16 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 16", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 16 B.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 16", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 16 C.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 16", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 16 D.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 16", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 16 A.png"], answer: "vary" },
+          { text: "Grammar - Chapter 16", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 16 B.png"], answer: "vary" },
+          { text: "Grammar - Chapter 16", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 16 C.png"], answer: "vary" },
+          { text: "Grammar - Chapter 16", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 16 D.png"], answer: "vary" },
         ],
         g17: [
-          { text: "Grammar - Chapter 17", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 17 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 17", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 17 B.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 17", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 17 A.png"], answer: "vary" },
+          { text: "Grammar - Chapter 17", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 17 B.png"], answer: "vary" },
         ],
         g18: [
-          { text: "Grammar - Chapter 18", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 18 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 18", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 18 B.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 18", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 18 C.png"], answer: "Complete the exercises" },
+          { text: "In each set, tick the sentence that has been joined correctly using coordinating conjunctions.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 18 A.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 18 B.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 18 C.png"], answer: "vary" },
         ],
         g19: [
-          { text: "Grammar - Chapter 19", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 19 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 19", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 19 B.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 19", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 19 C.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 19", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 19 A.png"], answer: "vary" },
+          { text: "Grammar - Chapter 19", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 19 B.png"], answer: "vary" },
+          { text: "Grammar - Chapter 19", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 19 C.png"], answer: "vary" },
         ],
-        g20: [{ text: "Grammar - Chapter 20", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 20 A.png"], answer: "Complete the exercises" }],
+        g20: [{ text: "Grammar - Chapter 20", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 20 A.png"], answer: "vary" }],
         g21: [
-          { text: "Grammar - Chapter 21", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 21 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 21", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 21 B.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 21", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 21 C.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 21", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 21 A.png"], answer: "vary" },
+          { text: "Grammar - Chapter 21", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 21 B.png"], answer: "vary" },
+          { text: "Grammar - Chapter 21", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 21 C.png"], answer: "vary" },
         ],
         g22: [
-          { text: "Grammar - Chapter 22", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 22 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 22", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 22 B.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 22", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 22 A.png"], answer: "vary" },
+          { text: "Grammar - Chapter 22", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 22 B.png"], answer: "vary" },
         ],
         g23: [
-          { text: "Grammar - Chapter 23", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 23 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 23", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 23 B.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 23", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 23 A.png"], answer: "vary" },
+          { text: "Grammar - Chapter 23", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 23 B.png"], answer: "vary" },
         ],
         g24: [
-          { text: "Grammar - Chapter 24", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 24 A.png"], answer: "Complete the exercises" },
-          { text: "Grammar - Chapter 24", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 24 B.png"], answer: "Complete the exercises" },
+          { text: "Grammar - Chapter 24", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 24 A.png"], answer: "vary" },
+          { text: "Grammar - Chapter 24", images: ["../../../assets/images/test-generator/class-6/Grammar - Chapter 24 B.png"], answer: "vary" },
         ],
-        v2: [{ text: "Vocabulary - Chapter 2", images: ["../../../assets/images/test-generator/class-6/Vocabulary - Chapter 2 A.png"], answer: "Complete the exercises" }],
-        v3: [{ text: "Vocabulary - Chapter 3", images: ["../../../assets/images/test-generator/class-6/Vocabulary - Chapter 3 A.png"], answer: "Complete the exercises" }],
+        v2: [{ text: "Vocabulary - Chapter 2", images: ["../../../assets/images/test-generator/class-6/Vocabulary - Chapter 2 A.png"], answer: "vary" }],
+        v3: [{ text: "Vocabulary - Chapter 3", images: ["../../../assets/images/test-generator/class-6/Vocabulary - Chapter 3 A.png"], answer: "vary" }],
         v4: [
-          { text: "Vocabulary - Chapter 4", images: ["../../../assets/images/test-generator/class-6/Vocabulary - Chapter 4 A.png"], answer: "Complete the exercises" },
-          { text: "Vocabulary - Chapter 4", images: ["../../../assets/images/test-generator/class-6/Vocabulary - Chapter 4 B.png"], answer: "Complete the exercises" },
-          { text: "Vocabulary - Chapter 4", images: ["../../../assets/images/test-generator/class-6/Vocabulary - Chapter 4 C.png"], answer: "Complete the exercises" },
+          { text: "Match the synonyms and antonyms.", images: ["../../../assets/images/test-generator/class-6/Vocabulary - Chapter 4 A.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Vocabulary - Chapter 4 B.png"], answer: "vary" },
+          { text: "Complete the exercises.", images: ["../../../assets/images/test-generator/class-6/Vocabulary - Chapter 4 C.png"], answer: "vary" },
         ],
-        v5: [{ text: "Vocabulary - Chapter 5", images: ["../../../assets/images/test-generator/class-6/Vocabulary - Chapter 5 A.png"], answer: "Complete the exercises" }],
-        v6: [{ text: "Vocabulary - Chapter 6", images: ["../../../assets/images/test-generator/class-6/Vocabulary - Chapter 6 A.png"], answer: "Complete the exercises" }],
+        v5: [{ text: "Vocabulary - Chapter 5", images: ["../../../assets/images/test-generator/class-6/Vocabulary - Chapter 5 A.png"], answer: "vary" }],
+        v6: [{ text: "Vocabulary - Chapter 6", images: ["../../../assets/images/test-generator/class-6/Vocabulary - Chapter 6 A.png"], answer: "vary" }],
+        comp2: [
+          { text: "School Launches Plastic-Free Campus Drive", images: [], answer: "vary" },
+          { text: "City Hosts Annual Cultural Fest with Great Enthusiasm", images: [], answer: "vary" },
+          { text: "Students Win Awards at Inter-School Science Exhibition", images: [], answer: "vary" },
+          { text: "Tree Plantation Campaign Held on World Environment Day", images: [], answer: "vary" },
+          { text: "Online Learning Brings New Opportunities for Students", images: [], answer: "vary" },
+          { text: "Local Residents Join Hands to Clean the River", images: [], answer: "vary" },
+          { text: "Students Spread Awareness About Road Safety", images: [], answer: "vary" },
+          { text: "Rising Use of Mobile Phones Among Teenagers", images: [], answer: "vary" },
+          { text: "School Sports Meet Encourages Team Spirit and Fitness", images: [], answer: "vary" },
+          { text: "Library Week Celebrated to Promote Reading Habits", images: [], answer: "vary" },
+        ],
+        comp3: [
+          { text: "You are Aditi Sharma. Write a letter to your friend telling her about your new school and how you are adjusting there.", images: [], answer: "vary" },
+          { text: "You are Aman Verma. Write a letter to your cousin describing how you spent your summer vacation.", images: [], answer: "vary" },
+          { text: "You are Sneha Nair. Write a letter to your friend inviting her to spend the winter holidays with you.", images: [], answer: "vary" },
+          { text: "You are Rahul Gupta. Write a letter to your elder brother thanking him for the birthday gift he sent you.", images: [], answer: "vary" },
+          { text: "You are Tanya Kapoor. Write a letter to your friend sharing your excitement about your board exam results.", images: [], answer: "vary" },
+          { text: "You are Karan Singh. Write a letter to your cousin giving him advice on how to prepare for exams effectively.", images: [], answer: "vary" },
+          { text: "You are Ria Mehta. Write a letter to your friend consoling her after losing a pet.", images: [], answer: "vary" },
+          { text: "You are Arjun Malhotra. Write a letter to your uncle describing the annual day celebration at your school.", images: [], answer: "vary" },
+          { text: "You are Pooja Sharma. Write a letter to your best friend telling her about a new hobby or activity you have taken up.", images: [], answer: "vary" },
+          { text: "You are Vivek Menon. Write a letter to your cousin narrating your experience of visiting a hill station.", images: [], answer: "vary" },
+        ],
+        comp4: [
+          { text: "You are Riya Sharma, a resident of Sector 12, Noida. Write a letter to the Editor of The Hindustan Times expressing concern about reckless driving by teenagers in your city.", images: [], answer: "vary" },
+          { text: "You are Arjun Mehta, Head Boy of Sunrise Public School, Delhi. Write a letter to the Principal requesting permission to organize a cleanliness drive in the school campus.", images: [], answer: "vary" },
+          { text: "You are Neha Verma, Class 10, Greenfield School, Bhopal. Write a letter to the Editor of a local newspaper about the need to ban the use of plastic bags.", images: [], answer: "vary" },
+          { text: "You are Rohit Singh, a resident of 25, Raj Nagar, Jaipur. Write a letter to the Municipal Commissioner complaining about overflowing garbage bins and poor sanitation in your locality.", images: [], answer: "vary" },
+          { text: "You are Priya Nair, a student of Class 10, Bluebells School, Kochi. Write a letter to the Manager of ABC Book Store enquiring about bulk discounts on textbooks for your school library.", images: [], answer: "vary" },
+          { text: "You are Karan Gupta, a resident of Model Town, Ludhiana. Write a letter to the Editor of The Tribune highlighting the problem of stray animals in your area.", images: [], answer: "vary" },
+          { text: "You are Sneha Das, Class 10, City Model School, Kolkata. Write a letter to the Principal requesting permission to arrange a trip to a science museum.", images: [], answer: "vary" },
+          { text: "You are Ankit Sharma, 56, Green Avenue, Delhi. Write a letter to the Manager of Speed Courier Services complaining about a parcel that was delivered late and damaged.", images: [], answer: "vary" },
+          { text: "You are Tanya Kapoor, a resident of Patiala. Write a letter to the Editor of The Indian Express expressing concern about the increasing pollution in rivers.", images: [], answer: "vary" },
+          { text: "You are Rahul Menon, a Class 10 student of St. Joseph's School, Chennai. Write a letter to the Principal suggesting ways to make the school eco-friendly.", images: [], answer: "vary" },
+        ],
+        comp5: [
+          { text: "You are Rohan Mehta, Head Boy of your school. Write a notice informing students about a debate competition to be held next week.", images: [], answer: "vary" },
+          { text: "You are Neha Kapoor, Secretary of the Cultural Club. Write a notice announcing a dance competition in your school.", images: [], answer: "vary" },
+          { text: "You are Arjun Singh, the Sports Captain of your school. Write a notice informing students about football team selections.", images: [], answer: "vary" },
+          { text: "You are Tanya Sharma, Secretary of the Environment Club. Write a notice for tree plantation drive in your school.", images: [], answer: "vary" },
+          { text: "You are Ravi Verma, Librarian of St. Paul's School. Write a notice informing students about the return of library books before holidays.", images: [], answer: "vary" },
+          { text: "You are Anjali Nair, Cultural Secretary. Write a notice announcing the annual cultural fest of your school.", images: [], answer: "vary" },
+          { text: "You are Karan Gupta, a student of Class 10. Write a notice about a lost school ID card.", images: [], answer: "vary" },
+          { text: "You are Sneha Roy, Secretary of the Science Club. Write a notice informing students about an inter-school science exhibition.", images: [], answer: "vary" },
+          { text: "You are Vikram Menon, Head Boy. Write a notice about a visit to a historical monument organized by your school.", images: [], answer: "vary" },
+          { text: "You are Riya Sharma, Secretary of the Health Club. Write a notice about a free medical check-up camp being held in your school.", images: [], answer: "vary" },
+        ],
+        comp6: [
+          { text: "You recently participated in your school's annual day celebration. Write a diary entry describing your experience and how you felt on stage.", images: [], answer: "vary" },
+          { text: "Write a diary entry about the day you helped someone in need and how it made you feel.", images: [], answer: "vary" },
+          { text: "You forgot to complete your homework and got scolded by your teacher today. Express your feelings in your diary.", images: [], answer: "vary" },
+          { text: "Describe in your diary how you felt when your best friend moved to another city.", images: [], answer: "vary" },
+          { text: "You visited a hill station during your vacation. Record your memorable experiences in your diary.", images: [], answer: "vary" },
+          { text: "Today you received your examination results. Write a diary entry expressing your reaction and thoughts.", images: [], answer: "vary" },
+          { text: "You had an argument with your sibling but later made up. Write a diary entry about what you learned from this incident.", images: [], answer: "vary" },
+          { text: "You attended an inspiring talk on environmental conservation. Write about how it motivated you to take action.", images: [], answer: "vary" },
+          { text: "Your school organized a surprise farewell for your seniors. Describe your emotions and the atmosphere in your diary.", images: [], answer: "vary" },
+          { text: "You achieved something you had been working hard for. Write a diary entry expressing your excitement and gratitude.", images: [], answer: "vary" },
+        ],
+        comp7: [
+          { text: "Mobile Phones Should Be Allowed in Schools", images: [], answer: "vary" },
+          { text: "Homework Is Necessary for Learning", images: [], answer: "vary" },
+          { text: "Social Media Has Done More Harm Than Good", images: [], answer: "vary" },
+          { text: "Online Classes Are Better Than Traditional Classes", images: [], answer: "vary" },
+          { text: "Examinations Should Be Abolished", images: [], answer: "vary" },
+          { text: "Technology Makes People Lazy", images: [], answer: "vary" },
+          { text: "Uniforms Should Be Optional in Schools", images: [], answer: "vary" },
+          { text: "Books Are Better Than Movies", images: [], answer: "vary" },
+          { text: "Artificial Intelligence Is a Threat to Human Jobs", images: [], answer: "vary" },
+          { text: "Young People Should Participate in Politics", images: [], answer: "vary" },
+        ],
+        comp8: [
+          { text: "Write picture composition for the following.", images: ["../../../assets/images/test-generator/class-6/Composition - Chapter 8 A.png"], answer: "vary" },
+          { text: "Write picture composition for the following.", images: ["../../../assets/images/test-generator/class-6/Composition - Chapter 8 B.png"], answer: "vary" },
+        ],
+        comp9: [
+          { text: "You received a phone call for your brother from his friend Rahul, informing that football practice has been rescheduled to 7 a.m. tomorrow. Draft a message for your brother.", images: [], answer: "vary" },
+          { text: "Your friend Neha called to say that she will pick you up for the movie at 5:30 p.m. instead of 6 p.m. Write a message for your mother who will be at home when Neha arrives.", images: [], answer: "vary" },
+          { text: "Your class teacher called while your father was away. She wanted to remind him about the PTA meeting tomorrow at 9 a.m. Write a message for your father.", images: [], answer: "vary" },
+          { text: "Mr. Sharma called while your mother was out. He wanted to confirm if she would be attending the neighbourhood committee meeting at 6 p.m. Write a message for her.", images: [], answer: "vary" },
+          { text: "You received a call for your sister from her friend Meera, saying the dance practice has been cancelled for today. Draft a suitable message for your sister.", images: [], answer: "vary" },
+          { text: "You answered the phone at home. The caller, Mr. Suresh, wanted to inform your father that the car will be ready by evening. Write a message for your father.", images: [], answer: "vary" },
+          { text: "While your roommate was away, her cousin called to inform her that her train will arrive two hours late. Write a message for your roommate.", images: [], answer: "vary" },
+          { text: "You received a call from your cousin inviting your brother to his birthday party at 7 p.m. at their house. Write a message for your brother.", images: [], answer: "vary" },
+        ],
+        comp10: [
+          { text: "Write an email to your principal requesting permission to organize a science exhibition in your school.", images: [], answer: "vary" },
+          { text: "Write an email to the editor of a newspaper expressing concern about increasing traffic jams in your city.", images: [], answer: "vary" },
+          { text: "Write an email to your class teacher asking for notes of the chapters you missed due to illness.", images: [], answer: "vary" },
+          { text: "Write an email to the librarian requesting the renewal of books you had borrowed.", images: [], answer: "vary" },
+          { text: "Write an email to a sports store inquiring about cricket kits and their prices.", images: [], answer: "vary" },
+          { text: "Write an email to the electricity department complaining about frequent power cuts in your area.", images: [], answer: "vary" },
+          { text: "Write an email to your cousin sharing your experience of a recent school trip.", images: [], answer: "vary" },
+          { text: "Write an email to your friend inviting them to your birthday party.", images: [], answer: "vary" },
+          { text: "Write an email to the manager of a hotel requesting details about their booking facilities.", images: [], answer: "vary" },
+          { text: "Write an email to your English teacher thanking them for helping you improve your writing skills.", images: [], answer: "vary" },
+        ],
+        cmp1: [
+          { text: "What do trees provide that is essential for living creatures?", images: [], answer: "b. oxygen" },
+          { text: "How do trees help in preventing soil erosion?", images: [], answer: "c. by absorbing water" },
+          { text: "Which of the following is NOT mentioned as a benefit of trees in urban areas?", images: [], answer: "c. producing more food" },
+          { text: "Why is it important to protect forests and plant more trees?", images: [], answer: "a. to reduce air pollution" },
+          { text: "If deforestation continues at the current rate, what might happen to the environment?", images: [], answer: "b. The water cycle may be disturbed, and soil erosion could increase." },
+          { text: "How might planting more trees help reduce the need for air conditioning in cities?", images: [], answer: "b. Trees provide shade, which naturally cools down the area." },
+          { text: "What do you think might be the long-term effects of cutting down trees at an alarming rate?", images: [], answer: "b. It could lead to a decline in wildlife and disrupt ecosystems." },
+          { text: "The word 'alarming' in the passage most nearly means:", images: [], answer: "b. causing worry or concern" },
+          { text: "The word 'intricate' in the passage most nearly means:", images: [], answer: "b. complicated and detailed" },
+        ],
+        cmp2: [
+          { text: "What is one of the main benefits of reading mentioned in the passage?", images: [], answer: "b. It improves vocabulary and language skills." },
+          { text: "How does reading help expand knowledge?", images: [], answer: "b. by offering insights into different cultures, ideas, and historical events" },
+          { text: "What is one cognitive benefit of reading?", images: [], answer: "a. It helps improve memory." },
+          { text: "How can reading reduce stress?", images: [], answer: "a. by providing a mental escape and helping you relax" },
+          { text: "Why might reading fiction books improve imagination and creativity?", images: [], answer: "b. because they allow readers to explore new worlds and ideas" },
+          { text: "How does reading compare to other activities like watching TV or playing video games in terms of cognitive benefits?", images: [], answer: "a. Reading improves focus and memory more than watching TV or playing video games." },
+          { text: "How can reading help a person in their everyday life?", images: [], answer: "a. It can make them more creative and better at problem-solving." },
+          { text: "Why is it important to develop a habit of reading in today's world?", images: [], answer: "b. because reading helps reduce stress and provides entertainment and knowledge" },
+        ],
+        cmp3: [
+          { text: "What happens to the sky after the rain in the poem?", images: [], answer: "b. The sun peeks out, and the sky is red" },
+          { text: "What are the colors mentioned in the rainbow in the poem?", images: [], answer: "b. red, orange, yellow, green, blue, indigo, and violet" },
+          { text: "How is the rainbow described in the poem?", images: [], answer: "b. as a perfect arch of colors" },
+          { text: "What does the poem say about the rainbow that makes it special?", images: [], answer: "b. It can only be seen but not touched" },
+          { text: "Why do you think the poet says, 'No one can touch it, no one can hold'?", images: [], answer: "b. to remind us that some things in life are beautiful but unreachable" },
+          { text: "What do you think the poet is trying to express with the line, 'It stretches far across the sky'?", images: [], answer: "b. that the rainbow is a symbol of hope and beauty that spans the entire sky" },
+          { text: "How does the description of the rainbow in the poem make you feel?", images: [], answer: "b. It makes me feel happy because the rainbow brings color and joy" },
+          { text: "If the rainbow is 'a wonder to behold,' what do you think the poet wants us to take away from this poem?", images: [], answer: "a. to appreciate the beauty and fleeting nature of the rainbow" },
+        ],
+        cmp4: [
+          { text: "What natural element does the speaker compare himself to at the beginning of the poem?", images: [], answer: "b. a cloud" },
+          { text: "Where did the speaker see the daffodils?", images: [], answer: "b. beside the lake, beneath the trees" },
+          { text: "What is the primary activity of the daffodils described in the poem?", images: [], answer: "c. dancing and fluttering in the breeze" },
+          { text: "What does the poet compare the daffodils to in the second stanza?", images: [], answer: "a. the stars in the Milky Way" },
+          { text: "How many daffodils does the poet see at once?", images: [], answer: "a. ten thousand" },
+          { text: "Why does the poet describe the daffodils as 'a host'? What does this word choice suggest?", images: [], answer: "b. The flowers appeared to be in a group or army, implying strength and beauty in numbers." },
+          { text: "What does 'the waves beside them danced; but they / Out-did the sparkling waves in glee' suggest about the daffodils?", images: [], answer: "c. The daffodils were more joyful and lively than the waves." },
+          { text: "In the last stanza, the poet mentions 'the bliss of solitude.' How do the daffodils bring him joy even when he is alone?", images: [], answer: "b. He remembers their beauty and it helps him feel connected to nature." },
+          { text: "What might the poet mean by 'And dances with the daffodils' at the end of the poem?", images: [], answer: "b. The poet feels a deep sense of joy and harmony with nature when remembering the daffodils." },
+          { text: "How does the imagery in the poem contribute to its mood?", images: [], answer: "a. The description of the daffodils and their dancing creates a joyful, uplifting mood." },
+        ],
+        cmp5: [
+          { text: "Which word in the list is a verb?", images: [], answer: "b. jump" },
+          { text: "The antonym of brave is:", images: [], answer: "c. timid" },
+          { text: "Which of these words means the opposite of easy?", images: [], answer: "a. hard" },
+          { text: "The word 'fast' can be used as:", images: [], answer: "c. an adjective and an adverb" },
+          { text: "Which word means 'extremely pleasant to taste'?", images: [], answer: "b. delicious" },
+          { text: "If a person is furious, how might they behave?", images: [], answer: "c. show signs of anger or shouting" },
+          { text: "Why might a writer choose the word 'valiant' instead of 'brave'?", images: [], answer: "a. It sounds more heroic and formal." },
+          { text: "If food is bland, what can you infer about its taste?", images: [], answer: "d. It has little or no flavour." },
+          { text: "A poem filled with words like happy, cheerful and delighted would likely create what kind of mood?", images: [], answer: "b. joyful" },
+          { text: "What might happen if a student describes an assignment as manageable?", images: [], answer: "a. They believe it can be done easily." },
+          { text: "If someone is anxious, what can we infer about their state of mind?", images: [], answer: "b. nervous or worried" },
+          { text: "Why is a thesaurus useful for students?", images: [], answer: "c. to find synonyms and antonyms for better writing" },
+        ],
+        cmp6: [
+          { text: "Where did Aastha find the sparrow?", images: [], answer: "b. near the fence" },
+          { text: "What was wrong with the sparrow?", images: [], answer: "c. Its wing was hurt." },
+          { text: "What did Aastha and her father give the sparrow to drink?", images: [], answer: "b. water" },
+          { text: "What did Aastha use to make the sparrow comfortable?", images: [], answer: "c. a basket with cotton" },
+          { text: "The word 'wound' in the story means:", images: [], answer: "b. an injury" },
+          { text: "Why did Aastha decide to help the sparrow?", images: [], answer: "a. She loved animals." },
+          { text: "What does the word 'flutter' mean in the story?", images: [], answer: "c. to move wings quickly and lightly" },
+          { text: "What did the sparrow do before flying away?", images: [], answer: "a. chirped and circled above Aastha" },
+          { text: "What does Aastha's action show about her character?", images: [], answer: "b. She is kind and caring." },
+          { text: "Why was Aastha both happy and sad at the end?", images: [], answer: "c. She was proud to help but sad to let it go." },
+          { text: "What lesson can we learn from the story?", images: [], answer: "b. Helping others brings true happiness." },
+        ],
       };
 
       function previewTest() {
-        const questionType = document.getElementById("questionType").value;
-
-        const questionsContainer = document.getElementById("questionsContainer");
-        questionsContainer.innerHTML = "";
-
-        let questionNumber = 1;
         const selectedChapters = document.querySelectorAll(".chapter-card:has(input:checked)");
 
         if (selectedChapters.length === 0) {
@@ -1237,42 +1485,25 @@
           return;
         }
 
-        selectedChapters.forEach((card) => {
-          const chapterId = card.querySelector("input").id;
-          const chapterItems = questionBank[chapterId];
+        lastGeneratedQuestions = [];
+        var qNum = 1;
+        selectedChapters.forEach(function(card) {
+          var chapterId = card.querySelector("input").id;
+          var chapterItems = questionBank[chapterId];
+          var chapterName = card.querySelector("h3").textContent;
           if (chapterItems) {
-            const sectionDiv = document.createElement("div");
-            sectionDiv.className = "question-section";
-
-            const chapterTitle = card.querySelector("h3").textContent;
-            sectionDiv.innerHTML = `<h3>${chapterTitle}</h3>`;
-
-            chapterItems.forEach((q) => {
-              const questionDiv = document.createElement("div");
-              questionDiv.className = "question";
-
-              let questionHTML = `<p><strong>Q${questionNumber}.</strong></p>`;
-
-              q.images.forEach((img) => {
-                questionHTML += `<img src="${img}" alt="Question Image">`;
+            chapterItems.forEach(function(q) {
+              lastGeneratedQuestions.push({
+                qNum: qNum++,
+                chapterKey: chapterId,
+                chapterName: chapterName,
+                images: q.images || [],
+                text: q.text || "",
+                answer: q.answer || null
               });
-
-              // Show answer only for teacher version
-              if (questionType === "teacher") {
-                questionHTML += `<div class="answer">Answer: ${q.answer}</div>`;
-              }
-
-              questionDiv.innerHTML = questionHTML;
-              sectionDiv.appendChild(questionDiv);
-              questionNumber++;
             });
-
-            questionsContainer.appendChild(sectionDiv);
           }
         });
-
-        document.getElementById("testPreview").classList.add("show");
-        document.getElementById("testPreview").scrollIntoView({ behavior: "smooth" });
       }
 
       function printTest() {
@@ -1510,7 +1741,7 @@
         });
         grouped.forEach(function (chData, chKey) {
           chData.items.forEach(function (q) {
-            lastGeneratedQuestions.push({ qNum: qNum++, chapterKey: chKey, chapterName: chData.name, answer: q.answer || null, text: q.text });
+            lastGeneratedQuestions.push({ qNum: qNum++, chapterKey: chKey, chapterName: chData.name, images: q.images || [], answer: q.answer || null, text: q.text });
           });
         });
       }
@@ -1534,55 +1765,64 @@
         var testDate = document.getElementById("testDate").value || "";
         var totalMarks = document.getElementById("totalMarks").value || "";
         var testDuration = document.getElementById("testDuration").value || "";
+
+        // Group by chapter preserving order
         var grouped = {};
         var chapterOrder = [];
-        lastGeneratedQuestions.forEach(function (q) {
+        lastGeneratedQuestions.forEach(function(q) {
           if (!grouped[q.chapterKey]) {
-            grouped[q.chapterKey] = { name: q.chapterName, wsOrder: [], worksheets: {} };
+            grouped[q.chapterKey] = { name: q.chapterName, items: [] };
             chapterOrder.push(q.chapterKey);
           }
-          var wsKey = String(q.worksheetIdx) + "||" + q.instruction;
-          if (!grouped[q.chapterKey].worksheets[wsKey]) {
-            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, questions: [] };
-            grouped[q.chapterKey].wsOrder.push(wsKey);
-          }
-          grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
+          grouped[q.chapterKey].items.push(q);
         });
-        var studentHtml = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + '</div>';
-        studentHtml += '<div class="doc-meta"><div>Name: ' + (_esc(studentName) || '________________') + ' &nbsp;&nbsp; Date: ' + (_esc(testDate) || '____________') + '</div>';
-        studentHtml += '<div>Total Marks: ' + _esc(totalMarks) + ' &nbsp;&nbsp; Time: ' + _esc(testDuration) + ' mins</div></div>';
-        chapterOrder.forEach(function (chKey) {
+
+        function buildMeta(includeAK) {
+          var h = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + '</div>';
+          if (includeAK) h += '<div class="doc-ak-label">ANSWER KEY - TEACHER USE ONLY</div>';
+          h += '<div class="doc-meta"><div>Name: ' + (_esc(studentName) || '________________') + ' &nbsp;&nbsp; Date: ' + (_esc(testDate) || '____________') + '</div>';
+          h += '<div>Total Marks: ' + _esc(totalMarks) + ' &nbsp;&nbsp; Time: ' + _esc(testDuration) + ' mins</div></div>';
+          return h;
+        }
+
+        var studentHtml = buildMeta(false);
+        chapterOrder.forEach(function(chKey) {
           var ch = grouped[chKey];
-          ch.wsOrder.forEach(function (wsKey) {
-            var ws = ch.worksheets[wsKey];
-            studentHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + '</div>';
-            ws.questions.slice().sort(function (a, b) { return a.qNum - b.qNum; }).forEach(function (q) {
-              studentHtml += '<div class="doc-question">' + q.qNum + '. ' + _esc(q.text).replace(/\n/g, "<br>") + '</div>';
-            });
+          studentHtml += '<div style="font-weight:bold;color:#667eea;margin:12px 0 6px;font-size:1rem;border-bottom:1px solid #ddd;padding-bottom:4px;">' + _esc(ch.name) + '</div>';
+          ch.items.forEach(function(q) {
+            studentHtml += '<div class="doc-question"><strong>Q' + q.qNum + '.</strong> ';
+            if (q.images && q.images.length > 0) {
+              studentHtml += '<span style="font-style:italic;">' + _esc(q.text) + '</span>';
+              q.images.forEach(function(img) {
+                studentHtml += '<img src="' + img + '" style="max-width:100%;display:block;margin:6px 0;">';
+              });
+            } else {
+              studentHtml += _esc(q.text).replace(/\n/g, '<br>');
+              studentHtml += '<div style="border-bottom:1px solid #ccc;height:28px;margin-top:6px;"></div>';
+            }
+            studentHtml += '</div>';
           });
         });
         document.getElementById("studentPreview").innerHTML = studentHtml;
-        var teacherHtml = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + '</div>';
-        teacherHtml += '<div class="doc-ak-label">ANSWER KEY - TEACHER USE ONLY</div>';
-        teacherHtml += '<div class="doc-meta"><div>Name: ' + (_esc(studentName) || '________________') + ' &nbsp;&nbsp; Date: ' + (_esc(testDate) || '____________') + '</div>';
-        teacherHtml += '<div>Total Marks: ' + _esc(totalMarks) + ' &nbsp;&nbsp; Time: ' + _esc(testDuration) + ' mins</div></div>';
-        chapterOrder.forEach(function (chKey) {
+
+        var teacherHtml = buildMeta(true);
+        chapterOrder.forEach(function(chKey) {
           var ch = grouped[chKey];
-          ch.wsOrder.forEach(function (wsKey) {
-            var ws = ch.worksheets[wsKey];
-            teacherHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + '</div>';
-            var sorted = ws.questions.slice().sort(function (a, b) { return a.qNum - b.qNum; });
-            sorted.forEach(function (q) {
-              teacherHtml += '<div class="doc-question">' + q.qNum + '. ' + _esc(q.text).replace(/\n/g, "<br>") + '</div>';
-            });
-            teacherHtml += '<div class="doc-answers-header">Answers:</div>';
-            sorted.forEach(function (q) {
-              if (q.answer && q.answer !== "vary") {
-                teacherHtml += '<div class="doc-answer">' + q.qNum + '. ' + _esc(q.answer) + '</div>';
-              } else {
-                teacherHtml += '<div class="doc-answer" style="color:#999;">' + q.qNum + '. Answers may vary</div>';
-              }
-            });
+          teacherHtml += '<div style="font-weight:bold;color:#667eea;margin:12px 0 6px;font-size:1rem;border-bottom:1px solid #ddd;padding-bottom:4px;">' + _esc(ch.name) + '</div>';
+          ch.items.forEach(function(q) {
+            teacherHtml += '<div class="doc-question"><strong>Q' + q.qNum + '.</strong> ';
+            if (q.images && q.images.length > 0) {
+              teacherHtml += '<span style="font-style:italic;">' + _esc(q.text) + '</span>';
+              q.images.forEach(function(img) {
+                teacherHtml += '<img src="' + img + '" style="max-width:100%;display:block;margin:6px 0;">';
+              });
+            } else {
+              teacherHtml += _esc(q.text).replace(/\n/g, '<br>');
+            }
+            teacherHtml += '</div>';
+            if ((!q.images || q.images.length === 0) && q.answer && q.answer !== "vary") {
+              teacherHtml += '<div class="doc-answer">Ans: ' + _esc(q.answer) + '</div>';
+            }
           });
         });
         document.getElementById("teacherPreview").innerHTML = teacherHtml;
@@ -1652,24 +1892,24 @@
 
         chapterOrder.forEach(function (chKey) {
           var ch = grouped[chKey];
+          html += '<div class="ch">' + _esc(ch.name) + '</div>';
           var sortedQuestions = ch.questions.slice().sort(function (a, b) {
             return a.qNum - b.qNum;
           });
 
-          // First display all questions
           sortedQuestions.forEach(function (q) {
-            html += '<div class="q">' + q.qNum + ". [Image worksheet — see printed test]</div>";
-          });
-
-          // Then display answers section if needed
-          if (includeAnswers) {
-            html += '<div style="margin-top:16px;font-weight:bold;color:#333;font-size:11pt;">Answers:</div>';
-            sortedQuestions.forEach(function (q) {
-              if (q.answer) {
-                html += '<div class="ans"><strong>' + q.qNum + ".</strong> " + _esc(q.answer) + "</div>";
+            if (q.images && q.images.length > 0) {
+              html += '<div class="q"><strong>' + q.qNum + '.</strong> <em>' + _esc(q.text) + '</em> <span style="color:#888;font-size:9pt;">[See image in printed test]</span></div>';
+            } else {
+              html += '<div class="q"><strong>' + q.qNum + '.</strong> ' + _esc(q.text).replace(/\n/g, '<br>') + '</div>';
+              if (!includeAnswers) {
+                html += '<div class="ans-line"></div>';
               }
-            });
-          }
+            }
+            if (includeAnswers && (!q.images || q.images.length === 0) && q.answer && q.answer !== "vary") {
+              html += '<div class="ans">' + _esc(q.answer) + '</div>';
+            }
+          });
         });
         html += "<\/body><\/html>";
 
