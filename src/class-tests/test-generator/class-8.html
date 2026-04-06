@@ -707,10 +707,10 @@
           <div class="info-field">
             <label for="testName">Test Name</label>
             <input type="text" id="testName" placeholder="e.g., Grammar Test" value="Grammar Frolics-8 Test" />
-        </div>
-        <div class="info-field">
-          <label for="studentName">Student Name</label>
-          <input type="text" id="studentName" placeholder="e.g., John Doe" />
+          </div>
+          <div class="info-field">
+            <label for="studentName">Student Name</label>
+            <input type="text" id="studentName" placeholder="e.g., John Doe" />
           </div>
           <div class="info-field">
             <label for="testDate">Date</label>
@@ -730,7 +730,7 @@
       <!-- Chapter Selection -->
       <div class="chapters-section">
         <h2>📚 Select Chapters</h2>
-        <p class="marks-info">Available questions from selected chapters: <span id="availableCount">0</span></p>
+        <p class="marks-info">Available: <span id="availablePicCount">0</span> picture &nbsp;|&nbsp; <span id="availableTextCount">0</span> text</p>
         <div class="mode-toggle">
           <button id="modeAutoBtn" class="mode-btn active" onclick="setMode('auto')">&#127922; Auto</button>
           <button id="modeCustomBtn" class="mode-btn" onclick="setMode('custom')">&#9999;&#65039; Custom</button>
@@ -875,6 +875,24 @@
               <h3>Punctuation and Capital Letters</h3>
               <p>Rewrite with correct punctuation</p>
             </label>
+            <label class="chapter-card" data-chapter="voc5" data-type="picture">
+              <input type="checkbox" id="voc5" />
+              <span class="chapter-number">Vocabulary 5</span>
+              <h3>Proverbs</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="voc6" data-type="picture">
+              <input type="checkbox" id="voc6" />
+              <span class="chapter-number">Vocabulary 6</span>
+              <h3>Homographs</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="comp9" data-type="picture">
+              <input type="checkbox" id="comp9" />
+              <span class="chapter-number">Composition 9</span>
+              <h3>Picture Composition</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
           </div>
         </div>
         <!-- /autoPanel -->
@@ -883,27 +901,37 @@
       <!-- /chapters-section -->
 
       <!-- Generate Dialog -->
-      <div id="generateDialog" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2000;align-items:center;justify-content:center;">
-        <div style="background:white;border-radius:20px;padding:36px;max-width:420px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.3);font-family:'Comic Sans MS',cursive;">
-          <h2 style="color:#667eea;margin:0 0 6px;font-size:1.6rem;">Configure Test</h2>
-          <p style="color:#888;margin:0 0 24px;font-size:0.9rem;">Available from selected chapters: <strong id="dlgTextAvail">0</strong> text questions</p>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+      <div id="generateDialog" style="display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5); z-index: 2000; align-items: center; justify-content: center">
+        <div style="background: white; border-radius: 20px; padding: 36px; max-width: 420px; width: 90%; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); font-family: &quot;Comic Sans MS&quot;, cursive">
+          <h2 style="color: #667eea; margin: 0 0 6px; font-size: 1.6rem">Configure Test</h2>
+          <p style="color: #888; margin: 0 0 24px; font-size: 0.9rem">Available: <strong id="dlgPicAvail">0</strong> picture &nbsp;|&nbsp; <strong id="dlgTextAvail">0</strong> text</p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px">
             <div>
-              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;">Text questions</label>
-              <input type="number" id="dlgTextCount" min="0" value="0" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+              <label style="font-weight: bold; color: #333; display: block; margin-bottom: 6px"><i class="fas fa-image"></i> Picture questions</label>
+              <input type="number" id="dlgPicCount" min="0" value="0" style="width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; font-family: inherit; box-sizing: border-box" oninput="updateDlgTotal()" />
             </div>
             <div>
-              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;">Marks each</label>
-              <input type="number" id="dlgTextMarks" min="1" value="1" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+              <label style="font-weight: bold; color: #333; display: block; margin-bottom: 6px">Marks each</label>
+              <input type="number" id="dlgPicMarks" min="1" value="1" style="width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; font-family: inherit; box-sizing: border-box" oninput="updateDlgTotal()" />
             </div>
           </div>
-          <div style="background:#f0f0f0;border-radius:10px;padding:12px 16px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;">
-            <span style="font-weight:bold;color:#333;">Total Marks:</span>
-            <span id="dlgTotalMarks" style="font-size:1.4rem;font-weight:bold;color:#667eea;">0</span>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px">
+            <div>
+              <label style="font-weight: bold; color: #333; display: block; margin-bottom: 6px"><i class="fas fa-pen"></i> Text questions</label>
+              <input type="number" id="dlgTextCount" min="0" value="0" style="width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; font-family: inherit; box-sizing: border-box" oninput="updateDlgTotal()" />
+            </div>
+            <div>
+              <label style="font-weight: bold; color: #333; display: block; margin-bottom: 6px">Marks each</label>
+              <input type="number" id="dlgTextMarks" min="1" value="1" style="width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; font-family: inherit; box-sizing: border-box" oninput="updateDlgTotal()" />
+            </div>
           </div>
-          <div style="display:flex;gap:12px;">
-            <button onclick="closeDlg()" style="flex:1;padding:14px;border:2px solid #e0e0e0;background:white;border-radius:50px;font-size:1rem;font-weight:bold;cursor:pointer;font-family:inherit;color:#666;">Cancel</button>
-            <button onclick="confirmGenerate()" style="flex:2;padding:14px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;border-radius:50px;font-size:1rem;font-weight:bold;cursor:pointer;font-family:inherit;">Generate Test</button>
+          <div style="background: #f0f0f0; border-radius: 10px; padding: 12px 16px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center">
+            <span style="font-weight: bold; color: #333">Total Marks:</span>
+            <span id="dlgTotalMarks" style="font-size: 1.4rem; font-weight: bold; color: #667eea">0</span>
+          </div>
+          <div style="display: flex; gap: 12px">
+            <button onclick="closeDlg()" style="flex: 1; padding: 14px; border: 2px solid #e0e0e0; background: white; border-radius: 50px; font-size: 1rem; font-weight: bold; cursor: pointer; font-family: inherit; color: #666">Cancel</button>
+            <button onclick="confirmGenerate()" style="flex: 2; padding: 14px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 50px; font-size: 1rem; font-weight: bold; cursor: pointer; font-family: inherit">Generate Test</button>
           </div>
         </div>
       </div>
@@ -3306,6 +3334,63 @@
             },
           ],
         },
+        voc5: {
+          name: "Voc Ch 5: Proverbs",
+          worksheets: [
+            {
+              instruction: "A – Match each proverb with its meaning.",
+              image: "../../../assets/images/test-generator/class-8/Vocabulary - Chapter 5 A.png",
+              questions: [
+                {
+                  text: "[Image Exercise]",
+                  answer:
+                    "1. People often think others have it better → The grass is always greener on the other side | 2. The person who complains the most usually gets attention → The squeaky wheel gets the grease | 3. Worrying about something makes it feel slower or harder → A watched pot never boils | 4. Don't worry about future problems until they appear → Don't cross the bridge until you come to it | 5. Good deeds should be repaid with kindness → One good turn deserves another | 6. Help and opportunities come to those who take risks → Fortune favours the brave | 7. You face the consequences of your actions → You reap what you sow | 8. Sharing your difficulties can make them easier to handle → A problem shared is a problem halved | 9. Great achievements take time and patience → Rome wasn't built in a day | 10. You should think carefully before taking action → Look before you leap",
+                },
+              ],
+            },
+          ],
+        },
+        voc6: {
+          name: "Voc Ch 6: Homographs",
+          worksheets: [
+            {
+              instruction: "A – Read the meanings and guess the homograph for each set.",
+              image: "../../../assets/images/test-generator/class-8/Vocabulary - Chapter 6 A.png",
+              questions: [
+                {
+                  text: "[Image Exercise]",
+                  answer:
+                    "1. lead (to guide or show the way / a heavy, grey metal) | 2. present (a gift / to show or introduce something) | 3. wind (moving air / to twist or turn something) | 4. tear (a drop of liquid from the eye / to rip or pull apart) | 5. object (a thing or item / to disagree or protest) | 6. desert (a dry, sandy region / to abandon someone) | 7. close (to shut something / near) | 8. bow (a decorative knot / to bend forward after a performance) | 9. project (to plan or map something / a small piece of land) | 10. tap (to hit something lightly / a short, quick sound)",
+                },
+              ],
+            },
+          ],
+        },
+        comp9: {
+          name: "Comp Ch 9: Picture Composition",
+          worksheets: [
+            {
+              instruction: "A – Write picture compositions for the following.",
+              image: "../../../assets/images/test-generator/class-8/Composition - Chapter 9 A.png",
+              questions: [
+                {
+                  text: "[Image Exercise - Children playing outdoors]",
+                  answer: "Write a composition describing the scene of children playing in a park. Include details about what games they are playing, the setting (trees, grass, city in background), and the atmosphere of fun and friendship.",
+                },
+              ],
+            },
+            {
+              instruction: "B – Write picture compositions for the following.",
+              image: "../../../assets/images/test-generator/class-8/Composition - Chapter 9 B.png",
+              questions: [
+                {
+                  text: "[Image Exercise - Polluted river scene]",
+                  answer: "Write a composition describing the polluted river scene. Include details about the garbage and waste in the water, the drainage pipe, the environmental impact, and possible solutions or messages about keeping our environment clean.",
+                },
+              ],
+            },
+          ],
+        },
       };
 
       // ─── HELPERS ───────────────────────────────────────────────────────────
@@ -3323,21 +3408,25 @@
       }
 
       function countByType(keys) {
-        let textCount = 0;
-        keys.forEach(k => {
+        let pic = 0,
+          text = 0;
+        keys.forEach((k) => {
           const ch = questionBank[k];
           if (!ch) return;
-          ch.worksheets.forEach(ws => {
-            textCount += ws.questions.length;
+          ch.worksheets.forEach((ws) => {
+            if (ws.image) pic += ws.questions.length;
+            else text += ws.questions.length;
           });
         });
-        return { pic: 0, text: textCount };
+        return { pic, text };
       }
 
       function updateDlgTotal() {
+        const pCount = parseInt(document.getElementById("dlgPicCount").value) || 0;
+        const pMarks = parseInt(document.getElementById("dlgPicMarks").value) || 0;
         const tCount = parseInt(document.getElementById("dlgTextCount").value) || 0;
         const tMarks = parseInt(document.getElementById("dlgTextMarks").value) || 0;
-        const total = (tCount * tMarks);
+        const total = pCount * pMarks + tCount * tMarks;
         document.getElementById("dlgTotalMarks").textContent = total;
         window._lastTotalMarks = total;
         window._lastTextMarks = tMarks;
@@ -3349,8 +3438,10 @@
 
       function updateAvailableCount() {
         const counts = countByType(getSelectedChapterKeys());
-        document.getElementById("availableCount").textContent = counts.text;
-        document.getElementById("actionAvail").textContent = counts.text > 0 ? counts.text + " questions available" : "Select chapters to begin";
+        document.getElementById("availablePicCount").textContent = counts.pic;
+        document.getElementById("availableTextCount").textContent = counts.text;
+        const total = counts.pic + counts.text;
+        document.getElementById("actionAvail").textContent = total > 0 ? total + " questions available" : "Select chapters to begin";
       }
 
       document.querySelectorAll(".chapter-card input").forEach((cb) => cb.addEventListener("change", updateAvailableCount));
@@ -3684,10 +3775,10 @@
       function generateTest() {
         const keys = getSelectedChapterKeys();
         if (keys.length === 0) {
-          alert('Please select at least one chapter');
+          alert("Please select at least one chapter");
           return;
         }
-        
+
         if (currentMode === "custom") {
           window._lastTotalMarks = document.querySelectorAll(".custom-q-cb:checked").length;
           previewCustomTest();
@@ -3696,8 +3787,11 @@
         }
 
         const counts = countByType(keys);
+        document.getElementById("dlgPicAvail").textContent = counts.pic;
         document.getElementById("dlgTextAvail").textContent = counts.text;
-        
+
+        document.getElementById("dlgPicCount").setAttribute("max", counts.pic);
+        document.getElementById("dlgPicCount").value = Math.min(counts.pic, 10);
         document.getElementById("dlgTextCount").setAttribute("max", counts.text);
         document.getElementById("dlgTextCount").value = Math.min(counts.text, 20);
 
@@ -3706,112 +3800,123 @@
       }
 
       function confirmGenerate() {
-        console.log('confirmGenerate called');
+        console.log("confirmGenerate called");
         const keys = getSelectedChapterKeys();
-        console.log('Selected keys:', keys);
+        console.log("Selected keys:", keys);
         if (keys.length === 0) return;
 
+        const reqPic = parseInt(document.getElementById("dlgPicCount").value) || 0;
+        const pMarks = parseInt(document.getElementById("dlgPicMarks").value) || 1;
         const reqText = parseInt(document.getElementById("dlgTextCount").value) || 0;
         const tMarks = parseInt(document.getElementById("dlgTextMarks").value) || 1;
-        console.log('Requested:', reqText, 'questions @', tMarks, 'marks');
+        console.log("Requested:", reqPic, "picture @", pMarks, "marks,", reqText, "text @", tMarks, "marks");
 
         const counts = countByType(keys);
-        console.log('Available counts:', counts);
-        if (reqText > counts.text) {
-          alert("Requested " + reqText + " text questions, but only " + counts.text + " available.");
-          return;
-        }
+        console.log("Available counts:", counts);
 
-        let poolText = [];
-        console.log('Building question pool...');
+        let poolPic = [],
+          poolText = [];
+        console.log("Building question pools...");
 
-        keys.forEach(k => {
-           const ch = questionBank[k];
-           if(!ch) return;
-           ch.worksheets.forEach((ws, wsIdx) => {
-             ws.questions.forEach((q, qIdx) => {
-               poolText.push({
-                   chapterKey: k,
-                   chapterName: ch.name,
-                   worksheetIdx: wsIdx,
-                   instruction: ws.instruction,
-                   text: q.text,
-                   options: q.options || null,
-                   wideOptions: q.wideOptions || false,
-                   lines: q.lines || 0,
-                   answer: q.answer || null
-               });
-             });
-           });
+        keys.forEach((k) => {
+          const ch = questionBank[k];
+          if (!ch) return;
+          ch.worksheets.forEach((ws, wsIdx) => {
+            ws.questions.forEach((q, qIdx) => {
+              const entry = {
+                chapterKey: k,
+                chapterName: ch.name,
+                worksheetIdx: wsIdx,
+                instruction: ws.instruction,
+                image: ws.image || null,
+                text: q.text,
+                options: q.options || null,
+                wideOptions: q.wideOptions || false,
+                lines: q.lines || 0,
+                answer: q.answer || null,
+              };
+              if (ws.image) poolPic.push(entry);
+              else poolText.push(entry);
+            });
+          });
         });
 
+        const selectedPic = shuffleArray(poolPic).slice(0, reqPic);
         const selectedText = shuffleArray(poolText).slice(0, reqText);
 
+        if (selectedPic.length < reqPic) alert("Only " + selectedPic.length + " picture questions available. Showing all.");
+        if (selectedText.length < reqText) alert("Only " + selectedText.length + " text questions available. Showing all.");
+
+        const selected = [...selectedPic, ...selectedText];
+
         const grouped = new Map();
-        keys.forEach(k => {
+        keys.forEach((k) => {
           grouped.set(k, { name: questionBank[k].name, worksheets: new Map() });
         });
 
         const addToGroup = (q) => {
           const chGroup = grouped.get(q.chapterKey);
-          if(!chGroup) return;
-          if(!chGroup.worksheets.has(q.worksheetIdx)) {
-            chGroup.worksheets.set(q.worksheetIdx, { instruction: q.instruction, questions: [] });
+          if (!chGroup) return;
+          if (!chGroup.worksheets.has(q.worksheetIdx)) {
+            chGroup.worksheets.set(q.worksheetIdx, { instruction: q.instruction, image: q.image, questions: [] });
           }
           chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
         };
 
-        selectedText.forEach(addToGroup);
+        selected.forEach(addToGroup);
 
-        console.log('Grouped:', grouped);
+        console.log("Grouped:", grouped);
         lastGeneratedQuestions = [];
         let qNum = 1;
 
         grouped.forEach((chData, chKey) => {
           if (chData.worksheets.size === 0) return;
-          const sortedWs = Array.from(chData.worksheets.entries()).sort((a,b)=>a[0]-b[0]);
+          const sortedWs = Array.from(chData.worksheets.entries()).sort((a, b) => a[0] - b[0]);
           sortedWs.forEach(([wsIdx, wsData]) => {
-            wsData.questions.forEach(q => {
-               lastGeneratedQuestions.push({
-                 qNum: qNum++,
-                 chapterKey: chKey,
-                 chapterName: chData.name,
-                 worksheetIdx: wsIdx,
-                 instruction: wsData.instruction,
-                 answer: q.answer || null,
-                 text: q.text,
-                 options: q.options || null,
-                 wideOptions: q.wideOptions || false,
-                 lines: q.lines || 0,
-                 marks: tMarks
-               });
+            wsData.questions.forEach((q) => {
+              const isPic = !!wsData.image;
+              lastGeneratedQuestions.push({
+                qNum: qNum++,
+                chapterKey: chKey,
+                chapterName: chData.name,
+                worksheetIdx: wsIdx,
+                instruction: wsData.instruction,
+                image: wsData.image || null,
+                answer: q.answer || null,
+                text: q.text,
+                options: q.options || null,
+                wideOptions: q.wideOptions || false,
+                lines: q.lines || 0,
+                marks: isPic ? pMarks : tMarks,
+              });
             });
           });
         });
 
-        console.log('Generated', lastGeneratedQuestions.length, 'questions');
-        console.log('lastGeneratedQuestions:', lastGeneratedQuestions);
+        console.log("Generated", lastGeneratedQuestions.length, "questions");
+        console.log("lastGeneratedQuestions:", lastGeneratedQuestions);
 
         document.getElementById("generateDialog").style.display = "none";
-        
-        // Update totalMarks field to match the generated test
-        document.getElementById("totalMarks").value = window._lastTotalMarks || (reqText * tMarks);
 
-        console.log('Calling updateWordPreviews...');
+        // Update totalMarks field to match the generated test
+        const totalMarks = selectedPic.length * pMarks + selectedText.length * tMarks;
+        document.getElementById("totalMarks").value = window._lastTotalMarks || totalMarks;
+
+        console.log("Calling updateWordPreviews...");
         updateWordPreviews();
-        console.log('updateWordPreviews completed');
+        console.log("updateWordPreviews completed");
       }
 
       // Render Word-style previews in both panels
       function updateWordPreviews() {
-        console.log('updateWordPreviews called, lastGeneratedQuestions.length:', lastGeneratedQuestions.length);
+        console.log("updateWordPreviews called, lastGeneratedQuestions.length:", lastGeneratedQuestions.length);
         if (lastGeneratedQuestions.length === 0) {
-          console.log('No questions, showing empty state');
+          console.log("No questions, showing empty state");
           document.getElementById("studentPreview").innerHTML = '<div class="word-preview-empty">Select chapters and click Generate to preview</div>';
           document.getElementById("teacherPreview").innerHTML = '<div class="word-preview-empty">Select chapters and click Generate to preview</div>';
           return;
         }
-        console.log('Building previews for', lastGeneratedQuestions.length, 'questions');
+        console.log("Building previews for", lastGeneratedQuestions.length, "questions");
         var testName = document.getElementById("testName").value || "Grammar Test";
         var studentName = document.getElementById("studentName").value || "";
         var testDate = document.getElementById("testDate").value || "";
@@ -3826,11 +3931,12 @@
           }
           var wsKey = String(q.worksheetIdx) + "||" + q.instruction;
           if (!grouped[q.chapterKey].worksheets[wsKey]) {
-            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, questions: [] };
+            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, image: q.image || null, questions: [] };
             grouped[q.chapterKey].wsOrder.push(wsKey);
           }
           grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
         });
+        var instrSerial = 1;
         var studentHtml = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + "</div>";
         studentHtml += '<div class="doc-meta"><div>Name: ' + (_esc(studentName) || "________________") + " &nbsp;&nbsp; Date: " + (_esc(testDate) || "____________") + "</div>";
         studentHtml += "<div>Total Marks: " + _esc(totalMarks) + " &nbsp;&nbsp; Time: " + _esc(testDuration) + " mins</div></div>";
@@ -3838,18 +3944,33 @@
           var ch = grouped[chKey];
           ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
-            studentHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
-            ws.questions
-              .slice()
-              .sort(function (a, b) {
-                return a.qNum - b.qNum;
-              })
-              .forEach(function (q) {
-                studentHtml += '<div class="doc-question">' + q.qNum + ". " + _esc(q.text).replace(/\n/g, "<br>") + "</div>";
-              });
+            // Remove section letter prefix (e.g., 'A – ', 'B – ', etc.) from instruction
+            tempInstr = ws.instruction.replace(/^\s*[A-Z]\s*[–\-\.]\s*/, "");
+            studentHtml += '<div class="doc-instr"><b>Q' + instrSerial++ + ") " + _esc(tempInstr).replace(/\n/g, "<br>") + "</b></div>";
+            if (ws.image) {
+              studentHtml += '<img src="' + ws.image + '" style="max-width:100%;margin:10px 0;border-radius:8px;">';
+            } else {
+              ws.questions
+                .slice()
+                .sort(function (a, b) {
+                  return a.qNum - b.qNum;
+                })
+                .forEach(function (q, idx) {
+                  studentHtml += '<div class="doc-question">' + (idx + 1) + ") " + _esc(q.text).replace(/\n/g, "<br>") + "</div>";
+                  if (q.options && Array.isArray(q.options) && q.options.length > 0) {
+                    studentHtml += '<div class="doc-options">';
+                    q.options.forEach(function (opt, oidx) {
+                      var optLabel = String.fromCharCode(97 + oidx); // a, b, c, ...
+                      studentHtml += '<div style="margin-left:18px;">' + optLabel + ". " + _esc(opt) + "</div>";
+                    });
+                    studentHtml += "</div>";
+                  }
+                });
+            }
           });
         });
         document.getElementById("studentPreview").innerHTML = studentHtml;
+        var instrSerialT = 1;
         var teacherHtml = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + "</div>";
         teacherHtml += '<div class="doc-ak-label">ANSWER KEY - TEACHER USE ONLY</div>';
         teacherHtml += '<div class="doc-meta"><div>Name: ' + (_esc(studentName) || "________________") + " &nbsp;&nbsp; Date: " + (_esc(testDate) || "____________") + "</div>";
@@ -3858,21 +3979,49 @@
           var ch = grouped[chKey];
           ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
-            teacherHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
-            var sorted = ws.questions.slice().sort(function (a, b) {
-              return a.qNum - b.qNum;
-            });
-            sorted.forEach(function (q) {
-              teacherHtml += '<div class="doc-question">' + q.qNum + ". " + _esc(q.text).replace(/\n/g, "<br>") + "</div>";
-            });
-            teacherHtml += '<div class="doc-answers-header">Answers:</div>';
-            sorted.forEach(function (q) {
-              if (q.answer && q.answer !== "vary") {
-                teacherHtml += '<div class="doc-answer">' + q.qNum + ". " + _esc(q.answer) + "</div>";
-              } else {
-                teacherHtml += '<div class="doc-answer" style="color:#999;">' + q.qNum + ". Answers may vary</div>";
+            var tempInstr = ws.instruction.replace(/^\s*[A-Z]\s*[–\-\.]\s*/, "");
+            teacherHtml += '<div class="doc-instr"><b>Q' + instrSerialT++ + ") " + _esc(tempInstr).replace(/\n/g, "<br>") + "</b></div>";
+            if (ws.image) {
+              teacherHtml += '<img src="' + ws.image + '" style="max-width:100%;margin:10px 0;border-radius:8px;">';
+              var imgAns = ws.questions[0] && ws.questions[0].answer;
+              if (imgAns && imgAns !== "vary") {
+                teacherHtml += '<div class="doc-answers-header" style="margin-top:8px;">Answers:</div>';
+                if (imgAns.indexOf(" → ") !== -1) {
+                  var pairs = imgAns.split(" | ");
+                  teacherHtml += '<table style="border-collapse:collapse;margin:6px 0 12px;">';
+                  pairs.forEach(function(pair) {
+                    var parts = pair.split(" → ");
+                    teacherHtml += '<tr><td style="padding:3px 10px 3px 0;font-weight:bold;color:#2d6a4f;">' + _esc(parts[0]) + '</td><td style="padding:3px 0;color:#555;">→ ' + _esc(parts[1] || "") + '</td></tr>';
+                  });
+                  teacherHtml += '</table>';
+                } else {
+                  teacherHtml += '<div class="doc-answer">' + _esc(imgAns) + '</div>';
+                }
               }
-            });
+            } else {
+              var sorted = ws.questions.slice().sort(function (a, b) {
+                return a.qNum - b.qNum;
+              });
+              sorted.forEach(function (q, idx) {
+                teacherHtml += '<div class="doc-question">' + (idx + 1) + ") " + _esc(q.text).replace(/\n/g, "<br>") + "</div>";
+                if (q.options && Array.isArray(q.options) && q.options.length > 0) {
+                  teacherHtml += '<div class="doc-options">';
+                  q.options.forEach(function (opt, oidx) {
+                    var optLabel = String.fromCharCode(97 + oidx); // a, b, c, ...
+                    teacherHtml += '<div style="margin-left:18px;">' + optLabel + ". " + _esc(opt) + "</div>";
+                  });
+                  teacherHtml += "</div>";
+                }
+              });
+              teacherHtml += '<div class="doc-answers-header">Answers:</div>';
+              sorted.forEach(function (q, idx) {
+                if (q.answer && q.answer !== "vary") {
+                  teacherHtml += '<div class="doc-answer">' + (idx + 1) + ") " + _esc(q.answer) + "</div>";
+                } else {
+                  teacherHtml += '<div class="doc-answer" style="color:#999;">Q' + q.qNum + ") Answers may vary</div>";
+                }
+              });
+            }
           });
         });
         document.getElementById("teacherPreview").innerHTML = teacherHtml;
@@ -3939,7 +4088,7 @@
           }
           var wsKey = String(q.worksheetIdx) + "||" + q.instruction;
           if (!grouped[q.chapterKey].worksheets[wsKey]) {
-            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, questions: [] };
+            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, image: q.image || null, questions: [] };
             grouped[q.chapterKey].wsOrder.push(wsKey);
           }
           grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
@@ -3950,29 +4099,51 @@
           ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
             html += '<div class="instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
-            var sortedQuestions = ws.questions.slice().sort(function (a, b) {
-              return a.qNum - b.qNum;
-            });
-
-            // First display all questions
-            sortedQuestions.forEach(function (q) {
-              html += '<div class="q">' + q.qNum + ". " + _esc(q.text).replace(/\n/g, "<br>");
-              if (!includeAnswers) {
-                html += '<div class="ans-line"></div>';
-              }
-              html += "</div>";
-            });
-
-            // Then display answers section if needed
-            if (includeAnswers) {
-              html += '<div style="margin-top:16px;font-weight:bold;color:#333;font-size:11pt;">Answers:</div>';
-              sortedQuestions.forEach(function (q) {
-                if (q.answer && q.answer !== "vary") {
-                  html += '<div class="ans"><strong>' + q.qNum + ".</strong> " + _esc(q.answer) + "</div>";
-                } else {
-                  html += '<div class="ans" style="color:#999;"><strong>' + q.qNum + ".</strong> Answers may vary</div>";
+            
+            if (ws.image) {
+              html += '<img src="' + ws.image + '" style="max-width:90%;display:block;margin:10px auto;page-break-inside:avoid;">';
+              if (includeAnswers) {
+                var imgAns = ws.questions[0] && ws.questions[0].answer;
+                if (imgAns && imgAns !== "vary") {
+                  html += '<div style="margin-top:16px;font-weight:bold;color:#333;font-size:11pt;">Answers:</div>';
+                  if (imgAns.indexOf(" → ") !== -1) {
+                    var pairs = imgAns.split(" | ");
+                    html += '<table style="border-collapse:collapse;margin:6px 0 12px;width:80%;">';
+                    pairs.forEach(function(pair) {
+                      var parts = pair.split(" → ");
+                      html += '<tr><td style="padding:3px 10px 3px 0;font-weight:bold;">' + _esc(parts[0]) + '</td><td style="padding:3px 0;">→ ' + _esc(parts[1] || "") + '</td></tr>';
+                    });
+                    html += '</table>';
+                  } else {
+                    html += '<div class="ans">' + _esc(imgAns) + '</div>';
+                  }
                 }
+              }
+            } else {
+              var sortedQuestions = ws.questions.slice().sort(function (a, b) {
+                return a.qNum - b.qNum;
               });
+
+              // First display all questions
+              sortedQuestions.forEach(function (q) {
+                html += '<div class="q">' + q.qNum + ". " + _esc(q.text).replace(/\n/g, "<br>");
+                if (!includeAnswers) {
+                  html += '<div class="ans-line"></div>';
+                }
+                html += "</div>";
+              });
+
+              // Then display answers section if needed
+              if (includeAnswers) {
+                html += '<div style="margin-top:16px;font-weight:bold;color:#333;font-size:11pt;">Answers:</div>';
+                sortedQuestions.forEach(function (q) {
+                  if (q.answer && q.answer !== "vary") {
+                    html += '<div class="ans"><strong>' + q.qNum + ".</strong> " + _esc(q.answer) + "</div>";
+                  } else {
+                    html += '<div class="ans" style="color:#999;"><strong>' + q.qNum + ".</strong> Answers may vary</div>";
+                  }
+                });
+              }
             }
           });
         });
