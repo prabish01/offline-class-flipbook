@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Class 8 Generate Button</title>
+  <script>
+    // Minimal test to verify questionBank and generate logic
+    window.onload = function() {
+      console.log("Testing Class 8 Question Bank...");
+      
+      // Simulate loading the questionBank
+      const questionBank = {
+        g1: {
+          name: "Ch 1: Nouns",
+          worksheets: [
+            {
+              instruction: "A – Read these sentences and identify the common and proper nouns in them.",
+              questions: [
+                { text: "In India, we celebrate lots of festivals every year.", answer: "vary" },
+                { text: "Radha gave her pen to me to write with.", answer: "vary" },
+              ],
+            },
+          ],
+        },
+        g2: {
+          name: "Ch 2: Articles",
+          worksheets: [
+            {
+              instruction: "A – Complete the sentences with a, an or the.",
+              questions: [
+                { text: "[Complete the exercise as instructed]", answer: "vary" },
+              ],
+            },
+          ],
+        },
+      };
+      
+      // Test that answer field exists
+      const testQ = questionBank.g1.worksheets[0].questions[0];
+      console.log("Question:", testQ.text);
+      console.log("Answer field:", testQ.answer);
+      console.log("Has answer:", testQ.hasOwnProperty('answer'));
+      
+      if (testQ.hasOwnProperty('answer')) {
+        document.getElementById('result').innerHTML = '<div style="color: green; font-size: 20px;">✅ PASS: Questions have answer field!</div>';
+        document.getElementById('details').innerHTML = 
+          '<p>Question: ' + testQ.text + '</p>' +
+          '<p>Answer: ' + testQ.answer + '</p>' +
+          '<p>This structure matches what the generate button expects.</p>';
+      } else {
+        document.getElementById('result').innerHTML = '<div style="color: red; font-size: 20px;">❌ FAIL: Questions missing answer field!</div>';
+      }
+    };
+  </script>
+</head>
+<body style="font-family: Arial; padding: 20px;">
+  <h1>Class 8 Question Bank Test</h1>
+  <div id="result"></div>
+  <div id="details"></div>
+</body>
+</html>

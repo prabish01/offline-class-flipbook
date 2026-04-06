@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Class 8</title>
+</head>
+<body>
+    <h1>Check Console for Errors</h1>
+    <iframe src="src/class-tests/test-generator/class-8.html" style="width:100%; height:800px; border:1px solid #ccc;"></iframe>
+    <script>
+        window.addEventListener('message', function(e) {
+            console.log('Message from iframe:', e.data);
+        });
+    </script>
+</body>
+</html>

@@ -713,6 +713,10 @@
             <input type="text" id="testName" placeholder="e.g., Grammar Test" value="Grammar Frolics-7 Test" />
           </div>
           <div class="info-field">
+            <label for="studentName">Student Name</label>
+            <input type="text" id="studentName" placeholder="e.g., John Doe" />
+          </div>
+          <div class="info-field">
             <label for="testDate">Date</label>
             <input type="date" id="testDate" />
           </div>
@@ -738,6 +742,32 @@
         <div id="customPanel"></div>
       </div>
       <!-- /chapters-section -->
+
+      <!-- Generate Dialog -->
+      <div id="generateDialog" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2000;align-items:center;justify-content:center;">
+        <div style="background:white;border-radius:20px;padding:36px;max-width:420px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.3);font-family:'Comic Sans MS',cursive;">
+          <h2 style="color:#667eea;margin:0 0 6px;font-size:1.6rem;">Configure Test</h2>
+          <p style="color:#888;margin:0 0 24px;font-size:0.9rem;">Available from selected chapters: <strong id="dlgTextAvail">0</strong> text questions</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+            <div>
+              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;">Text questions</label>
+              <input type="number" id="dlgTextCount" min="0" value="0" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+            </div>
+            <div>
+              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;">Marks each</label>
+              <input type="number" id="dlgTextMarks" min="1" value="1" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+            </div>
+          </div>
+          <div style="background:#f0f0f0;border-radius:10px;padding:12px 16px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-weight:bold;color:#333;">Total Marks:</span>
+            <span id="dlgTotalMarks" style="font-size:1.4rem;font-weight:bold;color:#667eea;">0</span>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <button onclick="closeDlg()" style="flex:1;padding:14px;border:2px solid #e0e0e0;background:white;border-radius:50px;font-size:1rem;font-weight:bold;cursor:pointer;font-family:inherit;color:#666;">Cancel</button>
+            <button onclick="confirmGenerate()" style="flex:2;padding:14px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;border-radius:50px;font-size:1rem;font-weight:bold;cursor:pointer;font-family:inherit;">Generate Test</button>
+          </div>
+        </div>
+      </div>
 
       <!-- Split Word Preview Layout -->
       <div class="word-preview-layout">
@@ -8471,6 +8501,10 @@
         window._lastTextMarks = tMarks;
       }
 
+      function closeDlg() {
+        document.getElementById("generateDialog").style.display = "none";
+      }
+
       function updateAvailableCount() {
         const counts = countByType(getSelectedChapterKeys());
         let pEl = document.getElementById("availablePicCount");
@@ -8597,7 +8631,7 @@
         document.getElementById("generateDialog").style.display = "none";
         
         // Hide traditional preview and only rely on the Word previews
-        document.querySelector(".test-preview").classList.remove("show");
+        const tp = document.querySelector(".test-preview"); if (tp) tp.classList.remove("show");
         document.querySelectorAll(".action-buttons .btn-print").forEach(b => b.style.display="none");
 
         updateWordPreviews();
@@ -8855,31 +8889,6 @@ function printTest() {
             });
           });
         });
-      }
-
-      // Wrapper called by Preview Test button
-      function generateTest() {
-        if (currentMode === "custom") {
-          previewCustomTest();
-        } else {
-          lastGeneratedQuestions = [];
-          previewTest();
-          // For classes that don't internally populate lastGeneratedQuestions
-          if (lastGeneratedQuestions.length === 0 && typeof getSelectedChapterKeys === "function") {
-            var keys = getSelectedChapterKeys();
-            var qNum = 1;
-            keys.forEach(function (k) {
-              var ch = questionBank[k];
-              if (!ch) return;
-              ch.worksheets.forEach(function (ws, wsIdx) {
-                ws.questions.forEach(function (q) {
-                  lastGeneratedQuestions.push({ qNum: qNum++, chapterKey: k, chapterName: ch.name, worksheetIdx: wsIdx, instruction: ws.instruction, answer: q.answer || null, text: q.text });
-                });
-              });
-            });
-          }
-        }
-        updateWordPreviews();
       }
 
       // Render Word-style previews in both panels
