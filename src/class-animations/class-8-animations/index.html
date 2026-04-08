@@ -229,7 +229,7 @@
 
       function buildGrid() {
         const container = document.getElementById('videos-container');
-        VIDEOS.forEach(({ file, desc }) => {
+        VIDEOS.forEach(({ file }, i) => {
           const title = file.replace('.mp4', '');
           const path = BASE + file;
           container.innerHTML += `
@@ -244,7 +244,7 @@
               </div>
               <div class="video-info">
                 <h3 class="video-title">${title}</h3>
-                <p class="video-description">${desc}</p>
+                <p class="video-description">Chapter ${i + 1}</p>
               </div>
             </div>`;
         });

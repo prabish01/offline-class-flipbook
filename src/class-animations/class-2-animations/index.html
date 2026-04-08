@@ -243,11 +243,12 @@
 
       function buildPage() {
         const root = document.getElementById("root");
+        let chapterNum = 1;
         SECTIONS.forEach(({ label, videos }) => {
           root.innerHTML += `<div class="section-label">${label}</div>`;
           const grid = document.createElement("div");
           grid.className = "videos-container";
-          videos.forEach(({ file, desc }) => {
+          videos.forEach(({ file }) => {
             const title = file.replace(".mp4", "");
             const path = BASE + file;
             grid.innerHTML += `
@@ -262,7 +263,7 @@
                 </div>
                 <div class="video-info">
                   <h3 class="video-title">${title}</h3>
-                  <p class="video-description">${desc}</p>
+                  <p class="video-description">Chapter ${chapterNum++}</p>
                 </div>
               </div>`;
           });

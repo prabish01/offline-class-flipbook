@@ -842,6 +842,13 @@
         window.open(encodedPath);
       }
 
+      // Number chapter descriptions
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.video-description').forEach(function(el, i) {
+          el.textContent = 'Chapter ' + (i + 1);
+        });
+      });
+
       // Ensure video thumbnails load properly
       document.addEventListener('DOMContentLoaded', function() {
         const videos = document.querySelectorAll('.video-thumbnail video');
