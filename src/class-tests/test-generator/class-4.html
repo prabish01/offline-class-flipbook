@@ -608,51 +608,23 @@
         color: #333;
       }
       .custom-layout {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
         margin-top: 20px;
       }
-      .custom-selection {
-        max-height: calc(100vh - 200px);
+      #customSelection {
+        max-height: 480px;
         overflow-y: auto;
-        padding-right: 12px;
+        padding-right: 6px;
       }
-      .custom-preview-container {
-        position: sticky;
-        top: 20px;
-        height: fit-content;
-        max-height: calc(100vh - 200px);
-        overflow-y: auto;
-        background: white;
-        border: 2px solid #667eea;
-        border-radius: 12px;
-        padding: 20px;
+      #customSelection::-webkit-scrollbar {
+        width: 6px;
       }
-      .custom-preview-header {
-        text-align: center;
-        margin-bottom: 16px;
-        padding-bottom: 12px;
-        border-bottom: 2px solid #667eea;
+      #customSelection::-webkit-scrollbar-track {
+        background: #f0f0f0;
+        border-radius: 3px;
       }
-      .custom-preview-title {
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: #667eea;
-        margin-bottom: 4px;
-      }
-      .custom-preview-count {
-        font-size: 0.9rem;
-        color: #636e72;
-      }
-      .custom-preview-content {
-        font-size: 0.85rem;
-      }
-      .custom-preview-empty {
-        text-align: center;
-        color: #999;
-        font-style: italic;
-        padding: 40px 20px;
+      #customSelection::-webkit-scrollbar-thumb {
+        background: #a29bfe;
+        border-radius: 3px;
       }
       .btn-word-teacher {
         background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
@@ -1071,7 +1043,7 @@
       <div id="generateDialog" style="display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5); z-index: 2000; align-items: center; justify-content: center">
         <div style="background: white; border-radius: 20px; padding: 36px; max-width: 480px; width: 90%; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); font-family: &quot;Comic Sans MS&quot;, cursive">
           <h2 style="color: #667eea; margin: 0 0 6px; font-size: 1.6rem"><i class="fas fa-sliders" style="margin-right: 8px"></i>Configure Test</h2>
-          <p style="color: #888; margin: 0 0 24px; font-size: 0.9rem">Available from selected chapters: <strong id="dlgPicAvail">0</strong> picture &nbsp;|&nbsp; <strong id="dlgTextAvail">0</strong> text</p>
+          <p id="dlgSubtitle" style="color: #888; margin: 0 0 24px; font-size: 0.9rem">Available from selected chapters: <strong id="dlgPicAvail">0</strong> picture &nbsp;|&nbsp; <strong id="dlgTextAvail">0</strong> text</p>
 
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px">
             <div>
@@ -2513,8 +2485,21 @@
       // Wrapper called by Generate Test button
       function generateTest() {
         if (currentMode === "custom") {
-          previewCustomTest();
-          updateWordPreviews();
+          var picSel = 0, textSel = 0;
+          document.querySelectorAll(".custom-q-cb:checked").forEach(function(cb) {
+            var chKey = cb.getAttribute("data-ch-key");
+            var wsIdx = parseInt(cb.getAttribute("data-ws-idx"));
+            if (questionBank[chKey].worksheets[wsIdx].image) picSel++; else textSel++;
+          });
+          if (picSel + textSel === 0) { alert("Please tick at least one question in Custom mode!"); return; }
+          document.getElementById("dlgSubtitle").innerHTML = 'Selected questions: <strong id="dlgPicAvail">' + picSel + '</strong> image &nbsp;|&nbsp; <strong id="dlgTextAvail">' + textSel + '</strong> text &nbsp;(set marks below)';
+          var picCountEl = document.getElementById("dlgPicCount");
+          var textCountEl = document.getElementById("dlgTextCount");
+          picCountEl.value = picSel; textCountEl.value = textSel;
+          picCountEl.readOnly = true; textCountEl.readOnly = true;
+          picCountEl.style.background = "#f5f5f5"; textCountEl.style.background = "#f5f5f5";
+          updateDlgTotal();
+          document.getElementById("generateDialog").style.display = "flex";
           return;
         }
         const selectedKeys = getSelectedChapterKeys();
@@ -2533,11 +2518,59 @@
       }
 
       function confirmGenerate() {
-        const picCount = parseInt(document.getElementById("dlgPicCount").value) || 0;
         const picMarks = parseInt(document.getElementById("dlgPicMarks").value) || 1;
-        const textCount = parseInt(document.getElementById("dlgTextCount").value) || 0;
         const textMarks = parseInt(document.getElementById("dlgTextMarks").value) || 1;
         closeDlg();
+
+        if (currentMode === "custom") {
+          const selected = [];
+          document.querySelectorAll(".custom-q-cb:checked").forEach(function(cb) {
+            const chKey = cb.getAttribute("data-ch-key");
+            const wsIdx = parseInt(cb.getAttribute("data-ws-idx"));
+            const qIdx = parseInt(cb.getAttribute("data-q-idx"));
+            const ch = questionBank[chKey]; const ws = ch.worksheets[wsIdx]; const q = ws.questions[qIdx];
+            selected.push({ chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx,
+              instruction: ws.instruction, image: ws.image || null, text: q.text,
+              answer: q.answer || null, options: q.options || null, wideOptions: q.wideOptions || false,
+              lines: q.lines || 0, marks: ws.image ? picMarks : textMarks });
+          });
+          if (selected.length === 0) return;
+          const grouped = new Map();
+          Object.keys(questionBank).forEach(function(k) {
+            grouped.set(k, { name: questionBank[k].name, worksheets: new Map() });
+          });
+          selected.forEach(function(q) {
+            const chGroup = grouped.get(q.chapterKey);
+            if (!chGroup) return;
+            if (!chGroup.worksheets.has(q.worksheetIdx)) {
+              chGroup.worksheets.set(q.worksheetIdx, { instruction: q.instruction, image: q.image || null, questions: [] });
+            }
+            chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
+          });
+          let qNum = 1; lastGeneratedQuestions = []; let totalMarks = 0;
+          grouped.forEach(function(chData, chKey) {
+            chData.worksheets.forEach(function(wsData, wsIdx) {
+              wsData.questions.forEach(function(q) {
+                lastGeneratedQuestions.push({ chapterKey: chKey, chapterName: chData.name,
+                  worksheetIdx: wsIdx, instruction: wsData.instruction, image: wsData.image,
+                  text: q.text, answer: q.answer, options: q.options, wideOptions: q.wideOptions,
+                  lines: q.lines, marks: q.marks, qNum: qNum++ });
+                totalMarks += q.marks;
+              });
+            });
+          });
+          window._lastPicMarks = picMarks; window._lastTextMarks = textMarks;
+          window._lastTotalMarks = totalMarks;
+          updateWordPreviews();
+          return;
+        }
+
+        const picCount = parseInt(document.getElementById("dlgPicCount").value) || 0;
+        const textCount = parseInt(document.getElementById("dlgTextCount").value) || 0;
+        document.getElementById("dlgPicCount").readOnly = false;
+        document.getElementById("dlgTextCount").readOnly = false;
+        document.getElementById("dlgPicCount").style.background = "";
+        document.getElementById("dlgTextCount").style.background = "";
 
         const selectedKeys = getSelectedChapterKeys();
         const picPool = [],
@@ -2735,26 +2768,21 @@
               var li = document.createElement("li");
               li.className = "custom-q-item";
               var id = "cq_" + chKey + "_" + wsIdx + "_" + qIdx;
-              var preview = q.text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-              if (preview.length > 100) preview = preview.substring(0, 100) + "...";
+              var contentHtml;
+              if (ws.image) {
+                var imgSrc = ws.image.replace(/ /g, '%20');
+                contentHtml = '<img src="' + imgSrc + '" alt="Exercise image" style="max-width:320px;max-height:180px;object-fit:contain;border-radius:6px;margin-top:4px;display:block;">';
+              } else {
+                var preview = q.text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                if (preview.length > 100) preview = preview.substring(0, 100) + "...";
+                contentHtml = '<span class="custom-q-text">' + preview + "</span>";
+              }
               li.innerHTML =
-                '<label for="' +
-                id +
-                '" style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;width:100%;">' +
-                '<input type="checkbox" id="' +
-                id +
-                '" class="custom-q-cb"' +
-                ' data-ch-key="' +
-                chKey +
-                '" data-ws-idx="' +
-                wsIdx +
-                '" data-q-idx="' +
-                qIdx +
-                '"' +
+                '<label for="' + id + '" style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;width:100%;">' +
+                '<input type="checkbox" id="' + id + '" class="custom-q-cb"' +
+                ' data-ch-key="' + chKey + '" data-ws-idx="' + wsIdx + '" data-q-idx="' + qIdx + '"' +
                 ' style="margin-top:3px;cursor:pointer;accent-color:#667eea;flex-shrink:0;" onchange="updateCustomPreview()">' +
-                '<span class="custom-q-text">' +
-                preview +
-                "</span></label>";
+                '<div style="flex:1;">' + contentHtml + '</div></label>';
               ul.appendChild(li);
             });
             wsDiv.appendChild(ul);
@@ -2763,20 +2791,7 @@
           selectionDiv.appendChild(chDiv);
         });
 
-        // Right column: live preview
-        var previewDiv = document.createElement("div");
-        previewDiv.className = "custom-preview-container";
-        previewDiv.innerHTML =
-          '<div class="custom-preview-header">' +
-          '<div class="custom-preview-title">Live Preview</div>' +
-          '<div class="custom-preview-count" id="customPreviewCount">0 questions selected</div>' +
-          "</div>" +
-          '<div class="custom-preview-content" id="customPreviewContent">' +
-          '<div class="custom-preview-empty">Select questions to see preview</div>' +
-          "</div>";
-
         layout.appendChild(selectionDiv);
-        layout.appendChild(previewDiv);
         cp.appendChild(layout);
         cp.setAttribute("data-built", "1");
       }
@@ -2794,147 +2809,7 @@
       }
 
       function updateCustomPreview() {
-        var checkedBoxes = document.querySelectorAll(".custom-q-cb:checked");
-        var count = checkedBoxes.length;
-        var countEl = document.getElementById("customPreviewCount");
-        var contentEl = document.getElementById("customPreviewContent");
-
-        countEl.textContent = count + " question" + (count !== 1 ? "s" : "") + " selected";
-
-        if (count === 0) {
-          contentEl.innerHTML = '<div class="custom-preview-empty">Select questions to see preview</div>';
-          return;
-        }
-
-        // Build preview content
-        var selectedQuestions = [];
-        var qNum = 1;
-
-        Array.prototype.forEach.call(checkedBoxes, function (cb) {
-          var chKey = cb.getAttribute("data-ch-key");
-          var wsIdx = parseInt(cb.getAttribute("data-ws-idx"));
-          var qIdx = parseInt(cb.getAttribute("data-q-idx"));
-
-          var ch = questionBank[chKey];
-          var ws = ch.worksheets[wsIdx];
-          var q = ws.questions[qIdx];
-
-          selectedQuestions.push({
-            qNum: qNum++,
-            chapterKey: chKey,
-            chapterName: ch.name,
-            worksheetIdx: wsIdx,
-            instruction: ws.instruction,
-            text: q.text,
-            options: q.options || null,
-            wideOptions: q.wideOptions || false,
-            lines: q.lines || 0,
-            answer: q.answer || null,
-          });
-        });
-
-        // Group by chapter and worksheet
-        var grouped = {};
-        var chapterOrder = [];
-        selectedQuestions.forEach(function (q) {
-          if (!grouped[q.chapterKey]) {
-            grouped[q.chapterKey] = { name: q.chapterName, wsOrder: [], worksheets: {} };
-            chapterOrder.push(q.chapterKey);
-          }
-          var wsKey = String(q.worksheetIdx) + "||" + q.instruction;
-          if (!grouped[q.chapterKey].worksheets[wsKey]) {
-            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, questions: [] };
-            grouped[q.chapterKey].wsOrder.push(wsKey);
-          }
-          grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
-        });
-
-        // Build HTML
-        var html = "";
-        chapterOrder.forEach(function (chKey) {
-          var ch = grouped[chKey];
-          html += '<div style="margin-bottom:16px;"><div style="font-weight:bold;color:#667eea;margin-bottom:8px;font-size:1rem;">' + _esc(ch.name) + "</div>";
-          ch.wsOrder.forEach(function (wsKey) {
-            var ws = ch.worksheets[wsKey];
-            html += '<div style="font-style:italic;color:#636e72;font-size:0.82rem;margin-bottom:6px;">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
-            ws.questions
-              .slice()
-              .sort(function (a, b) {
-                return a.qNum - b.qNum;
-              })
-              .forEach(function (q) {
-                html += '<div style="margin-bottom:10px;font-size:0.85rem;"><strong>' + q.qNum + ".</strong> " + _esc(q.text).replace(/\n/g, "<br>");
-                if (q.options && q.options.length > 0) {
-                  if (q.wideOptions) {
-                    html += '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;">';
-                    q.options.forEach(function (opt) {
-                      html += '<span style="padding:2px 6px;background:#f0f0f0;border-radius:4px;font-size:0.8rem;">' + _esc(opt) + "</span>";
-                    });
-                    html += "</div>";
-                  } else {
-                    html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px;">';
-                    q.options.forEach(function (opt) {
-                      html += '<span style="padding:2px 6px;background:#f0f0f0;border-radius:4px;font-size:0.8rem;">' + _esc(opt) + "</span>";
-                    });
-                    html += "</div>";
-                  }
-                }
-                for (var i = 0; i < q.lines; i++) {
-                  html += '<div style="border-bottom:1px solid #ccc;height:16px;margin-top:4px;"></div>';
-                }
-                html += "</div>";
-              });
-          });
-          html += "</div>";
-        });
-
-        contentEl.innerHTML = html;
-      }
-
-      function previewCustomTest() {
-        var selected = [];
-        document.querySelectorAll(".custom-q-cb:checked").forEach(function (cb) {
-          var chKey = cb.getAttribute("data-ch-key");
-          var wsIdx = parseInt(cb.getAttribute("data-ws-idx"));
-          var qIdx = parseInt(cb.getAttribute("data-q-idx"));
-          var ch = questionBank[chKey];
-          var ws = ch.worksheets[wsIdx];
-          var q = ws.questions[qIdx];
-          selected.push({ chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx, instruction: ws.instruction, image: ws.image || null, text: q.text, answer: q.answer || null, options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0 });
-        });
-
-        if (selected.length === 0) {
-          alert("Please tick at least one question in Custom mode!");
-          return;
-        }
-
-        var grouped = new Map();
-        Object.keys(questionBank).forEach(function (k) {
-          grouped.set(k, { name: questionBank[k].name, worksheets: new Map() });
-        });
-        selected.forEach(function (q) {
-          var chGroup = grouped.get(q.chapterKey);
-          if (!chGroup) return;
-          if (!chGroup.worksheets.has(q.worksheetIdx)) {
-            chGroup.worksheets.set(q.worksheetIdx, { instruction: q.instruction, image: q.image || null, questions: [] });
-          }
-          chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
-        });
-
-        var qNum = 1;
-        lastGeneratedQuestions = [];
-        grouped.forEach(function (chData, chKey) {
-          if (chData.worksheets.size === 0) return;
-          var sortedWs = Array.from(chData.worksheets.entries()).sort(function (a, b) {
-            return a[0] - b[0];
-          });
-          sortedWs.forEach(function (entry) {
-            var wsData = entry[1];
-            wsData.questions.forEach(function (q) {
-              lastGeneratedQuestions.push({ qNum: qNum++, chapterKey: chKey, chapterName: chData.name, worksheetIdx: entry[0], instruction: wsData.instruction, image: wsData.image || null, answer: q.answer || null, text: q.text });
-            });
-          });
-        });
+        // No-op: live preview removed. Count is shown in dialog when Generate is clicked.
       }
 
       // Render Word-style previews in both panels
