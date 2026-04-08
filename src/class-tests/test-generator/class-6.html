@@ -3186,7 +3186,8 @@
             var chKey = cb.getAttribute("data-ch-key");
             var wsIdx = parseInt(cb.getAttribute("data-ws-idx"));
             var ch = questionBank[chKey];
-            if (ch && ch.worksheets && ch.worksheets[wsIdx] && ch.worksheets[wsIdx].image) picSel++; else textSel++;
+            if (!ch || Array.isArray(ch) || !ch.worksheets) return;
+            if (ch.worksheets[wsIdx].image) picSel++; else textSel++;
           });
           if (picSel + textSel === 0) { alert("Please tick at least one question in Custom mode!"); return; }
           document.getElementById("dlgSubtitle").innerHTML = 'Selected questions: <strong id="dlgPicAvail">' + picSel + '</strong> image &nbsp;|&nbsp; <strong id="dlgTextAvail">' + textSel + '</strong> text &nbsp;(set marks below)';
@@ -3224,15 +3225,12 @@
           document.querySelectorAll(".custom-q-cb:checked").forEach(function(cb) {
             const chKey = cb.getAttribute("data-ch-key");
             const wsIdx = parseInt(cb.getAttribute("data-ws-idx"));
-            const ch = questionBank[chKey];
-            if (!ch || !ch.worksheets || !ch.worksheets[wsIdx]) return;
-            const ws = ch.worksheets[wsIdx];
-            ws.questions.forEach(function(q) {
-              selected.push({ chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx,
-                instruction: ws.instruction, image: ws.image || null, text: q.text,
-                answer: q.answer || null, options: q.options || null, wideOptions: q.wideOptions || false,
-                lines: q.lines || 0, marks: ws.image ? picMarks : textMarks });
-            });
+            const qIdx = parseInt(cb.getAttribute("data-q-idx"));
+            const ch = questionBank[chKey]; const ws = ch.worksheets[wsIdx]; const q = ws.questions[qIdx];
+            selected.push({ chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx,
+              instruction: ws.instruction, image: ws.image || null, text: q.text,
+              answer: q.answer || null, options: q.options || null, wideOptions: q.wideOptions || false,
+              lines: q.lines || 0, marks: ws.image ? picMarks : textMarks });
           });
           if (selected.length === 0) return;
           const grouped = new Map();
@@ -3380,8 +3378,10 @@
         if (mode === "custom") {
           if (!cp.getAttribute("data-built")) buildCustomPanel();
           cp.style.display = "block";
+          updateCustomPreview();
         } else {
           cp.style.display = "none";
+          updateAvailableCount();
         }
       }
 
@@ -3399,46 +3399,48 @@
         selectionDiv.id = "customSelection";
 
         Object.keys(questionBank).forEach(function (chKey) {
-          var chapter = questionBank[chKey];
-          var cardInput = document.getElementById(chKey);
-          var chName = cardInput ? cardInput.closest("label").querySelector("h3").textContent : chKey;
+          var ch = questionBank[chKey];
+          if (!ch || Array.isArray(ch) || !ch.worksheets) return;
 
           var chDiv = document.createElement("div");
           chDiv.className = "custom-chapter";
           var hdr = document.createElement("div");
           hdr.className = "custom-chapter-header";
-          hdr.innerHTML = "<span>" + chName + "</span>" + '<button class="custom-select-all" onclick="toggleChAll(\'' + chKey + "',this)\">Select All</button>";
+          hdr.innerHTML = "<span>" + ch.name + "</span>" + '<button class="custom-select-all" onclick="toggleChAll(\'' + chKey + "',this)\">Select All</button>";
           chDiv.appendChild(hdr);
 
-          var ul = document.createElement("ul");
-          ul.className = "custom-q-list";
-          
-          if (chapter && chapter.worksheets) {
-            chapter.worksheets.forEach(function (ws, wsIdx) {
+          ch.worksheets.forEach(function (ws, wsIdx) {
+            var wsDiv = document.createElement("div");
+            wsDiv.className = "custom-ws";
+            var instrSafe = ws.instruction.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
+            wsDiv.innerHTML = '<div class="custom-ws-instr">' + instrSafe + "</div>";
+            var ul = document.createElement("ul");
+            ul.className = "custom-q-list";
+            ws.questions.forEach(function (q, qIdx) {
               var li = document.createElement("li");
               li.className = "custom-q-item";
-              var id = "cq_" + chKey + "_" + wsIdx;
-              
+              var id = "cq_" + chKey + "_" + wsIdx + "_" + qIdx;
               var contentHtml;
               if (ws.image) {
                 var imgSrc = ws.image.replace(/ /g, '%20');
                 contentHtml = '<img src="' + imgSrc + '" alt="Exercise image" style="max-width:320px;max-height:180px;object-fit:contain;border-radius:6px;margin-top:4px;display:block;">';
               } else {
-                var label = ws.instruction ? ws.instruction.substring(0, 80) + (ws.instruction.length > 80 ? "..." : "") : "Worksheet " + (wsIdx + 1);
-                contentHtml = '<span class="custom-q-text">' + label.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</span>";
+                var preview = q.text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                if (preview.length > 100) preview = preview.substring(0, 100) + "...";
+                contentHtml = '<span class="custom-q-text">' + preview + "</span>";
               }
-
               li.innerHTML =
                 '<label for="' + id + '" style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;width:100%;">' +
                 '<input type="checkbox" id="' + id + '" class="custom-q-cb"' +
-                ' data-ch-key="' + chKey + '" data-ws-idx="' + wsIdx + '"' +
+                ' data-ch-key="' + chKey + '" data-ws-idx="' + wsIdx + '" data-q-idx="' + qIdx + '"' +
                 ' style="margin-top:3px;cursor:pointer;accent-color:#667eea;flex-shrink:0;" onchange="updateCustomPreview()">' +
                 '<div style="flex:1;">' + contentHtml + '</div></label>';
               ul.appendChild(li);
             });
-          }
-          
-          chDiv.appendChild(ul);
+            wsDiv.appendChild(ul);
+            chDiv.appendChild(wsDiv);
+          });
+
           selectionDiv.appendChild(chDiv);
         });
 
@@ -3460,7 +3462,18 @@
       }
 
       function updateCustomPreview() {
-        // No-op: live preview removed. Count is shown in dialog when Generate is clicked.
+        var pic = 0, text = 0;
+        document.querySelectorAll(".custom-q-cb:checked").forEach(function(cb) {
+          var chKey = cb.getAttribute("data-ch-key");
+          var wsIdx = parseInt(cb.getAttribute("data-ws-idx"));
+          var ch = questionBank[chKey];
+          if (!ch || Array.isArray(ch) || !ch.worksheets) return;
+          if (ch.worksheets[wsIdx].image) pic++; else text++;
+        });
+        var pEl = document.getElementById("availablePicCount");
+        var tEl = document.getElementById("availableTextCount");
+        if (pEl) pEl.textContent = pic;
+        if (tEl) tEl.textContent = text;
       }
 
 
