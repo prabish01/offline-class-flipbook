@@ -6,11 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Grammar Fun Videos - Class 3</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
 
       body {
         font-family: "Comic Sans MS", "Chalkboard SE", "Comic Neue", cursive, sans-serif;
@@ -20,11 +16,7 @@
         overflow-x: hidden;
       }
 
-      .header {
-        text-align: center;
-        margin-bottom: 30px;
-        position: relative;
-      }
+      .header { text-align: center; margin-bottom: 30px; position: relative; }
 
       .back-btn {
         position: fixed;
@@ -40,6 +32,7 @@
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         z-index: 1000;
+        font-family: "Comic Sans MS", "Chalkboard SE", cursive, sans-serif;
       }
 
       .back-btn:hover {
@@ -48,19 +41,8 @@
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
       }
 
-      h1 {
-        color: white;
-        font-size: 3rem;
-        margin: 40px 0 10px;
-        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-      }
-
-      .subtitle {
-        color: white;
-        font-size: 1.3rem;
-        margin-bottom: 40px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-      }
+      h1 { color: white; font-size: 3rem; margin: 40px 0 10px; text-shadow: 3px 3px 6px rgba(0,0,0,0.3); }
+      .subtitle { color: white; font-size: 1.3rem; margin-bottom: 40px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
 
       .videos-container {
         max-width: 1400px;
@@ -80,34 +62,26 @@
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       }
 
-      .video-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      }
+      .video-card:hover { transform: translateY(-8px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
 
       .video-thumbnail {
         position: relative;
         width: 100%;
-        padding-top: 56.25%; /* 16:9 aspect ratio */
+        padding-top: 56.25%;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         overflow: hidden;
       }
 
       .video-thumbnail video {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
       }
 
       .play-overlay {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        top: 0; left: 0; right: 0; bottom: 0;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -115,13 +89,10 @@
         transition: all 0.3s ease;
       }
 
-      .video-card:hover .play-overlay {
-        background: rgba(0, 0, 0, 0.5);
-      }
+      .video-card:hover .play-overlay { background: rgba(0, 0, 0, 0.5); }
 
       .play-button {
-        width: 70px;
-        height: 70px;
+        width: 70px; height: 70px;
         background: rgba(255, 255, 255, 0.95);
         border-radius: 50%;
         display: flex;
@@ -131,640 +102,106 @@
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       }
 
-      .video-card:hover .play-button {
-        transform: scale(1.1);
-        background: white;
-      }
+      .video-card:hover .play-button { transform: scale(1.1); background: white; }
+      .play-button svg { width: 30px; height: 30px; margin-left: 4px; }
 
-      .play-button svg {
-        width: 30px;
-        height: 30px;
-        margin-left: 4px;
-      }
+      .video-info { padding: 15px; }
+      .video-title { font-size: 1.1rem; font-weight: bold; color: #333; margin-bottom: 5px; line-height: 1.3; }
+      .video-description { font-size: 0.9rem; color: #666; line-height: 1.4; }
 
-      .video-info {
-        padding: 15px;
-      }
-
-      .video-title {
-        font-size: 1.1rem;
-        font-weight: bold;
-        color: #333;
-        margin-bottom: 5px;
-        line-height: 1.3;
-      }
-
-      .video-description {
-        font-size: 0.9rem;
-        color: #666;
-        line-height: 1.4;
-      }
-
-      /* Responsive */
       @media (max-width: 768px) {
-        h1 {
-          font-size: 2rem;
-        }
-
-        .subtitle {
-          font-size: 1rem;
-        }
-
-        .videos-container {
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 15px;
-        }
-
-        .play-button {
-          width: 50px;
-          height: 50px;
-        }
-
-        .play-button svg {
-          width: 20px;
-          height: 20px;
-        }
-
-        .video-title {
-          font-size: 1rem;
-        }
-
-        .video-description {
-          font-size: 0.85rem;
-        }
+        h1 { font-size: 2rem; }
+        .subtitle { font-size: 1rem; }
+        .videos-container { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+        .play-button { width: 50px; height: 50px; }
+        .play-button svg { width: 20px; height: 20px; }
+        .video-title { font-size: 1rem; }
+        .video-description { font-size: 0.85rem; }
       }
     </style>
   </head>
-
   <body>
-    <button class="back-btn" onclick="window.history.back()">← Back</button>
+    <button class="back-btn" onclick="window.history.back()">&#8592; Back</button>
 
     <div class="header">
-      <h1>🎬 Grammar Fun Videos - Class 3 📚</h1>
+      <h1>&#127916; Grammar Fun Videos - Class 3 &#128218;</h1>
       <p class="subtitle">Click on any topic to watch and learn!</p>
     </div>
 
-    <div class="videos-container">
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Nouns.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Nouns.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Nouns</h3>
-          <p class="video-description">Learn about naming words!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Nouns and Pronouns.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Nouns and Pronouns.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Nouns and Pronouns</h3>
-          <p class="video-description">Understand nouns and pronouns!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Verbs.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Verbs.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Verbs</h3>
-          <p class="video-description">Action words and verbs!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Adjectives.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Adjectives.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Adjectives</h3>
-          <p class="video-description">Describing words!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Adverbs.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Adverbs.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Adverbs</h3>
-          <p class="video-description">How, when, and where!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Prepositions.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Prepositions.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Prepositions</h3>
-          <p class="video-description">Position and direction!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Conjunctions.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Conjunctions.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Conjunctions</h3>
-          <p class="video-description">Connecting words!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/A, An, The.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/A, An, The.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">A, An, The</h3>
-          <p class="video-description">Articles made easy!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Simple Present Tense.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Simple Present Tense.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Simple Present Tense</h3>
-          <p class="video-description">What happens regularly!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Simple Past Tense.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Simple Past Tense.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Simple Past Tense</h3>
-          <p class="video-description">What already happened!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Simple Future Tense.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Simple Future Tense.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Simple Future Tense</h3>
-          <p class="video-description">What will happen!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Present Continuous Tense.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Present Continuous Tense.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Present Continuous Tense</h3>
-          <p class="video-description">What is happening now!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Past Continuous Tense.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Past Continuous Tense.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Past Continuous Tense</h3>
-          <p class="video-description">What was happening!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/The Sentence.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/The Sentence.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">The Sentence</h3>
-          <p class="video-description">Building sentences!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Subject and Predicate.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Subject and Predicate.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Subject and Predicate</h3>
-          <p class="video-description">Parts of a sentence!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Subject and Object.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Subject and Object.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Subject and Object</h3>
-          <p class="video-description">Who and what!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Punctuation Marks and Capital Letters.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Punctuation Marks and Capital Letters.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Punctuation Marks</h3>
-          <p class="video-description">Marks and capital letters!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Comparison of Adjectives.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Comparison of Adjectives.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Comparison of Adjectives</h3>
-          <p class="video-description">Good, better, best!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Countable and Uncountable Nouns.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Countable and Uncountable Nouns.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Countable & Uncountable Nouns</h3>
-          <p class="video-description">Can we count it?</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Prefixes.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Prefixes.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Prefixes</h3>
-          <p class="video-description">Word beginnings!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Similes.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Similes.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Similes</h3>
-          <p class="video-description">As fast as lightning!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Sound Words.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Sound Words.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Sound Words</h3>
-          <p class="video-description">Onomatopoeia!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Phrasal Words.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Phrasal Words.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Phrasal Words</h3>
-          <p class="video-description">Word combinations!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Homophones.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Homophones.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Homophones</h3>
-          <p class="video-description">Same sound, different meaning!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/Similar Words.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/Similar Words.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Similar Words</h3>
-          <p class="video-description">Words that look alike!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/The Thirsty Crow.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/The Thirsty Crow.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">The Thirsty Crow</h3>
-          <p class="video-description">A fun story!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/My Pet Dog.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/My Pet Dog.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">My Pet Dog</h3>
-          <p class="video-description">Story about a pet!</p>
-        </div>
-      </div>
-
-      <div class="video-card" onclick="playVideo('../../../assets/videos/class-3/The Little Raindrops.mp4')">
-        <div class="video-thumbnail">
-          <video preload="metadata" muted>
-            <source src="../../../assets/videos/class-3/The Little Raindrops.mp4" type="video/mp4" />
-          </video>
-          <div class="play-overlay">
-            <div class="play-button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">The Little Raindrops</h3>
-          <p class="video-description">A raindrop's journey!</p>
-        </div>
-      </div>
-    </div>
+    <div class="videos-container" id="videos-container"></div>
 
     <script>
-      function playVideo(videoPath) {
-        // Encode the URI to handle spaces and special characters
-        const encodedPath = encodeURI(videoPath);
-        window.open(encodedPath);
+      const BASE = '../../../assets/videos/class-3/';
+
+      const VIDEOS = [
+        { file: 'Nouns.mp4',                                  desc: 'Learn about naming words!' },
+        { file: 'Nouns and Pronouns.mp4',                     desc: 'Understand nouns and pronouns!' },
+        { file: 'Verbs.mp4',                                  desc: 'Action words and verbs!' },
+        { file: 'Adjectives.mp4',                             desc: 'Describing words!' },
+        { file: 'Adverbs.mp4',                                desc: 'How, when, and where!' },
+        { file: 'Prepositions.mp4',                           desc: 'Position and direction!' },
+        { file: 'Conjunctions.mp4',                           desc: 'Connecting words!' },
+        { file: 'A, An, The.mp4',                             desc: 'Articles made easy!' },
+        { file: 'Simple Present Tense.mp4',                   desc: 'What happens regularly!' },
+        { file: 'Simple Past Tense.mp4',                      desc: 'What already happened!' },
+        { file: 'Simple Future Tense.mp4',                    desc: 'What will happen!' },
+        { file: 'Present Continuous Tense.mp4',               desc: 'What is happening now!' },
+        { file: 'Past Continuous Tense.mp4',                  desc: 'What was happening!' },
+        { file: 'The Sentence.mp4',                           desc: 'Building sentences!' },
+        { file: 'Subject and Predicate.mp4',                  desc: 'Parts of a sentence!' },
+        { file: 'Subject and Object.mp4',                     desc: 'Who and what!' },
+        { file: 'Punctuation Marks and Capital Letters.mp4',  desc: 'Marks and capital letters!' },
+        { file: 'Comparison of Adjectives.mp4',               desc: 'Good, better, best!' },
+        { file: 'Countable and Uncountable Nouns.mp4',        desc: 'Can we count it?' },
+        { file: 'Prefixes.mp4',                               desc: 'Word beginnings!' },
+        { file: 'Similes.mp4',                                desc: 'As fast as lightning!' },
+        { file: 'Sound Words.mp4',                            desc: 'Onomatopoeia!' },
+        { file: 'Phrasal Words.mp4',                          desc: 'Word combinations!' },
+        { file: 'Homophones.mp4',                             desc: 'Same sound, different meaning!' },
+        { file: 'Similar Words.mp4',                          desc: 'Words that look alike!' },
+        { file: 'The Thirsty Crow.mp4',                       desc: 'A fun story!' },
+        { file: 'My Pet Dog.mp4',                             desc: 'Story about a pet!' },
+        { file: 'The Little Raindrops.mp4',                   desc: 'A raindrop\'s journey!' },
+      ];
+
+      const PLAY_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`;
+
+      function buildGrid() {
+        const container = document.getElementById('videos-container');
+        VIDEOS.forEach(({ file }, i) => {
+          const title = file.replace('.mp4', '');
+          const path = BASE + file;
+          container.innerHTML += `
+            <div class="video-card" onclick="playVideo('${path.replace(/'/g, "\\'")}')">
+              <div class="video-thumbnail">
+                <video preload="metadata" muted>
+                  <source src="${path}" type="video/mp4" />
+                </video>
+                <div class="play-overlay">
+                  <div class="play-button">${PLAY_SVG}</div>
+                </div>
+              </div>
+              <div class="video-info">
+                <h3 class="video-title">${title}</h3>
+                <p class="video-description">Chapter ${i + 1}</p>
+              </div>
+            </div>`;
+        });
       }
 
-      // Number chapter descriptions
-      document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.video-description').forEach(function(el, i) {
-          el.textContent = 'Chapter ' + (i + 1);
-        });
-      });
+      function playVideo(videoPath) {
+        window.open(encodeURI(videoPath));
+      }
 
-      // Ensure video thumbnails load properly
-      document.addEventListener('DOMContentLoaded', function() {
+      buildGrid();
+
+      document.addEventListener('DOMContentLoaded', function () {
         const videos = document.querySelectorAll('.video-thumbnail video');
         videos.forEach(video => {
-          video.load(); // Force load
-          video.addEventListener('loadedmetadata', function() {
-            this.currentTime = 0.5;
-          });
-          // Fallback if metadata doesn't load
-          video.addEventListener('loadeddata', function() {
-            if (this.currentTime === 0) {
-              this.currentTime = 0.5;
-            }
+          video.load();
+          video.addEventListener('loadedmetadata', function () { this.currentTime = 0.5; });
+          video.addEventListener('loadeddata', function () {
+            if (this.currentTime === 0) this.currentTime = 0.5;
           });
         });
       });

@@ -91,12 +91,13 @@
       }
 
       .chapter-card {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        background: linear-gradient(135deg, #f14131 0%, #ff6b35 100%);
         border-radius: 15px;
-        padding: 20px;
-        cursor: pointer;
+        overflow: hidden;
         transition: all 0.3s ease;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
       }
 
       .chapter-card:hover {
@@ -104,8 +105,9 @@
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
       }
 
-      .chapter-card:active {
-        transform: translateY(-2px);
+      .card-body {
+        padding: 20px;
+        flex: 1;
       }
 
       .chapter-number {
@@ -120,6 +122,36 @@
         color: white;
         font-size: 1.1rem;
         line-height: 1.35;
+      }
+
+      .card-footer {
+        padding: 0 12px 12px;
+        display: flex;
+        gap: 8px;
+      }
+
+      .card-footer button {
+        flex: 1;
+        padding: 9px 4px;
+        border: none;
+        border-radius: 50px;
+        background: white;
+        font-family: "Comic Sans MS", "Chalkboard SE", cursive, sans-serif;
+        font-size: 0.7rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.15s, box-shadow 0.15s;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        color: #c0587a;
+      }
+
+      .card-footer button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+      }
+
+      .card-footer .btn-answer {
+        color: #c0587a;
       }
 
       #pdf-view {
@@ -222,39 +254,47 @@
 
     <script>
       const BASE = "../../../assets/pdfs/workbooks/class-2/";
+      const ANSWER_BASE = "../../../assets/pdfs/workbook-answers/Class-2/";
 
       const CHAPTERS = [
-        { file: "Ch01_Nouns.pdf", name: "Nouns" },
-        { file: "Ch02_Proper_and_Common_Nouns.pdf", name: "Proper and Common Nouns" },
-        { file: "Ch03_One_and_Many.pdf", name: "One and Many" },
-        { file: "Ch04_A,_An_and_The.pdf", name: "A, An and The" },
-        { file: "Ch05_Male_and_Female.pdf", name: "Male and Female" },
-        { file: "Ch06_Pronouns.pdf", name: "Pronouns" },
-        { file: "Ch07_Adjectives.pdf", name: "Adjectives" },
-        { file: "Ch08_Possessives.pdf", name: "Possessives" },
-        { file: "Ch09_Action_Words.pdf", name: "Action Words" },
-        { file: "Ch10_Being_Words.pdf", name: "Being Words" },
-        { file: "Ch11_Having_Verbs.pdf", name: "Having Verbs" },
-        { file: "Ch12_Simple_Present_Tense.pdf", name: "Simple Present Tense" },
-        { file: "Ch13_Simple_Past_Tense.pdf", name: "Simple Past Tense" },
-        { file: "Ch14_Present_Continuous_Tense.pdf", name: "Present Continuous Tense" },
-        { file: "Ch15_Adverbs.pdf", name: "Adverbs" },
-        { file: "Ch16_Position_Words.pdf", name: "Position Words" },
-        { file: "Ch17_Joining_Words.pdf", name: "Joining Words" },
-        { file: "Ch18_The_Comma.pdf", name: "The Comma" },
-        { file: "Ch19_The_Apostrophe.pdf", name: "The Apostrophe" },
-        { file: "Ch20_Capital_Letters.pdf", name: "Capital Letters" },
-        { file: "Ch21_End_Punctuation_Marks.pdf", name: "End Punctuation Marks" },
+        { file: "Ch01_Nouns.pdf", name: "Nouns", answerFile: "Ch 1 Nouns.pdf" },
+        { file: "Ch02_Proper_and_Common_Nouns.pdf", name: "Proper and Common Nouns", answerFile: "Ch 2 Proper and Common Nouns.pdf" },
+        { file: "Ch03_One_and_Many.pdf", name: "One and Many", answerFile: "Ch 3 One and Many.pdf" },
+        { file: "Ch04_A,_An_and_The.pdf", name: "A, An and The", answerFile: "Ch 4 A, An and The.pdf" },
+        { file: "Ch05_Male_and_Female.pdf", name: "Male and Female", answerFile: "Ch 5 Male and Female.pdf" },
+        { file: "Ch06_Pronouns.pdf", name: "Pronouns", answerFile: "Ch 6 Pronouns.pdf" },
+        { file: "Ch07_Adjectives.pdf", name: "Adjectives", answerFile: "Ch 7 Adjectives.pdf" },
+        { file: "Ch08_Possessives.pdf", name: "Possessives", answerFile: "Ch 8 Possessives.pdf" },
+        { file: "Ch09_Action_Words.pdf", name: "Action Words", answerFile: "Ch 9 Action Words.pdf" },
+        { file: "Ch10_Being_Words.pdf", name: "Being Words", answerFile: "Ch 10 Being Words.pdf" },
+        { file: "Ch11_Having_Verbs.pdf", name: "Having Verbs", answerFile: "Ch 11 Having Verbs.pdf" },
+        { file: "Ch12_Simple_Present_Tense.pdf", name: "Simple Present Tense", answerFile: "Ch 12 Simple Present Tense.pdf" },
+        { file: "Ch13_Simple_Past_Tense.pdf", name: "Simple Past Tense", answerFile: "Ch 13 Simple Past Tense.pdf" },
+        { file: "Ch14_Present_Continuous_Tense.pdf", name: "Present Continuous Tense", answerFile: "Ch 14 Present Continuous Tense.pdf" },
+        { file: "Ch15_Adverbs.pdf", name: "Adverbs", answerFile: "Ch 15 Adverbs.pdf" },
+        { file: "Ch16_Position_Words.pdf", name: "Position Words", answerFile: "Ch 16 Position Words.pdf" },
+        { file: "Ch17_Joining_Words.pdf", name: "Joining Words", answerFile: "Ch 17 Joining Words.pdf" },
+        { file: "Ch18_The_Comma.pdf", name: "The Comma", answerFile: "Ch 18 The Comma.pdf" },
+        { file: "Ch19_The_Apostrophe.pdf", name: "The Apostrophe", answerFile: "Ch 19 The Apostrophe.pdf" },
+        { file: "Ch20_Capital_Letters.pdf", name: "Capital Letters", answerFile: "Ch 20 Capital Letters.pdf" },
+        { file: "Ch21_End_Punctuation_Marks.pdf", name: "End Punctuation Marks", answerFile: "Ch 21 End Punctuation Marks.pdf" },
       ];
 
       function buildGrid() {
         const grid = document.getElementById("chapters-grid");
-        CHAPTERS.forEach(({ file, name }) => {
+        CHAPTERS.forEach(({ file, name, answerFile }) => {
           const num = parseInt(file.match(/^Ch(\d+)/)[1], 10);
           const card = document.createElement("div");
           card.className = "chapter-card";
-          card.innerHTML = '<span class="chapter-number">Chapter ' + num + "</span>" + "<h3>" + name + "</h3>";
-          card.onclick = () => openChapter(BASE + file, "Ch " + num + ": " + name);
+          card.innerHTML =
+            '<div class="card-body">' +
+              '<span class="chapter-number">Chapter ' + num + '</span>' +
+              '<h3>' + name + '</h3>' +
+            '</div>' +
+            '<div class="card-footer">' +
+              '<button onclick="openChapter(\'' + (BASE + file).replace(/'/g, "\\'") + '\', \'Ch ' + num + ': ' + name.replace(/'/g, "\\'") + '\')">Worksheet</button>' +
+              '<button class="btn-answer" onclick="openChapter(\'' + (ANSWER_BASE + answerFile).replace(/'/g, "\\'") + '\', \'Ch ' + num + ': ' + name.replace(/'/g, "\\'") + ' — Answers\')">Answer</button>' +
+            '</div>';
           grid.appendChild(card);
         });
       }

@@ -140,7 +140,7 @@
       }
 
       .chapter-card {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        background: linear-gradient(135deg, #f14131 0%, #ff6b35 100%);
         border-radius: 15px;
         padding: 20px;
         cursor: pointer;
@@ -1789,7 +1789,7 @@
             var ws = ch.worksheets[wsKey];
             studentHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + '</div>';
             if (ws.image) {
-              studentHtml += '<img src="' + ws.image + '" style="max-width:100%;margin:10px 0;border-radius:8px;">';
+              studentHtml += '<img src="' + ws.image.replace(/ /g, '%20') + '" style="max-width:100%;margin:10px 0;border-radius:8px;">';
             } else {
               var sortedQuestions = ws.questions.slice().sort(function (a, b) { return a.qNum - b.qNum; });
               sortedQuestions.forEach(function (q) {
@@ -1815,7 +1815,7 @@
             var ws = ch.worksheets[wsKey];
             teacherHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + '</div>';
             if (ws.image) {
-              teacherHtml += '<img src="' + ws.image + '" style="max-width:100%;margin:10px 0;border-radius:8px;">';
+              teacherHtml += '<img src="' + ws.image.replace(/ /g, '%20') + '" style="max-width:100%;margin:10px 0;border-radius:8px;">';
               var imgAns = ws.questions[0] && ws.questions[0].answer;
               if (imgAns && imgAns !== "vary") {
                 teacherHtml += '<div class="doc-answers-header" style="margin-top:8px;">Answers:</div>';
@@ -1927,7 +1927,7 @@
             var ws = ch.worksheets[wsKey];
             html += '<div class="instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
             if (ws.image) {
-              html += '<img src="' + ws.image + '" style="max-width:90%;display:block;margin:10px auto;page-break-inside:avoid;">';
+              html += '<img src="' + ws.image.replace(/ /g, '%20') + '" style="max-width:90%;display:block;margin:10px auto;page-break-inside:avoid;">';
               if (includeAnswers) {
                 var imgAns = ws.questions[0] && ws.questions[0].answer;
                 if (imgAns && imgAns !== "vary") {

@@ -91,12 +91,13 @@
       }
 
       .chapter-card {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        background: linear-gradient(135deg, #f14131 0%, #ff6b35 100%);
         border-radius: 15px;
-        padding: 20px;
-        cursor: pointer;
+        overflow: hidden;
         transition: all 0.3s ease;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
       }
 
       .chapter-card:hover {
@@ -104,8 +105,9 @@
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
       }
 
-      .chapter-card:active {
-        transform: translateY(-2px);
+      .card-body {
+        padding: 20px;
+        flex: 1;
       }
 
       .chapter-number {
@@ -120,6 +122,36 @@
         color: white;
         font-size: 1.1rem;
         line-height: 1.35;
+      }
+
+      .card-footer {
+        padding: 0 12px 12px;
+        display: flex;
+        gap: 8px;
+      }
+
+      .card-footer button {
+        flex: 1;
+        padding: 9px 4px;
+        border: none;
+        border-radius: 50px;
+        background: white;
+        font-family: "Comic Sans MS", "Chalkboard SE", cursive, sans-serif;
+        font-size: 0.7rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.15s, box-shadow 0.15s;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        color: #c0587a;
+      }
+
+      .card-footer button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+      }
+
+      .card-footer .btn-answer {
+        color: #c0587a;
       }
 
       #pdf-view {
@@ -221,46 +253,54 @@
 
     <script>
       const BASE = "../../../assets/pdfs/workbooks/class-5/";
+      const ANSWER_BASE = "../../../assets/pdfs/workbook-answers/Class-5/";
 
       const CHAPTERS = [
-        { file: "Ch01_Parts_of_Speech.pdf", name: "Parts of Speech" },
-        { file: "Ch02_Nouns.pdf", name: "Nouns" },
-        { file: "Ch03_Number.pdf", name: "Number" },
-        { file: "Ch04_Gender.pdf", name: "Gender" },
-        { file: "Ch05_Articles.pdf", name: "Articles" },
-        { file: "Ch06_Pronouns.pdf", name: "Pronouns" },
-        { file: "Ch07_Adjectives.pdf", name: "Adjectives" },
-        { file: "Ch08_Comparison_of_Adjectives.pdf", name: "Comparison of Adjectives" },
-        { file: "Ch09_Verbs.pdf", name: "Verbs" },
-        { file: "Ch10_Simple_Present_Tense.pdf", name: "Simple Present Tense" },
-        { file: "Ch11_Present_Continuous_Tense.pdf", name: "Present Continuous Tense" },
-        { file: "Ch12_Simple_P_ast_Tense.pdf", name: "Simple Past Tense" },
-        { file: "Ch13_Past_Continuous_Tense.pdf", name: "Past Continuous Tense" },
-        { file: "Ch14_Simple_Future_Tense.pdf", name: "Simple Future Tense" },
-        { file: "Ch15_Future_Continuous_Tense.pdf", name: "Future Continuous Tense" },
-        { file: "Ch16_Present_Perfect_Tense.pdf", name: "Present Perfect Tense" },
-        { file: "Ch17_Past_Perfect_Tense.pdf", name: "Past Perfect Tense" },
-        { file: "Ch18_Adverbs.pdf", name: "Adverbs" },
-        { file: "Ch19_Comparison_of_Adverbs.pdf", name: "Comparison of Adverbs" },
-        { file: "Ch20_Prepositions.pdf", name: "Prepositions" },
-        { file: "Ch21_Conjunctions.pdf", name: "Conjunctions" },
-        { file: "Ch22_Interjections.pdf", name: "Interjections" },
-        { file: "Ch23_Kinds_of_Sentences.pdf", name: "Kinds of Sentences" },
-        { file: "Ch24_Changing_the_Kinds_of_Sentences.pdf", name: "Changing the Kinds of Sentences" },
-        { file: "Ch25_Subject_and_Predicate.pdf", name: "Subject and Predicate" },
-        { file: "Ch26_Subject_-Verb_Agreement.pdf", name: "Subject-Verb Agreement" },
-        { file: "Ch27_Direct_and_Indirect_Speech.pdf", name: "Direct and Indirect Speech" },
-        { file: "Ch28_Capital_Letters_and_Punctuation.pdf", name: "Capital Letters and Punctuation" },
+        { file: "Ch01_Parts_of_Speech.pdf", name: "Parts of Speech", answerFile: "Ch 1 Parts of Speech.pdf" },
+        { file: "Ch02_Nouns.pdf", name: "Nouns", answerFile: "Ch 2 Nouns.pdf" },
+        { file: "Ch03_Number.pdf", name: "Number", answerFile: "Ch 3 Number.pdf" },
+        { file: "Ch04_Gender.pdf", name: "Gender", answerFile: "Ch 4 Gender.pdf" },
+        { file: "Ch05_Articles.pdf", name: "Articles", answerFile: "Ch 5 Articles.pdf" },
+        { file: "Ch06_Pronouns.pdf", name: "Pronouns", answerFile: "Ch 6 Pronouns.pdf" },
+        { file: "Ch07_Adjectives.pdf", name: "Adjectives", answerFile: "Ch 7 Adjectives.pdf" },
+        { file: "Ch08_Comparison_of_Adjectives.pdf", name: "Comparison of Adjectives", answerFile: "Ch 8 Comparison of Adjectives.pdf" },
+        { file: "Ch09_Verbs.pdf", name: "Verbs", answerFile: "Ch 9 Verbs.pdf" },
+        { file: "Ch10_Simple_Present_Tense.pdf", name: "Simple Present Tense", answerFile: "Ch 10 Simple Present Tense.pdf" },
+        { file: "Ch11_Present_Continuous_Tense.pdf", name: "Present Continuous Tense", answerFile: "Ch 11 Present Continuous Tense.pdf" },
+        { file: "Ch12_Simple_P_ast_Tense.pdf", name: "Simple Past Tense", answerFile: "Ch 12 Simple Past Tense.pdf" },
+        { file: "Ch13_Past_Continuous_Tense.pdf", name: "Past Continuous Tense", answerFile: "Ch 13 Past Continuous Tense.pdf" },
+        { file: "Ch14_Simple_Future_Tense.pdf", name: "Simple Future Tense", answerFile: "Ch 14 Simple Future Tense.pdf" },
+        { file: "Ch15_Future_Continuous_Tense.pdf", name: "Future Continuous Tense", answerFile: "Ch 15 Future Continuous Tense.pdf" },
+        { file: "Ch16_Present_Perfect_Tense.pdf", name: "Present Perfect Tense", answerFile: "Ch 16 Present Perfect Tense.pdf" },
+        { file: "Ch17_Past_Perfect_Tense.pdf", name: "Past Perfect Tense", answerFile: "Ch 17 Past Perfect Tense.pdf" },
+        { file: "Ch18_Adverbs.pdf", name: "Adverbs", answerFile: "Ch 18 Adverbs.pdf" },
+        { file: "Ch19_Comparison_of_Adverbs.pdf", name: "Comparison of Adverbs", answerFile: "Ch 19 Comparison of Adverbs.pdf" },
+        { file: "Ch20_Prepositions.pdf", name: "Prepositions", answerFile: "Ch 20 Prepositions.pdf" },
+        { file: "Ch21_Conjunctions.pdf", name: "Conjunctions", answerFile: "Ch 21 Conjunctions.pdf" },
+        { file: "Ch22_Interjections.pdf", name: "Interjections", answerFile: "Ch 22 Interjections.pdf" },
+        { file: "Ch23_Kinds_of_Sentences.pdf", name: "Kinds of Sentences", answerFile: "Ch 23 Kinds of Sentences.pdf" },
+        { file: "Ch24_Changing_the_Kinds_of_Sentences.pdf", name: "Changing the Kinds of Sentences", answerFile: "Ch 24 Changing the Kinds of Sentences.pdf" },
+        { file: "Ch25_Subject_and_Predicate.pdf", name: "Subject and Predicate", answerFile: "Ch 25 Subject and Predicate.pdf" },
+        { file: "Ch26_Subject_-Verb_Agreement.pdf", name: "Subject-Verb Agreement", answerFile: "Ch 26 Subject-Verb Agreement.pdf" },
+        { file: "Ch27_Direct_and_Indirect_Speech.pdf", name: "Direct and Indirect Speech", answerFile: "Ch 27 Direct and Indirect Speech.pdf" },
+        { file: "Ch28_Capital_Letters_and_Punctuation.pdf", name: "Capital Letters and Punctuation", answerFile: "Ch 28 Capital Letters and Punctuation.pdf" },
       ];
 
       function buildGrid() {
         const grid = document.getElementById("chapters-grid");
-        CHAPTERS.forEach(({ file, name }) => {
+        CHAPTERS.forEach(({ file, name, answerFile }) => {
           const num = parseInt(file.match(/^Ch(\d+)/)[1], 10);
           const card = document.createElement("div");
           card.className = "chapter-card";
-          card.innerHTML = '<span class="chapter-number">Chapter ' + num + "</span>" + "<h3>" + name + "</h3>";
-          card.onclick = () => openChapter(BASE + file, "Ch " + num + ": " + name);
+          card.innerHTML =
+            '<div class="card-body">' +
+              '<span class="chapter-number">Chapter ' + num + '</span>' +
+              '<h3>' + name + '</h3>' +
+            '</div>' +
+            '<div class="card-footer">' +
+              '<button onclick="openChapter(\'' + (BASE + file).replace(/'/g, "\\'") + '\', \'Ch ' + num + ': ' + name.replace(/'/g, "\\'") + '\')">Worksheet</button>' +
+              '<button class="btn-answer" onclick="openChapter(\'' + (ANSWER_BASE + answerFile).replace(/'/g, "\\'") + '\', \'Ch ' + num + ': ' + name.replace(/'/g, "\\'") + ' — Answers\')">Answer</button>' +
+            '</div>';
           grid.appendChild(card);
         });
       }

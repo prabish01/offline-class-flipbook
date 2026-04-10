@@ -91,12 +91,13 @@
       }
 
       .chapter-card {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        background: linear-gradient(135deg, #f14131 0%, #ff6b35 100%);
         border-radius: 15px;
-        padding: 20px;
-        cursor: pointer;
+        overflow: hidden;
         transition: all 0.3s ease;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
       }
 
       .chapter-card:hover {
@@ -104,8 +105,9 @@
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
       }
 
-      .chapter-card:active {
-        transform: translateY(-2px);
+      .card-body {
+        padding: 20px;
+        flex: 1;
       }
 
       .chapter-number {
@@ -120,6 +122,36 @@
         color: white;
         font-size: 1.1rem;
         line-height: 1.35;
+      }
+
+      .card-footer {
+        padding: 0 12px 12px;
+        display: flex;
+        gap: 8px;
+      }
+
+      .card-footer button {
+        flex: 1;
+        padding: 9px 4px;
+        border: none;
+        border-radius: 50px;
+        background: white;
+        font-family: "Comic Sans MS", "Chalkboard SE", cursive, sans-serif;
+        font-size: 0.7rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.15s, box-shadow 0.15s;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        color: #c0587a;
+      }
+
+      .card-footer button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+      }
+
+      .card-footer .btn-answer {
+        color: #c0587a;
       }
 
       #pdf-view {
@@ -221,41 +253,49 @@
 
     <script>
       const BASE = "../../../assets/pdfs/workbooks/class-8/";
+      const ANSWER_BASE = "../../../assets/pdfs/workbook-answers/Class-8/";
 
       const CHAPTERS = [
-        { file: "Ch01_Nouns.pdf", name: "Nouns" },
-        { file: "Ch02_Articles.pdf", name: "Articles" },
-        { file: "Ch03_Pronouns.pdf", name: "Pronouns" },
-        { file: "Ch04_Adjectives.pdf", name: "Adjectives" },
-        { file: "Ch05_Finite_and_Non_-Finite_Verbs.pdf", name: "Finite and Non-Finite Verbs" },
-        { file: "Ch06_Modals.pdf", name: "Modals" },
-        { file: "Ch07_Simple_Tenses.pdf", name: "Simple Tenses" },
-        { file: "Ch08_Continuous_Tenses.pdf", name: "Continuous Tenses" },
-        { file: "Ch09_Perfect_Tenses.pdf", name: "Perfect Tenses" },
-        { file: "Ch10_Perfect_Continuous_Tenses.pdf", name: "Perfect Continuous Tenses" },
-        { file: "Ch11_Adverbs.pdf", name: "Adverbs" },
-        { file: "Ch12_Prepositions.pdf", name: "Prepositions" },
-        { file: "Ch13_Conjunctions.pdf", name: "Conjunctions" },
-        { file: "Ch14_Direct_and_Indirect_Speech.pdf", name: "Direct and Indirect Speech" },
-        { file: "Ch15_Active_and_Passive_Voice.pdf", name: "Active and Passive Voice" },
-        { file: "Ch16_Subject\u2013Verb_Agreement.pdf", name: "Subject\u2013Verb Agreement" },
-        { file: "Ch17_Phrases.pdf", name: "Phrases" },
-        { file: "Ch18_Clauses.pdf", name: "Clauses" },
-        { file: "Ch19_Conditional_Sentences.pdf", name: "Conditional Sentences" },
-        { file: "Ch20_The_Sentence.pdf", name: "The Sentence" },
-        { file: "Ch21_Synthesis_of_Sentences.pdf", name: "Synthesis of Sentences" },
-        { file: "Ch22_Transformation_of_Sentences.pdf", name: "Transformation of Sentences" },
-        { file: "Ch23_Punctuation_and_Capital_Letters.pdf", name: "Punctuation and Capital Letters" },
+        { file: "Ch01_Nouns.pdf", name: "Nouns", answerFile: "Ch 1 Nouns.pdf" },
+        { file: "Ch02_Articles.pdf", name: "Articles", answerFile: "Ch 2 Articles.pdf" },
+        { file: "Ch03_Pronouns.pdf", name: "Pronouns", answerFile: "Ch 3 Pronouns.pdf" },
+        { file: "Ch04_Adjectives.pdf", name: "Adjectives", answerFile: "Ch 4 Adjectives.pdf" },
+        { file: "Ch05_Finite_and_Non_-Finite_Verbs.pdf", name: "Finite and Non-Finite Verbs", answerFile: "Ch 5 Finite and Non-Finite Verbs.pdf" },
+        { file: "Ch06_Modals.pdf", name: "Modals", answerFile: "Ch 6 Modals.pdf" },
+        { file: "Ch07_Simple_Tenses.pdf", name: "Simple Tenses", answerFile: "Ch 7 Simple Tenses.pdf" },
+        { file: "Ch08_Continuous_Tenses.pdf", name: "Continuous Tenses", answerFile: "Ch 8 Continuous Tenses.pdf" },
+        { file: "Ch09_Perfect_Tenses.pdf", name: "Perfect Tenses", answerFile: "Ch 9 Perfect Tenses.pdf" },
+        { file: "Ch10_Perfect_Continuous_Tenses.pdf", name: "Perfect Continuous Tenses", answerFile: "Ch 10 Perfect Continuous Tenses.pdf" },
+        { file: "Ch11_Adverbs.pdf", name: "Adverbs", answerFile: "Ch 11 Adverbs.pdf" },
+        { file: "Ch12_Prepositions.pdf", name: "Prepositions", answerFile: "Ch 12 Prepositions.pdf" },
+        { file: "Ch13_Conjunctions.pdf", name: "Conjunctions", answerFile: "Ch 13 Conjunctions.pdf" },
+        { file: "Ch14_Direct_and_Indirect_Speech.pdf", name: "Direct and Indirect Speech", answerFile: "Ch 14 Direct and Indirect Speech.pdf" },
+        { file: "Ch15_Active_and_Passive_Voice.pdf", name: "Active and Passive Voice", answerFile: "Ch 15 Active and Passive Voice.pdf" },
+        { file: "Ch16_Subject\u2013Verb_Agreement.pdf", name: "Subject\u2013Verb Agreement", answerFile: "Ch 16 Subject\u2013Verb Agreement.pdf" },
+        { file: "Ch17_Phrases.pdf", name: "Phrases", answerFile: "Ch 17 Phrases.pdf" },
+        { file: "Ch18_Clauses.pdf", name: "Clauses", answerFile: "Ch 18 Clauses.pdf" },
+        { file: "Ch19_Conditional_Sentences.pdf", name: "Conditional Sentences", answerFile: "Ch 19 Conditional Sentence.pdf" },
+        { file: "Ch20_The_Sentence.pdf", name: "The Sentence", answerFile: "Ch 20 The Sentence.pdf" },
+        { file: "Ch21_Synthesis_of_Sentences.pdf", name: "Synthesis of Sentences", answerFile: "Ch 21 Synthesis of Sentences.pdf" },
+        { file: "Ch22_Transformation_of_Sentences.pdf", name: "Transformation of Sentences", answerFile: "Ch 22 Transformation of Sentences.pdf" },
+        { file: "Ch23_Punctuation_and_Capital_Letters.pdf", name: "Punctuation and Capital Letters", answerFile: "Ch 23 Punctuation and Capital Letters.pdf" },
       ];
 
       function buildGrid() {
         const grid = document.getElementById("chapters-grid");
-        CHAPTERS.forEach(({ file, name }) => {
+        CHAPTERS.forEach(({ file, name, answerFile }) => {
           const num = parseInt(file.match(/^Ch(\d+)/)[1], 10);
           const card = document.createElement("div");
           card.className = "chapter-card";
-          card.innerHTML = '<span class="chapter-number">Chapter ' + num + "</span>" + "<h3>" + name + "</h3>";
-          card.onclick = () => openChapter(BASE + file, "Ch " + num + ": " + name);
+          card.innerHTML =
+            '<div class="card-body">' +
+              '<span class="chapter-number">Chapter ' + num + '</span>' +
+              '<h3>' + name + '</h3>' +
+            '</div>' +
+            '<div class="card-footer">' +
+              '<button onclick="openChapter(\'' + (BASE + file).replace(/'/g, "\\'") + '\', \'Ch ' + num + ': ' + name.replace(/'/g, "\\'") + '\')">Worksheet</button>' +
+              '<button class="btn-answer" onclick="openChapter(\'' + (ANSWER_BASE + answerFile).replace(/'/g, "\\'") + '\', \'Ch ' + num + ': ' + name.replace(/'/g, "\\'") + ' — Answers\')">Answer</button>' +
+            '</div>';
           grid.appendChild(card);
         });
       }

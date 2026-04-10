@@ -93,12 +93,13 @@
       }
 
       .chapter-card {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        background: linear-gradient(135deg, #f14131 0%, #ff6b35 100%);
         border-radius: 15px;
-        padding: 20px;
-        cursor: pointer;
+        overflow: hidden;
         transition: all 0.3s ease;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
       }
 
       .chapter-card:hover {
@@ -106,8 +107,9 @@
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
       }
 
-      .chapter-card:active {
-        transform: translateY(-2px);
+      .card-body {
+        padding: 20px;
+        flex: 1;
       }
 
       .chapter-number {
@@ -122,6 +124,36 @@
         color: white;
         font-size: 1.1rem;
         line-height: 1.35;
+      }
+
+      .card-footer {
+        padding: 0 12px 12px;
+        display: flex;
+        gap: 8px;
+      }
+
+      .card-footer button {
+        flex: 1;
+        padding: 9px 4px;
+        border: none;
+        border-radius: 50px;
+        background: white;
+        font-family: "Comic Sans MS", "Chalkboard SE", cursive, sans-serif;
+        font-size: 0.7rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.15s, box-shadow 0.15s;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        color: #c0587a;
+      }
+
+      .card-footer button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+      }
+
+      .card-footer .btn-answer {
+        color: #c0587a;
       }
 
       /* ── PDF Viewer ── */
@@ -231,40 +263,48 @@
 
     <script>
       const BASE = "../../../assets/pdfs/workbooks/class-1/";
+      const ANSWER_BASE = "../../../assets/pdfs/workbook-answers/Class-1/";
 
       const CHAPTERS = [
-        { file: "Ch01_Naming_Words_-_People.pdf", name: "Naming Words - People" },
-        { file: "Ch02_Naming_Words_-_Places.pdf", name: "Naming Words - Places" },
-        { file: "Ch03_Naming_Words_-_Animals.pdf", name: "Naming Words - Animals" },
-        { file: "Ch04_Naming_Words_-_Things.pdf", name: "Naming Words - Things" },
-        { file: "Ch05_Naming_Words_-_Revision.pdf", name: "Naming Words - Revision" },
-        { file: "Ch06_One_and_Many.pdf", name: "One and Many" },
-        { file: "Ch07_A_or_An.pdf", name: "A or An" },
-        { file: "Ch08_This_is_That_is.pdf", name: "This is / That is" },
-        { file: "Ch09_These_are_Those_are.pdf", name: "These are / Those are" },
-        { file: "Ch10_Male_or_Female\u2014People.pdf", name: "Male or Female \u2014 People" },
-        { file: "Ch11_Male_or_Female_\u2014Animals.pdf", name: "Male or Female \u2014 Animals" },
-        { file: "Ch12_Pronouns.pdf", name: "Pronouns" },
-        { file: "Ch13_Describing_Words.pdf", name: "Describing Words" },
-        { file: "Ch14_Action_Words.pdf", name: "Action Words" },
-        { file: "Ch15_Being_Verbs.pdf", name: "Being Verbs" },
-        { file: "Ch16_Having_Verbs.pdf", name: "Having Verbs" },
-        { file: "Ch17_Actions_that_Happen_Every_Day.pdf", name: "Actions that Happen Every Day" },
-        { file: "Ch18_Actions_that_Happened_Before_Now.pdf", name: "Actions that Happened Before Now" },
-        { file: "Ch19_The_Sentence.pdf", name: "The Sentence" },
-        { file: "Ch20_Statements_and_Questions.pdf", name: "Statements and Questions" },
-        { file: "Ch21_Joining_Words.pdf", name: "Joining Words" },
-        { file: "Ch22_Position_Words.pdf", name: "Position Words" },
+        { file: "Ch01_Naming_Words_-_People.pdf", name: "Naming Words - People", answerFile: "Ch 1 Naming Words - People.pdf" },
+        { file: "Ch02_Naming_Words_-_Places.pdf", name: "Naming Words - Places", answerFile: "Ch 2 Naming Words - Places.pdf" },
+        { file: "Ch03_Naming_Words_-_Animals.pdf", name: "Naming Words - Animals", answerFile: "Ch 3 Naming Words - Animals.pdf" },
+        { file: "Ch04_Naming_Words_-_Things.pdf", name: "Naming Words - Things", answerFile: "Ch 4 Naming Words - Things.pdf" },
+        { file: "Ch05_Naming_Words_-_Revision.pdf", name: "Naming Words - Revision", answerFile: "Ch 5 Naming Words - Revision.pdf" },
+        { file: "Ch06_One_and_Many.pdf", name: "One and Many", answerFile: "Ch 6 One and Many.pdf" },
+        { file: "Ch07_A_or_An.pdf", name: "A or An", answerFile: "Ch 7 A or An.pdf" },
+        { file: "Ch08_This_is_That_is.pdf", name: "This is / That is", answerFile: "Ch 8 This is - That is.pdf" },
+        { file: "Ch09_These_are_Those_are.pdf", name: "These are / Those are", answerFile: "Ch 9 These are - Those are.pdf" },
+        { file: "Ch10_Male_or_Female\u2014People.pdf", name: "Male or Female \u2014 People", answerFile: "Ch 10 Male or Female\u2014People.pdf" },
+        { file: "Ch11_Male_or_Female_\u2014Animals.pdf", name: "Male or Female \u2014 Animals", answerFile: "Ch 11 Male or Female\u2014Animals.pdf" },
+        { file: "Ch12_Pronouns.pdf", name: "Pronouns", answerFile: "Ch 12 Pronouns.pdf" },
+        { file: "Ch13_Describing_Words.pdf", name: "Describing Words", answerFile: "Ch 13 Describing Words.pdf" },
+        { file: "Ch14_Action_Words.pdf", name: "Action Words", answerFile: "Ch 14 Action Words.pdf" },
+        { file: "Ch15_Being_Verbs.pdf", name: "Being Verbs", answerFile: "Ch 15 Being Verbs.pdf" },
+        { file: "Ch16_Having_Verbs.pdf", name: "Having Verbs", answerFile: "Ch 16 Having Verbs.pdf" },
+        { file: "Ch17_Actions_that_Happen_Every_Day.pdf", name: "Actions that Happen Every Day", answerFile: "Ch 17 Actions that Happen Every Day.pdf" },
+        { file: "Ch18_Actions_that_Happened_Before_Now.pdf", name: "Actions that Happened Before Now", answerFile: "Ch 18 Actions that Happened Before Now.pdf" },
+        { file: "Ch19_The_Sentence.pdf", name: "The Sentence", answerFile: "Ch 19 The Sentence.pdf" },
+        { file: "Ch20_Statements_and_Questions.pdf", name: "Statements and Questions", answerFile: "Ch 20 Statements and Questions.pdf" },
+        { file: "Ch21_Joining_Words.pdf", name: "Joining Words", answerFile: "Ch 21 Joining Words.pdf" },
+        { file: "Ch22_Position_Words.pdf", name: "Position Words", answerFile: "Ch 22 Position Words.pdf" },
       ];
 
       function buildGrid() {
         const grid = document.getElementById("chapters-grid");
-        CHAPTERS.forEach(({ file, name }, i) => {
+        CHAPTERS.forEach(({ file, name, answerFile }) => {
           const num = parseInt(file.match(/^Ch(\d+)/)[1], 10);
           const card = document.createElement("div");
           card.className = "chapter-card";
-          card.innerHTML = '<span class="chapter-number">Chapter ' + num + "</span>" + "<h3>" + name + "</h3>";
-          card.onclick = () => openChapter(BASE + file, "Ch " + num + ": " + name);
+          card.innerHTML =
+            '<div class="card-body">' +
+              '<span class="chapter-number">Chapter ' + num + '</span>' +
+              '<h3>' + name + '</h3>' +
+            '</div>' +
+            '<div class="card-footer">' +
+              '<button onclick="openChapter(\'' + (BASE + file).replace(/'/g, "\\'") + '\', \'Ch ' + num + ': ' + name.replace(/'/g, "\\'") + '\')">Worksheet</button>' +
+              '<button class="btn-answer" onclick="openChapter(\'' + (ANSWER_BASE + answerFile).replace(/'/g, "\\'") + '\', \'Ch ' + num + ': ' + name.replace(/'/g, "\\'") + ' — Answers\')">Answer</button>' +
+            '</div>';
           grid.appendChild(card);
         });
       }
