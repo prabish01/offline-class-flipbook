@@ -551,6 +551,30 @@
           grid-template-columns: 1fr;
         }
       }
+
+      /* PDF Print Styles */
+      body.print-student .word-preview-panel:nth-child(2) { display: none !important; }
+      body.print-teacher .word-preview-panel:nth-child(1) { display: none !important; }
+
+      @media print {
+        body { background: white !important; padding: 0 !important; margin: 0 !important; }
+        .back-btn, .header, .subtitle, .test-info, .chapters-section, .action-buttons,
+        .test-preview, .answer-key-preview, .word-preview-header, .word-preview-panel .btn {
+          display: none !important;
+        }
+        .container { max-width: 100% !important; padding: 0 !important; margin: 0 !important; }
+        .word-preview-layout { display: block !important; margin: 0 !important; }
+        .word-preview-panel { box-shadow: none !important; border-radius: 0 !important; padding: 0 !important; }
+        .word-preview-content {
+          max-height: none !important;
+          overflow: visible !important;
+          border: none !important;
+          border-radius: 0 !important;
+          padding: 0 !important;
+          background: white !important;
+        }
+        .doc-question, .doc-instr { page-break-inside: avoid; }
+      }
     </style>
   </head>
   <body>
@@ -875,7 +899,7 @@
           <div class="word-preview-content" id="studentPreview">
             <div class="word-preview-empty">Select chapters and click Generate to preview</div>
           </div>
-          <button class="btn btn-word-student" onclick="downloadWord(false)"><i class="fas fa-file-lines"></i>Download Word (Student)</button>
+          <button class="btn btn-word-student" onclick="downloadPDF(false)"><i class="fas fa-file-pdf"></i> Download PDF (Student)</button>
         </div>
         <div class="word-preview-panel">
           <div class="word-preview-header">
@@ -884,7 +908,7 @@
           <div class="word-preview-content" id="teacherPreview">
             <div class="word-preview-empty">Select chapters and click Generate to preview</div>
           </div>
-          <button class="btn btn-word-teacher" onclick="downloadWord(true)"><i class="fas fa-file-lines"></i>Download Word (Teacher)</button>
+          <button class="btn btn-word-teacher" onclick="downloadPDF(true)"><i class="fas fa-file-pdf"></i> Download PDF (Teacher)</button>
         </div>
       </div>
 
@@ -2186,152 +2210,18 @@
       }
 
       // ─── WORD DOWNLOAD ───────────────────────────────────────────────────────
-      function imgToBase64(src) {
-        return new Promise(function(resolve) {
-          var img = new Image();
-          img.onload = function() {
-            try {
-              var canvas = document.createElement('canvas');
-              canvas.width = img.naturalWidth;
-              canvas.height = img.naturalHeight;
-              canvas.getContext('2d').drawImage(img, 0, 0);
-              resolve(canvas.toDataURL('image/png'));
-            } catch (e) {
-              fetch(src)
-                .then(function(r) { return r.blob(); })
-                .then(function(blob) {
-                  return new Promise(function(res) {
-                    var reader = new FileReader();
-                    reader.onload = function() { res(reader.result); };
-                    reader.onerror = function() { res(null); };
-                    reader.readAsDataURL(blob);
-                  });
-                })
-                .catch(function() { return null; })
-                .then(function(dataUrl) { resolve(dataUrl || src); });
-            }
-          };
-          img.onerror = function() { resolve(src); };
-          img.src = src;
-        });
-      }
-
-      async function downloadWord(includeAnswers) {
+      function downloadPDF(includeAnswers) {
         if (lastGeneratedQuestions.length === 0) {
           generateTest();
           if (lastGeneratedQuestions.length === 0) return;
         }
-        var testName = document.getElementById("testName").value || "Grammar Test";
-        var studentName = document.getElementById("studentName").value || "";
-        var testDate = document.getElementById("testDate").value || "";
-        var totalMarks = window._lastTotalMarks || "";
-        var testDuration = document.getElementById("testDuration").value || "";
-
-        var imagePaths = [];
-        lastGeneratedQuestions.forEach(function(q) {
-          if (q.image && imagePaths.indexOf(q.image) === -1) imagePaths.push(q.image);
-        });
-        var imageBase64Map = {};
-        await Promise.all(imagePaths.map(async function(path) {
-          imageBase64Map[path] = await imgToBase64(path.replace(/ /g, '%20'));
-        }));
-
-        var html =
-          '<!DOCTYPE html><html><head><meta charset="UTF-8"><style>' +
-          "@page{margin:1.27cm}body{font-family:Arial,sans-serif;margin:0;padding:0;color:#000;font-size:11pt}" +
-          ".title{text-align:center;font-size:15pt;font-weight:bold;margin-bottom:4px}" +
-          ".ak-lbl{text-align:center;color:green;font-weight:bold;font-size:12pt;margin-bottom:8px}" +
-          "table{width:100%;border-collapse:collapse;margin-bottom:8px}" +
-          "td{padding:3px 6px;font-size:10pt}" +
-          "hr{border:none;border-top:2px solid #333;margin:8px 0}" +
-          ".instr{font-weight:bold;color:#000;margin-top:20px;margin-bottom:12px;font-size:12pt}" +
-          ".q{margin-bottom:10px;font-size:10.5pt}" +
-          ".ans{color:green;font-size:10pt;margin-top:2px}" +
-          ".ans-line{border-bottom:1px solid #aaa;height:18px;margin-top:4px}" +
-          "<\/style><\/head><body>";
-
-        html += '<p class="title">Grammar Frolics-2 - ' + _esc(testName) + "</p>";
-        if (includeAnswers) html += '<p class="ak-lbl">ANSWER KEY - TEACHER USE ONLY</p>';
-        html +=
-          "<hr><table><tr>" +
-          '<td width="55%">Name: <u>' +
-          (_esc(studentName) || "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") +
-          "</u></td>" +
-          "<td>Date: <u>" +
-          (_esc(testDate) || "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") +
-          "</u></td>" +
-          "</tr><tr>" +
-          "<td>Total Marks: " +
-          _esc(totalMarks) +
-          "</td>" +
-          "<td>Time: " +
-          _esc(testDuration) +
-          " mins</td>" +
-          "</tr></table><hr>";
-
-        var grouped = {};
-        var chapterOrder = [];
-        lastGeneratedQuestions.forEach(function (q) {
-          if (!grouped[q.chapterKey]) {
-            grouped[q.chapterKey] = { name: q.chapterName, wsOrder: [], worksheets: {} };
-            chapterOrder.push(q.chapterKey);
-          }
-          var wsKey = String(q.worksheetIdx) + "||" + q.instruction;
-          if (!grouped[q.chapterKey].worksheets[wsKey]) {
-            grouped[q.chapterKey].worksheets[wsKey] = { instruction: q.instruction, image: q.image || null, questions: [] };
-            grouped[q.chapterKey].wsOrder.push(wsKey);
-          }
-          grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
-        });
-
-        chapterOrder.forEach(function (chKey) {
-          var ch = grouped[chKey];
-          ch.wsOrder.forEach(function (wsKey) {
-            var ws = ch.worksheets[wsKey];
-            html += '<div class="instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
-            if (ws.image) {
-              html += '<img src="' + (imageBase64Map[ws.image] || ws.image.replace(/ /g, '%20')) + '" style="max-width:90%;display:block;margin:10px auto;page-break-inside:avoid;">';
-              if (includeAnswers) {
-                var imgAns = ws.questions[0] && ws.questions[0].answer;
-                if (imgAns && imgAns !== "vary") {
-                  html += renderImgAnswer(imgAns, true);
-                }
-              }
-            } else {
-              var sortedQ = ws.questions.slice().sort(function (a, b) {
-                return a.qNum - b.qNum;
-              });
-              sortedQ.forEach(function (q) {
-                html += '<div class="q">' + q.qNum + ". " + _esc(q.text).replace(/\n/g, "<br>");
-                if (!includeAnswers) html += '<div class="ans-line"></div>';
-                html += "</div>";
-              });
-              if (includeAnswers) {
-                html += '<div style="margin-top:16px;font-weight:bold;color:#333;font-size:11pt;">Answers:</div>';
-                sortedQ.forEach(function (q) {
-                  if (q.answer && q.answer !== "vary") {
-                    html += '<div class="ans"><strong>' + q.qNum + ".</strong> " + _esc(q.answer) + "</div>";
-                  } else {
-                    html += '<div class="ans" style="color:#999;"><strong>' + q.qNum + ".</strong> Answers may vary</div>";
-                  }
-                });
-              }
-            }
-          });
-        });
-
-        html += "<\/body><\/html>";
-        var blob = new Blob(["\ufeff", html], { type: "application/msword" });
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement("a");
-        a.href = url;
-        a.download = testName + (includeAnswers ? " - Teacher.doc" : " - Student.doc");
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        setTimeout(function () {
-          URL.revokeObjectURL(url);
-        }, 100);
+        var cls = includeAnswers ? 'print-teacher' : 'print-student';
+        document.body.classList.add(cls);
+        window.onafterprint = function() {
+          document.body.classList.remove('print-student', 'print-teacher');
+          window.onafterprint = null;
+        };
+        window.print();
       }
     </script>
   </body>
