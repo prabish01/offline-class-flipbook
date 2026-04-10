@@ -6,8 +6,18 @@
     <title>Test Generator - Class 2</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-      h1 .fas, h2 .fas, .btn .fas, p .fas, label .fas { margin-right: 6px; }
-      * { margin: 0; padding: 0; box-sizing: border-box; }
+      h1 .fas,
+      h2 .fas,
+      .btn .fas,
+      p .fas,
+      label .fas {
+        margin-right: 6px;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
       body {
         font-family: "Comic Sans MS", "Chalkboard SE", cursive, sans-serif;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
@@ -15,100 +25,315 @@
         padding: 20px;
       }
       .back-btn {
-        position: fixed; top: 20px; left: 20px;
-        background: rgba(255,255,255,0.95); border: none;
-        padding: 12px 24px; border-radius: 50px;
-        font-size: 1.1rem; font-weight: bold; cursor: pointer;
-        transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 1000;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border: none;
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
       }
-      .back-btn:hover { background: white; transform: translateX(-5px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
-      .header { text-align: center; margin-bottom: 30px; }
-      h1 { color: white; font-size: 2.5rem; margin: 40px 0 10px; text-shadow: 3px 3px 6px rgba(0,0,0,0.3); }
-      .subtitle { color: white; font-size: 1.2rem; margin-bottom: 30px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-      .container { max-width: 1200px; margin: 0 auto; }
+      .back-btn:hover {
+        background: white;
+        transform: translateX(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      h1 {
+        color: white;
+        font-size: 2.5rem;
+        margin: 40px 0 10px;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      }
+      .subtitle {
+        color: white;
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
       .test-info {
-        background: white; border-radius: 20px; padding: 30px;
-        margin-bottom: 30px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
       }
-      .test-info h2 { color: #667eea; margin-bottom: 20px; font-size: 1.8rem; }
-      .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-      .info-field { display: flex; flex-direction: column; }
-      .info-field label { color: #333; font-weight: bold; margin-bottom: 8px; font-size: 1.1rem; }
+      .test-info h2 {
+        color: #667eea;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+      }
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+      .info-field {
+        display: flex;
+        flex-direction: column;
+      }
+      .info-field label {
+        color: #333;
+        font-weight: bold;
+        margin-bottom: 8px;
+        font-size: 1.1rem;
+      }
       .info-field input {
-        padding: 12px 16px; border: 2px solid #e0e0e0; border-radius: 10px;
-        font-size: 1rem; font-family: inherit; transition: border-color 0.3s;
+        padding: 12px 16px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-family: inherit;
+        transition: border-color 0.3s;
       }
-      .info-field input:focus { outline: none; border-color: #667eea; }
+      .info-field input:focus {
+        outline: none;
+        border-color: #667eea;
+      }
       .chapters-section {
-        background: white; border-radius: 20px; padding: 30px;
-        margin-bottom: 30px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
       }
-      .chapters-section h2 { color: #667eea; margin-bottom: 10px; font-size: 1.8rem; }
-      .marks-info { color: #764ba2; font-size: 1rem; margin-bottom: 20px; font-weight: bold; }
+      .chapters-section h2 {
+        color: #667eea;
+        margin-bottom: 10px;
+        font-size: 1.8rem;
+      }
+      .marks-info {
+        color: #764ba2;
+        font-size: 1rem;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
       .chapters-grid {
-        display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
       }
       .chapter-card {
         background: linear-gradient(135deg, #f14131 0%, #ff6b35 100%);
-        border-radius: 15px; padding: 20px; cursor: pointer;
-        transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        position: relative; overflow: hidden;
+        border-radius: 15px;
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
       }
-      .chapter-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
-      .chapter-card input[type="checkbox"] { display: none; }
+      .chapter-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+      .chapter-card input[type="checkbox"] {
+        display: none;
+      }
       .chapter-card:has(input:checked) {
         background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
-        box-shadow: 0 8px 25px rgba(0,184,148,0.4);
+        box-shadow: 0 8px 25px rgba(0, 184, 148, 0.4);
       }
       .chapter-card:has(input:checked)::after {
-        content: "\2713"; position: absolute; top: 15px; right: 15px;
-        font-size: 2rem; color: white; font-weight: bold;
+        content: "\2713";
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 2rem;
+        color: white;
+        font-weight: bold;
       }
-      .chapter-number { color: rgba(255,255,255,0.6); font-size: 0.8rem; font-weight: bold; margin-bottom: 4px; display: block; }
-      .chapter-card h3 { color: white; font-size: 1.1rem; margin-bottom: 5px; }
-      .chapter-card p { color: rgba(255,255,255,0.85); font-size: 0.8rem; }
-      .action-buttons { display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 30px; flex-wrap: wrap; }
+      .chapter-number {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.8rem;
+        font-weight: bold;
+        margin-bottom: 4px;
+        display: block;
+      }
+      .chapter-card h3 {
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+      }
+      .chapter-card p {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.8rem;
+      }
+      .action-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+      }
       .btn {
-        padding: 16px 40px; border: none; border-radius: 50px;
-        font-size: 1.2rem; font-weight: bold; cursor: pointer;
-        transition: all 0.3s ease; font-family: inherit;
+        padding: 16px 40px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: inherit;
       }
       .btn-preview {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white; box-shadow: 0 4px 15px rgba(102,126,234,0.4);
+        color: white;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
       }
-      .btn-preview:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(102,126,234,0.5); }
-      .available-count { color: white; font-size: 1rem; font-weight: bold; background: rgba(255,255,255,0.2); padding: 10px 20px; border-radius: 50px; backdrop-filter: blur(5px); }
-      .btn-word-teacher { background: linear-gradient(135deg, #2d3436, #636e72); color: white; }
-      .btn-word-teacher:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(45,52,54,0.4); }
-      .btn-word-student { background: linear-gradient(135deg, #0984e3, #74b9ff); color: white; }
-      .btn-word-student:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(9,132,227,0.4); }
-      .word-preview-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 30px; }
-      .word-preview-panel { background: white; border-radius: 16px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); display: flex; flex-direction: column; }
-      .word-preview-header { text-align: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #667eea; }
-      .word-preview-header h3 { color: #667eea; font-size: 1.3rem; margin: 0; }
+      .btn-preview:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+      }
+      .available-count {
+        color: white;
+        font-size: 1rem;
+        font-weight: bold;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 10px 20px;
+        border-radius: 50px;
+        backdrop-filter: blur(5px);
+      }
+      .btn-word-teacher {
+        background: linear-gradient(135deg, #2d3436, #636e72);
+        color: white;
+      }
+      .btn-word-teacher:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(45, 52, 54, 0.4);
+      }
+      .btn-word-student {
+        background: linear-gradient(135deg, #0984e3, #74b9ff);
+        color: white;
+      }
+      .btn-word-student:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(9, 132, 227, 0.4);
+      }
+      .word-preview-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-top: 30px;
+      }
+      .word-preview-panel {
+        background: white;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+      }
+      .word-preview-header {
+        text-align: center;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid #667eea;
+      }
+      .word-preview-header h3 {
+        color: #667eea;
+        font-size: 1.3rem;
+        margin: 0;
+      }
       .word-preview-content {
-        flex: 1; border: 1px solid #ddd; border-radius: 8px; padding: 20px;
-        max-height: 500px; overflow-y: auto; background: #fafafa;
-        font-family: Arial, sans-serif; font-size: 11pt; margin-bottom: 16px;
+        flex: 1;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        max-height: 500px;
+        overflow-y: auto;
+        background: #fafafa;
+        font-family: Arial, sans-serif;
+        font-size: 11pt;
+        margin-bottom: 16px;
       }
-      .word-preview-content .doc-title { text-align: center; font-size: 15pt; font-weight: bold; margin-bottom: 4px; }
-      .word-preview-content .doc-ak-label { text-align: center; color: green; font-weight: bold; font-size: 12pt; margin-bottom: 8px; }
-      .word-preview-content .doc-meta { border-top: 2px solid #333; border-bottom: 2px solid #333; padding: 8px 0; margin-bottom: 12px; font-size: 10pt; }
-      .word-preview-content .doc-instr { font-weight: bold; color: #000; margin-top: 20px; margin-bottom: 12px; font-size: 12pt; }
-      .word-preview-content .doc-question { margin-bottom: 10px; font-size: 10.5pt; }
-      .word-preview-content .doc-answer { color: green; font-size: 10pt; margin-top: 2px; }
-      .word-preview-content .doc-answers-header { margin-top: 16px; font-weight: bold; color: #333; font-size: 11pt; }
-      .word-preview-empty { text-align: center; color: #999; font-style: italic; padding: 60px 20px; }
-      .word-preview-panel .btn { padding: 12px 30px; font-size: 1rem; }
-      @media (max-width: 900px) { .word-preview-layout { grid-template-columns: 1fr; } }
+      .word-preview-content .doc-title {
+        text-align: center;
+        font-size: 15pt;
+        font-weight: bold;
+        margin-bottom: 4px;
+      }
+      .word-preview-content .doc-ak-label {
+        text-align: center;
+        color: green;
+        font-weight: bold;
+        font-size: 12pt;
+        margin-bottom: 8px;
+      }
+      .word-preview-content .doc-meta {
+        border-top: 2px solid #333;
+        border-bottom: 2px solid #333;
+        padding: 8px 0;
+        margin-bottom: 12px;
+        font-size: 10pt;
+      }
+      .word-preview-content .doc-instr {
+        font-weight: bold;
+        color: #000;
+        margin-top: 20px;
+        margin-bottom: 12px;
+        font-size: 12pt;
+      }
+      .word-preview-content .doc-question {
+        margin-bottom: 10px;
+        font-size: 10.5pt;
+      }
+      .word-preview-content .doc-answer {
+        color: green;
+        font-size: 10pt;
+        margin-top: 2px;
+      }
+      .word-preview-content .doc-answers-header {
+        margin-top: 16px;
+        font-weight: bold;
+        color: #333;
+        font-size: 11pt;
+      }
+      .word-preview-empty {
+        text-align: center;
+        color: #999;
+        font-style: italic;
+        padding: 60px 20px;
+      }
+      .word-preview-panel .btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+      }
+      @media (max-width: 900px) {
+        .word-preview-layout {
+          grid-template-columns: 1fr;
+        }
+      }
       @media (max-width: 768px) {
-        h1 { font-size: 2rem; }
-        .info-grid, .chapters-grid { grid-template-columns: 1fr; }
-        .action-buttons { flex-direction: column; }
-        .btn { width: 100%; }
+        h1 {
+          font-size: 2rem;
+        }
+        .info-grid,
+        .chapters-grid {
+          grid-template-columns: 1fr;
+        }
+        .action-buttons {
+          flex-direction: column;
+        }
+        .btn {
+          width: 100%;
+        }
       }
-    
+
       /* Mode Toggle */
       .mode-toggle {
         display: flex;
@@ -347,7 +572,7 @@
           </div>
           <div class="info-field">
             <label for="studentName">Student Name</label>
-            <input type="text" id="studentName" placeholder="e.g., Riya Sharma" />
+            <input type="text" id="studentName" placeholder="e.g., Student's Name" />
           </div>
           <div class="info-field">
             <label for="testDate">Date</label>
@@ -364,281 +589,279 @@
       <div class="chapters-section">
         <h2><i class="fas fa-book-open"></i> Select Chapters</h2>
         <p class="marks-info">Available: <span id="availablePicCount">0</span> picture &nbsp;|&nbsp; <span id="availableTextCount">0</span> text</p>
-<div class="mode-toggle">
+        <div class="mode-toggle">
           <button id="modeAutoBtn" class="mode-btn active" onclick="setMode('auto')"><i class="fas fa-dice"></i> Auto</button>
           <button id="modeCustomBtn" class="mode-btn" onclick="setMode('custom')"><i class="fas fa-pen"></i> Custom</button>
         </div>
         <div id="autoPanel">
-        
-        <div class="section-label" style="font-size:1.5rem;font-weight:bold;color:#667eea;margin:10px 0 15px;">Grammar</div>
-        <div class="chapters-grid">
-          <label class="chapter-card" data-chapter="g1" data-type="picture">
-            <input type="checkbox" id="g1" />
-            <span class="chapter-number">Chapter 1</span>
-            <h3>Nouns</h3>
-            <p><i class="fas fa-image"></i> Picture exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="g2" data-type="mixed">
-            <input type="checkbox" id="g2" />
-            <span class="chapter-number">Chapter 2</span>
-            <h3>Proper and Common Nouns</h3>
-            <p><i class="fas fa-layer-group"></i> Text &amp; Picture</p>
-          </label>
-          <label class="chapter-card" data-chapter="g3" data-type="mixed">
-            <input type="checkbox" id="g3" />
-            <span class="chapter-number">Chapter 3</span>
-            <h3>One and Many</h3>
-            <p><i class="fas fa-layer-group"></i> Text &amp; Picture</p>
-          </label>
-          <label class="chapter-card" data-chapter="g4" data-type="mixed">
-            <input type="checkbox" id="g4" />
-            <span class="chapter-number">Chapter 4</span>
-            <h3>A, An and The</h3>
-            <p><i class="fas fa-layer-group"></i> Text &amp; Picture</p>
-          </label>
-          <label class="chapter-card" data-chapter="g5" data-type="mixed">
-            <input type="checkbox" id="g5" />
-            <span class="chapter-number">Chapter 5</span>
-            <h3>Male and Female</h3>
-            <p><i class="fas fa-layer-group"></i> Text &amp; Picture</p>
-          </label>
-          <label class="chapter-card" data-chapter="g6" data-type="mixed">
-            <input type="checkbox" id="g6" />
-            <span class="chapter-number">Chapter 6</span>
-            <h3>Pronouns</h3>
-            <p><i class="fas fa-layer-group"></i> Text &amp; Picture</p>
-          </label>
-          <label class="chapter-card" data-chapter="g7" data-type="mixed">
-            <input type="checkbox" id="g7" />
-            <span class="chapter-number">Chapter 7</span>
-            <h3>Adjectives</h3>
-            <p><i class="fas fa-layer-group"></i> Text &amp; Picture</p>
-          </label>
-          <label class="chapter-card" data-chapter="g8" data-type="text">
-            <input type="checkbox" id="g8" />
-            <span class="chapter-number">Chapter 8</span>
-            <h3>Possessives</h3>
-            <p><i class="fas fa-pen"></i> Text exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="g9" data-type="picture">
-            <input type="checkbox" id="g9" />
-            <span class="chapter-number">Chapter 9</span>
-            <h3>Action Words</h3>
-            <p><i class="fas fa-image"></i> Picture exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="g10" data-type="text">
-            <input type="checkbox" id="g10" />
-            <span class="chapter-number">Chapter 10</span>
-            <h3>Being Words</h3>
-            <p><i class="fas fa-pen"></i> Text exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="g11" data-type="text">
-            <input type="checkbox" id="g11" />
-            <span class="chapter-number">Chapter 11</span>
-            <h3>Having Verbs</h3>
-            <p><i class="fas fa-pen"></i> Text exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="g12" data-type="mixed">
-            <input type="checkbox" id="g12" />
-            <span class="chapter-number">Chapter 12</span>
-            <h3>Simple Present Tense</h3>
-            <p><i class="fas fa-layer-group"></i> Text &amp; Picture</p>
-          </label>
-          <label class="chapter-card" data-chapter="g13" data-type="text">
-            <input type="checkbox" id="g13" />
-            <span class="chapter-number">Chapter 13</span>
-            <h3>Simple Past Tense</h3>
-            <p><i class="fas fa-pen"></i> Text exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="g14" data-type="text">
-            <input type="checkbox" id="g14" />
-            <span class="chapter-number">Chapter 14</span>
-            <h3>Present Continuous Tense</h3>
-            <p><i class="fas fa-pen"></i> Text exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="g15" data-type="text">
-            <input type="checkbox" id="g15" />
-            <span class="chapter-number">Chapter 15</span>
-            <h3>Adverbs</h3>
-            <p><i class="fas fa-pen"></i> Text exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="g16" data-type="picture">
-            <input type="checkbox" id="g16" />
-            <span class="chapter-number">Chapter 16</span>
-            <h3>Position Words</h3>
-            <p><i class="fas fa-image"></i> Picture exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="g17" data-type="text">
-            <input type="checkbox" id="g17" />
-            <span class="chapter-number">Chapter 17</span>
-            <h3>Joining Words</h3>
-            <p><i class="fas fa-pen"></i> Text exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="g18" data-type="text">
-            <input type="checkbox" id="g18" />
-            <span class="chapter-number">Chapter 18</span>
-            <h3>The Comma</h3>
-            <p><i class="fas fa-pen"></i> Text exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="g19" data-type="picture">
-            <input type="checkbox" id="g19" />
-            <span class="chapter-number">Chapter 19</span>
-            <h3>The Apostrophe</h3>
-            <p><i class="fas fa-image"></i> Picture exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="g20" data-type="mixed">
-            <input type="checkbox" id="g20" />
-            <span class="chapter-number">Chapter 20</span>
-            <h3>Capital Letters</h3>
-            <p><i class="fas fa-layer-group"></i> Text &amp; Picture</p>
-          </label>
-          <label class="chapter-card" data-chapter="g21" data-type="text">
-            <input type="checkbox" id="g21" />
-            <span class="chapter-number">Chapter 21</span>
-            <h3>End Punctuation Marks</h3>
-            <p><i class="fas fa-pen"></i> Text exercise</p>
-          </label>
-        </div>
-        <div class="section-label" style="font-size:1.5rem;font-weight:bold;color:#667eea;margin:30px 0 15px;">Vocabulary</div>
-        <div class="chapters-grid">
-          <label class="chapter-card" data-chapter="voc1" data-type="picture">
-            <input type="checkbox" id="voc1" />
-            <span class="chapter-number">Vocabulary 1</span>
-            <h3>Opposites</h3>
-            <p><i class="fas fa-image"></i> Picture exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="voc2" data-type="picture">
-            <input type="checkbox" id="voc2" />
-            <span class="chapter-number">Vocabulary 2</span>
-            <h3>Similar Words</h3>
-            <p><i class="fas fa-image"></i> Picture exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="voc3" data-type="picture">
-            <input type="checkbox" id="voc3" />
-            <span class="chapter-number">Vocabulary 3</span>
-            <h3>Compound Words</h3>
-            <p><i class="fas fa-image"></i> Picture exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="voc4" data-type="picture">
-            <input type="checkbox" id="voc4" />
-            <span class="chapter-number">Vocabulary 4</span>
-            <h3>Sound Words</h3>
-            <p><i class="fas fa-image"></i> Picture exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="voc5" data-type="picture">
-            <input type="checkbox" id="voc5" />
-            <span class="chapter-number">Vocabulary 5</span>
-            <h3>Community Helpers</h3>
-            <p><i class="fas fa-image"></i> Picture exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="voc6" data-type="text">
-            <input type="checkbox" id="voc6" />
-            <span class="chapter-number">Vocabulary 6</span>
-            <h3>Learning New Words</h3>
-            <p><i class="fas fa-pen"></i> Text exercise</p>
-          </label>
-        </div>
-        <div class="section-label" style="font-size:1.5rem;font-weight:bold;color:#667eea;margin:30px 0 15px;">Composition</div>
-        <div class="chapters-grid">
-          <label class="chapter-card" data-chapter="comp1" data-type="text">
-            <input type="checkbox" id="comp1" />
-            <span class="chapter-number">Composition 1</span>
-            <h3>Letter to Grandma</h3>
-            <p><i class="fas fa-pen"></i> Writing prompts</p>
-          </label>
-          <label class="chapter-card" data-chapter="comp2" data-type="text">
-            <input type="checkbox" id="comp2" />
-            <span class="chapter-number">Composition 2</span>
-            <h3>Letter to the Principal</h3>
-            <p><i class="fas fa-pen"></i> Writing prompts</p>
-          </label>
-          <label class="chapter-card" data-chapter="comp3" data-type="picture">
-            <input type="checkbox" id="comp3" />
-            <span class="chapter-number">Composition 3</span>
-            <h3>Fun in the Rain</h3>
-            <p><i class="fas fa-image"></i> Picture exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="comp4" data-type="picture">
-            <input type="checkbox" id="comp4" />
-            <span class="chapter-number">Composition 4</span>
-            <h3>Picture Description</h3>
-            <p><i class="fas fa-image"></i> Picture exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="comp5" data-type="picture">
-            <input type="checkbox" id="comp5" />
-            <span class="chapter-number">Composition 5</span>
-            <h3>Paragraph Writing</h3>
-            <p><i class="fas fa-image"></i> Picture exercise</p>
-          </label>
-        </div>
-        <div class="section-label" style="font-size:1.5rem;font-weight:bold;color:#667eea;margin:30px 0 15px;">Comprehension</div>
-        <div class="chapters-grid">
-          <label class="chapter-card" data-chapter="cmp1" data-type="picture">
-            <input type="checkbox" id="cmp1" />
-            <span class="chapter-number">Comprehension 1</span>
-            <h3>My Little Cat</h3>
-            <p><i class="fas fa-image"></i> Picture exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="cmp2" data-type="picture">
-            <input type="checkbox" id="cmp2" />
-            <span class="chapter-number">Comprehension 2</span>
-            <h3>Picture Comprehension 1</h3>
-            <p><i class="fas fa-image"></i> Picture exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="cmp3" data-type="picture">
-            <input type="checkbox" id="cmp3" />
-            <span class="chapter-number">Comprehension 3</span>
-            <h3>Picture Comprehension 2</h3>
-            <p><i class="fas fa-image"></i> Picture exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="cmp4" data-type="picture">
-            <input type="checkbox" id="cmp4" />
-            <span class="chapter-number">Comprehension 4</span>
-            <h3>The Tortoise and the Hare</h3>
-            <p><i class="fas fa-image"></i> Picture exercise</p>
-          </label>
-          <label class="chapter-card" data-chapter="cmp5" data-type="picture">
-            <input type="checkbox" id="cmp5" />
-            <span class="chapter-number">Comprehension 5</span>
-            <h3>The Monkey and the Crocodile</h3>
-            <p><i class="fas fa-image"></i> Picture exercise</p>
-          </label>
-        </div>
-      
+          <div class="section-label" style="font-size: 1.5rem; font-weight: bold; color: #667eea; margin: 10px 0 15px">Grammar</div>
+          <div class="chapters-grid">
+            <label class="chapter-card" data-chapter="g1" data-type="picture">
+              <input type="checkbox" id="g1" />
+              <span class="chapter-number">Chapter 1</span>
+              <h3>Nouns</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="g2" data-type="mixed">
+              <input type="checkbox" id="g2" />
+              <span class="chapter-number">Chapter 2</span>
+              <h3>Proper and Common Nouns</h3>
+              <p><i class="fas fa-layer-group"></i> Text &amp; Picture</p>
+            </label>
+            <label class="chapter-card" data-chapter="g3" data-type="mixed">
+              <input type="checkbox" id="g3" />
+              <span class="chapter-number">Chapter 3</span>
+              <h3>One and Many</h3>
+              <p><i class="fas fa-layer-group"></i> Text &amp; Picture</p>
+            </label>
+            <label class="chapter-card" data-chapter="g4" data-type="mixed">
+              <input type="checkbox" id="g4" />
+              <span class="chapter-number">Chapter 4</span>
+              <h3>A, An and The</h3>
+              <p><i class="fas fa-layer-group"></i> Text &amp; Picture</p>
+            </label>
+            <label class="chapter-card" data-chapter="g5" data-type="mixed">
+              <input type="checkbox" id="g5" />
+              <span class="chapter-number">Chapter 5</span>
+              <h3>Male and Female</h3>
+              <p><i class="fas fa-layer-group"></i> Text &amp; Picture</p>
+            </label>
+            <label class="chapter-card" data-chapter="g6" data-type="mixed">
+              <input type="checkbox" id="g6" />
+              <span class="chapter-number">Chapter 6</span>
+              <h3>Pronouns</h3>
+              <p><i class="fas fa-layer-group"></i> Text &amp; Picture</p>
+            </label>
+            <label class="chapter-card" data-chapter="g7" data-type="mixed">
+              <input type="checkbox" id="g7" />
+              <span class="chapter-number">Chapter 7</span>
+              <h3>Adjectives</h3>
+              <p><i class="fas fa-layer-group"></i> Text &amp; Picture</p>
+            </label>
+            <label class="chapter-card" data-chapter="g8" data-type="text">
+              <input type="checkbox" id="g8" />
+              <span class="chapter-number">Chapter 8</span>
+              <h3>Possessives</h3>
+              <p><i class="fas fa-pen"></i> Text exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="g9" data-type="picture">
+              <input type="checkbox" id="g9" />
+              <span class="chapter-number">Chapter 9</span>
+              <h3>Action Words</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="g10" data-type="text">
+              <input type="checkbox" id="g10" />
+              <span class="chapter-number">Chapter 10</span>
+              <h3>Being Words</h3>
+              <p><i class="fas fa-pen"></i> Text exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="g11" data-type="text">
+              <input type="checkbox" id="g11" />
+              <span class="chapter-number">Chapter 11</span>
+              <h3>Having Verbs</h3>
+              <p><i class="fas fa-pen"></i> Text exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="g12" data-type="mixed">
+              <input type="checkbox" id="g12" />
+              <span class="chapter-number">Chapter 12</span>
+              <h3>Simple Present Tense</h3>
+              <p><i class="fas fa-layer-group"></i> Text &amp; Picture</p>
+            </label>
+            <label class="chapter-card" data-chapter="g13" data-type="text">
+              <input type="checkbox" id="g13" />
+              <span class="chapter-number">Chapter 13</span>
+              <h3>Simple Past Tense</h3>
+              <p><i class="fas fa-pen"></i> Text exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="g14" data-type="text">
+              <input type="checkbox" id="g14" />
+              <span class="chapter-number">Chapter 14</span>
+              <h3>Present Continuous Tense</h3>
+              <p><i class="fas fa-pen"></i> Text exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="g15" data-type="text">
+              <input type="checkbox" id="g15" />
+              <span class="chapter-number">Chapter 15</span>
+              <h3>Adverbs</h3>
+              <p><i class="fas fa-pen"></i> Text exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="g16" data-type="picture">
+              <input type="checkbox" id="g16" />
+              <span class="chapter-number">Chapter 16</span>
+              <h3>Position Words</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="g17" data-type="text">
+              <input type="checkbox" id="g17" />
+              <span class="chapter-number">Chapter 17</span>
+              <h3>Joining Words</h3>
+              <p><i class="fas fa-pen"></i> Text exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="g18" data-type="text">
+              <input type="checkbox" id="g18" />
+              <span class="chapter-number">Chapter 18</span>
+              <h3>The Comma</h3>
+              <p><i class="fas fa-pen"></i> Text exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="g19" data-type="picture">
+              <input type="checkbox" id="g19" />
+              <span class="chapter-number">Chapter 19</span>
+              <h3>The Apostrophe</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="g20" data-type="mixed">
+              <input type="checkbox" id="g20" />
+              <span class="chapter-number">Chapter 20</span>
+              <h3>Capital Letters</h3>
+              <p><i class="fas fa-layer-group"></i> Text &amp; Picture</p>
+            </label>
+            <label class="chapter-card" data-chapter="g21" data-type="text">
+              <input type="checkbox" id="g21" />
+              <span class="chapter-number">Chapter 21</span>
+              <h3>End Punctuation Marks</h3>
+              <p><i class="fas fa-pen"></i> Text exercise</p>
+            </label>
+          </div>
+          <div class="section-label" style="font-size: 1.5rem; font-weight: bold; color: #667eea; margin: 30px 0 15px">Vocabulary</div>
+          <div class="chapters-grid">
+            <label class="chapter-card" data-chapter="voc1" data-type="picture">
+              <input type="checkbox" id="voc1" />
+              <span class="chapter-number">Vocabulary 1</span>
+              <h3>Opposites</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="voc2" data-type="picture">
+              <input type="checkbox" id="voc2" />
+              <span class="chapter-number">Vocabulary 2</span>
+              <h3>Similar Words</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="voc3" data-type="picture">
+              <input type="checkbox" id="voc3" />
+              <span class="chapter-number">Vocabulary 3</span>
+              <h3>Compound Words</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="voc4" data-type="picture">
+              <input type="checkbox" id="voc4" />
+              <span class="chapter-number">Vocabulary 4</span>
+              <h3>Sound Words</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="voc5" data-type="picture">
+              <input type="checkbox" id="voc5" />
+              <span class="chapter-number">Vocabulary 5</span>
+              <h3>Community Helpers</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="voc6" data-type="text">
+              <input type="checkbox" id="voc6" />
+              <span class="chapter-number">Vocabulary 6</span>
+              <h3>Learning New Words</h3>
+              <p><i class="fas fa-pen"></i> Text exercise</p>
+            </label>
+          </div>
+          <div class="section-label" style="font-size: 1.5rem; font-weight: bold; color: #667eea; margin: 30px 0 15px">Composition</div>
+          <div class="chapters-grid">
+            <label class="chapter-card" data-chapter="comp1" data-type="text">
+              <input type="checkbox" id="comp1" />
+              <span class="chapter-number">Composition 1</span>
+              <h3>Letter to Grandma</h3>
+              <p><i class="fas fa-pen"></i> Writing prompts</p>
+            </label>
+            <label class="chapter-card" data-chapter="comp2" data-type="text">
+              <input type="checkbox" id="comp2" />
+              <span class="chapter-number">Composition 2</span>
+              <h3>Letter to the Principal</h3>
+              <p><i class="fas fa-pen"></i> Writing prompts</p>
+            </label>
+            <label class="chapter-card" data-chapter="comp3" data-type="picture">
+              <input type="checkbox" id="comp3" />
+              <span class="chapter-number">Composition 3</span>
+              <h3>Fun in the Rain</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="comp4" data-type="picture">
+              <input type="checkbox" id="comp4" />
+              <span class="chapter-number">Composition 4</span>
+              <h3>Picture Description</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="comp5" data-type="picture">
+              <input type="checkbox" id="comp5" />
+              <span class="chapter-number">Composition 5</span>
+              <h3>Paragraph Writing</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
+          </div>
+          <div class="section-label" style="font-size: 1.5rem; font-weight: bold; color: #667eea; margin: 30px 0 15px">Comprehension</div>
+          <div class="chapters-grid">
+            <label class="chapter-card" data-chapter="cmp1" data-type="picture">
+              <input type="checkbox" id="cmp1" />
+              <span class="chapter-number">Comprehension 1</span>
+              <h3>My Little Cat</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="cmp2" data-type="picture">
+              <input type="checkbox" id="cmp2" />
+              <span class="chapter-number">Comprehension 2</span>
+              <h3>Picture Comprehension 1</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="cmp3" data-type="picture">
+              <input type="checkbox" id="cmp3" />
+              <span class="chapter-number">Comprehension 3</span>
+              <h3>Picture Comprehension 2</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="cmp4" data-type="picture">
+              <input type="checkbox" id="cmp4" />
+              <span class="chapter-number">Comprehension 4</span>
+              <h3>The Tortoise and the Hare</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
+            <label class="chapter-card" data-chapter="cmp5" data-type="picture">
+              <input type="checkbox" id="cmp5" />
+              <span class="chapter-number">Comprehension 5</span>
+              <h3>The Monkey and the Crocodile</h3>
+              <p><i class="fas fa-image"></i> Picture exercise</p>
+            </label>
+          </div>
         </div>
         <div id="customPanel"></div>
-</div>
+      </div>
 
       <!-- Generate Config Dialog -->
-      <div id="generateDialog" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2000;align-items:center;justify-content:center;">
-        <div style="background:white;border-radius:20px;padding:36px;max-width:480px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.3);font-family:'Comic Sans MS',cursive;">
-          <h2 style="color:#667eea;margin:0 0 6px;font-size:1.6rem;"><i class="fas fa-sliders" style="margin-right:8px;"></i>Configure Test</h2>
-          <p id="dlgSubtitle" style="color:#888;margin:0 0 24px;font-size:0.9rem;">Available from selected chapters: <strong id="dlgPicAvail">0</strong> picture &nbsp;|&nbsp; <strong id="dlgTextAvail">0</strong> text</p>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+      <div id="generateDialog" style="display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5); z-index: 2000; align-items: center; justify-content: center">
+        <div style="background: white; border-radius: 20px; padding: 36px; max-width: 480px; width: 90%; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); font-family: &quot;Comic Sans MS&quot;, cursive">
+          <h2 style="color: #667eea; margin: 0 0 6px; font-size: 1.6rem"><i class="fas fa-sliders" style="margin-right: 8px"></i>Configure Test</h2>
+          <p id="dlgSubtitle" style="color: #888; margin: 0 0 24px; font-size: 0.9rem">Available from selected chapters: <strong id="dlgPicAvail">0</strong> picture &nbsp;|&nbsp; <strong id="dlgTextAvail">0</strong> text</p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px">
             <div>
-              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;"><i class="fas fa-image"></i> Picture questions</label>
-              <input type="number" id="dlgPicCount" min="0" value="0" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+              <label style="font-weight: bold; color: #333; display: block; margin-bottom: 6px"><i class="fas fa-image"></i> Picture questions</label>
+              <input type="number" id="dlgPicCount" min="0" value="0" style="width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; font-family: inherit; box-sizing: border-box" oninput="updateDlgTotal()" />
             </div>
             <div>
-              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;">Marks each</label>
-              <input type="number" id="dlgPicMarks" min="1" value="2" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+              <label style="font-weight: bold; color: #333; display: block; margin-bottom: 6px">Marks each</label>
+              <input type="number" id="dlgPicMarks" min="1" value="2" style="width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; font-family: inherit; box-sizing: border-box" oninput="updateDlgTotal()" />
             </div>
             <div>
-              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;"><i class="fas fa-pen"></i> Text questions</label>
-              <input type="number" id="dlgTextCount" min="0" value="0" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+              <label style="font-weight: bold; color: #333; display: block; margin-bottom: 6px"><i class="fas fa-pen"></i> Text questions</label>
+              <input type="number" id="dlgTextCount" min="0" value="0" style="width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; font-family: inherit; box-sizing: border-box" oninput="updateDlgTotal()" />
             </div>
             <div>
-              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;">Marks each</label>
-              <input type="number" id="dlgTextMarks" min="1" value="1" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+              <label style="font-weight: bold; color: #333; display: block; margin-bottom: 6px">Marks each</label>
+              <input type="number" id="dlgTextMarks" min="1" value="1" style="width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; font-family: inherit; box-sizing: border-box" oninput="updateDlgTotal()" />
             </div>
           </div>
-          <div style="background:#f0f0f0;border-radius:10px;padding:12px 16px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;">
-            <span style="font-weight:bold;color:#333;">Total Marks:</span>
-            <span id="dlgTotal" style="font-size:1.4rem;font-weight:bold;color:#667eea;">0</span>
+          <div style="background: #f0f0f0; border-radius: 10px; padding: 12px 16px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center">
+            <span style="font-weight: bold; color: #333">Total Marks:</span>
+            <span id="dlgTotal" style="font-size: 1.4rem; font-weight: bold; color: #667eea">0</span>
           </div>
-          <div style="display:flex;gap:12px;">
-            <button onclick="closeDlg()" style="flex:1;padding:14px;border:2px solid #e0e0e0;background:white;border-radius:50px;font-size:1rem;font-weight:bold;cursor:pointer;font-family:inherit;color:#666;">Cancel</button>
-            <button onclick="confirmGenerate()" style="flex:2;padding:14px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;border-radius:50px;font-size:1rem;font-weight:bold;cursor:pointer;font-family:inherit;">Generate Test</button>
+          <div style="display: flex; gap: 12px">
+            <button onclick="closeDlg()" style="flex: 1; padding: 14px; border: 2px solid #e0e0e0; background: white; border-radius: 50px; font-size: 1rem; font-weight: bold; cursor: pointer; font-family: inherit; color: #666">Cancel</button>
+            <button onclick="confirmGenerate()" style="flex: 2; padding: 14px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 50px; font-size: 1rem; font-weight: bold; cursor: pointer; font-family: inherit">Generate Test</button>
           </div>
         </div>
       </div>
@@ -666,7 +889,7 @@
       </div>
 
       <!-- Generate Button -->
-      <div class="action-buttons" style="margin-top: 20px;">
+      <div class="action-buttons" style="margin-top: 20px">
         <button class="btn btn-preview" onclick="generateTest()"><i class="fas fa-wand-magic-sparkles"></i> Generate Test</button>
         <span class="available-count" id="actionAvail">Select chapters to begin</span>
       </div>
@@ -678,12 +901,19 @@
       // ─── QUESTION BANK ──────────────────────────────────────────────────────
       const IMG = "../../../assets/images/test-generator/class-2/";
       const questionBank = {
-
         g1: {
           name: "Ch 1: Nouns",
           worksheets: [
-            { instruction: "A. Circle the odd one in each row.", image: IMG + "Grammar - Chapter 1 A.png", questions: [{ text: "[Image Exercise]", answer: "Row 1: soldier (odd – not an animal) | Row 2: spade (odd – not a shop) | Row 3: snake (odd – not a person) | Row 4: horse (odd – not furniture)" }] },
-            { instruction: "B. Match the people with the tools they use and then match them to the places where they work.", image: IMG + "Grammar - Chapter 1 B.png", questions: [{ text: "[Image Exercise]", answer: "teacher → blackboard → school | doctor → injection → hospital | mechanic → spanner → garage | chef → pan → restaurant | farmer → tractor → farm" }] },
+            {
+              instruction: "A. Circle the odd one in each row.",
+              image: IMG + "Grammar - Chapter 1 A.png",
+              questions: [{ text: "[Image Exercise]", answer: "Row 1: soldier (odd – not an animal) | Row 2: spade (odd – not a shop) | Row 3: snake (odd – not a person) | Row 4: horse (odd – not furniture)" }],
+            },
+            {
+              instruction: "B. Match the people with the tools they use and then match them to the places where they work.",
+              image: IMG + "Grammar - Chapter 1 B.png",
+              questions: [{ text: "[Image Exercise]", answer: "teacher → blackboard → school | doctor → injection → hospital | mechanic → spanner → garage | chef → pan → restaurant | farmer → tractor → farm" }],
+            },
           ],
         },
 
@@ -762,15 +992,33 @@
               ],
             },
             { instruction: "B. Find the many forms of these words in the word grid.", image: IMG + "Grammar - Chapter 3 B.png", questions: [{ text: "[Image Exercise]", answer: "butterflies, toys, hobbies, leaves, thieves, families, keys, calves, turkeys, cherries, ladies, fairies" }] },
-            { instruction: "C. Choose the option to make these words many.", image: IMG + "Grammar - Chapter 3 C.png", questions: [{ text: "[Image Exercise]", answer: "leaf→leaves, baby→babies, story→stories, bus→buses, city→cities, life→lives, zero→zeroes, lunch→lunches, shelf→shelves, tomato→tomatoes, puppy→puppies, cat→cats, postcard→postcards, berry→berries, wolf→wolves, box→boxes, blueberry→blueberries, church→churches, knife→knives, cap→caps, dress→dresses, girl→girls, watch→watches, half→halves" }] },
+            {
+              instruction: "C. Choose the option to make these words many.",
+              image: IMG + "Grammar - Chapter 3 C.png",
+              questions: [
+                {
+                  text: "[Image Exercise]",
+                  answer:
+                    "leaf→leaves, baby→babies, story→stories, bus→buses, city→cities, life→lives, zero→zeroes, lunch→lunches, shelf→shelves, tomato→tomatoes, puppy→puppies, cat→cats, postcard→postcards, berry→berries, wolf→wolves, box→boxes, blueberry→blueberries, church→churches, knife→knives, cap→caps, dress→dresses, girl→girls, watch→watches, half→halves",
+                },
+              ],
+            },
           ],
         },
 
         g4: {
           name: "Ch 4: A, An and The",
           worksheets: [
-            { instruction: "A. These animals live happily on Earth. Colour the correct box for each.", image: IMG + "Grammar - Chapter 4 A.png", questions: [{ text: "[Image Exercise]", answer: "octopus→an, dolphin→a, ice cream→an, lamb→a, orange→an, gift→a, lion→a, chair→a, cake→a, laddoo→a, key→a, schoolbag→a, van→a, otter→an, ant→an, can→a" }] },
-            { instruction: "B. Choose 'the' if the picture tells you about a particular noun. Choose 'a' or 'an' if the picture tells you about a general noun.", image: IMG + "Grammar - Chapter 4 B.png", questions: [{ text: "[Image Exercise]", answer: "the parrot with red feathers | an angel | an apple with a worm | a car | a teacher | the man playing the drum | a puppet | the ant in the anthill | the girl with green bow" }] },
+            {
+              instruction: "A. These animals live happily on Earth. Colour the correct box for each.",
+              image: IMG + "Grammar - Chapter 4 A.png",
+              questions: [{ text: "[Image Exercise]", answer: "octopus→an, dolphin→a, ice cream→an, lamb→a, orange→an, gift→a, lion→a, chair→a, cake→a, laddoo→a, key→a, schoolbag→a, van→a, otter→an, ant→an, can→a" }],
+            },
+            {
+              instruction: "B. Choose 'the' if the picture tells you about a particular noun. Choose 'a' or 'an' if the picture tells you about a general noun.",
+              image: IMG + "Grammar - Chapter 4 B.png",
+              questions: [{ text: "[Image Exercise]", answer: "the parrot with red feathers | an angel | an apple with a worm | a car | a teacher | the man playing the drum | a puppet | the ant in the anthill | the girl with green bow" }],
+            },
             {
               instruction: "C. Choose the correct option to complete each sentence (a / an / the).",
               questions: [
@@ -792,7 +1040,11 @@
         g5: {
           name: "Ch 5: Male and Female",
           worksheets: [
-            { instruction: "A. Match the name of each male with the picture of its female.", image: IMG + "Grammar - Chapter 5 A.png", questions: [{ text: "[Image Exercise]", answer: "peacock → peahen | lion → lioness | boy → girl | bull → cow | stallion → mare | rooster → hen | stag → doe | gander → goose | grandfather → grandmother | milkman → milkmaid | hero → heroine | father → mother" }] },
+            {
+              instruction: "A. Match the name of each male with the picture of its female.",
+              image: IMG + "Grammar - Chapter 5 A.png",
+              questions: [{ text: "[Image Exercise]", answer: "peacock → peahen | lion → lioness | boy → girl | bull → cow | stallion → mare | rooster → hen | stag → doe | gander → goose | grandfather → grandmother | milkman → milkmaid | hero → heroine | father → mother" }],
+            },
             {
               instruction: "B. Fill in each blank with the male or the female of the underlined noun.",
               questions: [
@@ -817,7 +1069,11 @@
           name: "Ch 6: Pronouns",
           worksheets: [
             { instruction: "A. Look at each picture. Circle the correct option for each picture.", image: IMG + "Grammar - Chapter 6 A.png", questions: [{ text: "[Image Exercise]", answer: "Row 1: He, She, It, He | Row 2: She, It, He, She | Row 3: It, He, She, It | Row 4: He, She, It, He" }] },
-            { instruction: "B. Match the pronouns with the nouns they replace.", image: IMG + "Grammar - Chapter 6 B.png", questions: [{ text: "[Image Exercise]", answer: "he → Yousuf, Siddharth, policeman | she → Lucy | it → baby, rooster | we → Cyrus and I, Jane and I | they → Naman Karan and Maya, Doodle and Minnie" }] },
+            {
+              instruction: "B. Match the pronouns with the nouns they replace.",
+              image: IMG + "Grammar - Chapter 6 B.png",
+              questions: [{ text: "[Image Exercise]", answer: "he → Yousuf, Siddharth, policeman | she → Lucy | it → baby, rooster | we → Cyrus and I, Jane and I | they → Naman Karan and Maya, Doodle and Minnie" }],
+            },
             {
               instruction: "C. Choose the correct pronoun to complete each sentence.",
               questions: [
@@ -859,7 +1115,11 @@
                 { text: "He had a delicious meal.", answer: "Adj: delicious | Noun: meal" },
               ],
             },
-            { instruction: "B. Look at each picture and choose the correct adjective from the box to complete each sentence.", image: IMG + "Grammar - Chapter 7 B.png", questions: [{ text: "[Image Exercise]", answer: "1. dirty  2. green  3. blue  4. juicy  5. big  6. soft  7. fresh  8. delicious" }] },
+            {
+              instruction: "B. Look at each picture and choose the correct adjective from the box to complete each sentence.",
+              image: IMG + "Grammar - Chapter 7 B.png",
+              questions: [{ text: "[Image Exercise]", answer: "1. dirty  2. green  3. blue  4. juicy  5. big  6. soft  7. fresh  8. delicious" }],
+            },
           ],
         },
 
@@ -893,7 +1153,11 @@
         g9: {
           name: "Ch 9: Action Words",
           worksheets: [
-            { instruction: "A. Choose the correct action word for each picture.", image: IMG + "Grammar - Chapter 9 A.png", questions: [{ text: "[Image Exercise]", answer: "Row 1: eat, cook, jog, run, swim, pray | Row 2: read, sleep, feed, count, learn, write | Row 3: chop, cook, learn, play, cry, laugh | Row 4: drink, brush, wash, write, play, read" }] },
+            {
+              instruction: "A. Choose the correct action word for each picture.",
+              image: IMG + "Grammar - Chapter 9 A.png",
+              questions: [{ text: "[Image Exercise]", answer: "Row 1: eat, cook, jog, run, swim, pray | Row 2: read, sleep, feed, count, learn, write | Row 3: chop, cook, learn, play, cry, laugh | Row 4: drink, brush, wash, write, play, read" }],
+            },
           ],
         },
 
@@ -1199,8 +1463,22 @@
         g19: {
           name: "Ch 19: The Apostrophe",
           worksheets: [
-            { instruction: "A. Fill in the blanks to show who owns what. Follow the example.", image: IMG + "Grammar - Chapter 19 A.png", questions: [{ text: "[Image Exercise]", answer: "dog's leash → belongs to the dog | teacher's book → belongs to the teacher | cat's collar → belongs to the cat | child's toy → belongs to the child | woman's purse → belongs to the woman | bird's nest → belongs to the bird | cat's bowl → belongs to the cat | boy's bicycle → belongs to the boy | student's notebook → belongs to the student | chef's knife → belongs to the chef" }] },
-            { instruction: "B. Rewrite these words to show who owns what. Follow the example.", image: IMG + "Grammar - Chapter 19 B.png", questions: [{ text: "[Image Exercise]", answer: "teacher's lesson plans | dog's collar | artist's painting | chef's recipe | student's notebook | child's toy | author's book | musician's instrument | photographer's camera | gardener's tools" }] },
+            {
+              instruction: "A. Fill in the blanks to show who owns what. Follow the example.",
+              image: IMG + "Grammar - Chapter 19 A.png",
+              questions: [
+                {
+                  text: "[Image Exercise]",
+                  answer:
+                    "dog's leash → belongs to the dog | teacher's book → belongs to the teacher | cat's collar → belongs to the cat | child's toy → belongs to the child | woman's purse → belongs to the woman | bird's nest → belongs to the bird | cat's bowl → belongs to the cat | boy's bicycle → belongs to the boy | student's notebook → belongs to the student | chef's knife → belongs to the chef",
+                },
+              ],
+            },
+            {
+              instruction: "B. Rewrite these words to show who owns what. Follow the example.",
+              image: IMG + "Grammar - Chapter 19 B.png",
+              questions: [{ text: "[Image Exercise]", answer: "teacher's lesson plans | dog's collar | artist's painting | chef's recipe | student's notebook | child's toy | author's book | musician's instrument | photographer's camera | gardener's tools" }],
+            },
           ],
         },
 
@@ -1220,7 +1498,11 @@
                 { text: "her phone is new.", lines: 1, answer: "Her phone is new." },
               ],
             },
-            { instruction: "B. Tick the words that need capital letters at the beginning.", image: IMG + "Grammar - Chapter 20 B.png", questions: [{ text: "[Image Exercise]", answer: "Needs capitals: Sahil, Eiffel Tower, Lotus Temple, New Delhi, Tom and Jerry, Statue of Liberty, Christmas, Mickey Mouse" }] },
+            {
+              instruction: "B. Tick the words that need capital letters at the beginning.",
+              image: IMG + "Grammar - Chapter 20 B.png",
+              questions: [{ text: "[Image Exercise]", answer: "Needs capitals: Sahil, Eiffel Tower, Lotus Temple, New Delhi, Tom and Jerry, Statue of Liberty, Christmas, Mickey Mouse" }],
+            },
             {
               instruction: "C. Rewrite the sentences using capital letters, where required.",
               questions: [
@@ -1287,29 +1569,49 @@
 
         voc1: {
           name: "Voc 1: Opposites",
-          worksheets: [
-            { instruction: "A. Match the opposites.", image: IMG + "Vocabulary - Chapter 1 A.png", questions: [{ text: "[Image Exercise]", answer: "easy → difficult | slow → fast | inside → outside | sour → sweet | full → empty | different → same" }] },
-          ],
+          worksheets: [{ instruction: "A. Match the opposites.", image: IMG + "Vocabulary - Chapter 1 A.png", questions: [{ text: "[Image Exercise]", answer: "easy → difficult | slow → fast | inside → outside | sour → sweet | full → empty | different → same" }] }],
         },
 
         voc2: {
           name: "Voc 2: Similar Words",
           worksheets: [
-            { instruction: "A. Match the similar words.", image: IMG + "Vocabulary - Chapter 2 A.png", questions: [{ text: "[Image Exercise]", answer: "big → large | happy → glad | small → little | fast → speedy | smart → clever | cold → chilly | nice → good | finish → end | funny → laughable | quiet → silent | strong → powerful | begin → start" }] },
+            {
+              instruction: "A. Match the similar words.",
+              image: IMG + "Vocabulary - Chapter 2 A.png",
+              questions: [{ text: "[Image Exercise]", answer: "big → large | happy → glad | small → little | fast → speedy | smart → clever | cold → chilly | nice → good | finish → end | funny → laughable | quiet → silent | strong → powerful | begin → start" }],
+            },
           ],
         },
 
         voc3: {
           name: "Voc 3: Compound Words",
           worksheets: [
-            { instruction: "A. Write the two words that form each of these words.", image: IMG + "Vocabulary - Chapter 3 A.png", questions: [{ text: "[Image Exercise]", answer: "snowman = snow + man | butterfly = butter + fly | ladybird = lady + bird | goldfish = gold + fish | blackboard = black + board | raincoat = rain + coat | starfish = star + fish | playground = play + ground | bookshelf = book + shelf | notebook = note + book" }] },
+            {
+              instruction: "A. Write the two words that form each of these words.",
+              image: IMG + "Vocabulary - Chapter 3 A.png",
+              questions: [
+                {
+                  text: "[Image Exercise]",
+                  answer: "snowman = snow + man | butterfly = butter + fly | ladybird = lady + bird | goldfish = gold + fish | blackboard = black + board | raincoat = rain + coat | starfish = star + fish | playground = play + ground | bookshelf = book + shelf | notebook = note + book",
+                },
+              ],
+            },
           ],
         },
 
         voc4: {
           name: "Voc 4: Sound Words",
           worksheets: [
-            { instruction: "A. Match the sound to the word.", image: IMG + "Vocabulary - Chapter 4 A.png", questions: [{ text: "[Image Exercise]", answer: "cat → meow | balloon popping → pop | sipping soup → slurp | breaking/falling → crash | crunchy chips → crunch | water hitting pool → splash | hands hitting → clap | thunder → boom | water dripping → drip | drinking noisily → sip | water flowing → gurgle" }] },
+            {
+              instruction: "A. Match the sound to the word.",
+              image: IMG + "Vocabulary - Chapter 4 A.png",
+              questions: [
+                {
+                  text: "[Image Exercise]",
+                  answer: "cat → meow | balloon popping → pop | sipping soup → slurp | breaking/falling → crash | crunchy chips → crunch | water hitting pool → splash | hands hitting → clap | thunder → boom | water dripping → drip | drinking noisily → sip | water flowing → gurgle",
+                },
+              ],
+            },
           ],
         },
 
@@ -1317,7 +1619,11 @@
           name: "Voc 5: Community Helpers",
           worksheets: [
             { instruction: "A. Match the pictures of community helpers with their names.", image: IMG + "Vocabulary - Chapter 5 A.png", questions: [{ text: "[Image Exercise]", answer: "soldier, hairdresser, firefighter, teacher, postman, doctor, mason, policewoman" }] },
-            { instruction: "B. Match each community helper with the correct vehicle and tool.", image: IMG + "Vocabulary - Chapter 5 B.png", questions: [{ text: "[Image Exercise]", answer: "soldier → rifle → tank | pilot → headphones → aeroplane | doctor → stethoscope → ambulance | fireman → fire extinguisher → fire engine | farmer → hoe → tractor" }] },
+            {
+              instruction: "B. Match each community helper with the correct vehicle and tool.",
+              image: IMG + "Vocabulary - Chapter 5 B.png",
+              questions: [{ text: "[Image Exercise]", answer: "soldier → rifle → tank | pilot → headphones → aeroplane | doctor → stethoscope → ambulance | fireman → fire extinguisher → fire engine | farmer → hoe → tractor" }],
+            },
           ],
         },
 
@@ -1378,57 +1684,59 @@
         comp3: {
           name: "Composition 3: Fun in the Rain",
           worksheets: [
-            { instruction: "A. Look at the picture carefully and answer the questions that follow.", image: IMG + "Composition - Chapter 3 A.png", questions: [{ text: "[Image Exercise]", answer: "1. Rainy and cloudy  2. Playing  3. Raincoats and shoes  4. Very happy  5. Paper boats floating in pool" }] },
+            {
+              instruction: "A. Look at the picture carefully and answer the questions that follow.",
+              image: IMG + "Composition - Chapter 3 A.png",
+              questions: [{ text: "[Image Exercise]", answer: "1. Rainy and cloudy  2. Playing  3. Raincoats and shoes  4. Very happy  5. Paper boats floating in pool" }],
+            },
           ],
         },
 
         comp4: {
           name: "Composition 4: Picture Description",
-          worksheets: [
-            { instruction: "A. Look at the picture carefully and answer the questions that follow.", image: IMG + "Composition - Chapter 4 A.png", questions: [{ text: "[Image Exercise]", answer: "1. Sunny  2. Playing  3. T-shirts and shorts  4. Enjoying themselves" }] },
-          ],
+          worksheets: [{ instruction: "A. Look at the picture carefully and answer the questions that follow.", image: IMG + "Composition - Chapter 4 A.png", questions: [{ text: "[Image Exercise]", answer: "1. Sunny  2. Playing  3. T-shirts and shorts  4. Enjoying themselves" }] }],
         },
 
         comp5: {
           name: "Composition 5: Paragraph Writing",
-          worksheets: [
-            { instruction: "A. Look at the picture and answer the questions.", image: IMG + "Composition - Chapter 5 A.png", questions: [{ text: "[Image Exercise]", answer: "1. Covered in fur, four limbs and long tail  2. Runs and leaps through trees  3. In trees  4. vary" }] },
-          ],
+          worksheets: [{ instruction: "A. Look at the picture and answer the questions.", image: IMG + "Composition - Chapter 5 A.png", questions: [{ text: "[Image Exercise]", answer: "1. Covered in fur, four limbs and long tail  2. Runs and leaps through trees  3. In trees  4. vary" }] }],
         },
 
         cmp1: {
           name: "Comprehension 1: My Little Cat",
-          worksheets: [
-            { instruction: "A. Read the poem and answer the questions that follow.", image: IMG + "Comprehension - Chapter 1 A.png", questions: [{ text: "[Image Exercise]", answer: "1. b. cat  2. a. around the feet  3. c. nap and chase a ball  4. d. runs to the speaker" }] },
-          ],
+          worksheets: [{ instruction: "A. Read the poem and answer the questions that follow.", image: IMG + "Comprehension - Chapter 1 A.png", questions: [{ text: "[Image Exercise]", answer: "1. b. cat  2. a. around the feet  3. c. nap and chase a ball  4. d. runs to the speaker" }] }],
         },
 
         cmp2: {
           name: "Comprehension 2: Picture Comprehension 1",
           worksheets: [
-            { instruction: "A. Look at the picture below and answer the questions that follow.", image: IMG + "Comprehension - Chapter 2 A.png", questions: [{ text: "[Image Exercise]", answer: "1. b. three  2. d. a kite  3. c. a lollipop  4. c. morning  5. b. sun, clouds, and a kite  6. a. two  7. c. red, blue, and yellow  8. b. summer" }] },
+            {
+              instruction: "A. Look at the picture below and answer the questions that follow.",
+              image: IMG + "Comprehension - Chapter 2 A.png",
+              questions: [{ text: "[Image Exercise]", answer: "1. b. three  2. d. a kite  3. c. a lollipop  4. c. morning  5. b. sun, clouds, and a kite  6. a. two  7. c. red, blue, and yellow  8. b. summer" }],
+            },
           ],
         },
 
         cmp3: {
           name: "Comprehension 3: Picture Comprehension 2",
-          worksheets: [
-            { instruction: "A. Look at the picture below and answer the questions that follow.", image: IMG + "Comprehension - Chapter 3 A.png", questions: [{ text: "[Image Exercise]", answer: "1. b. planting seeds  2. a. cow  3. d. a little boy  4. c. in a pond  5. b. grazing" }] },
-          ],
+          worksheets: [{ instruction: "A. Look at the picture below and answer the questions that follow.", image: IMG + "Comprehension - Chapter 3 A.png", questions: [{ text: "[Image Exercise]", answer: "1. b. planting seeds  2. a. cow  3. d. a little boy  4. c. in a pond  5. b. grazing" }] }],
         },
 
         cmp4: {
           name: "Comprehension 4: The Tortoise and the Hare",
           worksheets: [
-            { instruction: "A. Read the passage and answer the questions that follow.", image: IMG + "Comprehension - Chapter 4 A.png", questions: [{ text: "[Image Exercise]", answer: "1. c. tortoise and hare  2. b. took a nap  3. a. slow and steady  4. d. the tortoise  5. b. Slow and steady wins the race" }] },
+            {
+              instruction: "A. Read the passage and answer the questions that follow.",
+              image: IMG + "Comprehension - Chapter 4 A.png",
+              questions: [{ text: "[Image Exercise]", answer: "1. c. tortoise and hare  2. b. took a nap  3. a. slow and steady  4. d. the tortoise  5. b. Slow and steady wins the race" }],
+            },
           ],
         },
 
         cmp5: {
           name: "Comprehension 5: The Monkey and the Crocodile",
-          worksheets: [
-            { instruction: "A. Read the passage and answer the questions that follow.", image: IMG + "Comprehension - Chapter 5 A.png", questions: [{ text: "[Image Exercise]", answer: "1. b. on a tree  2. a. fruits  3. d. gave fruits  4. c. he saw danger  5. c. smart" }] },
-          ],
+          worksheets: [{ instruction: "A. Read the passage and answer the questions that follow.", image: IMG + "Comprehension - Chapter 5 A.png", questions: [{ text: "[Image Exercise]", answer: "1. b. on a tree  2. a. fruits  3. d. gave fruits  4. c. he saw danger  5. c. smart" }] }],
         },
       };
 
@@ -1450,7 +1758,8 @@
       }
 
       function countByType(keys) {
-        let pic = 0, text = 0;
+        let pic = 0,
+          text = 0;
         keys.forEach((k) => {
           const ch = questionBank[k];
           if (!ch) return;
@@ -1480,16 +1789,15 @@
         const picMarks = parseInt(document.getElementById("dlgPicMarks").value) || 0;
         const textCount = parseInt(document.getElementById("dlgTextCount").value) || 0;
         const textMarks = parseInt(document.getElementById("dlgTextMarks").value) || 0;
-        document.getElementById("dlgTotal").textContent = (picCount * picMarks) + (textCount * textMarks);
+        document.getElementById("dlgTotal").textContent = picCount * picMarks + textCount * textMarks;
       }
 
       function closeDlg() {
         document.getElementById("generateDialog").style.display = "none";
       }
 
-      
       let currentMode = "auto";
-function setMode(mode) {
+      function setMode(mode) {
         currentMode = mode;
         document.getElementById("modeAutoBtn").classList.toggle("active", mode === "auto");
         document.getElementById("modeCustomBtn").classList.toggle("active", mode === "custom");
@@ -1502,7 +1810,7 @@ function setMode(mode) {
           cp.style.display = "none";
         }
       }
-function buildCustomPanel() {
+      function buildCustomPanel() {
         var cp = document.getElementById("customPanel");
         cp.innerHTML = "";
 
@@ -1536,7 +1844,7 @@ function buildCustomPanel() {
               var id = "cq_" + chKey + "_" + wsIdx + "_" + qIdx;
               var contentHtml;
               if (ws.image) {
-                var imgSrc = ws.image.replace(/ /g, '%20');
+                var imgSrc = ws.image.replace(/ /g, "%20");
                 contentHtml = '<img src="' + imgSrc + '" alt="Exercise image" style="max-width:320px;max-height:180px;object-fit:contain;border-radius:6px;margin-top:4px;display:block;">';
               } else {
                 var preview = q.text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -1544,11 +1852,23 @@ function buildCustomPanel() {
                 contentHtml = '<span class="custom-q-text">' + preview + "</span>";
               }
               li.innerHTML =
-                '<label for="' + id + '" style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;width:100%;">' +
-                '<input type="checkbox" id="' + id + '" class="custom-q-cb"' +
-                ' data-ch-key="' + chKey + '" data-ws-idx="' + wsIdx + '" data-q-idx="' + qIdx + '"' +
+                '<label for="' +
+                id +
+                '" style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;width:100%;">' +
+                '<input type="checkbox" id="' +
+                id +
+                '" class="custom-q-cb"' +
+                ' data-ch-key="' +
+                chKey +
+                '" data-ws-idx="' +
+                wsIdx +
+                '" data-q-idx="' +
+                qIdx +
+                '"' +
                 ' style="margin-top:3px;cursor:pointer;accent-color:#667eea;flex-shrink:0;" onchange="updateCustomPreview()">' +
-                '<div style="flex:1;">' + contentHtml + '</div></label>';
+                '<div style="flex:1;">' +
+                contentHtml +
+                "</div></label>";
               ul.appendChild(li);
             });
             wsDiv.appendChild(ul);
@@ -1568,19 +1888,27 @@ function buildCustomPanel() {
 
       function generateTest() {
         if (currentMode === "custom") {
-          var picSel = 0, textSel = 0;
-          document.querySelectorAll(".custom-q-cb:checked").forEach(function(cb) {
+          var picSel = 0,
+            textSel = 0;
+          document.querySelectorAll(".custom-q-cb:checked").forEach(function (cb) {
             var chKey = cb.getAttribute("data-ch-key");
             var wsIdx = parseInt(cb.getAttribute("data-ws-idx"));
-            if (questionBank[chKey].worksheets[wsIdx].image) picSel++; else textSel++;
+            if (questionBank[chKey].worksheets[wsIdx].image) picSel++;
+            else textSel++;
           });
-          if (picSel + textSel === 0) { alert("Please tick at least one question in Custom mode!"); return; }
-          document.getElementById("dlgSubtitle").innerHTML = 'Selected questions: <strong id="dlgPicAvail">' + picSel + '</strong> image &nbsp;|&nbsp; <strong id="dlgTextAvail">' + textSel + '</strong> text &nbsp;(set marks below)';
+          if (picSel + textSel === 0) {
+            alert("Please tick at least one question in Custom mode!");
+            return;
+          }
+          document.getElementById("dlgSubtitle").innerHTML = 'Selected questions: <strong id="dlgPicAvail">' + picSel + '</strong> image &nbsp;|&nbsp; <strong id="dlgTextAvail">' + textSel + "</strong> text &nbsp;(set marks below)";
           var picCountEl = document.getElementById("dlgPicCount");
           var textCountEl = document.getElementById("dlgTextCount");
-          picCountEl.value = picSel; textCountEl.value = textSel;
-          picCountEl.readOnly = true; textCountEl.readOnly = true;
-          picCountEl.style.background = "#f5f5f5"; textCountEl.style.background = "#f5f5f5";
+          picCountEl.value = picSel;
+          textCountEl.value = textSel;
+          picCountEl.readOnly = true;
+          textCountEl.readOnly = true;
+          picCountEl.style.background = "#f5f5f5";
+          textCountEl.style.background = "#f5f5f5";
           updateDlgTotal();
           document.getElementById("generateDialog").style.display = "flex";
           return;
@@ -1602,28 +1930,39 @@ function buildCustomPanel() {
       let lastGeneratedQuestions = [];
 
       function confirmGenerate() {
-        const picMarks  = parseInt(document.getElementById("dlgPicMarks").value)  || 1;
+        const picMarks = parseInt(document.getElementById("dlgPicMarks").value) || 1;
         const textMarks = parseInt(document.getElementById("dlgTextMarks").value) || 1;
         closeDlg();
 
         if (currentMode === "custom") {
           const selected = [];
-          document.querySelectorAll(".custom-q-cb:checked").forEach(function(cb) {
+          document.querySelectorAll(".custom-q-cb:checked").forEach(function (cb) {
             const chKey = cb.getAttribute("data-ch-key");
             const wsIdx = parseInt(cb.getAttribute("data-ws-idx"));
             const qIdx = parseInt(cb.getAttribute("data-q-idx"));
-            const ch = questionBank[chKey]; const ws = ch.worksheets[wsIdx]; const q = ws.questions[qIdx];
-            selected.push({ chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx,
-              instruction: ws.instruction, image: ws.image || null, text: q.text,
-              answer: q.answer || null, options: q.options || null, wideOptions: q.wideOptions || false,
-              lines: q.lines || 0, marks: ws.image ? picMarks : textMarks });
+            const ch = questionBank[chKey];
+            const ws = ch.worksheets[wsIdx];
+            const q = ws.questions[qIdx];
+            selected.push({
+              chapterKey: chKey,
+              chapterName: ch.name,
+              worksheetIdx: wsIdx,
+              instruction: ws.instruction,
+              image: ws.image || null,
+              text: q.text,
+              answer: q.answer || null,
+              options: q.options || null,
+              wideOptions: q.wideOptions || false,
+              lines: q.lines || 0,
+              marks: ws.image ? picMarks : textMarks,
+            });
           });
           if (selected.length === 0) return;
           const grouped = new Map();
-          Object.keys(questionBank).forEach(function(k) {
+          Object.keys(questionBank).forEach(function (k) {
             grouped.set(k, { name: questionBank[k].name, worksheets: new Map() });
           });
-          selected.forEach(function(q) {
+          selected.forEach(function (q) {
             const chGroup = grouped.get(q.chapterKey);
             if (!chGroup) return;
             if (!chGroup.worksheets.has(q.worksheetIdx)) {
@@ -1631,25 +1970,25 @@ function buildCustomPanel() {
             }
             chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
           });
-          let qNum = 1; lastGeneratedQuestions = []; let totalMarks = 0;
-          grouped.forEach(function(chData, chKey) {
-            chData.worksheets.forEach(function(wsData, wsIdx) {
-              wsData.questions.forEach(function(q) {
-                lastGeneratedQuestions.push({ chapterKey: chKey, chapterName: chData.name,
-                  worksheetIdx: wsIdx, instruction: wsData.instruction, image: wsData.image,
-                  text: q.text, answer: q.answer, options: q.options, wideOptions: q.wideOptions,
-                  lines: q.lines, marks: q.marks, qNum: qNum++ });
+          let qNum = 1;
+          lastGeneratedQuestions = [];
+          let totalMarks = 0;
+          grouped.forEach(function (chData, chKey) {
+            chData.worksheets.forEach(function (wsData, wsIdx) {
+              wsData.questions.forEach(function (q) {
+                lastGeneratedQuestions.push({ chapterKey: chKey, chapterName: chData.name, worksheetIdx: wsIdx, instruction: wsData.instruction, image: wsData.image, text: q.text, answer: q.answer, options: q.options, wideOptions: q.wideOptions, lines: q.lines, marks: q.marks, qNum: qNum++ });
                 totalMarks += q.marks;
               });
             });
           });
-          window._lastPicMarks = picMarks; window._lastTextMarks = textMarks;
+          window._lastPicMarks = picMarks;
+          window._lastTextMarks = textMarks;
           window._lastTotalMarks = totalMarks;
           updateWordPreviews();
           return;
         }
 
-        const picCount  = parseInt(document.getElementById("dlgPicCount").value)  || 0;
+        const picCount = parseInt(document.getElementById("dlgPicCount").value) || 0;
         const textCount = parseInt(document.getElementById("dlgTextCount").value) || 0;
         document.getElementById("dlgPicCount").readOnly = false;
         document.getElementById("dlgTextCount").readOnly = false;
@@ -1657,7 +1996,8 @@ function buildCustomPanel() {
         document.getElementById("dlgTextCount").style.background = "";
 
         const selectedKeys = getSelectedChapterKeys();
-        const picPool = [], textPool = [];
+        const picPool = [],
+          textPool = [];
 
         selectedKeys.forEach((chKey) => {
           const ch = questionBank[chKey];
@@ -1665,9 +2005,14 @@ function buildCustomPanel() {
           ch.worksheets.forEach((ws, wsIdx) => {
             ws.questions.forEach((q) => {
               const entry = {
-                chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx,
-                instruction: ws.instruction, image: ws.image || null,
-                text: q.text, answer: q.answer || null, lines: q.lines || 0,
+                chapterKey: chKey,
+                chapterName: ch.name,
+                worksheetIdx: wsIdx,
+                instruction: ws.instruction,
+                image: ws.image || null,
+                text: q.text,
+                answer: q.answer || null,
+                lines: q.lines || 0,
               };
               if (ws.image) picPool.push(entry);
               else textPool.push(entry);
@@ -1675,11 +2020,11 @@ function buildCustomPanel() {
           });
         });
 
-        const shuffledPic  = shuffleArray(picPool).slice(0, picCount);
+        const shuffledPic = shuffleArray(picPool).slice(0, picCount);
         const shuffledText = shuffleArray(textPool).slice(0, textCount);
         const selected = [...shuffledPic, ...shuffledText];
 
-        if (shuffledPic.length < picCount)  alert("Only " + shuffledPic.length  + " picture questions available. Showing all.");
+        if (shuffledPic.length < picCount) alert("Only " + shuffledPic.length + " picture questions available. Showing all.");
         if (shuffledText.length < textCount) alert("Only " + shuffledText.length + " text questions available. Showing all.");
 
         const grouped = new Map();
@@ -1704,19 +2049,24 @@ function buildCustomPanel() {
           sortedWs.forEach(([wsIdx, wsData]) => {
             wsData.questions.forEach((q) => {
               lastGeneratedQuestions.push({
-                qNum: qNum++, chapterKey: chKey, chapterName: chData.name,
-                worksheetIdx: wsIdx, instruction: wsData.instruction,
-                image: wsData.image || null, answer: q.answer || null,
-                text: q.text, lines: q.lines || 0,
+                qNum: qNum++,
+                chapterKey: chKey,
+                chapterName: chData.name,
+                worksheetIdx: wsIdx,
+                instruction: wsData.instruction,
+                image: wsData.image || null,
+                answer: q.answer || null,
+                text: q.text,
+                lines: q.lines || 0,
                 marks: wsData.image ? picMarks : textMarks,
               });
             });
           });
         });
 
-        window._lastPicMarks   = picMarks;
-        window._lastTextMarks  = textMarks;
-        window._lastTotalMarks = (shuffledPic.length * picMarks) + (shuffledText.length * textMarks);
+        window._lastPicMarks = picMarks;
+        window._lastTextMarks = textMarks;
+        window._lastTotalMarks = shuffledPic.length * picMarks + shuffledText.length * textMarks;
         updateWordPreviews();
       }
 
@@ -1728,23 +2078,21 @@ function buildCustomPanel() {
 
       function renderImgAnswer(ans, forWord) {
         if (!ans || ans === "vary") return "";
-        var hdr = forWord
-          ? '<div style="margin-top:8px;font-weight:bold;color:#333;font-size:11pt;">Answers:</div>'
-          : '<div class="doc-answers-header" style="margin-top:8px;">Answers:</div>';
+        var hdr = forWord ? '<div style="margin-top:8px;font-weight:bold;color:#333;font-size:11pt;">Answers:</div>' : '<div class="doc-answers-header" style="margin-top:8px;">Answers:</div>';
         if (ans.indexOf(" → ") !== -1) {
           var rows = "";
-          ans.split(" | ").forEach(function(pair) {
+          ans.split(" | ").forEach(function (pair) {
             var parts = pair.split(" → ");
             if (forWord) {
-              rows += '<tr><td style="padding:2px 12px 2px 0;font-weight:bold;color:#1a6b3a;">' + _esc(parts[0]) + '</td><td style="padding:2px 0;color:#333;">→ ' + _esc(parts[1] || "") + '</td></tr>';
+              rows += '<tr><td style="padding:2px 12px 2px 0;font-weight:bold;color:#1a6b3a;">' + _esc(parts[0]) + '</td><td style="padding:2px 0;color:#333;">→ ' + _esc(parts[1] || "") + "</td></tr>";
             } else {
-              rows += '<tr><td style="padding:3px 10px 3px 0;font-weight:bold;color:#2d6a4f;">' + _esc(parts[0]) + '</td><td style="padding:3px 0;color:#555;">→ ' + _esc(parts[1] || "") + '</td></tr>';
+              rows += '<tr><td style="padding:3px 10px 3px 0;font-weight:bold;color:#2d6a4f;">' + _esc(parts[0]) + '</td><td style="padding:3px 0;color:#555;">→ ' + _esc(parts[1] || "") + "</td></tr>";
             }
           });
-          return hdr + '<table style="border-collapse:collapse;margin:4px 0 12px;">' + rows + '</table>';
+          return hdr + '<table style="border-collapse:collapse;margin:4px 0 12px;">' + rows + "</table>";
         }
         var ansClass = forWord ? 'class="ans"' : 'class="doc-answer"';
-        return hdr + '<div ' + ansClass + '>' + _esc(ans) + '</div>';
+        return hdr + "<div " + ansClass + ">" + _esc(ans) + "</div>";
       }
 
       function updateWordPreviews() {
@@ -1754,10 +2102,10 @@ function buildCustomPanel() {
           return;
         }
 
-        var testName     = document.getElementById("testName").value || "Grammar Test";
-        var studentName  = document.getElementById("studentName").value || "";
-        var testDate     = document.getElementById("testDate").value || "";
-        var totalMarks   = window._lastTotalMarks || "";
+        var testName = document.getElementById("testName").value || "Grammar Test";
+        var studentName = document.getElementById("studentName").value || "";
+        var testDate = document.getElementById("testDate").value || "";
+        var totalMarks = window._lastTotalMarks || "";
         var testDuration = document.getElementById("testDuration").value || "";
 
         var grouped = {};
@@ -1775,23 +2123,24 @@ function buildCustomPanel() {
           grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
         });
 
-        var metaLine = '<div>Name: ' + (_esc(studentName) || '________________') + ' &nbsp;&nbsp; Date: ' + (_esc(testDate) || '____________') + '</div>' +
-                       '<div>Total Marks: ' + _esc(totalMarks) + ' &nbsp;&nbsp; Time: ' + _esc(testDuration) + ' mins</div>';
+        var metaLine = "<div>Name: " + (_esc(studentName) || "________________") + " &nbsp;&nbsp; Date: " + (_esc(testDate) || "____________") + "</div>" + "<div>Total Marks: " + _esc(totalMarks) + " &nbsp;&nbsp; Time: " + _esc(testDuration) + " mins</div>";
 
         // Student preview
-        var studentHtml = '<div class="doc-title">Grammar Frolics-2 - ' + _esc(testName) + '</div>';
-        studentHtml += '<div class="doc-meta">' + metaLine + '</div>';
+        var studentHtml = '<div class="doc-title">Grammar Frolics-2 - ' + _esc(testName) + "</div>";
+        studentHtml += '<div class="doc-meta">' + metaLine + "</div>";
         chapterOrder.forEach(function (chKey) {
           var ch = grouped[chKey];
           ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
-            studentHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + '</div>';
+            studentHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
             if (ws.image) {
               studentHtml += '<img src="' + ws.image + '" style="max-width:100%;margin:10px 0;border-radius:8px;">';
             } else {
-              var sortedQ = ws.questions.slice().sort(function(a,b){ return a.qNum - b.qNum; });
-              sortedQ.forEach(function(q) {
-                studentHtml += '<div class="doc-question">' + q.qNum + '. ' + _esc(q.text).replace(/\n/g,"<br>") + '</div>';
+              var sortedQ = ws.questions.slice().sort(function (a, b) {
+                return a.qNum - b.qNum;
+              });
+              sortedQ.forEach(function (q) {
+                studentHtml += '<div class="doc-question">' + q.qNum + ". " + _esc(q.text).replace(/\n/g, "<br>") + "</div>";
               });
             }
           });
@@ -1799,14 +2148,14 @@ function buildCustomPanel() {
         document.getElementById("studentPreview").innerHTML = studentHtml;
 
         // Teacher preview
-        var teacherHtml = '<div class="doc-title">Grammar Frolics-2 - ' + _esc(testName) + '</div>';
+        var teacherHtml = '<div class="doc-title">Grammar Frolics-2 - ' + _esc(testName) + "</div>";
         teacherHtml += '<div class="doc-ak-label">ANSWER KEY - TEACHER USE ONLY</div>';
-        teacherHtml += '<div class="doc-meta">' + metaLine + '</div>';
+        teacherHtml += '<div class="doc-meta">' + metaLine + "</div>";
         chapterOrder.forEach(function (chKey) {
           var ch = grouped[chKey];
           ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
-            teacherHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g,"<br>") + '</div>';
+            teacherHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
             if (ws.image) {
               teacherHtml += '<img src="' + ws.image + '" style="max-width:100%;margin:10px 0;border-radius:8px;">';
               var imgAns = ws.questions[0] && ws.questions[0].answer;
@@ -1814,16 +2163,18 @@ function buildCustomPanel() {
                 teacherHtml += renderImgAnswer(imgAns, false);
               }
             } else {
-              var sortedQ = ws.questions.slice().sort(function(a,b){ return a.qNum - b.qNum; });
-              sortedQ.forEach(function(q) {
-                teacherHtml += '<div class="doc-question">' + q.qNum + '. ' + _esc(q.text).replace(/\n/g,"<br>") + '</div>';
+              var sortedQ = ws.questions.slice().sort(function (a, b) {
+                return a.qNum - b.qNum;
+              });
+              sortedQ.forEach(function (q) {
+                teacherHtml += '<div class="doc-question">' + q.qNum + ". " + _esc(q.text).replace(/\n/g, "<br>") + "</div>";
               });
               teacherHtml += '<div class="doc-answers-header">Answers:</div>';
-              sortedQ.forEach(function(q) {
+              sortedQ.forEach(function (q) {
                 if (q.answer && q.answer !== "vary") {
-                  teacherHtml += '<div class="doc-answer">' + q.qNum + '. ' + _esc(q.answer) + '</div>';
+                  teacherHtml += '<div class="doc-answer">' + q.qNum + ". " + _esc(q.answer) + "</div>";
                 } else {
-                  teacherHtml += '<div class="doc-answer" style="color:#999;">' + q.qNum + '. Answers may vary</div>';
+                  teacherHtml += '<div class="doc-answer" style="color:#999;">' + q.qNum + ". Answers may vary</div>";
                 }
               });
             }
@@ -1835,16 +2186,39 @@ function buildCustomPanel() {
       }
 
       // ─── WORD DOWNLOAD ───────────────────────────────────────────────────────
-      function downloadWord(includeAnswers) {
+      function imgToBase64(src) {
+        return fetch(src)
+          .then(function(r) { return r.blob(); })
+          .then(function(blob) {
+            return new Promise(function(resolve) {
+              var reader = new FileReader();
+              reader.onload = function() { resolve(reader.result); };
+              reader.onerror = function() { resolve(src); };
+              reader.readAsDataURL(blob);
+            });
+          })
+          .catch(function() { return src; });
+      }
+
+      async function downloadWord(includeAnswers) {
         if (lastGeneratedQuestions.length === 0) {
           generateTest();
           if (lastGeneratedQuestions.length === 0) return;
         }
-        var testName     = document.getElementById("testName").value || "Grammar Test";
-        var studentName  = document.getElementById("studentName").value || "";
-        var testDate     = document.getElementById("testDate").value || "";
-        var totalMarks   = window._lastTotalMarks || "";
+        var testName = document.getElementById("testName").value || "Grammar Test";
+        var studentName = document.getElementById("studentName").value || "";
+        var testDate = document.getElementById("testDate").value || "";
+        var totalMarks = window._lastTotalMarks || "";
         var testDuration = document.getElementById("testDuration").value || "";
+
+        var imagePaths = [];
+        lastGeneratedQuestions.forEach(function(q) {
+          if (q.image && imagePaths.indexOf(q.image) === -1) imagePaths.push(q.image);
+        });
+        var imageBase64Map = {};
+        await Promise.all(imagePaths.map(async function(path) {
+          imageBase64Map[path] = await imgToBase64(path.replace(/ /g, '%20'));
+        }));
 
         var html =
           '<!DOCTYPE html><html><head><meta charset="UTF-8"><style>' +
@@ -1864,11 +2238,19 @@ function buildCustomPanel() {
         if (includeAnswers) html += '<p class="ak-lbl">ANSWER KEY - TEACHER USE ONLY</p>';
         html +=
           "<hr><table><tr>" +
-          '<td width="55%">Name: <u>' + (_esc(studentName) || "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") + "</u></td>" +
-          "<td>Date: <u>" + (_esc(testDate) || "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") + "</u></td>" +
+          '<td width="55%">Name: <u>' +
+          (_esc(studentName) || "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") +
+          "</u></td>" +
+          "<td>Date: <u>" +
+          (_esc(testDate) || "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") +
+          "</u></td>" +
           "</tr><tr>" +
-          "<td>Total Marks: " + _esc(totalMarks) + "</td>" +
-          "<td>Time: " + _esc(testDuration) + " mins</td>" +
+          "<td>Total Marks: " +
+          _esc(totalMarks) +
+          "</td>" +
+          "<td>Time: " +
+          _esc(testDuration) +
+          " mins</td>" +
           "</tr></table><hr>";
 
         var grouped = {};
@@ -1890,9 +2272,9 @@ function buildCustomPanel() {
           var ch = grouped[chKey];
           ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
-            html += '<div class="instr">' + _esc(ws.instruction).replace(/\n/g,"<br>") + "</div>";
+            html += '<div class="instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
             if (ws.image) {
-              html += '<img src="' + ws.image + '" style="max-width:90%;display:block;margin:10px auto;page-break-inside:avoid;">';
+              html += '<img src="' + (imageBase64Map[ws.image] || ws.image.replace(/ /g, '%20')) + '" style="max-width:90%;display:block;margin:10px auto;page-break-inside:avoid;">';
               if (includeAnswers) {
                 var imgAns = ws.questions[0] && ws.questions[0].answer;
                 if (imgAns && imgAns !== "vary") {
@@ -1900,15 +2282,17 @@ function buildCustomPanel() {
                 }
               }
             } else {
-              var sortedQ = ws.questions.slice().sort(function(a,b){ return a.qNum - b.qNum; });
-              sortedQ.forEach(function(q) {
-                html += '<div class="q">' + q.qNum + ". " + _esc(q.text).replace(/\n/g,"<br>");
+              var sortedQ = ws.questions.slice().sort(function (a, b) {
+                return a.qNum - b.qNum;
+              });
+              sortedQ.forEach(function (q) {
+                html += '<div class="q">' + q.qNum + ". " + _esc(q.text).replace(/\n/g, "<br>");
                 if (!includeAnswers) html += '<div class="ans-line"></div>';
                 html += "</div>";
               });
               if (includeAnswers) {
                 html += '<div style="margin-top:16px;font-weight:bold;color:#333;font-size:11pt;">Answers:</div>';
-                sortedQ.forEach(function(q) {
+                sortedQ.forEach(function (q) {
                   if (q.answer && q.answer !== "vary") {
                     html += '<div class="ans"><strong>' + q.qNum + ".</strong> " + _esc(q.answer) + "</div>";
                   } else {
@@ -1929,7 +2313,9 @@ function buildCustomPanel() {
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        setTimeout(function() { URL.revokeObjectURL(url); }, 100);
+        setTimeout(function () {
+          URL.revokeObjectURL(url);
+        }, 100);
       }
     </script>
   </body>

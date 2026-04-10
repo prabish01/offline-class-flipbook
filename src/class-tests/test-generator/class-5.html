@@ -6,7 +6,13 @@
     <title>Test Generator - Class 5</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-      h1 .fas, h2 .fas, .btn .fas, p .fas, label .fas { margin-right: 6px; }
+      h1 .fas,
+      h2 .fas,
+      .btn .fas,
+      p .fas,
+      label .fas {
+        margin-right: 6px;
+      }
       * {
         margin: 0;
         padding: 0;
@@ -741,7 +747,7 @@
           </div>
           <div class="info-field">
             <label for="studentName">Student Name</label>
-            <input type="text" id="studentName" placeholder="e.g., Riya Sharma" />
+            <input type="text" id="studentName" placeholder="e.g., Student's Name" />
           </div>
           <div class="info-field">
             <label for="testDate">Date</label>
@@ -1097,38 +1103,38 @@
       <!-- /chapters-section -->
 
       <!-- Generate Config Dialog -->
-      <div id="generateDialog" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2000;align-items:center;justify-content:center;">
-        <div style="background:white;border-radius:20px;padding:36px;max-width:480px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.3);font-family:'Comic Sans MS',cursive;">
-          <h2 style="color:#667eea;margin:0 0 6px;font-size:1.6rem;"><i class="fas fa-sliders" style="margin-right:8px;"></i>Configure Test</h2>
-          <p id="dlgSubtitle" style="color:#888;margin:0 0 24px;font-size:0.9rem;">Available from selected chapters: <strong id="dlgPicAvail">0</strong> picture &nbsp;|&nbsp; <strong id="dlgTextAvail">0</strong> text</p>
+      <div id="generateDialog" style="display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5); z-index: 2000; align-items: center; justify-content: center">
+        <div style="background: white; border-radius: 20px; padding: 36px; max-width: 480px; width: 90%; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); font-family: &quot;Comic Sans MS&quot;, cursive">
+          <h2 style="color: #667eea; margin: 0 0 6px; font-size: 1.6rem"><i class="fas fa-sliders" style="margin-right: 8px"></i>Configure Test</h2>
+          <p id="dlgSubtitle" style="color: #888; margin: 0 0 24px; font-size: 0.9rem">Available from selected chapters: <strong id="dlgPicAvail">0</strong> picture &nbsp;|&nbsp; <strong id="dlgTextAvail">0</strong> text</p>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px">
             <div>
-              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;"><i class="fas fa-image"></i> Picture questions</label>
-              <input type="number" id="dlgPicCount" min="0" value="0" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+              <label style="font-weight: bold; color: #333; display: block; margin-bottom: 6px"><i class="fas fa-image"></i> Picture questions</label>
+              <input type="number" id="dlgPicCount" min="0" value="0" style="width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; font-family: inherit; box-sizing: border-box" oninput="updateDlgTotal()" />
             </div>
             <div>
-              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;">Marks each</label>
-              <input type="number" id="dlgPicMarks" min="1" value="2" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+              <label style="font-weight: bold; color: #333; display: block; margin-bottom: 6px">Marks each</label>
+              <input type="number" id="dlgPicMarks" min="1" value="2" style="width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; font-family: inherit; box-sizing: border-box" oninput="updateDlgTotal()" />
             </div>
             <div>
-              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;"><i class="fas fa-pen"></i> Text questions</label>
-              <input type="number" id="dlgTextCount" min="0" value="0" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+              <label style="font-weight: bold; color: #333; display: block; margin-bottom: 6px"><i class="fas fa-pen"></i> Text questions</label>
+              <input type="number" id="dlgTextCount" min="0" value="0" style="width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; font-family: inherit; box-sizing: border-box" oninput="updateDlgTotal()" />
             </div>
             <div>
-              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;">Marks each</label>
-              <input type="number" id="dlgTextMarks" min="1" value="1" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+              <label style="font-weight: bold; color: #333; display: block; margin-bottom: 6px">Marks each</label>
+              <input type="number" id="dlgTextMarks" min="1" value="1" style="width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; font-family: inherit; box-sizing: border-box" oninput="updateDlgTotal()" />
             </div>
           </div>
 
-          <div style="background:#f0f0f0;border-radius:10px;padding:12px 16px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;">
-            <span style="font-weight:bold;color:#333;">Total Marks:</span>
-            <span id="dlgTotal" style="font-size:1.4rem;font-weight:bold;color:#667eea;">0</span>
+          <div style="background: #f0f0f0; border-radius: 10px; padding: 12px 16px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center">
+            <span style="font-weight: bold; color: #333">Total Marks:</span>
+            <span id="dlgTotal" style="font-size: 1.4rem; font-weight: bold; color: #667eea">0</span>
           </div>
 
-          <div style="display:flex;gap:12px;">
-            <button onclick="closeDlg()" style="flex:1;padding:14px;border:2px solid #e0e0e0;background:white;border-radius:50px;font-size:1rem;font-weight:bold;cursor:pointer;font-family:inherit;color:#666;">Cancel</button>
-            <button onclick="confirmGenerate()" style="flex:2;padding:14px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;border-radius:50px;font-size:1rem;font-weight:bold;cursor:pointer;font-family:inherit;">Generate Test</button>
+          <div style="display: flex; gap: 12px">
+            <button onclick="closeDlg()" style="flex: 1; padding: 14px; border: 2px solid #e0e0e0; background: white; border-radius: 50px; font-size: 1rem; font-weight: bold; cursor: pointer; font-family: inherit; color: #666">Cancel</button>
+            <button onclick="confirmGenerate()" style="flex: 2; padding: 14px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 50px; font-size: 1rem; font-weight: bold; cursor: pointer; font-family: inherit">Generate Test</button>
           </div>
         </div>
       </div>
@@ -1155,11 +1161,10 @@
         </div>
       </div>
 
-      <div class="action-buttons" style="margin-top: 20px;">
+      <div class="action-buttons" style="margin-top: 20px">
         <button class="btn btn-preview" onclick="generateTest()">&#128065;&#65039; Generate Test</button>
         <span class="available-count" id="actionAvail">Select chapters to begin</span>
       </div>
-
     </div>
 
     <script>
@@ -1169,23 +1174,21 @@
 
       function renderImgAnswer(ans, forWord) {
         if (!ans || ans === "vary") return "";
-        var hdr = forWord
-          ? '<div style="margin-top:8px;font-weight:bold;color:#333;font-size:11pt;">Answers:</div>'
-          : '<div class="doc-answers-header" style="margin-top:8px;">Answers:</div>';
+        var hdr = forWord ? '<div style="margin-top:8px;font-weight:bold;color:#333;font-size:11pt;">Answers:</div>' : '<div class="doc-answers-header" style="margin-top:8px;">Answers:</div>';
         if (ans.indexOf(" → ") !== -1) {
           var rows = "";
-          ans.split(" | ").forEach(function(pair) {
+          ans.split(" | ").forEach(function (pair) {
             var parts = pair.split(" → ");
-            rows += '<tr><td style="padding:3px 10px 3px 0;font-weight:bold;color:#2d6a4f;">' + _esc(parts[0]) + '</td>';
+            rows += '<tr><td style="padding:3px 10px 3px 0;font-weight:bold;color:#2d6a4f;">' + _esc(parts[0]) + "</td>";
             for (var i = 1; i < parts.length; i++) {
-              rows += '<td style="padding:3px 10px 3px 0;">→ ' + _esc(parts[i]) + '</td>';
+              rows += '<td style="padding:3px 10px 3px 0;">→ ' + _esc(parts[i]) + "</td>";
             }
-            rows += '</tr>';
+            rows += "</tr>";
           });
-          return hdr + '<table style="border-collapse:collapse;margin:6px 0 12px;">' + rows + '</table>';
+          return hdr + '<table style="border-collapse:collapse;margin:6px 0 12px;">' + rows + "</table>";
         }
-        if (forWord) return hdr + '<div class="ans">' + _esc(ans) + '</div>';
-        return hdr + '<div class="doc-answer">' + _esc(ans) + '</div>';
+        if (forWord) return hdr + '<div class="ans">' + _esc(ans) + "</div>";
+        return hdr + '<div class="doc-answer">' + _esc(ans) + "</div>";
       }
 
       const questionBank = {
@@ -2729,7 +2732,12 @@
             {
               image: IMG + "Vocabulary - Chapter 1 A.png",
               instruction: "A. Fill in the blanks with the right adjective to complete the simile.",
-              questions: [{ text: "[Image Exercise]", answer: "clear (as crystal), smooth (as marble), heavy (as lead), hard (as steel), hungry (as a wolf), dark (as midnight), hot (as fire), old (as the hills), proud (as a peacock), fresh (as a daisy), slow (as a snail), round (as a ball), grey (as ash), fragile (as glass)" }],
+              questions: [
+                {
+                  text: "[Image Exercise]",
+                  answer: "clear (as crystal), smooth (as marble), heavy (as lead), hard (as steel), hungry (as a wolf), dark (as midnight), hot (as fire), old (as the hills), proud (as a peacock), fresh (as a daisy), slow (as a snail), round (as a ball), grey (as ash), fragile (as glass)",
+                },
+              ],
             },
           ],
         },
@@ -3120,7 +3128,11 @@
                 { text: "Why did the crow think of using pebbles?", options: ["a. He was playful.", "b. He wanted to test his strength.", "c. He was clever and needed to solve the problem.", "d. He wanted to decorate the pitcher."], answer: "c. He was clever and needed to solve the problem." },
                 { text: "What quality of the crow is highlighted in the story?", options: ["a. cleverness", "b. greed", "c. laziness", "d. foolishness"], answer: "a. cleverness" },
                 { text: "What does the story suggest about challenges?", options: ["a. They cannot be solved.", "b. They require strength.", "c. They can be overcome with intelligence.", "d. They should be avoided."], answer: "c. They can be overcome with intelligence." },
-                { text: "Why is the moral 'Necessity is the mother of invention'?", options: ["a. because the crow invented a game", "b. because the crow's need made him think of a new solution", "c. because pebbles are useful", "d. because pitchers are helpful"], answer: "b. because the crow's need made him think of a new solution" },
+                {
+                  text: "Why is the moral 'Necessity is the mother of invention'?",
+                  options: ["a. because the crow invented a game", "b. because the crow's need made him think of a new solution", "c. because pebbles are useful", "d. because pitchers are helpful"],
+                  answer: "b. because the crow's need made him think of a new solution",
+                },
                 { text: "What lesson can you learn from the crow?", options: ["a. Use wisdom to solve problems.", "b. Give up when things are hard.", "c. Always ask others for help.", "d. Avoid hard work."], answer: "a. Use wisdom to solve problems." },
                 { text: "If the pitcher had been lighter, what might the crow have done instead?", options: ["a. broken it", "b. carried it away", "c. ignored it", "d. pushed it over to spill the water"], answer: "d. pushed it over to spill the water" },
               ],
@@ -3142,7 +3154,11 @@
                 { text: "The word 'inserted' in the story means:", options: ["a. pulled out", "b. placed inside", "c. broke", "d. opened"], answer: "b. placed inside" },
                 { text: "What did Aarav find inside the box?", options: ["a. a key", "b. a diary", "c. money", "d. letters"], answer: "b. a diary" },
                 { text: "How did Aarav feel while reading the diary?", options: ["a. bored", "b. angry", "c. curious", "d. sleepy"], answer: "c. curious" },
-                { text: "Why did Aarav promise himself to keep the diary safe?", options: ["a. because it contained stories from his grandfather's youth", "b. because it had money", "c. because the letter asked him to", "d. because it was very old"], answer: "a. because it contained stories from his grandfather's youth" },
+                {
+                  text: "Why did Aarav promise himself to keep the diary safe?",
+                  options: ["a. because it contained stories from his grandfather's youth", "b. because it had money", "c. because the letter asked him to", "d. because it was very old"],
+                  answer: "a. because it contained stories from his grandfather's youth",
+                },
                 { text: "What can we infer about Aarav's grandfather?", options: ["a. He never went on adventures.", "b. He enjoyed adventures and storytelling.", "c. He wrote letters every day.", "d. He disliked keeping diaries."], answer: "b. He enjoyed adventures and storytelling." },
                 { text: "Why did Aarav laugh at some parts of the diary?", options: ["a. because some incidents were funny", "b. because he didn't understand it", "c. because he was nervous", "d. because the box was small"], answer: "a. because some incidents were funny" },
                 { text: "The word 'connection' in the story means:", options: ["a. relationship or bond", "b. letter", "c. key", "d. diary"], answer: "a. relationship or bond" },
@@ -3164,11 +3180,19 @@
                 { text: "When does the bat lie in bed?", options: ["a. in the morning", "b. at noon", "c. at night", "d. at sunset"], answer: "a. in the morning" },
                 { text: "What do flowers and children do at night?", options: ["a. play under the moonlight", "b. cuddle to sleep", "c. watch the stars", "d. sing songs"], answer: "b. cuddle to sleep" },
                 { text: "Why does the poet say the moon has a face like a clock?", options: ["a. because it is round and bright", "b. because it shows the time", "c. because it shines in the night", "d. because it has numbers"], answer: "a. because it is round and bright" },
-                { text: "Why are thieves mentioned in the poem?", options: ["a. to show that the moon shines even on wrongdoers", "b. to show that the moon hides them", "c. to suggest thieves love beauty", "d. to compare them with animals"], answer: "a. to show that the moon shines even on wrongdoers" },
+                {
+                  text: "Why are thieves mentioned in the poem?",
+                  options: ["a. to show that the moon shines even on wrongdoers", "b. to show that the moon hides them", "c. to suggest thieves love beauty", "d. to compare them with animals"],
+                  answer: "a. to show that the moon shines even on wrongdoers",
+                },
                 { text: "Why do 'things that belong to the day' cuddle to sleep?", options: ["a. because they are afraid of the moon", "b. because night is their time to rest", "c. because they are lazy", "d. because the moon hides them"], answer: "b. because night is their time to rest" },
                 { text: "What does the poem suggest about the contrast between day and night?", options: ["a. Both are the same.", "b. The moon controls everything.", "c. Day is full of animals.", "d. Night is quieter and suited for rest."], answer: "d. Night is quieter and suited for rest." },
                 { text: "What mood does the moonlight create in the poem?", options: ["a. fearful", "b. cheerful", "c. calm and magical", "d. busy and noisy"], answer: "c. calm and magical" },
-                { text: "What lesson about nature can we learn from the poem?", options: ["a. Every creature has its own time to be active.", "b. The moon controls animals.", "c. Children should sleep early.", "d. Cats and dogs should not be noisy."], answer: "a. Every creature has its own time to be active." },
+                {
+                  text: "What lesson about nature can we learn from the poem?",
+                  options: ["a. Every creature has its own time to be active.", "b. The moon controls animals.", "c. Children should sleep early.", "d. Cats and dogs should not be noisy."],
+                  answer: "a. Every creature has its own time to be active.",
+                },
               ],
             },
           ],
@@ -3217,7 +3241,11 @@
                 { text: "Where did the violet grow?", options: ["a. in a rosy bower", "b. in a green and shady bed", "c. by the roadside", "d. in a garden"], answer: "b. in a green and shady bed" },
                 { text: "How did the stalk of the violet appear?", options: ["a. tall and upright", "b. strong and thick", "c. bent and hanging its head", "d. weak but straight"], answer: "c. bent and hanging its head" },
                 { text: "Why does the violet 'hang its head'?", options: ["a. because it is tired", "b. to avoid sunlight", "c. because it is weak", "d. to show modesty"], answer: "d. to show modesty" },
-                { text: "The violet 'might have graced a rosy bower'. What does this suggest?", options: ["a. It deserved a more beautiful place.", "b. It could not survive in sunlight.", "c. It preferred roses for company.", "d. It disliked shady places."], answer: "a. It deserved a more beautiful place." },
+                {
+                  text: "The violet 'might have graced a rosy bower'. What does this suggest?",
+                  options: ["a. It deserved a more beautiful place.", "b. It could not survive in sunlight.", "c. It preferred roses for company.", "d. It disliked shady places."],
+                  answer: "a. It deserved a more beautiful place.",
+                },
                 { text: "What quality of the violet is highlighted by its 'modest tints'?", options: ["a. simplicity", "b. wealth", "c. brightness", "d. pride"], answer: "a. simplicity" },
                 { text: "What did the violet spread within the silent shade?", options: ["a. bright light", "b. sweet perfume", "c. lovely colours", "d. joyful sounds"], answer: "b. sweet perfume" },
                 { text: "What does the poet wish to learn from the violet?", options: ["a. to grow tall", "b. to hide from others", "c. to live in humility", "d. to shine brightly"], answer: "c. to live in humility" },
@@ -3238,7 +3266,11 @@
                 { text: "How tall is Mount Vesuvius?", options: ["a. 1,281 metres", "b. 2,000 metres", "c. 500 metres", "d. 3,500 metres"], answer: "a. 1,281 metres" },
                 { text: "In which year did the most catastrophic eruption occur?", options: ["a. 44 BCE", "b. 79 CE", "c. 500 CE", "d. 1944 CE"], answer: "b. 79 CE" },
                 { text: "What does the word 'catastrophic' most nearly mean in the text?", options: ["a. joyful", "b. peaceful", "c. disastrous", "d. beautiful"], answer: "c. disastrous" },
-                { text: "What does the preservation of Pompeii and Herculaneum show about volcanic ash?", options: ["a. It destroys everything completely.", "b. It can preserve objects and buildings for centuries.", "c. It makes cities disappear forever.", "d. It only affects plants."], answer: "b. It can preserve objects and buildings for centuries." },
+                {
+                  text: "What does the preservation of Pompeii and Herculaneum show about volcanic ash?",
+                  options: ["a. It destroys everything completely.", "b. It can preserve objects and buildings for centuries.", "c. It makes cities disappear forever.", "d. It only affects plants."],
+                  answer: "b. It can preserve objects and buildings for centuries.",
+                },
                 { text: "When did the last major eruption take place?", options: ["a. 1920", "b. 1944", "c. 1960", "d. 2001"], answer: "b. 1944" },
                 { text: "Which large city lies close to Vesuvius?", options: ["a. Rome", "b. Milan", "c. Naples", "d. Florence"], answer: "c. Naples" },
                 { text: "Why is Mount Vesuvius considered dangerous today?", options: ["a. It erupts every year.", "b. It is close to the sea.", "c. It is the tallest volcano in Europe.", "d. It is near a heavily populated area."], answer: "d. It is near a heavily populated area." },
@@ -3283,7 +3315,8 @@
       }
 
       function countByType(keys) {
-        let pic = 0, text = 0;
+        let pic = 0,
+          text = 0;
         keys.forEach((k) => {
           const ch = questionBank[k];
           if (!ch) return;
@@ -3313,7 +3346,7 @@
         const picMarks = parseInt(document.getElementById("dlgPicMarks").value) || 0;
         const textCount = parseInt(document.getElementById("dlgTextCount").value) || 0;
         const textMarks = parseInt(document.getElementById("dlgTextMarks").value) || 0;
-        document.getElementById("dlgTotal").textContent = (picCount * picMarks) + (textCount * textMarks);
+        document.getElementById("dlgTotal").textContent = picCount * picMarks + textCount * textMarks;
       }
 
       function closeDlg() {
@@ -3323,19 +3356,27 @@
       // Wrapper called by Generate Test button
       function generateTest() {
         if (currentMode === "custom") {
-          var picSel = 0, textSel = 0;
-          document.querySelectorAll(".custom-q-cb:checked").forEach(function(cb) {
+          var picSel = 0,
+            textSel = 0;
+          document.querySelectorAll(".custom-q-cb:checked").forEach(function (cb) {
             var chKey = cb.getAttribute("data-ch-key");
             var wsIdx = parseInt(cb.getAttribute("data-ws-idx"));
-            if (questionBank[chKey].worksheets[wsIdx].image) picSel++; else textSel++;
+            if (questionBank[chKey].worksheets[wsIdx].image) picSel++;
+            else textSel++;
           });
-          if (picSel + textSel === 0) { alert("Please tick at least one question in Custom mode!"); return; }
-          document.getElementById("dlgSubtitle").innerHTML = 'Selected questions: <strong id="dlgPicAvail">' + picSel + '</strong> image &nbsp;|&nbsp; <strong id="dlgTextAvail">' + textSel + '</strong> text &nbsp;(set marks below)';
+          if (picSel + textSel === 0) {
+            alert("Please tick at least one question in Custom mode!");
+            return;
+          }
+          document.getElementById("dlgSubtitle").innerHTML = 'Selected questions: <strong id="dlgPicAvail">' + picSel + '</strong> image &nbsp;|&nbsp; <strong id="dlgTextAvail">' + textSel + "</strong> text &nbsp;(set marks below)";
           var picCountEl = document.getElementById("dlgPicCount");
           var textCountEl = document.getElementById("dlgTextCount");
-          picCountEl.value = picSel; textCountEl.value = textSel;
-          picCountEl.readOnly = true; textCountEl.readOnly = true;
-          picCountEl.style.background = "#f5f5f5"; textCountEl.style.background = "#f5f5f5";
+          picCountEl.value = picSel;
+          textCountEl.value = textSel;
+          picCountEl.readOnly = true;
+          textCountEl.readOnly = true;
+          picCountEl.style.background = "#f5f5f5";
+          textCountEl.style.background = "#f5f5f5";
           updateDlgTotal();
           document.getElementById("generateDialog").style.display = "flex";
           return;
@@ -3356,28 +3397,39 @@
       }
 
       function confirmGenerate() {
-        const picMarks  = parseInt(document.getElementById("dlgPicMarks").value)  || 1;
+        const picMarks = parseInt(document.getElementById("dlgPicMarks").value) || 1;
         const textMarks = parseInt(document.getElementById("dlgTextMarks").value) || 1;
         closeDlg();
 
         if (currentMode === "custom") {
           const selected = [];
-          document.querySelectorAll(".custom-q-cb:checked").forEach(function(cb) {
+          document.querySelectorAll(".custom-q-cb:checked").forEach(function (cb) {
             const chKey = cb.getAttribute("data-ch-key");
             const wsIdx = parseInt(cb.getAttribute("data-ws-idx"));
             const qIdx = parseInt(cb.getAttribute("data-q-idx"));
-            const ch = questionBank[chKey]; const ws = ch.worksheets[wsIdx]; const q = ws.questions[qIdx];
-            selected.push({ chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx,
-              instruction: ws.instruction, image: ws.image || null, text: q.text,
-              answer: q.answer || null, options: q.options || null, wideOptions: q.wideOptions || false,
-              lines: q.lines || 0, marks: ws.image ? picMarks : textMarks });
+            const ch = questionBank[chKey];
+            const ws = ch.worksheets[wsIdx];
+            const q = ws.questions[qIdx];
+            selected.push({
+              chapterKey: chKey,
+              chapterName: ch.name,
+              worksheetIdx: wsIdx,
+              instruction: ws.instruction,
+              image: ws.image || null,
+              text: q.text,
+              answer: q.answer || null,
+              options: q.options || null,
+              wideOptions: q.wideOptions || false,
+              lines: q.lines || 0,
+              marks: ws.image ? picMarks : textMarks,
+            });
           });
           if (selected.length === 0) return;
           const grouped = new Map();
-          Object.keys(questionBank).forEach(function(k) {
+          Object.keys(questionBank).forEach(function (k) {
             grouped.set(k, { name: questionBank[k].name, worksheets: new Map() });
           });
-          selected.forEach(function(q) {
+          selected.forEach(function (q) {
             const chGroup = grouped.get(q.chapterKey);
             if (!chGroup) return;
             if (!chGroup.worksheets.has(q.worksheetIdx)) {
@@ -3385,25 +3437,25 @@
             }
             chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
           });
-          let qNum = 1; lastGeneratedQuestions = []; let totalMarks = 0;
-          grouped.forEach(function(chData, chKey) {
-            chData.worksheets.forEach(function(wsData, wsIdx) {
-              wsData.questions.forEach(function(q) {
-                lastGeneratedQuestions.push({ chapterKey: chKey, chapterName: chData.name,
-                  worksheetIdx: wsIdx, instruction: wsData.instruction, image: wsData.image,
-                  text: q.text, answer: q.answer, options: q.options, wideOptions: q.wideOptions,
-                  lines: q.lines, marks: q.marks, qNum: qNum++ });
+          let qNum = 1;
+          lastGeneratedQuestions = [];
+          let totalMarks = 0;
+          grouped.forEach(function (chData, chKey) {
+            chData.worksheets.forEach(function (wsData, wsIdx) {
+              wsData.questions.forEach(function (q) {
+                lastGeneratedQuestions.push({ chapterKey: chKey, chapterName: chData.name, worksheetIdx: wsIdx, instruction: wsData.instruction, image: wsData.image, text: q.text, answer: q.answer, options: q.options, wideOptions: q.wideOptions, lines: q.lines, marks: q.marks, qNum: qNum++ });
                 totalMarks += q.marks;
               });
             });
           });
-          window._lastPicMarks = picMarks; window._lastTextMarks = textMarks;
+          window._lastPicMarks = picMarks;
+          window._lastTextMarks = textMarks;
           window._lastTotalMarks = totalMarks;
           updateWordPreviews();
           return;
         }
 
-        const picCount  = parseInt(document.getElementById("dlgPicCount").value)  || 0;
+        const picCount = parseInt(document.getElementById("dlgPicCount").value) || 0;
         const textCount = parseInt(document.getElementById("dlgTextCount").value) || 0;
         document.getElementById("dlgPicCount").readOnly = false;
         document.getElementById("dlgTextCount").readOnly = false;
@@ -3411,7 +3463,8 @@
         document.getElementById("dlgTextCount").style.background = "";
 
         const selectedKeys = getSelectedChapterKeys();
-        const picPool = [], textPool = [];
+        const picPool = [],
+          textPool = [];
 
         selectedKeys.forEach((chKey) => {
           const ch = questionBank[chKey];
@@ -3419,10 +3472,16 @@
           ch.worksheets.forEach((ws, wsIdx) => {
             ws.questions.forEach((q) => {
               const entry = {
-                chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx,
-                instruction: ws.instruction, image: ws.image || null,
-                text: q.text, answer: q.answer || null,
-                options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0,
+                chapterKey: chKey,
+                chapterName: ch.name,
+                worksheetIdx: wsIdx,
+                instruction: ws.instruction,
+                image: ws.image || null,
+                text: q.text,
+                answer: q.answer || null,
+                options: q.options || null,
+                wideOptions: q.wideOptions || false,
+                lines: q.lines || 0,
               };
               if (ws.image) picPool.push(entry);
               else textPool.push(entry);
@@ -3430,11 +3489,11 @@
           });
         });
 
-        const shuffledPic  = shuffleArray(picPool).slice(0, picCount);
+        const shuffledPic = shuffleArray(picPool).slice(0, picCount);
         const shuffledText = shuffleArray(textPool).slice(0, textCount);
         const selected = [...shuffledPic, ...shuffledText];
 
-        if (shuffledPic.length < picCount)  alert("Only " + shuffledPic.length  + " picture questions available. Showing all.");
+        if (shuffledPic.length < picCount) alert("Only " + shuffledPic.length + " picture questions available. Showing all.");
         if (shuffledText.length < textCount) alert("Only " + shuffledText.length + " text questions available. Showing all.");
 
         // Group by chapter maintaining order
@@ -3460,19 +3519,26 @@
           sortedWs.forEach(([wsIdx, wsData]) => {
             wsData.questions.forEach((q) => {
               lastGeneratedQuestions.push({
-                qNum: qNum++, chapterKey: chKey, chapterName: chData.name,
-                worksheetIdx: wsIdx, instruction: wsData.instruction,
-                image: wsData.image || null, answer: q.answer || null, text: q.text,
-                options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0,
+                qNum: qNum++,
+                chapterKey: chKey,
+                chapterName: chData.name,
+                worksheetIdx: wsIdx,
+                instruction: wsData.instruction,
+                image: wsData.image || null,
+                answer: q.answer || null,
+                text: q.text,
+                options: q.options || null,
+                wideOptions: q.wideOptions || false,
+                lines: q.lines || 0,
                 marks: wsData.image ? picMarks : textMarks,
               });
             });
           });
         });
 
-        window._lastPicMarks   = picMarks;
-        window._lastTextMarks  = textMarks;
-        window._lastTotalMarks = (shuffledPic.length * picMarks) + (shuffledText.length * textMarks);
+        window._lastPicMarks = picMarks;
+        window._lastTextMarks = textMarks;
+        window._lastTotalMarks = shuffledPic.length * picMarks + shuffledText.length * textMarks;
         updateWordPreviews();
       }
 
@@ -3594,7 +3660,7 @@
               var id = "cq_" + chKey + "_" + wsIdx + "_" + qIdx;
               var contentHtml;
               if (ws.image) {
-                var imgSrc = ws.image.replace(/ /g, '%20');
+                var imgSrc = ws.image.replace(/ /g, "%20");
                 contentHtml = '<img src="' + imgSrc + '" alt="Exercise image" style="max-width:320px;max-height:180px;object-fit:contain;border-radius:6px;margin-top:4px;display:block;">';
               } else {
                 var preview = q.text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -3602,11 +3668,23 @@
                 contentHtml = '<span class="custom-q-text">' + preview + "</span>";
               }
               li.innerHTML =
-                '<label for="' + id + '" style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;width:100%;">' +
-                '<input type="checkbox" id="' + id + '" class="custom-q-cb"' +
-                ' data-ch-key="' + chKey + '" data-ws-idx="' + wsIdx + '" data-q-idx="' + qIdx + '"' +
+                '<label for="' +
+                id +
+                '" style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;width:100%;">' +
+                '<input type="checkbox" id="' +
+                id +
+                '" class="custom-q-cb"' +
+                ' data-ch-key="' +
+                chKey +
+                '" data-ws-idx="' +
+                wsIdx +
+                '" data-q-idx="' +
+                qIdx +
+                '"' +
                 ' style="margin-top:3px;cursor:pointer;accent-color:#667eea;flex-shrink:0;" onchange="updateCustomPreview()">' +
-                '<div style="flex:1;">' + contentHtml + '</div></label>';
+                '<div style="flex:1;">' +
+                contentHtml +
+                "</div></label>";
               ul.appendChild(li);
             });
             wsDiv.appendChild(ul);
@@ -3636,7 +3714,6 @@
         // No-op: live preview removed. Count is shown in dialog when Generate is clicked.
       }
 
-
       // Render Word-style previews in both panels
       function updateWordPreviews() {
         if (lastGeneratedQuestions.length === 0) {
@@ -3663,47 +3740,54 @@
           }
           grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
         });
-        var studentHtml = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + '</div>';
-        studentHtml += '<div class="doc-meta"><div>Name: ' + (_esc(studentName) || '________________') + ' &nbsp;&nbsp; Date: ' + (_esc(testDate) || '____________') + '</div>';
-        studentHtml += '<div>Total Marks: ' + _esc(totalMarks) + ' &nbsp;&nbsp; Time: ' + _esc(testDuration) + ' mins</div></div>';
+        var studentHtml = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + "</div>";
+        studentHtml += '<div class="doc-meta"><div>Name: ' + (_esc(studentName) || "________________") + " &nbsp;&nbsp; Date: " + (_esc(testDate) || "____________") + "</div>";
+        studentHtml += "<div>Total Marks: " + _esc(totalMarks) + " &nbsp;&nbsp; Time: " + _esc(testDuration) + " mins</div></div>";
         chapterOrder.forEach(function (chKey) {
           var ch = grouped[chKey];
           ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
-            studentHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + '</div>';
+            studentHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
             if (ws.image) {
               studentHtml += '<img src="' + ws.image + '" style="max-width:100%;margin:8px 0;" />';
             } else {
-              ws.questions.slice().sort(function (a, b) { return a.qNum - b.qNum; }).forEach(function (q) {
-                studentHtml += '<div class="doc-question">' + q.qNum + '. ' + _esc(q.text).replace(/\n/g, "<br>") + '</div>';
-              });
+              ws.questions
+                .slice()
+                .sort(function (a, b) {
+                  return a.qNum - b.qNum;
+                })
+                .forEach(function (q) {
+                  studentHtml += '<div class="doc-question">' + q.qNum + ". " + _esc(q.text).replace(/\n/g, "<br>") + "</div>";
+                });
             }
           });
         });
         document.getElementById("studentPreview").innerHTML = studentHtml;
-        var teacherHtml = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + '</div>';
+        var teacherHtml = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + "</div>";
         teacherHtml += '<div class="doc-ak-label">ANSWER KEY - TEACHER USE ONLY</div>';
-        teacherHtml += '<div class="doc-meta"><div>Name: ' + (_esc(studentName) || '________________') + ' &nbsp;&nbsp; Date: ' + (_esc(testDate) || '____________') + '</div>';
-        teacherHtml += '<div>Total Marks: ' + _esc(totalMarks) + ' &nbsp;&nbsp; Time: ' + _esc(testDuration) + ' mins</div></div>';
+        teacherHtml += '<div class="doc-meta"><div>Name: ' + (_esc(studentName) || "________________") + " &nbsp;&nbsp; Date: " + (_esc(testDate) || "____________") + "</div>";
+        teacherHtml += "<div>Total Marks: " + _esc(totalMarks) + " &nbsp;&nbsp; Time: " + _esc(testDuration) + " mins</div></div>";
         chapterOrder.forEach(function (chKey) {
           var ch = grouped[chKey];
           ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
-            teacherHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + '</div>';
+            teacherHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
             if (ws.image) {
               teacherHtml += '<img src="' + ws.image + '" style="max-width:100%;margin:8px 0;" />';
               teacherHtml += renderImgAnswer(ws.questions[0] && ws.questions[0].answer, false);
             } else {
-              var sorted = ws.questions.slice().sort(function (a, b) { return a.qNum - b.qNum; });
+              var sorted = ws.questions.slice().sort(function (a, b) {
+                return a.qNum - b.qNum;
+              });
               sorted.forEach(function (q) {
-                teacherHtml += '<div class="doc-question">' + q.qNum + '. ' + _esc(q.text).replace(/\n/g, "<br>") + '</div>';
+                teacherHtml += '<div class="doc-question">' + q.qNum + ". " + _esc(q.text).replace(/\n/g, "<br>") + "</div>";
               });
               teacherHtml += '<div class="doc-answers-header">Answers:</div>';
               sorted.forEach(function (q) {
                 if (q.answer && q.answer !== "vary") {
-                  teacherHtml += '<div class="doc-answer">' + q.qNum + '. ' + _esc(q.answer) + '</div>';
+                  teacherHtml += '<div class="doc-answer">' + q.qNum + ". " + _esc(q.answer) + "</div>";
                 } else {
-                  teacherHtml += '<div class="doc-answer" style="color:#999;">' + q.qNum + '. Answers may vary</div>';
+                  teacherHtml += '<div class="doc-answer" style="color:#999;">' + q.qNum + ". Answers may vary</div>";
                 }
               });
             }
@@ -3719,7 +3803,21 @@
         return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
       }
 
-      function downloadWord(includeAnswers) {
+      function imgToBase64(src) {
+        return fetch(src)
+          .then(function(r) { return r.blob(); })
+          .then(function(blob) {
+            return new Promise(function(resolve) {
+              var reader = new FileReader();
+              reader.onload = function() { resolve(reader.result); };
+              reader.onerror = function() { resolve(src); };
+              reader.readAsDataURL(blob);
+            });
+          })
+          .catch(function() { return src; });
+      }
+
+      async function downloadWord(includeAnswers) {
         if (lastGeneratedQuestions.length === 0) {
           generateTest();
           if (lastGeneratedQuestions.length === 0) return;
@@ -3729,6 +3827,15 @@
         var testDate = document.getElementById("testDate").value || "";
         var totalMarks = document.getElementById("totalMarks").value || "";
         var testDuration = document.getElementById("testDuration").value || "";
+
+        var imagePaths = [];
+        lastGeneratedQuestions.forEach(function(q) {
+          if (q.image && imagePaths.indexOf(q.image) === -1) imagePaths.push(q.image);
+        });
+        var imageBase64Map = {};
+        await Promise.all(imagePaths.map(async function(path) {
+          imageBase64Map[path] = await imgToBase64(path.replace(/ /g, '%20'));
+        }));
 
         var html =
           '<!DOCTYPE html><html><head><meta charset="UTF-8"><style>' +
@@ -3785,7 +3892,7 @@
             var ws = ch.worksheets[wsKey];
             html += '<div class="instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
             if (ws.image) {
-              html += '<img src="' + ws.image + '" style="max-width:100%;margin:8px 0;" />';
+              html += '<img src="' + (imageBase64Map[ws.image] || ws.image.replace(/ /g, '%20')) + '" style="max-width:100%;margin:8px 0;" />';
               if (includeAnswers) {
                 html += renderImgAnswer(ws.questions[0] && ws.questions[0].answer, true);
               }
@@ -3834,13 +3941,17 @@
 
       // ─── INJECT PICTURE/TEXT BADGES ─────────────────────────────────────────
       (function injectBadges() {
-        document.querySelectorAll(".chapter-card").forEach(function(card) {
+        document.querySelectorAll(".chapter-card").forEach(function (card) {
           var cb = card.querySelector("input");
           var chKey = cb ? cb.id : null;
           var ch = chKey ? questionBank[chKey] : null;
           if (!ch || !ch.worksheets) return;
-          var hasImage = ch.worksheets.some(function(ws) { return !!ws.image; });
-          var hasText = ch.worksheets.some(function(ws) { return !ws.image && ws.questions && ws.questions.length > 0; });
+          var hasImage = ch.worksheets.some(function (ws) {
+            return !!ws.image;
+          });
+          var hasText = ch.worksheets.some(function (ws) {
+            return !ws.image && ws.questions && ws.questions.length > 0;
+          });
           var type = hasImage && hasText ? "mixed" : hasImage ? "picture" : "text";
           var p = card.querySelector("p");
           if (p) {

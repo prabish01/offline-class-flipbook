@@ -6,7 +6,13 @@
     <title>Test Generator - Class 6</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-      h1 .fas, h2 .fas, .btn .fas, p .fas, label .fas { margin-right: 6px; }
+      h1 .fas,
+      h2 .fas,
+      .btn .fas,
+      p .fas,
+      label .fas {
+        margin-right: 6px;
+      }
       * {
         margin: 0;
         padding: 0;
@@ -825,7 +831,7 @@
           </div>
           <div class="info-field">
             <label for="studentName">Student Name</label>
-            <input type="text" id="studentName" placeholder="Student's Name" />
+            <input type="text" id="studentName" placeholder="e.g., Student's Name" />
           </div>
           <div class="info-field">
             <label for="testDate">Date</label>
@@ -833,7 +839,7 @@
           </div>
           <div class="info-field">
             <label for="testDuration">Test Duration (mins)</label>
-            <input type="number" id="testDuration" placeholder="e.g., 60" value="60" />
+            <input type="number" id="testDuration" placeholder="e.g., 30" value="30" />
           </div>
           <div class="info-field">
             <label for="totalMarks">Total Marks</label>
@@ -1104,38 +1110,38 @@
       <!-- /chapters-section -->
 
       <!-- Generate Config Dialog -->
-      <div id="generateDialog" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2000;align-items:center;justify-content:center;">
-        <div style="background:white;border-radius:20px;padding:36px;max-width:480px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.3);font-family:'Comic Sans MS',cursive;">
-          <h2 style="color:#667eea;margin:0 0 6px;font-size:1.6rem;"><i class="fas fa-sliders" style="margin-right:8px;"></i>Configure Test</h2>
-          <p id="dlgSubtitle" style="color:#888;margin:0 0 24px;font-size:0.9rem;">Available from selected chapters: <strong id="dlgPicAvail">0</strong> picture &nbsp;|&nbsp; <strong id="dlgTextAvail">0</strong> text</p>
+      <div id="generateDialog" style="display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5); z-index: 2000; align-items: center; justify-content: center">
+        <div style="background: white; border-radius: 20px; padding: 36px; max-width: 480px; width: 90%; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); font-family: &quot;Comic Sans MS&quot;, cursive">
+          <h2 style="color: #667eea; margin: 0 0 6px; font-size: 1.6rem"><i class="fas fa-sliders" style="margin-right: 8px"></i>Configure Test</h2>
+          <p id="dlgSubtitle" style="color: #888; margin: 0 0 24px; font-size: 0.9rem">Available from selected chapters: <strong id="dlgPicAvail">0</strong> picture &nbsp;|&nbsp; <strong id="dlgTextAvail">0</strong> text</p>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px">
             <div>
-              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;"><i class="fas fa-image"></i> Picture questions</label>
-              <input type="number" id="dlgPicCount" min="0" value="0" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+              <label style="font-weight: bold; color: #333; display: block; margin-bottom: 6px"><i class="fas fa-image"></i> Picture questions</label>
+              <input type="number" id="dlgPicCount" min="0" value="0" style="width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; font-family: inherit; box-sizing: border-box" oninput="updateDlgTotal()" />
             </div>
             <div>
-              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;">Marks each</label>
-              <input type="number" id="dlgPicMarks" min="1" value="2" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+              <label style="font-weight: bold; color: #333; display: block; margin-bottom: 6px">Marks each</label>
+              <input type="number" id="dlgPicMarks" min="1" value="2" style="width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; font-family: inherit; box-sizing: border-box" oninput="updateDlgTotal()" />
             </div>
             <div>
-              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;"><i class="fas fa-pen"></i> Text questions</label>
-              <input type="number" id="dlgTextCount" min="0" value="0" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+              <label style="font-weight: bold; color: #333; display: block; margin-bottom: 6px"><i class="fas fa-pen"></i> Text questions</label>
+              <input type="number" id="dlgTextCount" min="0" value="0" style="width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; font-family: inherit; box-sizing: border-box" oninput="updateDlgTotal()" />
             </div>
             <div>
-              <label style="font-weight:bold;color:#333;display:block;margin-bottom:6px;">Marks each</label>
-              <input type="number" id="dlgTextMarks" min="1" value="1" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;" oninput="updateDlgTotal()" />
+              <label style="font-weight: bold; color: #333; display: block; margin-bottom: 6px">Marks each</label>
+              <input type="number" id="dlgTextMarks" min="1" value="1" style="width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; font-family: inherit; box-sizing: border-box" oninput="updateDlgTotal()" />
             </div>
           </div>
 
-          <div style="background:#f0f0f0;border-radius:10px;padding:12px 16px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;">
-            <span style="font-weight:bold;color:#333;">Total Marks:</span>
-            <span id="dlgTotal" style="font-size:1.4rem;font-weight:bold;color:#667eea;">0</span>
+          <div style="background: #f0f0f0; border-radius: 10px; padding: 12px 16px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center">
+            <span style="font-weight: bold; color: #333">Total Marks:</span>
+            <span id="dlgTotal" style="font-size: 1.4rem; font-weight: bold; color: #667eea">0</span>
           </div>
 
-          <div style="display:flex;gap:12px;">
-            <button onclick="closeDlg()" style="flex:1;padding:14px;border:2px solid #e0e0e0;background:white;border-radius:50px;font-size:1rem;font-weight:bold;cursor:pointer;font-family:inherit;color:#666;">Cancel</button>
-            <button onclick="confirmGenerate()" style="flex:2;padding:14px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;border-radius:50px;font-size:1rem;font-weight:bold;cursor:pointer;font-family:inherit;">Generate Test</button>
+          <div style="display: flex; gap: 12px">
+            <button onclick="closeDlg()" style="flex: 1; padding: 14px; border: 2px solid #e0e0e0; background: white; border-radius: 50px; font-size: 1rem; font-weight: bold; cursor: pointer; font-family: inherit; color: #666">Cancel</button>
+            <button onclick="confirmGenerate()" style="flex: 2; padding: 14px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 50px; font-size: 1rem; font-weight: bold; cursor: pointer; font-family: inherit">Generate Test</button>
           </div>
         </div>
       </div>
@@ -1163,11 +1169,10 @@
       </div>
 
       <!-- Action Buttons -->
-      <div class="action-buttons" style="margin-top: 20px;">
+      <div class="action-buttons" style="margin-top: 20px">
         <button class="btn btn-preview" onclick="generateTest()">&#128065;&#65039; Generate Test</button>
         <span class="available-count" id="actionAvail">Select chapters to begin</span>
       </div>
-
     </div>
 
     <script>
@@ -1195,9 +1200,7 @@
             {
               instruction: "Use each of the words to form the four kinds of sentences. Follow the example.",
               image: "../../../assets/images/test-generator/class-6/Grammar - Chapter 1 C.png",
-              questions: [
-                { text: "[Image Exercise]", answer: "1.c  2.a  3.a  4.c  5.a  6.a  7.a  8.d  9.b  10.a" },
-              ],
+              questions: [{ text: "[Image Exercise]", answer: "1.c  2.a  3.a  4.c  5.a  6.a  7.a  8.d  9.b  10.a" }],
             },
             {
               instruction: "D – Do as instructed.",
@@ -1234,16 +1237,12 @@
             {
               instruction: "Match the columns to complete the sentences.",
               image: "../../../assets/images/test-generator/class-6/Grammar - Chapter 2 A.png",
-              questions: [
-                { text: "[Image Exercise]", answer: "vary" },
-              ],
+              questions: [{ text: "[Image Exercise]", answer: "vary" }],
             },
             {
               instruction: "Read each group of words and identify whether it is the subject or the predicate. Then, supply the missing part. Follow the example.",
               image: "../../../assets/images/test-generator/class-6/Grammar - Chapter 2 B.png",
-              questions: [
-                { text: "[Image Exercise]", answer: "vary" },
-              ],
+              questions: [{ text: "[Image Exercise]", answer: "vary" }],
             },
             {
               instruction: "C – Add suitable predicates to these subjects.",
@@ -1295,16 +1294,12 @@
             {
               instruction: "Colour the boxes containing nouns as per the key.",
               image: "../../../assets/images/test-generator/class-6/Grammar - Chapter 3 B.png",
-              questions: [
-                { text: "[Image Exercise]", answer: "vary" },
-              ],
+              questions: [{ text: "[Image Exercise]", answer: "vary" }],
             },
             {
               instruction: "Identify whether these are common nouns or abstract nouns. Then, use each to make sentences.",
               image: "../../../assets/images/test-generator/class-6/Grammar - Chapter 3 C.png",
-              questions: [
-                { text: "[Image Exercise]", answer: "vary" },
-              ],
+              questions: [{ text: "[Image Exercise]", answer: "vary" }],
             },
             {
               instruction: "D – Choose the correct suffix to form abstract noun of the word in brackets and complete each sentence.",
@@ -1329,9 +1324,7 @@
             {
               instruction: "With the help of the clues, complete the crossword with suitable collective nouns.",
               image: "../../../assets/images/test-generator/class-6/Grammar - Chapter 3 E.png",
-              questions: [
-                { text: "[Image Exercise]", answer: "vary" },
-              ],
+              questions: [{ text: "[Image Exercise]", answer: "vary" }],
             },
           ],
         },
@@ -1423,9 +1416,7 @@
             {
               instruction: "Match the columns.",
               image: "../../../assets/images/test-generator/class-6/Grammar - Chapter 5 A.png",
-              questions: [
-                { text: "[Image Exercise]", answer: "vary" },
-              ],
+              questions: [{ text: "[Image Exercise]", answer: "vary" }],
             },
             {
               instruction: "B – Fill in the blanks with the opposite of the highlighted noun.",
@@ -1565,9 +1556,7 @@
             {
               instruction: "In each of the sentences, the definite article has been omitted. Write the words between which the article has to be inserted in the correct columns. In case there is no word before the article, insert an em dash. Follow the example.",
               image: "../../../assets/images/test-generator/class-6/Grammar - Chapter 7 B.png",
-              questions: [
-                { text: "[Image Exercise]", answer: "vary" },
-              ],
+              questions: [{ text: "[Image Exercise]", answer: "vary" }],
             },
             {
               instruction: "C – Fill in the blanks with a, an or the.",
@@ -1650,7 +1639,10 @@
                 { text: "The teacher looked at the students and said, ‘If ____ have finished your work, hand over your notebooks to me and I will check ____ for ____.’", answer: "vary" },
                 { text: "My sister and I were at home on Sunday. So, ____ cleaned our room quickly. Mom was proud of ____ and praised ____.", answer: "vary" },
                 { text: "The cat saw its reflection in the mirror and thought that ____ was looking at another cat. ____ tried to touch its reflection with its paw.", answer: "vary" },
-                { text: "Rita and I found a puppy on the street.   ____ was very hurt, so ____ took ____ to the vet. The doctor praised ____ for bringing ____ in. He said, ‘This little one has injured its leg, but with care, ____ will recover soon.’ ____ decided to keep the puppy and named ____ Bruno. Now, ____ follows ____ everywhere.", answer: "vary" },
+                {
+                  text: "Rita and I found a puppy on the street.   ____ was very hurt, so ____ took ____ to the vet. The doctor praised ____ for bringing ____ in. He said, ‘This little one has injured its leg, but with care, ____ will recover soon.’ ____ decided to keep the puppy and named ____ Bruno. Now, ____ follows ____ everywhere.",
+                  answer: "vary",
+                },
                 { text: "Neha and Rohan are friends. ____ brought a cake and some gifts for their teacher. ____ said to ____, ‘Ma’am, these are for ____. ____ wish to thank ____ for helping ____ so much.’ The teacher smiled and said, ‘____ made my day special. Thank ____!’", answer: "vary" },
               ],
             },
@@ -1746,9 +1738,7 @@
             {
               instruction: "In each set, choose the correct sentence.",
               image: "../../../assets/images/test-generator/class-6/Grammar - Chapter 8 H.png",
-              questions: [
-                { text: "[Image Exercise]", answer: "vary" },
-              ],
+              questions: [{ text: "[Image Exercise]", answer: "vary" }],
             },
           ],
         },
@@ -1916,16 +1906,12 @@
             {
               instruction: "Complete the table.",
               image: "../../../assets/images/test-generator/class-6/Grammar - Chapter 11 B.png",
-              questions: [
-                { text: "[Image Exercise]", answer: "vary" },
-              ],
+              questions: [{ text: "[Image Exercise]", answer: "vary" }],
             },
             {
               instruction: "Choose five words from the above exercise and use them to make sentences.",
               image: "../../../assets/images/test-generator/class-6/Grammar - Chapter 11 C.png",
-              questions: [
-                { text: "[Image Exercise]", answer: "vary" },
-              ],
+              questions: [{ text: "[Image Exercise]", answer: "vary" }],
             },
           ],
         },
@@ -2343,9 +2329,7 @@
             {
               instruction: "In each set, tick the sentence that has been joined correctly using coordinating conjunctions.",
               image: "../../../assets/images/test-generator/class-6/Grammar - Chapter 18 A.png",
-              questions: [
-                { text: "[Image Exercise]", answer: "vary" },
-              ],
+              questions: [{ text: "[Image Exercise]", answer: "vary" }],
             },
             {
               instruction: "C – Fill in the blanks with suitable correlative conjunctions.",
@@ -2571,14 +2555,14 @@
             {
               instruction: "B – Change the following sentences from indirect to direct speech.",
               questions: [
-                { text: "She said that she was hungry.", answer: "She said, \"I am hungry.\"" },
-                { text: "He said that he had completed the project.", answer: "He said, \"I have completed the project.\"" },
-                { text: "They said that they were going to the market.", answer: "They said, \"We are going to the market.\"" },
-                { text: "John said that he would call me later.", answer: "John said, \"I will call you later.\"" },
-                { text: "Emma said that she had been studying all night.", answer: "Emma said, \"I have been studying all night.\"" },
-                { text: "My mother said that dinner was ready.", answer: "My mother said, \"Dinner is ready.\"" },
-                { text: "The teacher said that the sun rises in the east.", answer: "The teacher said, \"The sun rises in the east.\"" },
-                { text: "He said that he couldn’t find his keys.", answer: "He said, \"I can't find my keys.\"" },
+                { text: "She said that she was hungry.", answer: 'She said, "I am hungry."' },
+                { text: "He said that he had completed the project.", answer: 'He said, "I have completed the project."' },
+                { text: "They said that they were going to the market.", answer: 'They said, "We are going to the market."' },
+                { text: "John said that he would call me later.", answer: 'John said, "I will call you later."' },
+                { text: "Emma said that she had been studying all night.", answer: 'Emma said, "I have been studying all night."' },
+                { text: "My mother said that dinner was ready.", answer: 'My mother said, "Dinner is ready."' },
+                { text: "The teacher said that the sun rises in the east.", answer: 'The teacher said, "The sun rises in the east."' },
+                { text: "He said that he couldn’t find his keys.", answer: 'He said, "I can\'t find my keys."' },
               ],
             },
           ],
@@ -2717,7 +2701,7 @@
             {
               instruction: "A – Follow the template and attempt these.",
               questions: [
-                { text: "You are Riya Sharma, a resident of Sector 12, Noida. Write a letter to the Editor of The Hindustan Times expressing your concern about the problem of reckless driving by teenagers in your city.", answer: "vary" },
+                { text: "You are Student's Name, a resident of Sector 12, Noida. Write a letter to the Editor of The Hindustan Times expressing your concern about the problem of reckless driving by teenagers in your city.", answer: "vary" },
                 { text: "You are Arjun Mehta, Head Boy of Sunrise Public School, Delhi. Write a letter to the Principal requesting permission to organize a cleanliness drive in the school campus.", answer: "vary" },
                 { text: "You are Neha Verma, Class 10, Greenfield School, Bhopal. Write a letter to the Editor of a local newspaper about the need to ban the use of plastic bags.", answer: "vary" },
                 { text: "You are Rohit Singh, a resident of 25, Raj Nagar, Jaipur. Write a letter to the Municipal Commissioner complaining about overflowing garbage bins and poor sanitation in your locality.", answer: "vary" },
@@ -2741,7 +2725,7 @@
                 { text: "You are Karan Gupta, a student of Class 10. Write a notice about a lost school ID card.", answer: "vary" },
                 { text: "You are Sneha Roy, Secretary of the Science Club. Write a notice informing students about an inter-school science exhibition.", answer: "vary" },
                 { text: "You are Vikram Menon, Head Boy. Write a notice about a visit to a historical monument organized by your school.", answer: "vary" },
-                { text: "You are Riya Sharma, Secretary of the Health Club. Write a notice about a free medical check-up camp being held in your school.", answer: "vary" },
+                { text: "You are Student's Name, Secretary of the Health Club. Write a notice about a free medical check-up camp being held in your school.", answer: "vary" },
               ],
             },
             {
@@ -2809,8 +2793,14 @@
                 { text: "How do trees help in preventing soil erosion? a. by providing shade b. by reducing surface runoff c. by absorbing water", answer: "b. by reducing surface runoff" },
                 { text: "Which of the following is NOT mentioned as a benefit of trees in urban areas? a. natural cooling b. making cities more attractive c. producing more food", answer: "c. producing more food" },
                 { text: "4. Why is it important to protect forests and plant more trees? a. to reduce air pollution b. to create more jobs c. to build more buildings", answer: "a. to reduce air pollution" },
-                { text: "5. If deforestation continues at the current rate, what might happen to the environment? a. More oxygen will be produced. b. The water cycle may be disturbed, and soil erosion could increase. c. Trees will start growing faster. How might planting more trees help reduce the need for air conditioning in cities? a. Trees can produce food for people. b. Trees provide shade, which naturally cools down the area. c. Trees help in reducing carbon dioxide levels.", answer: "b. The water cycle may be disturbed, and soil erosion could increase. / b. Trees provide shade, which naturally cools down the area." },
-                { text: "What do you think might be the long-term effects of cutting down trees at an alarming rate? a. More oxygen will be created. b. It could lead to a decline in wildlife and disrupt ecosystems. c. People will have more space for buildings and roads.", answer: "b. It could lead to a decline in wildlife and disrupt ecosystems." },
+                {
+                  text: "5. If deforestation continues at the current rate, what might happen to the environment? a. More oxygen will be produced. b. The water cycle may be disturbed, and soil erosion could increase. c. Trees will start growing faster. How might planting more trees help reduce the need for air conditioning in cities? a. Trees can produce food for people. b. Trees provide shade, which naturally cools down the area. c. Trees help in reducing carbon dioxide levels.",
+                  answer: "b. The water cycle may be disturbed, and soil erosion could increase. / b. Trees provide shade, which naturally cools down the area.",
+                },
+                {
+                  text: "What do you think might be the long-term effects of cutting down trees at an alarming rate? a. More oxygen will be created. b. It could lead to a decline in wildlife and disrupt ecosystems. c. People will have more space for buildings and roads.",
+                  answer: "b. It could lead to a decline in wildlife and disrupt ecosystems.",
+                },
                 { text: "The word alarming in the passage most nearly means: a. surprising in a good way b. causing worry or concern c. very ordinary", answer: "b. causing worry or concern" },
                 { text: "The word intricate in the passage most nearly means: a. simple and plain b. complicated and detailed c. unnecessary", answer: "b. complicated and detailed" },
               ],
@@ -2822,10 +2812,19 @@
                 { text: "How does reading help expand knowledge? a. by improving handwriting b. by offering insights into different cultures, ideas, and historical events c. by teaching math concepts", answer: "b. by offering insights into different cultures, ideas, and historical events" },
                 { text: "What is one cognitive benefit of reading? a. It helps improve memory. b. It helps improve physical strength. c. It improves singing skills.", answer: "a. It helps improve memory." },
                 { text: "How can reading reduce stress? a. by providing a mental escape and helping you relax b. by increasing your physical activity c. by making you eat healthy food", answer: "a. by providing a mental escape and helping you relax" },
-                { text: "Why might reading fiction books improve imagination and creativity? a. because they are based on true events b. because they allow readers to explore new worlds and ideas c. because they are easy to understand", answer: "b. because they allow readers to explore new worlds and ideas" },
-                { text: "How does reading compare to other activities like watching TV or playing video games in terms of cognitive benefits? a. Reading improves focus and memory more than watching TV or playing video games. b. Watching TV improves focus and memory. c. Playing video games is better than reading for mental development.", answer: "a. Reading improves focus and memory more than watching TV or playing video games." },
+                {
+                  text: "Why might reading fiction books improve imagination and creativity? a. because they are based on true events b. because they allow readers to explore new worlds and ideas c. because they are easy to understand",
+                  answer: "b. because they allow readers to explore new worlds and ideas",
+                },
+                {
+                  text: "How does reading compare to other activities like watching TV or playing video games in terms of cognitive benefits? a. Reading improves focus and memory more than watching TV or playing video games. b. Watching TV improves focus and memory. c. Playing video games is better than reading for mental development.",
+                  answer: "a. Reading improves focus and memory more than watching TV or playing video games.",
+                },
                 { text: "How can reading help a person in their everyday life? a. It can make them more creative and better at problem-solving. b. It makes them tired and less productive. c. It helps them sleep longer.", answer: "a. It can make them more creative and better at problem-solving." },
-                { text: "Why is it important to develop a habit of reading in today’s world? a. because reading is a form of exercise b. because reading helps reduce stress and provides entertainment and knowledge c. because reading improves technology skills", answer: "b. because reading helps reduce stress and provides entertainment and knowledge" },
+                {
+                  text: "Why is it important to develop a habit of reading in today’s world? a. because reading is a form of exercise b. because reading helps reduce stress and provides entertainment and knowledge c. because reading improves technology skills",
+                  answer: "b. because reading helps reduce stress and provides entertainment and knowledge",
+                },
               ],
             },
             {
@@ -2835,10 +2834,22 @@
                 { text: "What are the colors mentioned in the rainbow in the poem? a. red, blue, green, yellow, and white b. red, orange, yellow, green, blue, indigo, and violet c. red, green, purple, and orange", answer: "b. red, orange, yellow, green, blue, indigo, and violet" },
                 { text: "How is the rainbow described in the poem? a. as a simple line in the sky b. as a perfect arch of colors c. as a cloud in the sky", answer: "b. as a perfect arch of colors" },
                 { text: "What does the poem say about the rainbow that makes it special? a. It can be touched and held b. It can only be seen but not touched c. It can disappear if you wait long enough", answer: "b. It can only be seen but not touched" },
-                { text: "Why do you think the poet says, “No one can touch it, no one can hold”? a. to show that the rainbow is a magical thing b. to remind us that some things in life are beautiful but unreachable c. to suggest that the rainbow is just a cloud", answer: "b. to remind us that some things in life are beautiful but unreachable" },
-                { text: "What do you think the poet is trying to express with the line, “It stretches far across the sky”? a. that the rainbow is small and easy to find b. that the rainbow is a symbol of hope and beauty that spans the entire sky c. that the rainbow is only visible in one part of the sky", answer: "b. that the rainbow is a symbol of hope and beauty that spans the entire sky" },
-                { text: "How does the description of the rainbow in the poem make you feel? a. It makes me feel sad because the rainbow is gone b. It makes me feel happy because the rainbow brings color and joy c. It makes me feel confused because the rainbow can’t be touched", answer: "b. It makes me feel happy because the rainbow brings color and joy" },
-                { text: "If the rainbow is “a wonder to behold,” what do you think the poet wants us to take away from this poem? a. to appreciate the beauty and fleeting nature of the rainbow b. to be upset that we can’t touch the rainbow c. to ignore the rainbow because it doesn’t last long", answer: "a. to appreciate the beauty and fleeting nature of the rainbow" },
+                {
+                  text: "Why do you think the poet says, “No one can touch it, no one can hold”? a. to show that the rainbow is a magical thing b. to remind us that some things in life are beautiful but unreachable c. to suggest that the rainbow is just a cloud",
+                  answer: "b. to remind us that some things in life are beautiful but unreachable",
+                },
+                {
+                  text: "What do you think the poet is trying to express with the line, “It stretches far across the sky”? a. that the rainbow is small and easy to find b. that the rainbow is a symbol of hope and beauty that spans the entire sky c. that the rainbow is only visible in one part of the sky",
+                  answer: "b. that the rainbow is a symbol of hope and beauty that spans the entire sky",
+                },
+                {
+                  text: "How does the description of the rainbow in the poem make you feel? a. It makes me feel sad because the rainbow is gone b. It makes me feel happy because the rainbow brings color and joy c. It makes me feel confused because the rainbow can’t be touched",
+                  answer: "b. It makes me feel happy because the rainbow brings color and joy",
+                },
+                {
+                  text: "If the rainbow is “a wonder to behold,” what do you think the poet wants us to take away from this poem? a. to appreciate the beauty and fleeting nature of the rainbow b. to be upset that we can’t touch the rainbow c. to ignore the rainbow because it doesn’t last long",
+                  answer: "a. to appreciate the beauty and fleeting nature of the rainbow",
+                },
               ],
             },
             {
@@ -2849,11 +2860,26 @@
                 { text: "What is the primary activity of the daffodils described in the poem? a. growing b. withering in the sun c. dancing and fluttering in the breeze", answer: "c. dancing and fluttering in the breeze" },
                 { text: "What does the poet compare the daffodils to in the second stanza? a. the stars in the Milky Way b. the waves on the ocean c. the clouds in the sky", answer: "a. the stars in the Milky Way" },
                 { text: "How many daffodils does the poet see at once? a. ten thousand b. a hundred c. a thousand", answer: "a. ten thousand" },
-                { text: "Why does the poet describe the daffodils as “a host”? What does this word choice suggest? a. The flowers were lonely. b. The flowers appeared to be in a group or army, implying strength and beauty in numbers. c. The flowers were scattered and disorganized.", answer: "b. The flowers appeared to be in a group or army, implying strength and beauty in numbers." },
-                { text: "What does the phrase “the waves beside them danced; but they / Out-did the sparkling waves in glee” suggest about the daffodils? a. The daffodils were calmer than the waves. b. The daffodils were like the waves in every way. c. The daffodils were more joyful and lively than the waves.", answer: "c. The daffodils were more joyful and lively than the waves." },
-                { text: "In the last stanza, the poet mentions “the bliss of solitude.” How do the daffodils bring him joy even when he is alone? a. He thinks of them during moments of sadness, and they comfort him. b. He remembers their beauty and it helps him feel connected to nature. c. He uses the memory of the daffodils to entertain himself.", answer: "b. He remembers their beauty and it helps him feel connected to nature." },
-                { text: "What might the poet mean by “And dances with the daffodils” at the end of the poem? a. The poet imagines himself dancing with the flowers in the fi eld. b. The poet feels a deep sense of joy and harmony with nature when remembering the daffodils. c. The poet wants to become a flower and join in their dance.", answer: "b. The poet feels a deep sense of joy and harmony with nature when remembering the daffodils." },
-                { text: "How does the imagery in the poem contribute to its mood? a. The description of the daffodils and their dancing creates a joyful, uplifting mood. b. The imagery makes the poem feel sad and lonely. c. The imagery focuses on the stillness of nature, creating a calm, quiet mood.", answer: "a. The description of the daffodils and their dancing creates a joyful, uplifting mood." },
+                {
+                  text: "Why does the poet describe the daffodils as “a host”? What does this word choice suggest? a. The flowers were lonely. b. The flowers appeared to be in a group or army, implying strength and beauty in numbers. c. The flowers were scattered and disorganized.",
+                  answer: "b. The flowers appeared to be in a group or army, implying strength and beauty in numbers.",
+                },
+                {
+                  text: "What does the phrase “the waves beside them danced; but they / Out-did the sparkling waves in glee” suggest about the daffodils? a. The daffodils were calmer than the waves. b. The daffodils were like the waves in every way. c. The daffodils were more joyful and lively than the waves.",
+                  answer: "c. The daffodils were more joyful and lively than the waves.",
+                },
+                {
+                  text: "In the last stanza, the poet mentions “the bliss of solitude.” How do the daffodils bring him joy even when he is alone? a. He thinks of them during moments of sadness, and they comfort him. b. He remembers their beauty and it helps him feel connected to nature. c. He uses the memory of the daffodils to entertain himself.",
+                  answer: "b. He remembers their beauty and it helps him feel connected to nature.",
+                },
+                {
+                  text: "What might the poet mean by “And dances with the daffodils” at the end of the poem? a. The poet imagines himself dancing with the flowers in the fi eld. b. The poet feels a deep sense of joy and harmony with nature when remembering the daffodils. c. The poet wants to become a flower and join in their dance.",
+                  answer: "b. The poet feels a deep sense of joy and harmony with nature when remembering the daffodils.",
+                },
+                {
+                  text: "How does the imagery in the poem contribute to its mood? a. The description of the daffodils and their dancing creates a joyful, uplifting mood. b. The imagery makes the poem feel sad and lonely. c. The imagery focuses on the stillness of nature, creating a calm, quiet mood.",
+                  answer: "a. The description of the daffodils and their dancing creates a joyful, uplifting mood.",
+                },
               ],
             },
             {
@@ -2892,9 +2918,15 @@
             {
               instruction: "B – Rewrite these passages after inserting suitable punctuation marks and capital letters, where necessary.",
               questions: [
-                { text: "Ram normally goes to school at seven thirty each morning today he didnt get up in time and was so late that he missed the bus when he reached school the guard at the gate told him that he would have to go to the principals office before he could enter his class the principal first scolded ram for being late she said ram you must have been watching a late night show on television that is why you overslept and missed your bus ram replied Im really sorry i shall not do such a thing again i shall always go to bed at the right time so that i get up in time to catch the bus.", answer: "vary" },
+                {
+                  text: "Ram normally goes to school at seven thirty each morning today he didnt get up in time and was so late that he missed the bus when he reached school the guard at the gate told him that he would have to go to the principals office before he could enter his class the principal first scolded ram for being late she said ram you must have been watching a late night show on television that is why you overslept and missed your bus ram replied Im really sorry i shall not do such a thing again i shall always go to bed at the right time so that i get up in time to catch the bus.",
+                  answer: "vary",
+                },
                 { text: "have you finished your lesson george said mr smith to his son no father replied george hanging down his head why not my son because it is so difficult father i am sure i shall never learn it", answer: "vary" },
-                { text: "When jesus was alone some of those who heard him came to him and asked to explain the parable you have been given the secret of god he replied but there are others who hear all things by means of parables so that they might turn to god and he may forgive them", answer: "vary" },
+                {
+                  text: "When jesus was alone some of those who heard him came to him and asked to explain the parable you have been given the secret of god he replied but there are others who hear all things by means of parables so that they might turn to god and he may forgive them",
+                  answer: "vary",
+                },
               ],
             },
             {
@@ -2927,9 +2959,7 @@
             {
               instruction: "A – Match the synonyms and antonyms.",
               image: "../../../assets/images/test-generator/class-6/Vocabulary - Chapter 4 A.png",
-              questions: [
-                { text: "[Image Exercise]", answer: "vary" },
-              ],
+              questions: [{ text: "[Image Exercise]", answer: "vary" }],
             },
           ],
         },
@@ -2960,7 +2990,7 @@
           { text: "You are Vivek Menon. Write a letter to your cousin narrating your experience of visiting a hill station.", images: [], answer: "vary" },
         ],
         comp4: [
-          { text: "You are Riya Sharma, a resident of Sector 12, Noida. Write a letter to the Editor of The Hindustan Times expressing concern about reckless driving by teenagers in your city.", images: [], answer: "vary" },
+          { text: "You are Student's Name, a resident of Sector 12, Noida. Write a letter to the Editor of The Hindustan Times expressing concern about reckless driving by teenagers in your city.", images: [], answer: "vary" },
           { text: "You are Arjun Mehta, Head Boy of Sunrise Public School, Delhi. Write a letter to the Principal requesting permission to organize a cleanliness drive in the school campus.", images: [], answer: "vary" },
           { text: "You are Neha Verma, Class 10, Greenfield School, Bhopal. Write a letter to the Editor of a local newspaper about the need to ban the use of plastic bags.", images: [], answer: "vary" },
           { text: "You are Rohit Singh, a resident of 25, Raj Nagar, Jaipur. Write a letter to the Municipal Commissioner complaining about overflowing garbage bins and poor sanitation in your locality.", images: [], answer: "vary" },
@@ -2981,7 +3011,7 @@
           { text: "You are Karan Gupta, a student of Class 10. Write a notice about a lost school ID card.", images: [], answer: "vary" },
           { text: "You are Sneha Roy, Secretary of the Science Club. Write a notice informing students about an inter-school science exhibition.", images: [], answer: "vary" },
           { text: "You are Vikram Menon, Head Boy. Write a notice about a visit to a historical monument organized by your school.", images: [], answer: "vary" },
-          { text: "You are Riya Sharma, Secretary of the Health Club. Write a notice about a free medical check-up camp being held in your school.", images: [], answer: "vary" },
+          { text: "You are Student's Name, Secretary of the Health Club. Write a notice about a free medical check-up camp being held in your school.", images: [], answer: "vary" },
         ],
         comp6: [
           { text: "You recently participated in your school's annual day celebration. Write a diary entry describing your experience and how you felt on stage.", images: [], answer: "vary" },
@@ -3137,7 +3167,8 @@
       }
 
       function countByType(keys) {
-        let pic = 0, text = 0;
+        let pic = 0,
+          text = 0;
         keys.forEach((k) => {
           const ch = questionBank[k];
           if (!ch) return;
@@ -3171,7 +3202,7 @@
         const picMarks = parseInt(document.getElementById("dlgPicMarks").value) || 0;
         const textCount = parseInt(document.getElementById("dlgTextCount").value) || 0;
         const textMarks = parseInt(document.getElementById("dlgTextMarks").value) || 0;
-        document.getElementById("dlgTotal").textContent = (picCount * picMarks) + (textCount * textMarks);
+        document.getElementById("dlgTotal").textContent = picCount * picMarks + textCount * textMarks;
       }
 
       function closeDlg() {
@@ -3181,21 +3212,29 @@
       // Wrapper called by Generate Test button
       function generateTest() {
         if (currentMode === "custom") {
-          var picSel = 0, textSel = 0;
-          document.querySelectorAll(".custom-q-cb:checked").forEach(function(cb) {
+          var picSel = 0,
+            textSel = 0;
+          document.querySelectorAll(".custom-q-cb:checked").forEach(function (cb) {
             var chKey = cb.getAttribute("data-ch-key");
             var wsIdx = parseInt(cb.getAttribute("data-ws-idx"));
             var ch = questionBank[chKey];
             if (!ch || Array.isArray(ch) || !ch.worksheets) return;
-            if (ch.worksheets[wsIdx].image) picSel++; else textSel++;
+            if (ch.worksheets[wsIdx].image) picSel++;
+            else textSel++;
           });
-          if (picSel + textSel === 0) { alert("Please tick at least one question in Custom mode!"); return; }
-          document.getElementById("dlgSubtitle").innerHTML = 'Selected questions: <strong id="dlgPicAvail">' + picSel + '</strong> image &nbsp;|&nbsp; <strong id="dlgTextAvail">' + textSel + '</strong> text &nbsp;(set marks below)';
+          if (picSel + textSel === 0) {
+            alert("Please tick at least one question in Custom mode!");
+            return;
+          }
+          document.getElementById("dlgSubtitle").innerHTML = 'Selected questions: <strong id="dlgPicAvail">' + picSel + '</strong> image &nbsp;|&nbsp; <strong id="dlgTextAvail">' + textSel + "</strong> text &nbsp;(set marks below)";
           var picCountEl = document.getElementById("dlgPicCount");
           var textCountEl = document.getElementById("dlgTextCount");
-          picCountEl.value = picSel; textCountEl.value = textSel;
-          picCountEl.readOnly = true; textCountEl.readOnly = true;
-          picCountEl.style.background = "#f5f5f5"; textCountEl.style.background = "#f5f5f5";
+          picCountEl.value = picSel;
+          textCountEl.value = textSel;
+          picCountEl.readOnly = true;
+          textCountEl.readOnly = true;
+          picCountEl.style.background = "#f5f5f5";
+          textCountEl.style.background = "#f5f5f5";
           updateDlgTotal();
           document.getElementById("generateDialog").style.display = "flex";
           return;
@@ -3216,29 +3255,40 @@
       }
 
       function confirmGenerate() {
-        const picMarks  = parseInt(document.getElementById("dlgPicMarks").value)  || 1;
+        const picMarks = parseInt(document.getElementById("dlgPicMarks").value) || 1;
         const textMarks = parseInt(document.getElementById("dlgTextMarks").value) || 1;
         closeDlg();
 
         if (currentMode === "custom") {
           const selected = [];
-          document.querySelectorAll(".custom-q-cb:checked").forEach(function(cb) {
+          document.querySelectorAll(".custom-q-cb:checked").forEach(function (cb) {
             const chKey = cb.getAttribute("data-ch-key");
             const wsIdx = parseInt(cb.getAttribute("data-ws-idx"));
             const qIdx = parseInt(cb.getAttribute("data-q-idx"));
-            const ch = questionBank[chKey]; const ws = ch.worksheets[wsIdx]; const q = ws.questions[qIdx];
-            selected.push({ chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx,
-              instruction: ws.instruction, image: ws.image || null, text: q.text,
-              answer: q.answer || null, options: q.options || null, wideOptions: q.wideOptions || false,
-              lines: q.lines || 0, marks: ws.image ? picMarks : textMarks });
+            const ch = questionBank[chKey];
+            const ws = ch.worksheets[wsIdx];
+            const q = ws.questions[qIdx];
+            selected.push({
+              chapterKey: chKey,
+              chapterName: ch.name,
+              worksheetIdx: wsIdx,
+              instruction: ws.instruction,
+              image: ws.image || null,
+              text: q.text,
+              answer: q.answer || null,
+              options: q.options || null,
+              wideOptions: q.wideOptions || false,
+              lines: q.lines || 0,
+              marks: ws.image ? picMarks : textMarks,
+            });
           });
           if (selected.length === 0) return;
           const grouped = new Map();
-          Object.keys(questionBank).forEach(function(k) {
+          Object.keys(questionBank).forEach(function (k) {
             const ch = questionBank[k];
             grouped.set(k, { name: ch.name || k, worksheets: new Map() });
           });
-          selected.forEach(function(q) {
+          selected.forEach(function (q) {
             const chGroup = grouped.get(q.chapterKey);
             if (!chGroup) return;
             if (!chGroup.worksheets.has(q.worksheetIdx)) {
@@ -3246,25 +3296,25 @@
             }
             chGroup.worksheets.get(q.worksheetIdx).questions.push(q);
           });
-          let qNum = 1; lastGeneratedQuestions = []; let totalMarks = 0;
-          grouped.forEach(function(chData, chKey) {
-            chData.worksheets.forEach(function(wsData, wsIdx) {
-              wsData.questions.forEach(function(q) {
-                lastGeneratedQuestions.push({ chapterKey: chKey, chapterName: chData.name,
-                  worksheetIdx: wsIdx, instruction: wsData.instruction, image: wsData.image,
-                  text: q.text, answer: q.answer, options: q.options, wideOptions: q.wideOptions,
-                  lines: q.lines, marks: q.marks, qNum: qNum++ });
+          let qNum = 1;
+          lastGeneratedQuestions = [];
+          let totalMarks = 0;
+          grouped.forEach(function (chData, chKey) {
+            chData.worksheets.forEach(function (wsData, wsIdx) {
+              wsData.questions.forEach(function (q) {
+                lastGeneratedQuestions.push({ chapterKey: chKey, chapterName: chData.name, worksheetIdx: wsIdx, instruction: wsData.instruction, image: wsData.image, text: q.text, answer: q.answer, options: q.options, wideOptions: q.wideOptions, lines: q.lines, marks: q.marks, qNum: qNum++ });
                 totalMarks += q.marks;
               });
             });
           });
-          window._lastPicMarks = picMarks; window._lastTextMarks = textMarks;
+          window._lastPicMarks = picMarks;
+          window._lastTextMarks = textMarks;
           window._lastTotalMarks = totalMarks;
           updateWordPreviews();
           return;
         }
 
-        const picCount  = parseInt(document.getElementById("dlgPicCount").value)  || 0;
+        const picCount = parseInt(document.getElementById("dlgPicCount").value) || 0;
         const textCount = parseInt(document.getElementById("dlgTextCount").value) || 0;
         document.getElementById("dlgPicCount").readOnly = false;
         document.getElementById("dlgTextCount").readOnly = false;
@@ -3272,7 +3322,8 @@
         document.getElementById("dlgTextCount").style.background = "";
 
         const selectedKeys = getSelectedChapterKeys();
-        const picPool = [], textPool = [];
+        const picPool = [],
+          textPool = [];
 
         selectedKeys.forEach((chKey) => {
           const ch = questionBank[chKey];
@@ -3283,20 +3334,32 @@
             const chName = cardInput ? cardInput.closest("label").querySelector("h3").textContent : chKey;
             ch.forEach((q) => {
               textPool.push({
-                chapterKey: chKey, chapterName: chName, worksheetIdx: 0,
-                instruction: "", image: null,
-                text: q.text, answer: q.answer || null,
-                options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0,
+                chapterKey: chKey,
+                chapterName: chName,
+                worksheetIdx: 0,
+                instruction: "",
+                image: null,
+                text: q.text,
+                answer: q.answer || null,
+                options: q.options || null,
+                wideOptions: q.wideOptions || false,
+                lines: q.lines || 0,
               });
             });
           } else if (ch.worksheets) {
             ch.worksheets.forEach((ws, wsIdx) => {
               ws.questions.forEach((q) => {
                 const entry = {
-                  chapterKey: chKey, chapterName: ch.name, worksheetIdx: wsIdx,
-                  instruction: ws.instruction, image: ws.image || null,
-                  text: q.text, answer: q.answer || null,
-                  options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0,
+                  chapterKey: chKey,
+                  chapterName: ch.name,
+                  worksheetIdx: wsIdx,
+                  instruction: ws.instruction,
+                  image: ws.image || null,
+                  text: q.text,
+                  answer: q.answer || null,
+                  options: q.options || null,
+                  wideOptions: q.wideOptions || false,
+                  lines: q.lines || 0,
                 };
                 if (ws.image) picPool.push(entry);
                 else textPool.push(entry);
@@ -3305,11 +3368,11 @@
           }
         });
 
-        const shuffledPic  = shuffleArray(picPool).slice(0, picCount);
+        const shuffledPic = shuffleArray(picPool).slice(0, picCount);
         const shuffledText = shuffleArray(textPool).slice(0, textCount);
         const selected = [...shuffledPic, ...shuffledText];
 
-        if (shuffledPic.length < picCount)  alert("Only " + shuffledPic.length  + " picture questions available. Showing all.");
+        if (shuffledPic.length < picCount) alert("Only " + shuffledPic.length + " picture questions available. Showing all.");
         if (shuffledText.length < textCount) alert("Only " + shuffledText.length + " text questions available. Showing all.");
 
         // Group by chapter maintaining order
@@ -3342,19 +3405,26 @@
           sortedWs.forEach(([wsIdx, wsData]) => {
             wsData.questions.forEach((q) => {
               lastGeneratedQuestions.push({
-                qNum: qNum++, chapterKey: chKey, chapterName: chData.name,
-                worksheetIdx: wsIdx, instruction: wsData.instruction,
-                image: wsData.image || null, answer: q.answer || null, text: q.text,
-                options: q.options || null, wideOptions: q.wideOptions || false, lines: q.lines || 0,
+                qNum: qNum++,
+                chapterKey: chKey,
+                chapterName: chData.name,
+                worksheetIdx: wsIdx,
+                instruction: wsData.instruction,
+                image: wsData.image || null,
+                answer: q.answer || null,
+                text: q.text,
+                options: q.options || null,
+                wideOptions: q.wideOptions || false,
+                lines: q.lines || 0,
                 marks: wsData.image ? picMarks : textMarks,
               });
             });
           });
         });
 
-        window._lastPicMarks   = picMarks;
-        window._lastTextMarks  = textMarks;
-        window._lastTotalMarks = (shuffledPic.length * picMarks) + (shuffledText.length * textMarks);
+        window._lastPicMarks = picMarks;
+        window._lastTextMarks = textMarks;
+        window._lastTotalMarks = shuffledPic.length * picMarks + shuffledText.length * textMarks;
         updateWordPreviews();
       }
 
@@ -3422,7 +3492,7 @@
               var id = "cq_" + chKey + "_" + wsIdx + "_" + qIdx;
               var contentHtml;
               if (ws.image) {
-                var imgSrc = ws.image.replace(/ /g, '%20');
+                var imgSrc = ws.image.replace(/ /g, "%20");
                 contentHtml = '<img src="' + imgSrc + '" alt="Exercise image" style="max-width:320px;max-height:180px;object-fit:contain;border-radius:6px;margin-top:4px;display:block;">';
               } else {
                 var preview = q.text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -3430,11 +3500,23 @@
                 contentHtml = '<span class="custom-q-text">' + preview + "</span>";
               }
               li.innerHTML =
-                '<label for="' + id + '" style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;width:100%;">' +
-                '<input type="checkbox" id="' + id + '" class="custom-q-cb"' +
-                ' data-ch-key="' + chKey + '" data-ws-idx="' + wsIdx + '" data-q-idx="' + qIdx + '"' +
+                '<label for="' +
+                id +
+                '" style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;width:100%;">' +
+                '<input type="checkbox" id="' +
+                id +
+                '" class="custom-q-cb"' +
+                ' data-ch-key="' +
+                chKey +
+                '" data-ws-idx="' +
+                wsIdx +
+                '" data-q-idx="' +
+                qIdx +
+                '"' +
                 ' style="margin-top:3px;cursor:pointer;accent-color:#667eea;flex-shrink:0;" onchange="updateCustomPreview()">' +
-                '<div style="flex:1;">' + contentHtml + '</div></label>';
+                '<div style="flex:1;">' +
+                contentHtml +
+                "</div></label>";
               ul.appendChild(li);
             });
             wsDiv.appendChild(ul);
@@ -3462,21 +3544,21 @@
       }
 
       function updateCustomPreview() {
-        var pic = 0, text = 0;
-        document.querySelectorAll(".custom-q-cb:checked").forEach(function(cb) {
+        var pic = 0,
+          text = 0;
+        document.querySelectorAll(".custom-q-cb:checked").forEach(function (cb) {
           var chKey = cb.getAttribute("data-ch-key");
           var wsIdx = parseInt(cb.getAttribute("data-ws-idx"));
           var ch = questionBank[chKey];
           if (!ch || Array.isArray(ch) || !ch.worksheets) return;
-          if (ch.worksheets[wsIdx].image) pic++; else text++;
+          if (ch.worksheets[wsIdx].image) pic++;
+          else text++;
         });
         var pEl = document.getElementById("availablePicCount");
         var tEl = document.getElementById("availableTextCount");
         if (pEl) pEl.textContent = pic;
         if (tEl) tEl.textContent = text;
       }
-
-
 
       // Render Word-style previews in both panels
       function updateWordPreviews() {
@@ -3494,7 +3576,7 @@
         // Group by chapter preserving order
         var grouped = {};
         var chapterOrder = [];
-        lastGeneratedQuestions.forEach(function(q) {
+        lastGeneratedQuestions.forEach(function (q) {
           if (!grouped[q.chapterKey]) {
             grouped[q.chapterKey] = { name: q.chapterName, items: [] };
             chapterOrder.push(q.chapterKey);
@@ -3503,68 +3585,68 @@
         });
 
         function buildMeta(includeAK) {
-          var h = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + '</div>';
+          var h = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + "</div>";
           if (includeAK) h += '<div class="doc-ak-label">ANSWER KEY - TEACHER USE ONLY</div>';
-          h += '<div class="doc-meta"><div>Name: ' + (_esc(studentName) || '________________') + ' &nbsp;&nbsp; Date: ' + (_esc(testDate) || '____________') + '</div>';
-          h += '<div>Total Marks: ' + _esc(totalMarks) + ' &nbsp;&nbsp; Time: ' + _esc(testDuration) + ' mins</div></div>';
+          h += '<div class="doc-meta"><div>Name: ' + (_esc(studentName) || "________________") + " &nbsp;&nbsp; Date: " + (_esc(testDate) || "____________") + "</div>";
+          h += "<div>Total Marks: " + _esc(totalMarks) + " &nbsp;&nbsp; Time: " + _esc(testDuration) + " mins</div></div>";
           return h;
         }
 
         var studentHtml = buildMeta(false);
-        chapterOrder.forEach(function(chKey) {
+        chapterOrder.forEach(function (chKey) {
           var ch = grouped[chKey];
-          studentHtml += '<div style="font-weight:bold;color:#667eea;margin:12px 0 6px;font-size:1rem;border-bottom:1px solid #ddd;padding-bottom:4px;">' + _esc(ch.name) + '</div>';
-          ch.items.forEach(function(q) {
-            var qImgs = (q.images && q.images.length > 0) ? q.images : (q.image ? [q.image] : []);
-            studentHtml += '<div class="doc-question"><strong>Q' + q.qNum + '.</strong> ';
+          studentHtml += '<div style="font-weight:bold;color:#667eea;margin:12px 0 6px;font-size:1rem;border-bottom:1px solid #ddd;padding-bottom:4px;">' + _esc(ch.name) + "</div>";
+          ch.items.forEach(function (q) {
+            var qImgs = q.images && q.images.length > 0 ? q.images : q.image ? [q.image] : [];
+            studentHtml += '<div class="doc-question"><strong>Q' + q.qNum + ".</strong> ";
             if (qImgs.length > 0) {
               if (q.instruction) {
-                studentHtml += '<span style="font-style:italic;font-weight:bold;">' + _esc(q.instruction) + '</span><br>';
+                studentHtml += '<span style="font-style:italic;font-weight:bold;">' + _esc(q.instruction) + "</span><br>";
               }
-              if (q.text && q.text !== '[Image Exercise]') {
-                studentHtml += '<span style="font-style:italic;">' + _esc(q.text) + '</span>';
+              if (q.text && q.text !== "[Image Exercise]") {
+                studentHtml += '<span style="font-style:italic;">' + _esc(q.text) + "</span>";
               }
-              qImgs.forEach(function(img) {
+              qImgs.forEach(function (img) {
                 studentHtml += '<img src="' + img + '" style="max-width:100%;display:block;margin:6px 0;">';
               });
             } else {
               if (q.instruction) {
-                studentHtml += '<span style="font-style:italic;font-weight:bold;display:block;margin-bottom:2px;">' + _esc(q.instruction) + '</span>';
+                studentHtml += '<span style="font-style:italic;font-weight:bold;display:block;margin-bottom:2px;">' + _esc(q.instruction) + "</span>";
               }
-              studentHtml += _esc(q.text).replace(/\n/g, '<br>');
+              studentHtml += _esc(q.text).replace(/\n/g, "<br>");
               studentHtml += '<div style="border-bottom:1px solid #ccc;height:28px;margin-top:6px;"></div>';
             }
-            studentHtml += '</div>';
+            studentHtml += "</div>";
           });
         });
         document.getElementById("studentPreview").innerHTML = studentHtml;
 
         var teacherHtml = buildMeta(true);
-        chapterOrder.forEach(function(chKey) {
+        chapterOrder.forEach(function (chKey) {
           var ch = grouped[chKey];
-          teacherHtml += '<div style="font-weight:bold;color:#667eea;margin:12px 0 6px;font-size:1rem;border-bottom:1px solid #ddd;padding-bottom:4px;">' + _esc(ch.name) + '</div>';
-          ch.items.forEach(function(q) {
-            var qImgs = (q.images && q.images.length > 0) ? q.images : (q.image ? [q.image] : []);
-            teacherHtml += '<div class="doc-question"><strong>Q' + q.qNum + '.</strong> ';
+          teacherHtml += '<div style="font-weight:bold;color:#667eea;margin:12px 0 6px;font-size:1rem;border-bottom:1px solid #ddd;padding-bottom:4px;">' + _esc(ch.name) + "</div>";
+          ch.items.forEach(function (q) {
+            var qImgs = q.images && q.images.length > 0 ? q.images : q.image ? [q.image] : [];
+            teacherHtml += '<div class="doc-question"><strong>Q' + q.qNum + ".</strong> ";
             if (qImgs.length > 0) {
               if (q.instruction) {
-                teacherHtml += '<span style="font-style:italic;font-weight:bold;">' + _esc(q.instruction) + '</span><br>';
+                teacherHtml += '<span style="font-style:italic;font-weight:bold;">' + _esc(q.instruction) + "</span><br>";
               }
-              if (q.text && q.text !== '[Image Exercise]') {
-                teacherHtml += '<span style="font-style:italic;">' + _esc(q.text) + '</span>';
+              if (q.text && q.text !== "[Image Exercise]") {
+                teacherHtml += '<span style="font-style:italic;">' + _esc(q.text) + "</span>";
               }
-              qImgs.forEach(function(img) {
+              qImgs.forEach(function (img) {
                 teacherHtml += '<img src="' + img + '" style="max-width:100%;display:block;margin:6px 0;">';
               });
             } else {
               if (q.instruction) {
-                teacherHtml += '<span style="font-style:italic;font-weight:bold;display:block;margin-bottom:2px;">' + _esc(q.instruction) + '</span>';
+                teacherHtml += '<span style="font-style:italic;font-weight:bold;display:block;margin-bottom:2px;">' + _esc(q.instruction) + "</span>";
               }
-              teacherHtml += _esc(q.text).replace(/\n/g, '<br>');
+              teacherHtml += _esc(q.text).replace(/\n/g, "<br>");
             }
-            teacherHtml += '</div>';
+            teacherHtml += "</div>";
             if (qImgs.length === 0 && q.answer && q.answer !== "vary") {
-              teacherHtml += '<div class="doc-answer">Ans: ' + _esc(q.answer) + '</div>';
+              teacherHtml += '<div class="doc-answer">Ans: ' + _esc(q.answer) + "</div>";
             }
           });
         });
@@ -3635,31 +3717,31 @@
 
         chapterOrder.forEach(function (chKey) {
           var ch = grouped[chKey];
-          html += '<div class="ch">' + _esc(ch.name) + '</div>';
+          html += '<div class="ch">' + _esc(ch.name) + "</div>";
           var sortedQuestions = ch.questions.slice().sort(function (a, b) {
             return a.qNum - b.qNum;
           });
 
           sortedQuestions.forEach(function (q) {
-            var qImgs = (q.images && q.images.length > 0) ? q.images : (q.image ? [q.image] : []);
+            var qImgs = q.images && q.images.length > 0 ? q.images : q.image ? [q.image] : [];
             if (qImgs.length > 0) {
               html += '<div class="q">';
-              if (q.instruction) html += '<div class="instr">' + _esc(q.instruction) + '</div>';
-              if (q.text && q.text !== '[Image Exercise]') html += '<strong>' + q.qNum + '.</strong> <em>' + _esc(q.text) + '</em>';
-              qImgs.forEach(function(img) {
+              if (q.instruction) html += '<div class="instr">' + _esc(q.instruction) + "</div>";
+              if (q.text && q.text !== "[Image Exercise]") html += "<strong>" + q.qNum + ".</strong> <em>" + _esc(q.text) + "</em>";
+              qImgs.forEach(function (img) {
                 html += '<div><img src="' + img + '" style="max-width:100%;margin:6px 0;"></div>';
               });
-              html += '</div>';
+              html += "</div>";
             } else {
               html += '<div class="q">';
-              if (q.instruction) html += '<div class="instr">' + _esc(q.instruction) + '</div>';
-              html += '<strong>' + q.qNum + '.</strong> ' + _esc(q.text).replace(/\n/g, '<br>') + '</div>';
+              if (q.instruction) html += '<div class="instr">' + _esc(q.instruction) + "</div>";
+              html += "<strong>" + q.qNum + ".</strong> " + _esc(q.text).replace(/\n/g, "<br>") + "</div>";
               if (!includeAnswers) {
                 html += '<div class="ans-line"></div>';
               }
             }
             if (includeAnswers && qImgs.length === 0 && q.answer && q.answer !== "vary") {
-              html += '<div class="ans">' + _esc(q.answer) + '</div>';
+              html += '<div class="ans">' + _esc(q.answer) + "</div>";
             }
           });
         });
@@ -3680,13 +3762,17 @@
 
       // ─── INJECT PICTURE/TEXT BADGES ─────────────────────────────────────────
       (function injectBadges() {
-        document.querySelectorAll(".chapter-card").forEach(function(card) {
+        document.querySelectorAll(".chapter-card").forEach(function (card) {
           var cb = card.querySelector("input");
           var chKey = cb ? cb.id : null;
           var ch = chKey ? questionBank[chKey] : null;
           if (!ch || !ch.worksheets) return;
-          var hasImage = ch.worksheets.some(function(ws) { return !!ws.image; });
-          var hasText = ch.worksheets.some(function(ws) { return !ws.image && ws.questions && ws.questions.length > 0; });
+          var hasImage = ch.worksheets.some(function (ws) {
+            return !!ws.image;
+          });
+          var hasText = ch.worksheets.some(function (ws) {
+            return !ws.image && ws.questions && ws.questions.length > 0;
+          });
           var type = hasImage && hasText ? "mixed" : hasImage ? "picture" : "text";
           var p = card.querySelector("p");
           if (p) {
