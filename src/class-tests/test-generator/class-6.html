@@ -3609,10 +3609,9 @@
         var studentHtml = buildMeta(false);
         chapterOrder.forEach(function (chKey) {
           var ch = grouped[chKey];
-          studentHtml += '<div style="font-weight:bold;color:#667eea;margin:12px 0 6px;font-size:1rem;border-bottom:1px solid #ddd;padding-bottom:4px;">' + _esc(ch.name) + "</div>";
           ch.items.forEach(function (q) {
             var qImgs = q.images && q.images.length > 0 ? q.images : q.image ? [q.image] : [];
-            studentHtml += '<div class="doc-question"><strong>Q' + q.qNum + ".</strong> ";
+            studentHtml += '<div class="doc-question"><strong>Q' + q.qNum + ")</strong> ";
             if (qImgs.length > 0) {
               if (q.instruction) {
                 studentHtml += '<span style="font-style:italic;font-weight:bold;">' + _esc(q.instruction) + "</span><br>";
@@ -3638,10 +3637,9 @@
         var teacherHtml = buildMeta(true);
         chapterOrder.forEach(function (chKey) {
           var ch = grouped[chKey];
-          teacherHtml += '<div style="font-weight:bold;color:#667eea;margin:12px 0 6px;font-size:1rem;border-bottom:1px solid #ddd;padding-bottom:4px;">' + _esc(ch.name) + "</div>";
           ch.items.forEach(function (q) {
             var qImgs = q.images && q.images.length > 0 ? q.images : q.image ? [q.image] : [];
-            teacherHtml += '<div class="doc-question"><strong>Q' + q.qNum + ".</strong> ";
+            teacherHtml += '<div class="doc-question"><strong>Q' + q.qNum + ")</strong> ";
             if (qImgs.length > 0) {
               if (q.instruction) {
                 teacherHtml += '<span style="font-style:italic;font-weight:bold;">' + _esc(q.instruction) + "</span><br>";

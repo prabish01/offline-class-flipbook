@@ -7977,18 +7977,20 @@
         var studentHtml = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + "</div>";
         studentHtml += '<div class="doc-meta"><div>Name: ' + (_esc(studentName) || "________________") + " &nbsp;&nbsp; Date: " + (_esc(testDate) || "____________") + "</div>";
         studentHtml += "<div>Total Marks: " + _esc(totalMarks) + " &nbsp;&nbsp; Time: " + _esc(testDuration) + " mins</div></div>";
+        var instrSerial = 1;
         chapterOrder.forEach(function (chKey) {
           var ch = grouped[chKey];
           ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
-            studentHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
+            var tempInstr = ws.instruction.replace(/^\s*[A-Z]\s*[–\-\.]\s*/, "");
+            studentHtml += '<div class="doc-instr"><b>Q' + instrSerial++ + ") " + _esc(tempInstr).replace(/\n/g, "<br>") + "</b></div>";
             ws.questions
               .slice()
               .sort(function (a, b) {
                 return a.qNum - b.qNum;
               })
-              .forEach(function (q) {
-                studentHtml += '<div class="doc-question">' + q.qNum + ". " + _esc(q.text).replace(/\n/g, "<br>") + "</div>";
+              .forEach(function (q, idx) {
+                studentHtml += '<div class="doc-question">' + (idx + 1) + ") " + _esc(q.text).replace(/\n/g, "<br>") + "</div>";
               });
           });
         });
@@ -7997,23 +7999,25 @@
         teacherHtml += '<div class="doc-ak-label">ANSWER KEY - TEACHER USE ONLY</div>';
         teacherHtml += '<div class="doc-meta"><div>Name: ' + (_esc(studentName) || "________________") + " &nbsp;&nbsp; Date: " + (_esc(testDate) || "____________") + "</div>";
         teacherHtml += "<div>Total Marks: " + _esc(totalMarks) + " &nbsp;&nbsp; Time: " + _esc(testDuration) + " mins</div></div>";
+        var instrSerialT = 1;
         chapterOrder.forEach(function (chKey) {
           var ch = grouped[chKey];
           ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
-            teacherHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
+            var tempInstrT = ws.instruction.replace(/^\s*[A-Z]\s*[–\-\.]\s*/, "");
+            teacherHtml += '<div class="doc-instr"><b>Q' + instrSerialT++ + ") " + _esc(tempInstrT).replace(/\n/g, "<br>") + "</b></div>";
             var sorted = ws.questions.slice().sort(function (a, b) {
               return a.qNum - b.qNum;
             });
-            sorted.forEach(function (q) {
-              teacherHtml += '<div class="doc-question">' + q.qNum + ". " + _esc(q.text).replace(/\n/g, "<br>") + "</div>";
+            sorted.forEach(function (q, idx) {
+              teacherHtml += '<div class="doc-question">' + (idx + 1) + ") " + _esc(q.text).replace(/\n/g, "<br>") + "</div>";
             });
             teacherHtml += '<div class="doc-answers-header">Answers:</div>';
-            sorted.forEach(function (q) {
+            sorted.forEach(function (q, idx) {
               if (q.answer && q.answer !== "vary") {
-                teacherHtml += '<div class="doc-answer">' + q.qNum + ". " + _esc(q.answer) + "</div>";
+                teacherHtml += '<div class="doc-answer">' + (idx + 1) + ") " + _esc(q.answer) + "</div>";
               } else {
-                teacherHtml += '<div class="doc-answer" style="color:#999;">' + q.qNum + ". Answers may vary</div>";
+                teacherHtml += '<div class="doc-answer" style="color:#999;">' + (idx + 1) + ") Answers may vary</div>";
               }
             });
           });

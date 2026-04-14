@@ -1921,19 +1921,21 @@
         studentHtml += "<div>Total Marks: " + _esc(totalMarks) + " &nbsp;&nbsp; Time: " + _esc(testDuration) + " mins</div>";
         studentHtml += "</div>";
 
+        var instrSerial = 1;
         chapterOrder.forEach(function (chKey) {
           var ch = grouped[chKey];
           ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
-            studentHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
+            var tempInstr = ws.instruction.replace(/^\s*[A-Z]\s*[–\-\.]\s*/, "");
+            studentHtml += '<div class="doc-instr"><b>Q' + instrSerial++ + ") " + _esc(tempInstr).replace(/\n/g, "<br>") + "</b></div>";
             if (ws.image) {
               studentHtml += '<img src="' + ws.image.replace(/ /g, "%20") + '" style="max-width:100%;margin:10px 0;border-radius:8px;">';
             } else {
               var sortedQuestions = ws.questions.slice().sort(function (a, b) {
                 return a.qNum - b.qNum;
               });
-              sortedQuestions.forEach(function (q) {
-                studentHtml += '<div class="doc-question">' + q.qNum + ". " + _esc(q.text).replace(/\n/g, "<br>") + "</div>";
+              sortedQuestions.forEach(function (q, idx) {
+                studentHtml += '<div class="doc-question">' + (idx + 1) + ") " + _esc(q.text).replace(/\n/g, "<br>") + "</div>";
               });
             }
           });
@@ -1949,11 +1951,13 @@
         teacherHtml += "<div>Total Marks: " + _esc(totalMarks) + " &nbsp;&nbsp; Time: " + _esc(testDuration) + " mins</div>";
         teacherHtml += "</div>";
 
+        var instrSerialT = 1;
         chapterOrder.forEach(function (chKey) {
           var ch = grouped[chKey];
           ch.wsOrder.forEach(function (wsKey) {
             var ws = ch.worksheets[wsKey];
-            teacherHtml += '<div class="doc-instr">' + _esc(ws.instruction).replace(/\n/g, "<br>") + "</div>";
+            var tempInstrT = ws.instruction.replace(/^\s*[A-Z]\s*[–\-\.]\s*/, "");
+            teacherHtml += '<div class="doc-instr"><b>Q' + instrSerialT++ + ") " + _esc(tempInstrT).replace(/\n/g, "<br>") + "</b></div>";
             if (ws.image) {
               teacherHtml += '<img src="' + ws.image.replace(/ /g, "%20") + '" style="max-width:100%;margin:10px 0;border-radius:8px;">';
               var imgAns = ws.questions[0] && ws.questions[0].answer;
@@ -1975,16 +1979,16 @@
               var sortedQuestions = ws.questions.slice().sort(function (a, b) {
                 return a.qNum - b.qNum;
               });
-              sortedQuestions.forEach(function (q) {
-                teacherHtml += '<div class="doc-question">' + q.qNum + ". " + _esc(q.text).replace(/\n/g, "<br>") + "</div>";
+              sortedQuestions.forEach(function (q, idx) {
+                teacherHtml += '<div class="doc-question">' + (idx + 1) + ") " + _esc(q.text).replace(/\n/g, "<br>") + "</div>";
               });
               // Show answers after questions
               teacherHtml += '<div class="doc-answers-header">Answers:</div>';
-              sortedQuestions.forEach(function (q) {
+              sortedQuestions.forEach(function (q, idx) {
                 if (q.answer && q.answer !== "vary") {
-                  teacherHtml += '<div class="doc-answer">' + q.qNum + ". " + _esc(q.answer) + "</div>";
+                  teacherHtml += '<div class="doc-answer">' + (idx + 1) + ") " + _esc(q.answer) + "</div>";
                 } else {
-                  teacherHtml += '<div class="doc-answer" style="color:#999;">' + q.qNum + ". Answers may vary</div>";
+                  teacherHtml += '<div class="doc-answer" style="color:#999;">' + (idx + 1) + ") Answers may vary</div>";
                 }
               });
             }
