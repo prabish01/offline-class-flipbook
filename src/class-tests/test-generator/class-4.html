@@ -768,7 +768,7 @@
           overflow: visible !important;
           border: none !important;
           border-radius: 0 !important;
-          padding: 0 !important;
+          padding: 15mm 12mm !important;
           background: white !important;
         }
         .doc-question, .doc-instr { page-break-inside: avoid; }
@@ -2905,8 +2905,7 @@
           grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
         });
         var studentHtml = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + "</div>";
-        studentHtml += '<div class="doc-meta"><div>Name: ' + (_esc(studentName) || "________________") + " &nbsp;&nbsp; Date: " + (_esc(testDate) || "____________") + "</div>";
-        studentHtml += "<div>Total Marks: " + _esc(totalMarks) + " &nbsp;&nbsp; Time: " + _esc(testDuration) + " mins</div></div>";
+        studentHtml += '<div class="doc-meta"><table style="width:100%;border-collapse:collapse;"><tr><td style="width:25%">Name: ' + (_esc(studentName) || "________________") + '</td><td style="width:25%">Date: ' + (_esc(testDate) || "____________") + '</td><td style="width:25%">Total Marks: ' + _esc(totalMarks) + '</td><td style="width:25%;text-align:right">Time: ' + _esc(testDuration) + ' mins</td></tr></table></div>';
         var instrSerial = 1;
         chapterOrder.forEach(function (chKey) {
           var ch = grouped[chKey];
@@ -2931,8 +2930,7 @@
         document.getElementById("studentPreview").innerHTML = studentHtml;
         var teacherHtml = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + "</div>";
         teacherHtml += '<div class="doc-ak-label">ANSWER KEY - TEACHER USE ONLY</div>';
-        teacherHtml += '<div class="doc-meta"><div>Name: ' + (_esc(studentName) || "________________") + " &nbsp;&nbsp; Date: " + (_esc(testDate) || "____________") + "</div>";
-        teacherHtml += "<div>Total Marks: " + _esc(totalMarks) + " &nbsp;&nbsp; Time: " + _esc(testDuration) + " mins</div></div>";
+        teacherHtml += '<div class="doc-meta"><table style="width:100%;border-collapse:collapse;"><tr><td style="width:25%">Name: ' + (_esc(studentName) || "________________") + '</td><td style="width:25%">Date: ' + (_esc(testDate) || "____________") + '</td><td style="width:25%">Total Marks: ' + _esc(totalMarks) + '</td><td style="width:25%;text-align:right">Time: ' + _esc(testDuration) + ' mins</td></tr></table></div>';
         var instrSerialT = 1;
         chapterOrder.forEach(function (chKey) {
           var ch = grouped[chKey];

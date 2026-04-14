@@ -841,7 +841,7 @@
           overflow: visible !important;
           border: none !important;
           border-radius: 0 !important;
-          padding: 0 !important;
+          padding: 15mm 12mm !important;
           background: white !important;
         }
         .doc-question, .doc-instr { page-break-inside: avoid; }
@@ -3611,7 +3611,7 @@
         function buildMeta(includeAK) {
           var h = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + "</div>";
           if (includeAK) h += '<div class="doc-ak-label">ANSWER KEY - TEACHER USE ONLY</div>';
-          h += '<div class="doc-meta"><table><tr><td>Name: ' + (_esc(studentName) || "________________") + "</td><td>Date: " + (_esc(testDate) || "____________") + "</td></tr><tr><td>Total Marks: " + _esc(totalMarks) + "</td><td>Time: " + _esc(testDuration) + " mins</td></tr></table></div>";
+          h += '<div class="doc-meta"><table style="width:100%;border-collapse:collapse;"><tr><td style="width:25%">Name: ' + (_esc(studentName) || "________________") + '</td><td style="width:25%">Date: ' + (_esc(testDate) || "____________") + '</td><td style="width:25%">Total Marks: ' + _esc(totalMarks) + '</td><td style="width:25%;text-align:right">Time: ' + _esc(testDuration) + ' mins</td></tr></table></div>';
           return h;
         }
 

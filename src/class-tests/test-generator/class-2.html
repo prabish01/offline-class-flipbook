@@ -593,7 +593,7 @@
           overflow: visible !important;
           border: none !important;
           border-radius: 0 !important;
-          padding: 0 !important;
+          padding: 15mm 12mm !important;
           background: white !important;
         }
         .doc-question, .doc-instr { page-break-inside: avoid; }
@@ -2169,7 +2169,7 @@
           grouped[q.chapterKey].worksheets[wsKey].questions.push(q);
         });
 
-        var metaLine = "<div>Name: " + (_esc(studentName) || "________________") + " &nbsp;&nbsp; Date: " + (_esc(testDate) || "____________") + "</div>" + "<div>Total Marks: " + _esc(totalMarks) + " &nbsp;&nbsp; Time: " + _esc(testDuration) + " mins</div>";
+        var metaLine = '<table style="width:100%;border-collapse:collapse;"><tr><td style="width:25%">Name: ' + (_esc(studentName) || "________________") + '</td><td style="width:25%">Date: ' + (_esc(testDate) || "____________") + '</td><td style="width:25%">Total Marks: ' + _esc(totalMarks) + '</td><td style="width:25%;text-align:right">Time: ' + _esc(testDuration) + ' mins</td></tr></table>';
 
         // Student preview
         var instrSerial = 1;
