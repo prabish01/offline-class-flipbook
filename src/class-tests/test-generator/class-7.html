@@ -627,15 +627,17 @@
         padding: 8px 0;
         margin-bottom: 12px;
         font-size: 10pt;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
       }
-      .word-preview-content .doc-meta-left,
-      .word-preview-content .doc-meta-right {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
+      .word-preview-content .doc-meta table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .word-preview-content .doc-meta td {
+        vertical-align: top;
+        padding: 2px 0;
+      }
+      .word-preview-content .doc-meta td:last-child {
+        text-align: right;
       }
       .word-preview-content .doc-instr {
         font-weight: bold;

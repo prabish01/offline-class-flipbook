@@ -746,15 +746,17 @@
         padding: 8px 0;
         margin-bottom: 12px;
         font-size: 10pt;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
       }
-      .word-preview-content .doc-meta-left,
-      .word-preview-content .doc-meta-right {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
+      .word-preview-content .doc-meta table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .word-preview-content .doc-meta td {
+        vertical-align: top;
+        padding: 2px 0;
+      }
+      .word-preview-content .doc-meta td:last-child {
+        text-align: right;
       }
       .word-preview-content .doc-instr {
         font-weight: bold;
@@ -1925,10 +1927,7 @@
 
         // Build student preview HTML
         var studentHtml = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + "</div>";
-        studentHtml += '<div class="doc-meta">';
-        studentHtml += '<div class="doc-meta-left"><div>Name: ' + (_esc(studentName) || "________________") + "</div><div>Total Marks: " + _esc(totalMarks) + "</div></div>";
-        studentHtml += '<div class="doc-meta-right"><div>Date: ' + (_esc(testDate) || "____________") + "</div><div>Time: " + _esc(testDuration) + " mins</div></div>";
-        studentHtml += "</div>";
+        studentHtml += '<div class="doc-meta"><table><tr><td>Name: ' + (_esc(studentName) || "________________") + "</td><td>Date: " + (_esc(testDate) || "____________") + "</td></tr><tr><td>Total Marks: " + _esc(totalMarks) + "</td><td>Time: " + _esc(testDuration) + " mins</td></tr></table></div>";
 
         var instrSerial = 1;
         chapterOrder.forEach(function (chKey) {
@@ -1955,10 +1954,7 @@
         // Build teacher preview HTML (with answers)
         var teacherHtml = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + "</div>";
         teacherHtml += '<div class="doc-ak-label">ANSWER KEY - TEACHER USE ONLY</div>';
-        teacherHtml += '<div class="doc-meta">';
-        teacherHtml += '<div class="doc-meta-left"><div>Name: ' + (_esc(studentName) || "________________") + "</div><div>Total Marks: " + _esc(totalMarks) + "</div></div>";
-        teacherHtml += '<div class="doc-meta-right"><div>Date: ' + (_esc(testDate) || "____________") + "</div><div>Time: " + _esc(testDuration) + " mins</div></div>";
-        teacherHtml += "</div>";
+        teacherHtml += '<div class="doc-meta"><table><tr><td>Name: ' + (_esc(studentName) || "________________") + "</td><td>Date: " + (_esc(testDate) || "____________") + "</td></tr><tr><td>Total Marks: " + _esc(totalMarks) + "</td><td>Time: " + _esc(testDuration) + " mins</td></tr></table></div>";
 
         var instrSerialT = 1;
         chapterOrder.forEach(function (chKey) {
