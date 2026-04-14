@@ -666,8 +666,9 @@
       body.print-student .word-preview-panel:nth-child(2) { display: none !important; }
       body.print-teacher .word-preview-panel:nth-child(1) { display: none !important; }
 
+      @page { margin: 0; }
       @media print {
-        body { background: white !important; padding: 0 !important; margin: 0 !important; }
+        body { background: white !important; padding: 15mm 10mm !important; margin: 0 !important; }
         .back-btn, .header, .subtitle, .test-info, .chapters-section, .action-buttons,
         .test-preview, .answer-key-preview, .word-preview-header, .word-preview-panel .btn {
           display: none !important;
