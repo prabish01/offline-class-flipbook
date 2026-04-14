@@ -746,6 +746,15 @@
         padding: 8px 0;
         margin-bottom: 12px;
         font-size: 10pt;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+      .word-preview-content .doc-meta-left,
+      .word-preview-content .doc-meta-right {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
       }
       .word-preview-content .doc-instr {
         font-weight: bold;
@@ -1917,8 +1926,8 @@
         // Build student preview HTML
         var studentHtml = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + "</div>";
         studentHtml += '<div class="doc-meta">';
-        studentHtml += "<div>Name: " + (_esc(studentName) || "________________") + " &nbsp;&nbsp; Date: " + (_esc(testDate) || "____________") + "</div>";
-        studentHtml += "<div>Total Marks: " + _esc(totalMarks) + " &nbsp;&nbsp; Time: " + _esc(testDuration) + " mins</div>";
+        studentHtml += '<div class="doc-meta-left"><div>Name: ' + (_esc(studentName) || "________________") + "</div><div>Total Marks: " + _esc(totalMarks) + "</div></div>";
+        studentHtml += '<div class="doc-meta-right"><div>Date: ' + (_esc(testDate) || "____________") + "</div><div>Time: " + _esc(testDuration) + " mins</div></div>";
         studentHtml += "</div>";
 
         var instrSerial = 1;
@@ -1947,8 +1956,8 @@
         var teacherHtml = '<div class="doc-title">Grammar Frolics - ' + _esc(testName) + "</div>";
         teacherHtml += '<div class="doc-ak-label">ANSWER KEY - TEACHER USE ONLY</div>';
         teacherHtml += '<div class="doc-meta">';
-        teacherHtml += "<div>Name: " + (_esc(studentName) || "________________") + " &nbsp;&nbsp; Date: " + (_esc(testDate) || "____________") + "</div>";
-        teacherHtml += "<div>Total Marks: " + _esc(totalMarks) + " &nbsp;&nbsp; Time: " + _esc(testDuration) + " mins</div>";
+        teacherHtml += '<div class="doc-meta-left"><div>Name: ' + (_esc(studentName) || "________________") + "</div><div>Total Marks: " + _esc(totalMarks) + "</div></div>";
+        teacherHtml += '<div class="doc-meta-right"><div>Date: ' + (_esc(testDate) || "____________") + "</div><div>Time: " + _esc(testDuration) + " mins</div></div>";
         teacherHtml += "</div>";
 
         var instrSerialT = 1;
