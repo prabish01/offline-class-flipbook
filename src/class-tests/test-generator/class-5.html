@@ -787,7 +787,7 @@
           </div>
           <div class="info-field">
             <label for="testDate">Date</label>
-            <input type="date" id="testDate" />
+            <input type="text" id="testDate" placeholder="e.g., 14 April 2026" />
           </div>
           <div class="info-field">
             <label for="testDuration">Test Duration (mins)</label>
@@ -1204,8 +1204,7 @@
     </div>
 
     <script>
-      document.getElementById("testDate").valueAsDate = new Date();
-
+      
       const IMG = "../../../assets/images/test-generator/class-5/";
 
       function renderImgAnswer(ans, forWord) {
