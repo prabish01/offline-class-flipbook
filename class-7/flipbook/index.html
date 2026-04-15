@@ -426,5 +426,133 @@
 	closeBtn.addEventListener('click', closePdf);
 })();
 </script>
+<script>
+(function(){
+  var poll=setInterval(function(){
+    try{
+      var total=$('#album').turn('pages');
+      if(!total)return;
+      clearInterval(poll);
+      $('[id="number-pages"]').text(total);
+      $('#album').bind('turned',function(){
+        $('[id="number-pages"]').text($(this).turn('pages'));
+      });
+      $('#album').bind('turning',function(e,page){
+        if(page<1||page>$(this).turn('pages'))e.preventDefault();
+      });
+    }catch(e){}
+  },200);
+})();
+</script>
+<script>
+(function () {
+	function toPositivePages(view) {
+		return (view || []).filter(function (n) {
+			return typeof n === 'number' && n > 0;
+		});
+	}
+
+	function getMeaningfulMaxPhysical(totalPhysical) {
+		// The last physical page is a trailing white filler page.
+		return Math.max(1, totalPhysical - 1);
+	}
+
+	function getDisplayTotal(totalPhysical) {
+		// Mapping used in this book:
+		// physical 1 = cover (not part of numbered sequence)
+		// physical 2 = front filler
+		// physical 3..(total-1) = numbered content pages 1..N
+		return Math.max(1, getMeaningfulMaxPhysical(totalPhysical) - 2);
+	}
+
+	function physicalToDisplay(physical, totalPhysical) {
+		var display = physical - 2;
+		return Math.max(1, Math.min(getDisplayTotal(totalPhysical), display));
+	}
+
+	function displayToPhysical(display, totalPhysical) {
+		return Math.max(1, Math.min(getMeaningfulMaxPhysical(totalPhysical), display + 2));
+	}
+
+	function getCurrentPhysicalPage($album, totalPhysical) {
+		var meaningfulMax = getMeaningfulMaxPhysical(totalPhysical);
+		var view = toPositivePages($album.turn('view')).filter(function (p) {
+			return p <= meaningfulMax;
+		});
+
+		if (view.length) {
+			return Math.max.apply(null, view);
+		}
+
+		return Math.min(meaningfulMax, $album.turn('page'));
+	}
+
+	function syncPaginationUI($album) {
+		var totalPhysical = $album.turn('pages');
+		var currentPhysical = getCurrentPhysicalPage($album, totalPhysical);
+		var currentDisplay = physicalToDisplay(currentPhysical, totalPhysical);
+		var displayTotal = getDisplayTotal(totalPhysical);
+
+		$('[id="number-pages"]').text(displayTotal);
+		$('#page-number').val(currentDisplay);
+		$('#page-numbermb').val(currentDisplay);
+	}
+
+	function bindGoToPage($album, selector) {
+		$(document).on('change keydown', selector, function (e) {
+			if (e.type === 'keydown' && e.key !== 'Enter') {
+				return;
+			}
+
+			var totalPhysical = $album.turn('pages');
+			var displayTotal = getDisplayTotal(totalPhysical);
+			var requestedDisplay = parseInt($(this).val(), 10);
+			if (isNaN(requestedDisplay)) {
+				syncPaginationUI($album);
+				return;
+			}
+
+			var clampedDisplay = Math.max(1, Math.min(displayTotal, requestedDisplay));
+			var targetPhysical = displayToPhysical(clampedDisplay, totalPhysical);
+			$album.turn('page', targetPhysical);
+			syncPaginationUI($album);
+		});
+	}
+
+	var poll = setInterval(function () {
+		try {
+			var $album = $('#album');
+			var totalPhysical = $album.turn('pages');
+			if (!totalPhysical) {
+				return;
+			}
+
+			clearInterval(poll);
+
+			$album.on('turning', function (e, page) {
+				if (page < 1 || page > getMeaningfulMaxPhysical(totalPhysical)) {
+					e.preventDefault();
+				}
+			});
+
+			$album.on('turned', function () {
+				syncPaginationUI($album);
+			});
+
+			bindGoToPage($album, '#page-number');
+			bindGoToPage($album, '#page-numbermb');
+
+			// If the book opens on the trailing filler page, move back to the last meaningful page.
+			if ($album.turn('page') > getMeaningfulMaxPhysical(totalPhysical)) {
+				$album.turn('page', getMeaningfulMaxPhysical(totalPhysical));
+			}
+
+			syncPaginationUI($album);
+		} catch (e) {
+			// Keep polling until turn.js is ready.
+		}
+	}, 200);
+})();
+</script>
 </body>
 </html>
