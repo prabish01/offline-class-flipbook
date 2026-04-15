@@ -3495,7 +3495,7 @@
 
       // ─── PREVIEW TEST ───────────────────────────────────────────────────────
       function previewTest() {
-        const totalMarks = parseInt(document.getElementById("totalMarks").value) || 30;
+        const totalMarks = parseInt(window._lastTotalMarks) || 30;
 
         const selectedKeys = getSelectedChapterKeys();
         if (selectedKeys.length === 0) {
@@ -3881,7 +3881,7 @@
 
         // Update totalMarks field to match the generated test
         const totalMarks = selectedPic.length * pMarks + selectedText.length * tMarks;
-        document.getElementById("totalMarks").value = window._lastTotalMarks || totalMarks;
+        window._lastTotalMarks = window._lastTotalMarks || totalMarks;
 
         console.log("Calling updateWordPreviews...");
         updateWordPreviews();
@@ -3901,7 +3901,7 @@
         var testName = document.getElementById("testName").value || "Grammar Test";
         var studentName = document.getElementById("studentName").value || "";
         var testDate = document.getElementById("testDate").value || "";
-        var totalMarks = document.getElementById("totalMarks").value || "";
+        var totalMarks = window._lastTotalMarks || "";
         var testDuration = document.getElementById("testDuration").value || "";
         var grouped = {};
         var chapterOrder = [];
