@@ -4,17 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Grammar Learning Platform</title>
-    <script>
-      // Redirect to class selection
-      window.location.href = "./src/class-menus/class-selection/index.html";
-    </script>
+    <title>Good with Grammar</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
 
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -29,124 +21,64 @@
       .container {
         background: white;
         border-radius: 20px;
-        padding: 50px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        padding: 50px 40px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         text-align: center;
-        max-width: 600px;
-        animation: slideUp 0.6s ease-out;
+        max-width: 640px;
+        width: 100%;
       }
 
-      @keyframes slideUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      h1 { color: #667eea; font-size: 2.2em; margin-bottom: 8px; }
+      .subtitle { color: #666; font-size: 1.1em; margin-bottom: 36px; }
+
+      .classes-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
       }
 
-      h1 {
-        color: #667eea;
-        font-size: 2.5em;
-        margin-bottom: 10px;
-      }
-
-      .subtitle {
-        color: #666;
-        font-size: 1.2em;
-        margin-bottom: 30px;
-      }
-
-      .btn {
-        display: inline-block;
+      .class-btn {
+        display: block;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
         text-decoration: none;
-        padding: 18px 50px;
-        border-radius: 50px;
-        font-size: 1.2em;
+        padding: 22px 10px;
+        border-radius: 14px;
+        font-size: 1.1em;
         font-weight: bold;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        margin-top: 20px;
+        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 4px 12px rgba(102,126,234,0.35);
       }
 
-      .btn:hover {
+      .class-btn:hover {
         transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        box-shadow: 0 8px 20px rgba(102,126,234,0.5);
       }
 
-      .features {
-        margin-top: 40px;
-        text-align: left;
-        color: #555;
-      }
-
-      .features h3 {
-        color: #667eea;
-        margin-bottom: 15px;
-      }
-
-      .features ul {
-        list-style: none;
-        padding-left: 0;
-      }
-
-      .features li {
-        padding: 8px 0;
-        padding-left: 30px;
-        position: relative;
-      }
-
-      .features li:before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        color: #667eea;
-        font-weight: bold;
-        font-size: 1.2em;
-      }
-
-      .version {
-        margin-top: 30px;
-        color: #999;
-        font-size: 0.9em;
+      .class-btn span {
+        display: block;
+        font-size: 0.72em;
+        font-weight: normal;
+        opacity: 0.85;
+        margin-top: 4px;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>🎓 Good with Grammar</h1>
-      <p class="subtitle">Interactive Learning for Class 1</p>
+      <h1>Good with Grammar</h1>
+      <p class="subtitle">Select your class to start learning</p>
 
-      <a href="src/main-menu/index .html" class="btn">Start Learning →</a>
-
-      <div class="features">
-        <h3>📚 What's Included:</h3>
-        <ul>
-          <li>Interactive Digital Flipbook</li>
-          <li>Animated Video Lessons</li>
-          <li>Automated Test Generator</li>
-          <li>Downloadable Worksheets</li>
-          <li>16 Grammar Chapters + Recaps</li>
-        </ul>
+      <div class="classes-grid">
+        <a href="class-1/index.html" class="class-btn">Class 1<span>Grammar</span></a>
+        <a href="class-2/index.html" class="class-btn">Class 2<span>Grammar</span></a>
+        <a href="class-3/index.html" class="class-btn">Class 3<span>Grammar</span></a>
+        <a href="class-4/index.html" class="class-btn">Class 4<span>Grammar</span></a>
+        <a href="class-5/index.html" class="class-btn">Class 5<span>Grammar</span></a>
+        <a href="class-6/index.html" class="class-btn">Class 6<span>Grammar</span></a>
+        <a href="class-7/index.html" class="class-btn">Class 7<span>Grammar</span></a>
+        <a href="class-8/index.html" class="class-btn">Class 8<span>Grammar</span></a>
       </div>
-
-      <p class="version">Version 1.0 | Class 1 English Grammar</p>
     </div>
-
-    <script>
-      // Redirect after 3 seconds if no interaction
-      let redirectTimer = setTimeout(() => {
-        window.location.href = "src/main-menu/index .html";
-      }, 10000);
-
-      // Clear timer if user interacts
-      document.querySelector(".btn").addEventListener("click", () => {
-        clearTimeout(redirectTimer);
-      });
-    </script>
   </body>
 </html>
