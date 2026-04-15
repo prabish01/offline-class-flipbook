@@ -14,7 +14,7 @@ body {
 #main2 {
   width: 100vw;
   height: 100vh;
-  background-image: url(shared/images/main-menu/2.png);
+  background-image: url(shared/images/main-menu/background.jpg);
   background-size: cover;
   background-position: center;
   display: block;

@@ -2,83 +2,76 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Good with Grammar</title>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-      }
-
-      .container {
-        background: white;
-        border-radius: 20px;
-        padding: 50px 40px;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        text-align: center;
-        max-width: 640px;
-        width: 100%;
-      }
-
-      h1 { color: #667eea; font-size: 2.2em; margin-bottom: 8px; }
-      .subtitle { color: #666; font-size: 1.1em; margin-bottom: 36px; }
-
-      .classes-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 14px;
-      }
-
-      .class-btn {
-        display: block;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        text-decoration: none;
-        padding: 22px 10px;
-        border-radius: 14px;
-        font-size: 1.1em;
-        font-weight: bold;
-        transition: transform 0.2s, box-shadow 0.2s;
-        box-shadow: 0 4px 12px rgba(102,126,234,0.35);
-      }
-
-      .class-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(102,126,234,0.5);
-      }
-
-      .class-btn span {
-        display: block;
-        font-size: 0.72em;
-        font-weight: normal;
-        opacity: 0.85;
-        margin-top: 4px;
-      }
-    </style>
+    <title>Select Your Class</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <img src="shared/images/main-menu/neuberglogo.png" class="neuberg-logo" alt="Neuberg Publishing" />
+
     <div class="container">
-      <h1>Good with Grammar</h1>
-      <p class="subtitle">Select your class to start learning</p>
+      <h1 class="page-title">Select Your Class</h1>
+      <p class="subtitle">Choose your grade to start learning</p>
 
       <div class="classes-grid">
-        <a href="class-1/index.html" class="class-btn">Class 1<span>Grammar</span></a>
-        <a href="class-2/index.html" class="class-btn">Class 2<span>Grammar</span></a>
-        <a href="class-3/index.html" class="class-btn">Class 3<span>Grammar</span></a>
-        <a href="class-4/index.html" class="class-btn">Class 4<span>Grammar</span></a>
-        <a href="class-5/index.html" class="class-btn">Class 5<span>Grammar</span></a>
-        <a href="class-6/index.html" class="class-btn">Class 6<span>Grammar</span></a>
-        <a href="class-7/index.html" class="class-btn">Class 7<span>Grammar</span></a>
-        <a href="class-8/index.html" class="class-btn">Class 8<span>Grammar</span></a>
+        <div class="class-card active" onclick="selectClass(1)">
+          <div class="class-number">1</div>
+          <h3 class="class-title">Class 1</h3>
+          <p class="class-info">1 Book Available</p>
+        </div>
+
+        <div class="class-card active" onclick="selectClass(2)">
+          <div class="class-number">2</div>
+          <h3 class="class-title">Class 2</h3>
+          <p class="class-info">1 Book Available</p>
+        </div>
+
+        <div class="class-card active" onclick="selectClass(3)">
+          <div class="class-number">3</div>
+          <h3 class="class-title">Class 3</h3>
+          <p class="class-info">1 Book Available</p>
+        </div>
+
+        <div class="class-card active" onclick="selectClass(4)">
+          <div class="class-number">4</div>
+          <h3 class="class-title">Class 4</h3>
+          <p class="class-info">1 Book Available</p>
+        </div>
+
+        <div class="class-card active" onclick="selectClass(5)">
+          <div class="class-number">5</div>
+          <h3 class="class-title">Class 5</h3>
+          <p class="class-info">1 Book Available</p>
+        </div>
+
+        <div class="class-card active" onclick="selectClass(6)">
+          <div class="class-number">6</div>
+          <h3 class="class-title">Class 6</h3>
+          <p class="class-info">Test Generator Available</p>
+        </div>
+
+        <div class="class-card active" onclick="selectClass(7)">
+          <div class="class-number">7</div>
+          <h3 class="class-title">Class 7</h3>
+          <p class="class-info">1 Book Available</p>
+        </div>
+
+        <div class="class-card active" onclick="selectClass(8)">
+          <div class="class-number">8</div>
+          <h3 class="class-title">Class 8</h3>
+          <p class="class-info">1 Book Available</p>
+        </div>
       </div>
     </div>
+
+    <script>
+      function selectClass(classNum) {
+        if (classNum >= 1 && classNum <= 8) {
+          window.location.href = "class-" + classNum + "/index.html";
+        } else {
+          alert("Content for Class " + classNum + " coming soon!");
+        }
+      }
+    </script>
   </body>
 </html>
