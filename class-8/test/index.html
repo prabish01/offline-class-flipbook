@@ -642,8 +642,15 @@
         margin-bottom: 12px;
         font-size: 12pt;
       }
-      .word-preview-content .doc-question {
+      .word-preview-content .doc-question-block {
         margin-bottom: 10px;
+      }
+      .word-preview-content .doc-question {
+        margin-bottom: 4px;
+        font-size: 10.5pt;
+      }
+      .word-preview-content .doc-options {
+        margin-bottom: 6px;
         font-size: 10.5pt;
       }
       .word-preview-content .doc-answer {
@@ -677,9 +684,9 @@
       body.print-student .word-preview-panel:nth-child(2) { display: none !important; }
       body.print-teacher .word-preview-panel:nth-child(1) { display: none !important; }
 
-      @page { margin: 0; }
+      @page { margin: 15mm 12mm; }
       @media print {
-        body { background: white !important; padding: 15mm 10mm !important; margin: 0 !important; }
+        body { background: white !important; padding: 0 !important; margin: 0 !important; }
         .back-btn, .header, .subtitle, .test-info, .chapters-section, .action-buttons,
         .test-preview, .answer-key-preview, .word-preview-header, .word-preview-panel .btn {
           display: none !important;
@@ -692,10 +699,11 @@
           overflow: visible !important;
           border: none !important;
           border-radius: 0 !important;
-          padding: 15mm 12mm !important;
+          padding: 0 !important;
           background: white !important;
         }
-        .doc-question, .doc-instr { page-break-inside: avoid; }
+        .doc-question-block, .doc-instr { page-break-inside: avoid; }
+        .doc-question { margin-bottom: 4px !important; }
       }
     </style>
   </head>
@@ -3936,6 +3944,7 @@
                   return a.qNum - b.qNum;
                 })
                 .forEach(function (q, idx) {
+                  studentHtml += '<div class="doc-question-block">';
                   studentHtml += '<div class="doc-question">' + (idx + 1) + ") " + _esc(q.text).replace(/\n/g, "<br>") + "</div>";
                   if (q.options && Array.isArray(q.options) && q.options.length > 0) {
                     studentHtml += '<div class="doc-options">';
@@ -3945,6 +3954,7 @@
                     });
                     studentHtml += "</div>";
                   }
+                  studentHtml += "</div>";
                 });
             }
           });
@@ -3982,6 +3992,7 @@
                 return a.qNum - b.qNum;
               });
               sorted.forEach(function (q, idx) {
+                teacherHtml += '<div class="doc-question-block">';
                 teacherHtml += '<div class="doc-question">' + (idx + 1) + ") " + _esc(q.text).replace(/\n/g, "<br>") + "</div>";
                 if (q.options && Array.isArray(q.options) && q.options.length > 0) {
                   teacherHtml += '<div class="doc-options">';
@@ -3991,6 +4002,7 @@
                   });
                   teacherHtml += "</div>";
                 }
+                teacherHtml += "</div>";
               });
               teacherHtml += '<div class="doc-answers-header">Answers:</div>';
               sorted.forEach(function (q, idx) {
