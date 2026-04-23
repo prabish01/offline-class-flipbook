@@ -684,9 +684,9 @@
       body.print-student .word-preview-panel:nth-child(2) { display: none !important; }
       body.print-teacher .word-preview-panel:nth-child(1) { display: none !important; }
 
-      @page { margin: 15mm 12mm; }
+      @page { margin: 0; }
       @media print {
-        body { background: white !important; padding: 0 !important; margin: 0 !important; }
+        body { background: white !important; padding: 15mm 10mm !important; margin: 0 !important; }
         .back-btn, .header, .subtitle, .test-info, .chapters-section, .action-buttons,
         .test-preview, .answer-key-preview, .word-preview-header, .word-preview-panel .btn {
           display: none !important;
@@ -699,8 +699,10 @@
           overflow: visible !important;
           border: none !important;
           border-radius: 0 !important;
-          padding: 0 !important;
+          padding: 15mm 12mm !important;
           background: white !important;
+          -webkit-box-decoration-break: clone !important;
+          box-decoration-break: clone !important;
         }
         .doc-question-block, .doc-instr { page-break-inside: avoid; }
         .doc-question { margin-bottom: 4px !important; }
